@@ -1,0 +1,198 @@
+/* =================================================================
+   GLOBALS.CSS - COMPONENT-FIRST APPROACH
+
+   Most utilities have been converted to React components in /components/ui
+   This file now only contains:
+   1. CSS Custom Properties (Design Tokens)
+   2. Theme Mapping (Tailwind Integration)
+   3. Base Styles (Typography, Reset)
+   4. Remaining utilities that can't be components
+   5. Print Styles
+   6. Loading Skeleton (Server Component Safe)
+   ================================================================= */
+
+@custom-variant dark (&:is(.dark *));
+
+/* =================================================================
+   1. DESIGN TOKENS
+   ================================================================= */
+:root {
+  --background: #FEFAF8;
+  --foreground: #2C2C2C;
+  --card: #FFFFFF;
+  --card-foreground: #2C2C2C;
+  --popover: #FFFFFF;
+  --popover-foreground: #2C2C2C;
+
+  --primary: #D4A5A5;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #C39494;
+
+  --secondary: #F5EBE8;
+  --secondary-foreground: #2C2C2C;
+
+  --green: #7A9B8E;
+  --green-foreground: #F5EBE8;
+  --green-hover: #6A8B7E;
+
+  --muted: #F5EBE8;
+  --muted-foreground: #666666;
+
+  --destructive: #D4A5A5;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(212, 165, 165, 0.2);
+  --border-contact: #C9B8AE;
+  --ring: #D4A5A5;
+
+  --input: transparent;
+  --input-background: #FFFFFF;
+  --switch-background: #D4A5A5;
+  --button-text: #FFFFFF;
+
+  --content-box: #FCFCFC;
+  --cream: #FAF8F6;
+  --background-overlay: #FEFAF8;
+
+  --font-size: 16px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --fs-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --fs-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --fs-2xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+
+  --recipe-title-size: 18px;
+  --recipe-title-weight: 700;
+
+  --shadow-sm: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 0 15px rgba(0, 0, 0, 0.1), 0 0 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+
+  --radius: 0;
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* =================================================================
+   2. THEME MAPPING (Tailwind)
+   ================================================================= */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-green: var(--green);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+/* =================================================================
+   3. BASE STYLES
+   ================================================================= */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: var(--font-size);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: var(--font-weight-bold);
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* =================================================================
+   4. UTILITIES
+   ================================================================= */
+.hover-green {
+  @apply hover:text-green transition-colors;
+}
+
+.text-muted-subtle {
+  @apply text-foreground/60;
+}
+
+.share-bar-container {
+  @apply w-full;
+}
+
+/* =================================================================
+   5. PRINT STYLES
+   ================================================================= */
+@media print {
+  header, footer, nav {
+    display: none !important;
+  }
+}
+
+/* =================================================================
+   6. LOADING SKELETON (SERVER SAFE)
+   Used by app/loading.tsx
+   ================================================================= */
+
+.page-loading {
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.loading-hero {
+  height: 420px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 5rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.loading-card {
+  height: 200px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-line {
+  height: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-line.short {
+  width: 60%;
+  height: 1rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
