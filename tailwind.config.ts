@@ -1,24 +1,20 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: "var(--primary)",
-        green: "var(--green)",
-        secondary: "var(--secondary)",
+        page: 'var(--page-bg)',
+        green: 'var(--green)',
+        foreground: 'var(--foreground)',
       },
-      fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-montserrat)", "sans-serif"],
-        serif: ["var(--font-tinos)", "serif"],
+      boxShadow: {
+        soft: 'var(--shadow-sm)',
+        card: 'var(--shadow-md)',
+      },
+      maxWidth: {
+        page: 'var(--container-max)',
       },
     },
   },
