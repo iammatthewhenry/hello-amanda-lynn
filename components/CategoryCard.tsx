@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { ImageOverlay, ImageOverlayTitle } from '@/components/ui/image-overlay';
+import { ImageOverlay } from '@/components/ui/image-overlay';
 
 // ===================================================================
 // TYPES
@@ -73,17 +73,18 @@ export function CategoryCard({
       
       {/* Overlay Content */}
       {variant === 'default' ? (
-        // Default variant - centered overlay using ImageOverlay component
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 bg-black/0 hover:bg-black/20 transition-colors duration-300">
           <ImageOverlay position="center">
-            <ImageOverlayTitle as="h2" className="text-white font-bold text-xl sm:text-2xl drop-shadow-lg">
+            <h2 className="text-white font-bold text-xl sm:text-2xl drop-shadow-lg text-center">
               {title}
-            </ImageOverlayTitle>
+            </h2>
+
             {count !== undefined && (
               <p className="text-white/90 text-base sm:text-lg text-center drop-shadow-md mt-1">
                 {count} {count === 1 ? 'Recipe' : 'Recipes'}
               </p>
             )}
+
             {description && (
               <p className="text-white/90 text-sm sm:text-base text-center drop-shadow-md mt-2">
                 {description}
@@ -92,7 +93,6 @@ export function CategoryCard({
           </ImageOverlay>
         </div>
       ) : (
-        // Compact/Overlay variant - bottom overlay
         <div className="absolute bottom-0 left-0 right-0 bg-black/20 py-3 px-4 group-hover:bg-black/40 transition-colors duration-300">
           <h3 className="text-white font-bold text-center drop-shadow-lg">
             {title}
@@ -113,7 +113,12 @@ export function CategoryCard({
 
   if (onClick) {
     return (
-      <div onClick={onClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onClick()}>
+      <div
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onClick()}
+      >
         {content}
       </div>
     );
@@ -124,14 +129,12 @@ export function CategoryCard({
 
 // ===================================================================
 // CATEGORY GRID COMPONENT
-// Grid layout for multiple category cards
 // ===================================================================
 interface Category {
   title: string;
   image: string;
   page: string;
   objectPosition?: string;
-  backgroundColor?: string;
 }
 
 interface CategoryGridProps {
@@ -140,14 +143,20 @@ interface CategoryGridProps {
   className?: string;
 }
 
-export function CategoryGrid({ categories, variant = 'recipes', className }: CategoryGridProps) {
-  const gridCols = variant === 'home' 
-    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2' 
-    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-  
-  const gapClasses = variant === 'home' 
-    ? 'gap-x-0 sm:gap-x-px gap-y-[1.3125rem] sm:gap-y-[2.625rem]' 
-    : 'gap-6 sm:gap-8';
+export function CategoryGrid({
+  categories,
+  variant = 'recipes',
+  className,
+}: CategoryGridProps) {
+  const gridCols =
+    variant === 'home'
+      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2'
+      : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+
+  const gapClasses =
+    variant === 'home'
+      ? 'gap-x-0 sm:gap-x-px gap-y-[1.3125rem] sm:gap-y-[2.625rem]'
+      : 'gap-6 sm:gap-8';
 
   return (
     <div className={cn('grid', gridCols, gapClasses, className)}>

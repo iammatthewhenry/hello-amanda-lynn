@@ -105,6 +105,11 @@ export default function OutOfKitchenDetailPage() {
         }
         description={post.description}
         content={post.content}
+
+        /* ✅ REQUIRED FIX */
+        shareTitle={post.title}
+        shareDescription={post.description}
+        shareImageUrl={post.image}
       />
 
       <ShareBar
