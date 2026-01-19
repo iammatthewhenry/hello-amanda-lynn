@@ -38,6 +38,18 @@ const RECIPE_CATEGORIES = [
       'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1080&q=80',
     href: '/recipes/drinks',
   },
+  {
+    title: 'Holiday',
+    image:
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1080&q=80',
+    href: '/recipes/holiday',
+  },
+  {
+    title: 'Americana',
+    image:
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1080&q=80',
+    href: '/recipes/americana',
+  },
 ];
 
 export function BrowseByCategorySection() {
