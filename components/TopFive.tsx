@@ -12,23 +12,23 @@ export function TopFive() {
         centered
       />
 
-      {/* Local width override to match Figma */}
-      <div className="mx-auto max-w-[1150px] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-start">
+      {/* Figma-width wrapper */}
+      <div className="mx-auto max-w-[1240px] grid grid-cols-1 lg:grid-cols-[520px_1fr] gap-24 items-start">
         {/* Featured Recipe */}
-        <div className="mx-auto lg:mx-0">
-          <div className="relative bg-white p-[18px] shadow-hero">
-            <div className="relative h-[290px] sm:h-[400px] lg:h-[450px] w-[280px] sm:w-[360px] lg:w-[450px] overflow-hidden bg-neutral-100">
+        <div>
+          <div className="bg-white p-[20px] shadow-hero">
+            <div className="relative aspect-square overflow-hidden bg-neutral-100">
               <Image
                 src="/images/featured/featured-tomato-soup.jpg"
                 alt="Creamy Tomato Soup"
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 450px, 90vw"
+                sizes="520px"
               />
 
               {/* Badge */}
-              <div className="absolute top-6 left-6 bg-primary/70 px-5 py-2">
-                <span className="text-xs sm:text-sm uppercase tracking-wide text-white font-semibold">
+              <div className="absolute top-6 left-6 bg-primary/75 px-6 py-2">
+                <span className="text-xs uppercase tracking-widest text-white font-semibold">
                   Chef’s Pick
                 </span>
               </div>
@@ -36,13 +36,13 @@ export function TopFive() {
           </div>
 
           {/* Caption */}
-          <div className="mt-6 max-w-[450px]">
-            <h3 className="text-xl font-display font-semibold mb-2">
+          <div className="mt-8 max-w-[520px]">
+            <h3 className="text-2xl font-display font-semibold mb-3">
               The Best Tomato Soup
             </h3>
             <p className="text-base text-muted-foreground leading-relaxed">
               This velvety tomato soup is perfectly balanced with cream and fresh
-              basil. It’s comfort in a bowl and pairs beautifully with grilled
+              basil. It&apos;s comfort in a bowl and pairs beautifully with grilled
               cheese.
             </p>
           </div>
@@ -50,31 +50,37 @@ export function TopFive() {
 
         {/* Most Popular List */}
         <div>
-          <h3 className="text-2xl font-display font-bold mb-10 text-center lg:text-left">
+          <h3 className="text-3xl font-display font-bold mb-14">
             Most Popular
           </h3>
 
-          <ul className="space-y-8">
-            {[1, 2, 3, 4, 5].map((rank) => (
+          <ul className="space-y-12">
+            {[
+              'Fluffy Buttermilk Pancakes',
+              'Classic French Toast',
+              'Grilled Salmon',
+              'Rich Chocolate Cake',
+              'Herb Roasted Chicken',
+            ].map((title, index) => (
               <li
-                key={rank}
-                className="flex items-start gap-6 pb-8 border-b border-border last:border-b-0"
+                key={title}
+                className="flex items-start gap-10 pb-10 border-b border-border last:border-b-0"
               >
-                {/* Rank Number */}
-                <div className="w-12 h-12 flex items-center justify-center font-number text-3xl font-bold text-green opacity-85">
-                  {rank}
+                {/* Rank */}
+                <div className="font-number text-[36px] leading-none font-bold text-green/70 w-10">
+                  {index + 1}
                 </div>
 
                 {/* Content */}
-                <div className="flex-1">
+                <div>
                   <Link
                     href="#"
-                    className="block font-semibold text-[17px] mb-2 hover:underline"
+                    className="block text-lg font-medium mb-2 hover:underline"
                   >
-                    Creamy Tomato Soup
+                    {title}
                   </Link>
 
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-2">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
@@ -82,7 +88,7 @@ export function TopFive() {
                       />
                     ))}
                     <span className="ml-2 text-sm text-muted-foreground">
-                      4.9 from 2,689 reviews
+                      4.9 from 3,821 reviews
                     </span>
                   </div>
                 </div>
