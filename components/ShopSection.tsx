@@ -33,45 +33,44 @@ const defaultItems: ShopItem[] = [
     title: 'Wooden Cutting Board',
     image: 'https://images.unsplash.com/photo-1629539890438-cb562ec70f70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwY3V0dGluZyUyMGJvYXJkfGVufDF8fHx8MTc2NjQyMDI2Nnww&ixlib=rb-4.1.0&q=80&w=1080',
   },
-  {
-    title: 'Premium Cookware Set',
-    image: 'https://images.unsplash.com/photo-1585515320310-259814833e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
 ];
 
 export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSectionProps) {
   return (
-    <section className="py-16 sm:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-[22px] sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '85%' }}>
         <div 
-          className="p-8 sm:p-10 lg:p-12 bg-white rounded-lg"
+          className="p-1 sm:p-1.5 lg:p-2 xl:p-2.5 bg-background"
           style={{ boxShadow: 'var(--shadow-card)' }}
         >
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-green text-3xl sm:text-4xl font-bold tracking-tight">
+          <div className="text-center mb-3 sm:mb-4">
+            <h2 className="text-green text-[36px] font-bold tracking-tight">
               SHOP MY KITCHEN
             </h2>
           </div>
 
-          {/* 2 columns on mobile, 3 columns on desktop - matching Figma's 2x3 grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-10">
-            {items.slice(0, 6).map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-full aspect-square mx-auto mb-4 overflow-hidden rounded-lg bg-gray-50">
+          {/* 3 columns on desktop, 2 on tablet, 1 on mobile - 5 items total */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[18px] sm:gap-[18px]">
+            {items.slice(0, 5).map((item, index) => (
+              <div
+                key={index}
+                className="text-center"
+              >
+                <div className="w-[46%] sm:w-[69%] lg:w-[92%] aspect-square overflow-hidden bg-white mx-auto mb-3 sm:mb-4 mt-[6px]">
                   <Image
                     src={item.image}
                     alt={item.title}
                     width={300}
                     height={300}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="mb-3 font-semibold text-sm sm:text-base text-foreground">
+                <h3 className="mb-2 text-sm font-semibold text-foreground">
                   {item.title}
                 </h3>
                 <Link
                   href={item.link || shopLink}
-                  className="inline-block px-4 py-2 bg-green text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                  className="inline-block px-3 py-1 bg-green text-white text-base font-semibold hover:opacity-90 transition-opacity"
                 >
                   Buy This
                 </Link>
@@ -79,10 +78,10 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
             ))}
           </div>
 
-          <div className="text-center pt-4 border-t border-gray-200">
+          <div className="text-center mt-[46px] sm:mt-8 mb-3 sm:mb-4">
             <Link
               href={shopLink}
-              className="inline-block px-8 py-3 bg-green text-white font-semibold text-base rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block px-4 sm:px-5 py-1 sm:py-1.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity scale-[1.20] sm:scale-100"
             >
               Shop All
             </Link>
