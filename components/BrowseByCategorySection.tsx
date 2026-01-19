@@ -4,61 +4,53 @@ import { Section, SectionHeader } from './ui';
 const RECIPE_CATEGORIES = [
   {
     title: 'Breakfast',
-    image:
-      'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-breakfast.jpg',
     href: '/recipes/breakfast',
   },
   {
     title: 'Appetizers',
-    image:
-      'https://images.unsplash.com/photo-1541014741259-de529411b96a?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-appetizers.jpg',
     href: '/recipes/appetizers',
   },
   {
     title: 'Dinners',
-    image:
-      'https://images.unsplash.com/photo-1604908177522-0409f1a0f46a?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-dinners.jpg',
     href: '/recipes/dinners',
   },
   {
     title: 'Sides',
-    image:
-      'https://images.unsplash.com/photo-1605478580705-7bfa5b6c3b2c?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-sides.jpg',
     href: '/recipes/sides',
   },
   {
     title: 'Desserts',
-    image:
-      'https://images.unsplash.com/photo-1505253716362-afaea1b7b6ae?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-desserts.jpg',
     href: '/recipes/desserts',
   },
   {
     title: 'Drinks',
-    image:
-      'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-drinks.jpg',
     href: '/recipes/drinks',
   },
   {
     title: 'Holiday',
-    image:
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-holiday.jpg',
     href: '/recipes/holiday',
   },
   {
     title: 'Americana',
-    image:
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1080&q=80',
+    image: '/images/categories/category-americana.jpg',
     href: '/recipes/americana',
   },
 ];
 
 export function BrowseByCategorySection() {
   return (
-    <Section spacing="lg" containerSize="4xl">
+    <Section spacing="lg" containerSize="7xl">
       <SectionHeader title="Browse by Category" centered />
 
-      {/* 4× spacing */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-24">
+      {/* Figma-aligned spacing */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16 lg:gap-20">
         {RECIPE_CATEGORIES.map((category) => (
           <CategoryCard
             key={category.title}

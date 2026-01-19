@@ -6,37 +6,34 @@ type CategoryCardProps = {
   image: string;
   href: string;
   objectPosition?: string;
-  size?: 'lg' | 'sm';
 };
 
 export function CategoryCard({
   title,
   image,
   href,
-  objectPosition = 'center 60%',
-  size = 'lg',
+  objectPosition = 'center',
 }: CategoryCardProps) {
-  const imageHeight =
-    size === 'sm'
-      ? 'h-[130px] sm:h-[145px] lg:h-[155px]' // ~40% smaller
-      : 'h-[220px] sm:h-[240px] lg:h-[260px]';
-
   return (
-    <Link href={href} className="group block">
-      {/* White photo mat — 18px */}
+    <Link href={href} className="block">
+      {/* White photo mat — 16px */}
       <div
         className="
           bg-white
-          p-[18px]
-          shadow-[0_0_48px_rgba(0,0,0,0.26)]
-          transition-shadow
-          duration-300
-          group-hover:shadow-[0_0_56px_rgba(0,0,0,0.30)]
+          p-4
+          shadow-photo
         "
       >
-        {/* Image frame */}
+        {/* Image frame — Figma 280 × 200 */}
         <div
-          className={`relative ${imageHeight} overflow-hidden bg-neutral-100`}
+          className="
+            relative
+            h-[200px]
+            w-[280px]
+            overflow-hidden
+            bg-neutral-100
+            mx-auto
+          "
         >
           <Image
             src={image}
@@ -44,18 +41,27 @@ export function CategoryCard({
             fill
             className="object-cover"
             style={{ objectPosition }}
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            sizes="280px"
           />
 
-          {/* Bottom label strip — 30% opacity */}
+          {/* Bottom text strip — slim, 60% opacity */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0">
-            <div className="bg-[#F5F2ED]/30 px-3 py-1.5 text-center">
+            <div
+              className="
+                bg-[rgba(212,165,165,0.6)]
+                px-3
+                py-[6px]
+                text-center
+              "
+            >
               <h3
-                className="text-base sm:text-lg font-semibold tracking-tight"
-                style={{
-                  color: 'var(--green)',
-                  fontFamily: 'var(--font-montserrat)',
-                }}
+                className="
+                  text-sm
+                  font-display
+                  font-semibold
+                  tracking-tight
+                  text-green
+                "
               >
                 {title}
               </h3>
