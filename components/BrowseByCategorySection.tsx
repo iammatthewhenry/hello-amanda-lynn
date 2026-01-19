@@ -1,4 +1,4 @@
-import { CategoryGrid } from './CategoryCard';
+import { CategoryCard } from './CategoryCard';
 
 export function BrowseByCategorySection() {
   const recipeCategories = [
@@ -56,14 +56,23 @@ export function BrowseByCategorySection() {
   return (
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-10 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Browse by Category
           </h2>
         </div>
 
-        <CategoryGrid categories={recipeCategories} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {recipeCategories.map((category) => (
+            <CategoryCard
+              key={category.title}
+              title={category.title}
+              image={category.image}
+              href={`/${category.page}`}
+              objectPosition={category.objectPosition}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

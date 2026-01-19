@@ -11,54 +11,28 @@ import { Section, SectionHeader } from '@/components/ui';
 
 export const dynamic = 'force-static';
 
-// ===================================================================
-// HOME PAGE CONFIGURATION
-// ===================================================================
 const EXPLORE_CATEGORIES = [
   {
     title: 'In The Kitchen',
-    description: (
-      <>
-        Cooking techniques
-        <br />
-        and tips
-      </>
-    ),
     image:
       'https://images.unsplash.com/photo-1636647511729-6703539ba71f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
     page: 'in-the-kitchen',
   },
   {
     title: 'Out of Kitchen',
-    description: (
-      <>
-        Restaurant reviews
-        <br />
-        and culinary travels
-      </>
-    ),
     image:
       'https://images.unsplash.com/photo-1758275682464-ddd906bf34fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
     page: 'out-of-kitchen',
   },
 ];
 
-// ===================================================================
-// HOME PAGE
-// ===================================================================
 export default function HomePage() {
   return (
     <main>
-      {/* Hero */}
       <Hero />
-
-      {/* Poll Results */}
       <PollResults />
-
-      {/* Browse by Recipe Category */}
       <BrowseByCategorySection />
 
-      {/* Explore More */}
       <Section spacing="lg" containerSize="4xl">
         <SectionHeader
           title="Explore More"
@@ -71,7 +45,6 @@ export default function HomePage() {
             <CategoryCard
               key={category.title}
               title={category.title}
-              description={category.description}
               image={category.image}
               href={`/${category.page}`}
             />
@@ -79,13 +52,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* About */}
       <AboutSection />
-
-      {/* Top Five Recipes */}
       <TopFive />
-
-      {/* Shop */}
       <ShopSection />
     </main>
   );
