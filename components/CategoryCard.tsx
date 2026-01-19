@@ -49,7 +49,7 @@ export function CategoryCard({
       {/* Semi-transparent peachy overlay - FIXED HEIGHT & PERFECTLY CENTERED */}
       <div className="absolute bottom-0 left-0 right-0">
         <div 
-          className="flex items-center justify-center w-full px-4 py-4 sm:py-5 min-h-[60px] sm:min-h-[70px]"
+          className="flex items-center justify-center w-full px-4 h-[60px] sm:h-[70px] pt-1"
           style={{ backgroundColor: 'rgba(250, 248, 246, 0.93)' }}
         >
           <h2 className="text-green text-base sm:text-lg lg:text-xl font-semibold transition-all duration-300 group-hover:font-bold text-center">
