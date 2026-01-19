@@ -16,11 +16,11 @@ export function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link href={href} className="group block">
-      {/* White photo mat with evenly distributed shadow */}
+      {/* White photo mat — doubled thickness */}
       <div
         className="
           bg-white
-          p-3
+          p-6
           shadow-[0_0_40px_rgba(0,0,0,0.20)]
           transition-shadow
           duration-300
@@ -40,9 +40,9 @@ export function CategoryCard({
 
           {/* Bottom label strip */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0">
-            <div className="bg-[#F5F2ED] px-4 py-6 text-center">
+            <div className="bg-[#F5F2ED]/70 px-4 py-2 text-center">
               <h3
-                className="text-3xl sm:text-4xl font-semibold tracking-tight"
+                className="text-lg sm:text-xl font-semibold tracking-tight"
                 style={{
                   color: 'var(--green)',
                   fontFamily: 'var(--font-montserrat)',
