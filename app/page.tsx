@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Hero } from '@/components/Hero';
 import { CategoryCard } from '@/components/CategoryCard';
 import { AboutSection } from '@/components/AboutSection';
@@ -53,7 +52,7 @@ export default function HomePage() {
       {/* Hero */}
       <Hero />
 
-      {/* Demo Poll (static UI only) */}
+      {/* Poll Results */}
       <PollResults />
 
       {/* Browse by Recipe Category */}
