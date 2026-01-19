@@ -29,7 +29,7 @@ export function BrowseByCategorySection() {
     {
       title: 'Desserts',
       image:
-        'https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?q=80&w=1364&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1517427294546-b28f40a0ae38?q=80&w=1364&auto=format&fit=crop',
       page: 'desserts',
       objectPosition: 'center 75%',
     },
