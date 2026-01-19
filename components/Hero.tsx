@@ -88,14 +88,14 @@ export function Hero({
         ))}
       </div>
 
-      {/* Text card */}
+      {/* Text Card */}
       <div className="absolute inset-0 flex items-center">
         <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-white p-4 shadow-card">
+            <div className="bg-white shadow-card">
               <div className="border border-neutral-200">
-                <div className="p-4 sm:p-6 max-w-md">
-                  <p className="text-[10px] tracking-[0.25em] text-green font-semibold mb-2">
+                <div className="p-4 sm:p-6 lg:p-8 max-w-md">
+                  <p className="text-[10px] sm:text-xs tracking-[0.3em] text-green font-semibold mb-2">
                     {slides[current].category}
                   </p>
 
