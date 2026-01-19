@@ -5,7 +5,7 @@ import { Section, SectionHeader } from './ui';
 
 export function TopFive() {
   return (
-    <Section spacing="lg" containerSize="5xl">
+    <Section spacing="lg" containerSize="4xl">
       <SectionHeader
         title="Top Five Recipes"
         subtitle="Most loved by readers right now"
