@@ -30,7 +30,8 @@ interface HeroProps {
 const DEFAULT_SLIDES: HeroSlide[] = [
   {
     id: '1',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&auto=format&fit=crop',
     alt: 'Delicious homemade pasta dish',
     category: 'FEATURED RECIPE',
     title: 'Fresh Homemade Pasta',
@@ -39,7 +40,8 @@ const DEFAULT_SLIDES: HeroSlide[] = [
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1600&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1600&auto=format&fit=crop',
     alt: 'Beautiful breakfast spread',
     category: 'BREAKFAST IDEAS',
     title: 'Weekend Brunch Favorites',
@@ -48,7 +50,8 @@ const DEFAULT_SLIDES: HeroSlide[] = [
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1600&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1600&auto=format&fit=crop',
     alt: 'Fresh pizza from the oven',
     category: 'DINNER INSPIRATION',
     title: 'Homemade Pizza Night',
@@ -98,9 +101,9 @@ export function Hero({
   const slide = slides[currentSlide];
 
   return (
-    <section className="relative w-full">
-      {/* IMAGE LAYER */}
-      <div className="relative h-[360px] sm:h-[440px] lg:h-[520px] xl:h-[600px] w-full">
+    <section className="relative w-full overflow-hidden">
+      {/* IMAGE */}
+      <div className="relative h-[420px] sm:h-[480px] lg:h-[560px] xl:h-[620px] w-full">
         <Image
           src={slide.image}
           alt={slide.alt}
@@ -109,20 +112,28 @@ export function Hero({
           className="object-cover"
           sizes="100vw"
         />
+        {/* Dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      {/* CONTENT OVERLAY */}
+      {/* CONTENT */}
       <div className="absolute inset-0 flex items-center">
-        <div className="page-container w-full flex justify-end">
-          <Card className="max-w-md p-8 lg:p-10 shadow-card bg-white">
-            <p className="text-sm tracking-widest text-green font-semibold mb-3">
-              {slide.category}
-            </p>
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              {slide.title}
-            </h2>
-            <p className="text-base leading-relaxed">{slide.description}</p>
-          </Card>
+        <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center lg:justify-end">
+            <Card className="w-full max-w-xl p-6 sm:p-8 lg:p-10 bg-white shadow-card">
+              <p className="text-xs tracking-[0.2em] text-green font-semibold mb-3">
+                {slide.category}
+              </p>
+
+              <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">
+                {slide.title}
+              </h1>
+
+              <p className="text-base leading-relaxed text-neutral-700">
+                {slide.description}
+              </p>
+            </Card>
+          </div>
         </div>
       </div>
 
@@ -131,7 +142,7 @@ export function Hero({
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition"
             aria-label="Previous slide"
           >
             <ChevronLeft size={24} />
@@ -139,7 +150,7 @@ export function Hero({
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition"
             aria-label="Next slide"
           >
             <ChevronRight size={24} />
