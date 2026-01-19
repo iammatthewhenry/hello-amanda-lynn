@@ -46,27 +46,15 @@ export function CategoryCard({
         />
       </div>
 
-      {/* Semi-transparent peachy overlay with green text - FULL WIDTH AT BOTTOM */}
+      {/* Semi-transparent peachy overlay - FIXED HEIGHT & PERFECTLY CENTERED */}
       <div className="absolute bottom-0 left-0 right-0">
         <div 
-          className="px-4 sm:px-6 py-3 sm:py-4 w-full text-center"
+          className="flex items-center justify-center w-full px-4 py-4 sm:py-5 min-h-[60px] sm:min-h-[70px]"
           style={{ backgroundColor: 'rgba(250, 248, 246, 0.93)' }}
         >
-          <h2 className="text-green text-base sm:text-lg lg:text-xl font-semibold transition-all duration-300 group-hover:font-bold">
+          <h2 className="text-green text-base sm:text-lg lg:text-xl font-semibold transition-all duration-300 group-hover:font-bold text-center">
             {title}
           </h2>
-
-          {count !== undefined && (
-            <p className="text-green/90 text-xs sm:text-sm mt-1">
-              {count} {count === 1 ? 'Recipe' : 'Recipes'}
-            </p>
-          )}
-
-          {description && (
-            <p className="text-green/90 text-xs sm:text-sm mt-1">
-              {description}
-            </p>
-          )}
         </div>
       </div>
     </div>
