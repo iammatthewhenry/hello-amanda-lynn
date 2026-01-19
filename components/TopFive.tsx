@@ -66,7 +66,7 @@ export function TopFive({ data = defaultData }: TopFiveProps) {
               />
               
               {/* Badge */}
-              <div className="absolute top-6 left-6 bg-primary/80 text-white px-5 py-2.5 sm:px-6 sm:py-3 shadow-lg">
+              <div className="absolute top-6 left-6 bg-[#D4A5A5]/80 text-white px-5 py-2.5 sm:px-6 sm:py-3 shadow-lg">
                 <span className="uppercase tracking-wider text-xs sm:text-sm">{data.badgeText}</span>
               </div>
             </div>
