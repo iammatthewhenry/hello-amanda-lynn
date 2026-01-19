@@ -22,23 +22,21 @@ interface HeroProps {
 const DEFAULT_SLIDES: HeroSlide[] = [
   {
     id: '1',
-    image:
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80',
-    alt: 'Delicious homemade pasta dish',
+    image: '/images/hero/hero-pancakes.jpg',
+    alt: 'Fluffy Buttermilk Pancakes',
     category: 'FEATURED RECIPE',
-    title: 'Fresh Homemade Pasta',
+    title: 'Fluffy Buttermilk Pancakes',
     description:
-      'Learn the art of making authentic Italian pasta from scratch with simple ingredients.',
+      'Light, airy, and made from scratch — these pancakes are a weekend favorite.',
   },
   {
     id: '2',
-    image:
-      'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1920&q=80',
-    alt: 'Beautiful breakfast spread',
-    category: 'BREAKFAST IDEAS',
-    title: 'Weekend Brunch Favorites',
+    image: '/images/hero/hero-cookies.jpg',
+    alt: 'Chocolate Chip Cookies',
+    category: 'BAKING FAVORITES',
+    title: 'Perfect Chocolate Chip Cookies',
     description:
-      'Start your morning right with these delicious and easy breakfast recipes.',
+      'Crispy edges, soft centers, and plenty of chocolate in every bite.',
   },
 ];
 
@@ -66,13 +64,13 @@ export function Hero({
   }, [next, slides.length, autoPlayDelay]);
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden hero-slider-container">
       {/* Slides */}
       <div className="relative h-[250px] sm:h-[320px] lg:h-[420px] xl:h-[480px]">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+            className={`slider-slide transition-opacity duration-[1200ms] ease-in-out ${
               index === current ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -92,17 +90,20 @@ export function Hero({
       <div className="absolute inset-0 flex items-center">
         <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-white shadow-card">
+            <div className="hero-text-card bg-white p-6 sm:p-8 lg:p-10">
               <div className="border border-neutral-200">
-                <div className="p-4 sm:p-6 lg:p-8 max-w-md">
-                  <p className="text-[10px] sm:text-xs tracking-[0.3em] text-green font-semibold mb-2">
+                <div className="p-6 sm:p-8 max-w-md">
+                  {/* Category */}
+                  <p className="text-xs sm:text-sm tracking-[0.3em] text-green font-semibold mb-3">
                     {slides[current].category}
                   </p>
 
-                  <h1 className="text-2xl sm:text-3xl font-display font-bold leading-tight mb-3">
+                  {/* Title */}
+                  <h1 className="text-3xl sm:text-4xl font-display font-bold leading-tight mb-4">
                     {slides[current].title}
                   </h1>
 
+                  {/* Description */}
                   <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
                     {slides[current].description}
                   </p>
@@ -118,14 +119,14 @@ export function Hero({
         <>
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-neutral-700 p-2 rounded-full shadow transition"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-neutral-700 p-2 rounded-full shadow transition"
             aria-label="Previous slide"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-neutral-700 p-2 rounded-full shadow transition"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-neutral-700 p-2 rounded-full shadow transition"
             aria-label="Next slide"
           >
             <ChevronRight size={18} />
