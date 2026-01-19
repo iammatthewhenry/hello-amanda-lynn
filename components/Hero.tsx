@@ -96,7 +96,7 @@ export function Hero({
 
   return (
     <section className="w-full py-2 sm:py-4 lg:py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-[35px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative h-[250px] sm:h-[320px] lg:h-[420px] xl:h-[480px] overflow-hidden cursor-pointer">
           <Image
             src={slide.image}
