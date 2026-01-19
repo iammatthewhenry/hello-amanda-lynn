@@ -69,14 +69,14 @@ export default function HomePage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {EXPLORE_CATEGORIES.map((category) => (
-            <CategoryCard
-              key={category.title}
-              title={category.title}
-              description={category.description}
-              image={category.image}
-              onClick={() => router.push(`/${category.page}`)}
-            />
-          ))}
+  <CategoryCard
+    key={category.title}
+    title={category.title}
+    description={category.description}
+    image={category.image}
+    href={`/${category.page}`}
+  />
+))}
         </div>
       </Section>
 
