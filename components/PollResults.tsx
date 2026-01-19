@@ -1,4 +1,4 @@
-import { Container, Button, Card } from '@/components/ui';
+import { Container, Button } from '@/components/ui';
 
 export interface PollResultItem {
   rank: number;
@@ -30,9 +30,8 @@ export function PollResults({
   return (
     <Container size="4xl" className="py-6 sm:py-16 lg:py-20">
       {/* Using exact Figma colors: border-green and bg with warm peachy tone */}
-      <Card 
-        variant="default" 
-        className="border-2 border-green rounded-lg p-3 sm:p-8" 
+      <div 
+        className="border-2 border-green rounded-lg p-3 sm:p-8 shadow-card" 
         style={{ backgroundColor: '#FEFAF8' }}
       >
         <div className="text-center mb-3 sm:mb-6">
@@ -85,7 +84,7 @@ export function PollResults({
             Take the Poll
           </Button>
         </div>
-      </Card>
+      </div>
     </Container>
   );
 }
