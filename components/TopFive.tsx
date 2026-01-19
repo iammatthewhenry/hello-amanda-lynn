@@ -45,25 +45,27 @@ const defaultData: TopFiveData = {
 
 export function TopFive({ data = defaultData }: TopFiveProps) {
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-background py-[22px] sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Grid Layout: Featured on left, List on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-12 items-start">
           
           {/* Left: Featured Recipe with Badge */}
-          <Link href={data.featuredSlug} className="group">
-            <div className="relative cursor-pointer">
-              <div className="relative h-64 sm:h-96 lg:h-[450px] rounded-lg overflow-hidden">
+          <Link href={data.featuredSlug} className="group block">
+            <div className="relative cursor-pointer max-w-[77%] lg:max-w-[450px] mx-auto lg:mx-0">
+              <div className="relative h-[290px] sm:h-[400px] lg:h-[450px] border-[16px] border-white overflow-hidden"
+                   style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)' }}>
                 <Image
                   src={data.featuredImage}
                   alt={data.featuredTitle}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 77vw, 450px"
                 />
                 
                 {/* Badge */}
-                <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-green/90 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow-lg">
-                  <span className="uppercase tracking-wider text-xs sm:text-sm font-semibold">
+                <div className="absolute top-6 left-6 bg-primary/80 text-white px-5 py-2.5 sm:px-6 sm:py-3 shadow-lg">
+                  <span className="uppercase tracking-wider text-xs sm:text-sm">
                     {data.badgeText}
                   </span>
                 </div>
@@ -83,17 +85,17 @@ export function TopFive({ data = defaultData }: TopFiveProps) {
 
           {/* Right: Most Popular List */}
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-center lg:text-left mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-center lg:text-left">
               Most Popular
             </h2>
             
             <div className="space-y-6">
               {data.items.map((item) => (
                 <Link key={item.id} href={item.slug}>
-                  <div className="flex items-start gap-4 pb-6 border-b border-gray-200 last:border-b-0 group">
+                  <div className="flex items-start gap-4 pb-6 border-b border-[rgba(212,165,165,0.2)] last:border-b-0 group">
                     {/* Number */}
-                    <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                      <span className="text-4xl sm:text-5xl font-bold text-green/60">
+                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                      <span className="text-3xl text-green opacity-85 font-bold">
                         {item.id}
                       </span>
                     </div>
@@ -110,8 +112,7 @@ export function TopFive({ data = defaultData }: TopFiveProps) {
                           {[1, 2, 3, 4, 5].map((star) => (
                             <Star
                               key={star}
-                              size={16}
-                              className="fill-yellow-400 text-yellow-400"
+                              className="w-4 h-4 fill-[#D4A5A5] text-[#D4A5A5]"
                             />
                           ))}
                         </div>
