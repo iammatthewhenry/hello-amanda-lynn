@@ -100,7 +100,7 @@ export function Hero({
   return (
     <section className="relative w-full">
       {/* IMAGE LAYER */}
-      <div className="relative h-[360px] sm:h-[440px] lg:h-[520px] xl:h-[600px] w-full">
+      <div className="relative h-[400px] sm:h-[480px] lg:h-[560px] w-full">
         <Image
           src={slide.image}
           alt={slide.alt}
@@ -112,16 +112,18 @@ export function Hero({
       </div>
 
       {/* CONTENT OVERLAY */}
-      <div className="absolute inset-0 flex items-center">
-        <div className="page-container w-full flex justify-end">
-          <Card className="max-w-md p-8 lg:p-10 shadow-card bg-white">
-            <p className="text-sm tracking-widest text-green font-semibold mb-3">
+      <div className="absolute inset-0 flex items-center justify-end">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
+          <Card className="max-w-[420px] p-8 sm:p-10 shadow-card bg-white">
+            <p className="text-xs tracking-[0.2em] text-green font-semibold mb-4 uppercase">
               {slide.category}
             </p>
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
               {slide.title}
             </h2>
-            <p className="text-base leading-relaxed">{slide.description}</p>
+            <p className="text-sm sm:text-base leading-relaxed text-foreground/80">
+              {slide.description}
+            </p>
           </Card>
         </div>
       </div>
@@ -131,18 +133,18 @@ export function Hero({
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 sm:p-3 rounded-full transition-all"
             aria-label="Previous slide"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 sm:p-3 rounded-full transition-all"
             aria-label="Next slide"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} className="sm:w-6 sm:h-6" />
           </button>
         </>
       )}

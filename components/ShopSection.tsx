@@ -33,36 +33,45 @@ const defaultItems: ShopItem[] = [
     title: 'Wooden Cutting Board',
     image: 'https://images.unsplash.com/photo-1629539890438-cb562ec70f70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwY3V0dGluZyUyMGJvYXJkfGVufDF8fHx8MTc2NjQyMDI2Nnww&ixlib=rb-4.1.0&q=80&w=1080',
   },
+  {
+    title: 'Premium Cookware Set',
+    image: 'https://images.unsplash.com/photo-1585515320310-259814833e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+  },
 ];
 
 export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSectionProps) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-16 sm:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
-          className="p-4 sm:p-6 lg:p-8 bg-white rounded-lg"
+          className="p-8 sm:p-10 lg:p-12 bg-white rounded-lg"
           style={{ boxShadow: 'var(--shadow-card)' }}
         >
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-green text-3xl sm:text-4xl font-bold">SHOP MY KITCHEN</h2>
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-green text-3xl sm:text-4xl font-bold tracking-tight">
+              SHOP MY KITCHEN
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
-            {items.map((item, index) => (
+          {/* 2 columns on mobile, 3 columns on desktop - matching Figma's 2x3 grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-10">
+            {items.slice(0, 6).map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mx-auto mb-4 overflow-hidden rounded-lg bg-gray-100">
+                <div className="w-full aspect-square mx-auto mb-4 overflow-hidden rounded-lg bg-gray-50">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={256}
-                    height={256}
+                    width={300}
+                    height={300}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="mb-3 font-semibold text-foreground">{item.title}</h3>
+                <h3 className="mb-3 font-semibold text-sm sm:text-base text-foreground">
+                  {item.title}
+                </h3>
                 <Link
                   href={item.link || shopLink}
-                  className="inline-block px-4 py-2 bg-green text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                  className="inline-block px-4 py-2 bg-green text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
                 >
                   Buy This
                 </Link>
@@ -70,10 +79,10 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center pt-4 border-t border-gray-200">
             <Link
               href={shopLink}
-              className="inline-block px-6 py-3 bg-green text-white font-semibold text-lg rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block px-8 py-3 bg-green text-white font-semibold text-base rounded-lg hover:opacity-90 transition-opacity"
             >
               Shop All
             </Link>

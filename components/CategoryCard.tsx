@@ -28,39 +28,38 @@ export function CategoryCard({
   const card = (
     <div
       className={cn(
-        'group relative w-full overflow-hidden rounded-xl',
-        'aspect-[4/3]',
-        'bg-neutral-900',
+        'group relative w-full overflow-hidden rounded-lg bg-white',
+        'shadow-card hover:shadow-lg transition-shadow duration-300',
         className
       )}
     >
-      <Image
-        src={image}
-        alt={title}
-        fill
-        priority={false}
-        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-        style={{ objectPosition }}
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      />
+      {/* Image Container */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          priority={false}
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          style={{ objectPosition }}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/40" />
-
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-        <h3 className="text-white font-semibold text-xl sm:text-2xl drop-shadow">
+      {/* Title Below Image */}
+      <div className="p-4 text-center">
+        <h3 className="text-foreground font-semibold text-base sm:text-lg">
           {title}
         </h3>
 
         {count !== undefined && (
-          <p className="mt-1 text-sm text-white/90">
+          <p className="mt-1 text-sm text-foreground/60">
             {count} {count === 1 ? 'Recipe' : 'Recipes'}
           </p>
         )}
 
         {description && (
-          <p className="mt-2 text-sm text-white/90">{description}</p>
+          <p className="mt-2 text-sm text-foreground/60">{description}</p>
         )}
       </div>
     </div>
@@ -93,7 +92,7 @@ interface CategoryGridProps {
 
 export function CategoryGrid({ categories }: CategoryGridProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {categories.map((category) => (
         <CategoryCard
           key={category.title}
