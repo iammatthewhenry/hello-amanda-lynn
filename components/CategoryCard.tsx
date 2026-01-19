@@ -16,15 +16,15 @@ export function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link href={href} className="group block">
-      {/* White photo mat — doubled thickness */}
+      {/* White photo mat — 20px */}
       <div
         className="
           bg-white
-          p-6
-          shadow-[0_0_40px_rgba(0,0,0,0.20)]
+          p-5
+          shadow-[0_0_48px_rgba(0,0,0,0.26)]
           transition-shadow
           duration-300
-          group-hover:shadow-[0_0_48px_rgba(0,0,0,0.24)]
+          group-hover:shadow-[0_0_56px_rgba(0,0,0,0.30)]
         "
       >
         {/* Image frame */}
