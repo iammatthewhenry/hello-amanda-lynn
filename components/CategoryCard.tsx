@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 // ===================================================================
-// CATEGORY CARD
+// CATEGORY CARD (FIGMA-ACCURATE)
 // ===================================================================
 interface CategoryCardProps {
   title: string;
@@ -28,39 +28,46 @@ export function CategoryCard({
   const card = (
     <div
       className={cn(
-        'group relative w-full overflow-hidden rounded-lg bg-white',
-        'shadow-card hover:shadow-lg transition-shadow duration-300',
+        'group relative cursor-pointer h-[160px] sm:h-[220px] lg:h-[248px] max-w-[77%] md:max-w-[90%] mx-auto',
         className
       )}
     >
-      {/* Image Container */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden">
+      {/* Image with 16px white border and shadow */}
+      <div className="relative w-full h-full border-[16px] border-white overflow-hidden"
+           style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)' }}>
         <Image
           src={image}
           alt={title}
           fill
           priority={false}
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           style={{ objectPosition }}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
-      {/* Title Below Image */}
-      <div className="p-4 text-center">
-        <h3 className="text-foreground font-semibold text-base sm:text-lg">
-          {title}
-        </h3>
+      {/* Semi-transparent peachy overlay with green text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+        <div 
+          className="px-4 sm:px-6 py-2 sm:py-3 w-[85%] text-center"
+          style={{ backgroundColor: 'rgba(250, 248, 246, 0.93)' }}
+        >
+          <h2 className="text-green text-lg sm:text-xl lg:text-2xl font-bold transition-all duration-300 group-hover:font-bold">
+            {title}
+          </h2>
 
-        {count !== undefined && (
-          <p className="mt-1 text-sm text-foreground/60">
-            {count} {count === 1 ? 'Recipe' : 'Recipes'}
-          </p>
-        )}
+          {count !== undefined && (
+            <p className="text-green/90 text-sm sm:text-base mt-1">
+              {count} {count === 1 ? 'Recipe' : 'Recipes'}
+            </p>
+          )}
 
-        {description && (
-          <p className="mt-2 text-sm text-foreground/60">{description}</p>
-        )}
+          {description && (
+            <p className="text-green/90 text-xs sm:text-sm mt-1">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
