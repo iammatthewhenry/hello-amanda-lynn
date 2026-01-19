@@ -6,11 +6,8 @@ type CategoryCardProps = {
   image: string;
   href: string;
   /**
-   * Controls intentional editorial cropping.
-   * Examples:
-   * - 'center 60%' (default, Figma-safe)
-   * - 'center top'
-   * - 'center 75%'
+   * Editorial crop control
+   * e.g. 'center 60%', 'center top'
    */
   objectPosition?: string;
 };
@@ -25,7 +22,7 @@ export function CategoryCard({
     <Link href={href} className="group block">
       {/* White photo mat */}
       <div className="bg-white p-3 shadow-md transition-shadow duration-300 group-hover:shadow-lg">
-        {/* Fixed editorial crop window */}
+        {/* Image frame */}
         <div className="relative h-[220px] sm:h-[240px] lg:h-[260px] overflow-hidden bg-neutral-100">
           <Image
             src={image}
@@ -35,13 +32,15 @@ export function CategoryCard({
             style={{ objectPosition }}
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           />
-        </div>
 
-        {/* Caption */}
-        <div className="mt-3 text-center">
-          <h3 className="text-base sm:text-lg font-semibold tracking-tight">
-            {title}
-          </h3>
+          {/* Text overlay (Figma-style) */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0">
+            <div className="bg-white/80 backdrop-blur-sm px-4 py-3 text-center">
+              <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-green-800">
+                {title}
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </Link>
