@@ -48,9 +48,12 @@ export function BrowseByCategorySection() {
   return (
     <section className="section">
       <div className="page-container">
-        <h2 className="mb-8 text-2xl font-bold">
-          Browse by Category
-        </h2>
+        {/* Section header — restored visual anchor */}
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+            Browse by Category
+          </h2>
+        </div>
 
         <CategoryGrid categories={recipeCategories} />
       </div>
