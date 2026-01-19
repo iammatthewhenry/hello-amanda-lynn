@@ -5,10 +5,6 @@ type CategoryCardProps = {
   title: string;
   image: string;
   href: string;
-  /**
-   * Editorial crop control
-   * e.g. 'center 60%', 'center top'
-   */
   objectPosition?: string;
 };
 
@@ -20,8 +16,17 @@ export function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link href={href} className="group block">
-      {/* White photo mat */}
-      <div className="bg-white p-3 shadow-md transition-shadow duration-300 group-hover:shadow-lg">
+      {/* White photo mat with evenly distributed shadow */}
+      <div
+        className="
+          bg-white
+          p-3
+          shadow-[0_0_40px_rgba(0,0,0,0.20)]
+          transition-shadow
+          duration-300
+          group-hover:shadow-[0_0_48px_rgba(0,0,0,0.24)]
+        "
+      >
         {/* Image frame */}
         <div className="relative h-[220px] sm:h-[240px] lg:h-[260px] overflow-hidden bg-neutral-100">
           <Image
@@ -33,10 +38,16 @@ export function CategoryCard({
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           />
 
-          {/* Text overlay (Figma-style) */}
+          {/* Bottom label strip */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0">
-            <div className="bg-white/80 backdrop-blur-sm px-4 py-3 text-center">
-              <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-green-800">
+            <div className="bg-[#F5F2ED] px-4 py-6 text-center">
+              <h3
+                className="text-3xl sm:text-4xl font-semibold tracking-tight"
+                style={{
+                  color: 'var(--green)',
+                  fontFamily: 'var(--font-montserrat)',
+                }}
+              >
                 {title}
               </h3>
             </div>
