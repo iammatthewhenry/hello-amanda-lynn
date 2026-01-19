@@ -28,8 +28,9 @@ export function CategoryCard({
   const card = (
     <div
       className={cn(
-        'group relative w-full overflow-hidden rounded-lg',
+        'group relative w-full overflow-hidden rounded-xl',
         'aspect-[4/3]',
+        'bg-neutral-900',
         className
       )}
     >
@@ -37,26 +38,29 @@ export function CategoryCard({
         src={image}
         alt={title}
         fill
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        priority={false}
+        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         style={{ objectPosition }}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors">
-        <h3 className="text-white font-bold text-xl sm:text-2xl drop-shadow text-center">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/40" />
+
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+        <h3 className="text-white font-semibold text-xl sm:text-2xl drop-shadow">
           {title}
         </h3>
 
         {count !== undefined && (
-          <p className="text-white/90 mt-1">
+          <p className="mt-1 text-sm text-white/90">
             {count} {count === 1 ? 'Recipe' : 'Recipes'}
           </p>
         )}
 
         {description && (
-          <p className="text-white/90 mt-2 text-sm text-center">
-            {description}
-          </p>
+          <p className="mt-2 text-sm text-white/90">{description}</p>
         )}
       </div>
     </div>
@@ -64,7 +68,7 @@ export function CategoryCard({
 
   if (href) {
     return (
-      <Link href={href} className="block w-full">
+      <Link href={href} className="block w-full focus:outline-none">
         {card}
       </Link>
     );
