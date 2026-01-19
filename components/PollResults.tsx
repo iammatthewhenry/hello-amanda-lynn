@@ -28,44 +28,37 @@ export function PollResults({
   pollLink = '/poll'
 }: PollResultsProps) {
   return (
-    <Container size="4xl" className="py-6 sm:py-16 lg:py-20">
-      {/* Using exact Figma colors: border-green and bg with warm peachy tone */}
-      <div 
-        className="border-2 border-green rounded-lg p-3 sm:p-8 shadow-card" 
-        style={{ backgroundColor: '#FEFAF8' }}
-      >
+    <section className="container container-max-4xl py-[22px] sm:py-16 lg:py-20">
+      <div className="bg-background border-2 border-green rounded-lg p-3 sm:p-8">
         <div className="text-center mb-3 sm:mb-6">
           <h3 className="text-green text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">
             {title}
           </h3>
-          <p className="text-xs sm:text-base text-foreground/70">
+          <p className="text-xs sm:text-base text-muted-foreground">
             {description}
           </p>
+          {totalResponses > 0 && (
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
+              Based on {totalResponses.toLocaleString()} {totalResponses === 1 ? 'response' : 'responses'}
+            </p>
+          )}
         </div>
 
         <div className="space-y-2 sm:space-y-3">
           {results.map((item) => (
             <div key={item.rank} className="flex items-center gap-2 sm:gap-3">
-              <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-green text-white flex items-center justify-center text-xs sm:text-base font-semibold">
+              <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-green text-white flex items-center justify-center text-xs sm:text-base font-semibold number-font">
                 {item.rank}
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between items-center mb-0.5 sm:mb-1 gap-2">
-                  <span className="text-xs sm:text-base font-medium text-foreground">
-                    {item.text}
-                  </span>
-                  <span className="text-xs sm:text-sm text-foreground/60 flex-shrink-0">
-                    {item.percentage}%
-                  </span>
+              <div className="flex-1">
+                <div className="flex justify-between items-center mb-0.5 sm:mb-1">
+                  <span className="text-xs sm:text-base font-medium">{item.text}</span>
+                  <span className="text-xs sm:text-sm text-muted-foreground ml-2">{item.percentage}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2 overflow-hidden">
+                <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2">
                   <div 
-                    className="bg-green h-full transition-all duration-500 ease-out rounded-full"
+                    className="bg-green h-1.5 sm:h-2 rounded-full transition-all duration-500"
                     style={{ width: `${item.percentage}%` }}
-                    role="progressbar"
-                    aria-valuenow={item.percentage}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
                   />
                 </div>
               </div>
@@ -85,6 +78,6 @@ export function PollResults({
           </Button>
         </div>
       </div>
-    </Container>
+    </section>
   );
 }
