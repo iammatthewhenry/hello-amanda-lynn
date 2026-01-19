@@ -12,11 +12,12 @@ export function TopFive() {
         centered
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-start">
+      {/* Local width override to match Figma */}
+      <div className="mx-auto max-w-[1150px] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-start">
         {/* Featured Recipe */}
         <div className="mx-auto lg:mx-0">
           <div className="relative bg-white p-[18px] shadow-hero">
-            <div className="relative h-[290px] sm:h-[400px] lg:h-[450px] w-[280px] sm:w-[360px] lg:w-[450px] overflow-hidden">
+            <div className="relative h-[290px] sm:h-[400px] lg:h-[450px] w-[280px] sm:w-[360px] lg:w-[450px] overflow-hidden bg-neutral-100">
               <Image
                 src="/images/featured/featured-tomato-soup.jpg"
                 alt="Creamy Tomato Soup"
@@ -47,7 +48,7 @@ export function TopFive() {
           </div>
         </div>
 
-        {/* List */}
+        {/* Most Popular List */}
         <div>
           <h3 className="text-2xl font-display font-bold mb-10 text-center lg:text-left">
             Most Popular
@@ -59,7 +60,7 @@ export function TopFive() {
                 key={rank}
                 className="flex items-start gap-6 pb-8 border-b border-border last:border-b-0"
               >
-                {/* Number */}
+                {/* Rank Number */}
                 <div className="w-12 h-12 flex items-center justify-center font-number text-3xl font-bold text-green opacity-85">
                   {rank}
                 </div>
@@ -68,7 +69,7 @@ export function TopFive() {
                 <div className="flex-1">
                   <Link
                     href="#"
-                    className="block font-semibold text-lg mb-2 hover:underline"
+                    className="block font-semibold text-[17px] mb-2 hover:underline"
                   >
                     Creamy Tomato Soup
                   </Link>
