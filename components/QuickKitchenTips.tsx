@@ -52,7 +52,7 @@ const DEFAULT_TIPS: KitchenTip[] = [
 
 export function QuickKitchenTips({ tips = DEFAULT_TIPS }: QuickKitchenTipsProps) {
   return (
-    <Section spacing="lg" containerSize="6xl">
+    <Section spacing="lg" containerSize="4xl">
       <SectionHeader
         title="Quick Kitchen Tips"
         subtitle="Essential techniques to elevate your cooking"
