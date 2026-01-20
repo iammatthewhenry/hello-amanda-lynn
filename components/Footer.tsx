@@ -166,65 +166,71 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
   };
 
   return (
-    // ✅ BACKGROUND FIX: Applied bg-[#F5EBE8] to the <footer> element itself
-    // This ensures the entire footer area (newsletter + main content) has the correct background
-    // Previously, each section had its own background, creating visual separation
-    <footer className="mt-6 bg-[#F5EBE8]">
-      {/* Banner Ad */}
-      {showBannerAd && (
-        <div className="bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-            <div className="w-full max-w-[728px] h-[90px] mx-auto bg-muted border-2 border-border flex items-center justify-center rounded-lg">
-              <div className="text-center px-4">
-                <p className="text-muted-foreground text-xs sm:text-sm">Advertisement</p>
-                <p className="text-muted-foreground text-[10px] sm:text-xs mt-1">728x90 Banner Ad</p>
+    // ✅ BACKGROUND SPLIT: Footer divided into TWO sections with different backgrounds
+    // Section 1 (Newsletter): #FEFAF8 (lighter peachy/cream)
+    // Section 2 (Main Footer): #F5EBE8 (darker peachy/beige)
+    <footer className="mt-6">
+      {/* ========================================= */}
+      {/* SECTION 1: Newsletter Area - #FEFAF8    */}
+      {/* ========================================= */}
+      <div className="bg-[#FEFAF8]">
+        {/* Banner Ad */}
+        {showBannerAd && (
+          <div className="bg-background">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+              <div className="w-full max-w-[728px] h-[90px] mx-auto bg-muted border-2 border-border flex items-center justify-center rounded-lg">
+                <div className="text-center px-4">
+                  <p className="text-muted-foreground text-xs sm:text-sm">Advertisement</p>
+                  <p className="text-muted-foreground text-[10px] sm:text-xs mt-1">728x90 Banner Ad</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Newsletter Signup */}
-      {/* ✅ DIVIDER FIX: Removed bg-[#FEFAF8] class - background now inherited from <footer> */}
-      {/* Previous version had redundant background declaration here */}
-      <div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
-              Get new recipes and kitchen tips delivered straight to your inbox!
-            </h2>
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto items-center">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                disabled={status === 'loading'}
-                className="w-full sm:flex-1 px-3 py-2 sm:px-4 sm:py-2.5 bg-white border-2 border-green/20 focus:outline-none focus:ring-2 focus:ring-green/50 transition-all text-sm sm:text-base rounded-md"
-              />
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="inline-block px-6 sm:px-8 py-2 sm:py-2.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity whitespace-nowrap rounded-md"
-              >
-                {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-              </button>
-            </form>
-            
-            {status === 'success' && (
-              <p className="text-green mt-3 sm:mt-4 text-sm">✓ Successfully subscribed!</p>
-            )}
-            {status === 'error' && (
-              <p className="text-red-500 mt-3 sm:mt-4 text-sm">✗ Failed to subscribe. Please try again.</p>
-            )}
+        {/* Newsletter Signup */}
+        {/* ✅ DIVIDER FIX: Removed bg-[#FEFAF8] class - background now inherited from section wrapper */}
+        {/* Previous version had redundant background declaration here */}
+        <div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
+                Get new recipes and kitchen tips delivered straight to your inbox!
+              </h2>
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto items-center">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  disabled={status === 'loading'}
+                  className="w-full sm:flex-1 px-3 py-2 sm:px-4 sm:py-2.5 bg-white border-2 border-green/20 focus:outline-none focus:ring-2 focus:ring-green/50 transition-all text-sm sm:text-base rounded-md"
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="inline-block px-6 sm:px-8 py-2 sm:py-2.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity whitespace-nowrap rounded-md"
+                >
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </form>
+              
+              {status === 'success' && (
+                <p className="text-green mt-3 sm:mt-4 text-sm">✓ Successfully subscribed!</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-500 mt-3 sm:mt-4 text-sm">✗ Failed to subscribe. Please try again.</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Content */}
-      {/* ✅ Removed inline style={{ backgroundColor: '#FEFAF8' }} - now inherited from <footer> */}
-      <div>
+      {/* ========================================= */}
+      {/* SECTION 2: Main Footer - #F5EBE8         */}
+      {/* ========================================= */}
+      <div className="bg-[#F5EBE8]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 lg:justify-between">
             
