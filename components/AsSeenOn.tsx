@@ -41,7 +41,7 @@ export function AsSeenOn({
   title = 'AS SEEN ON',
   logos = DEFAULT_LOGOS,
   className = '' 
-}: AsSeenOnBoxProps) {
+}: AsSeenOnProps) {
   return (
     <div 
       className={`px-6 py-4 sm:px-8 sm:py-5 ${className}`.trim()} 
