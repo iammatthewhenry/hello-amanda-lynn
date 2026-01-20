@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
-import { Send, Mail } from "lucide-react";
+import { SendHorizontal, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 export function ContactForm() {
@@ -237,7 +237,7 @@ export function ContactForm() {
                   className="px-8 py-3 bg-[#7A9B8E] text-white hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
-                  <Send size={18} />
+                  <SendHorizontal size={18} />
                 </button>
               </div>
             </form>
