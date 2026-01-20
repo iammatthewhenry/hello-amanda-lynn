@@ -84,7 +84,7 @@ export function FavoriteSpots({ restaurants = DEFAULT_RESTAURANTS }: FavoriteSpo
   };
 
   return (
-    <Section spacing="lg" containerSize="6xl">
+    <Section spacing="lg" containerSize="4xl">
       <SectionHeader
         title="My Favorite Spots"
         subtitle="Restaurants and cafes that have captured my heart and taste buds"
