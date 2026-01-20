@@ -1,63 +1,82 @@
-// components/sections/QuickKitchenTips.tsx
+import { Section, SectionHeader } from './ui';
 
-import { Thermometer, BookOpen } from "lucide-react";
-
-// ===================================================================
-// QUICK KITCHEN TIPS SECTION
-// ===================================================================
-interface Tip {
-  icon: typeof Thermometer | typeof BookOpen;
+interface KitchenTip {
+  id: string;
   title: string;
-  tip: string;
+  description: string;
+  icon?: string;
 }
 
 interface QuickKitchenTipsProps {
-  tips?: Tip[];
+  tips?: KitchenTip[];
 }
 
-const defaultTips: Tip[] = [
+const DEFAULT_TIPS: KitchenTip[] = [
   {
-    icon: Thermometer,
-    title: "Room Temperature Ingredients",
-    tip: "Bring eggs, butter, and dairy to room temperature before baking for better texture and consistency.",
+    id: '1',
+    title: 'Sharp Knives Are Safer',
+    description: 'Keep your knives sharp for easier cutting and reduced risk of accidents. A sharp knife requires less pressure and gives you better control.',
+    icon: '🔪',
   },
   {
-    icon: BookOpen,
-    title: "Read the Recipe First",
-    tip: "Always read through the entire recipe before starting. It helps you plan and avoid surprises.",
+    id: '2',
+    title: 'Mise en Place',
+    description: 'Prepare and organize all ingredients before you start cooking. This French term means "everything in its place" and makes cooking much smoother.',
+    icon: '📦',
+  },
+  {
+    id: '3',
+    title: 'Taste as You Go',
+    description: 'Season throughout the cooking process, not just at the end. This builds layers of flavor and ensures perfectly seasoned food.',
+    icon: '👅',
+  },
+  {
+    id: '4',
+    title: 'Don\'t Crowd the Pan',
+    description: 'Give ingredients space to cook properly. Overcrowding leads to steaming instead of browning, affecting texture and flavor.',
+    icon: '🍳',
+  },
+  {
+    id: '5',
+    title: 'Let Meat Rest',
+    description: 'Allow cooked meat to rest before cutting. This redistributes juices, resulting in more tender and flavorful meat.',
+    icon: '🥩',
+  },
+  {
+    id: '6',
+    title: 'Room Temperature Ingredients',
+    description: 'Bring ingredients like eggs and butter to room temperature before baking for better mixing and more consistent results.',
+    icon: '🌡️',
   },
 ];
 
-export function QuickKitchenTips({ tips = defaultTips }: QuickKitchenTipsProps) {
+export function QuickKitchenTips({ tips = DEFAULT_TIPS }: QuickKitchenTipsProps) {
   return (
-    <section className="pb-0 sm:pb-[9px] lg:pb-[25px] bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="mb-4 text-[36px] font-bold text-foreground">Quick Kitchen Tips</h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            Simple tips that make a big difference
-          </p>
-        </div>
+    <Section spacing="lg" containerSize="6xl">
+      <SectionHeader
+        title="Quick Kitchen Tips"
+        subtitle="Essential techniques to elevate your cooking"
+        centered
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tips.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div 
-                key={index} 
-                className="bg-white p-8 text-center"
-                style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)' }}
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green/10 rounded-full mb-4">
-                  <Icon className="text-green" size={28} />
-                </div>
-                <h3 className="mb-3 font-semibold text-foreground text-lg">{item.title}</h3>
-                <p className="text-foreground/70">{item.tip}</p>
-              </div>
-            );
-          })}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tips.map((tip) => (
+          <div
+            key={tip.id}
+            className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
+          >
+            {tip.icon && (
+              <div className="text-3xl mb-4">{tip.icon}</div>
+            )}
+            <h3 className="text-lg font-semibold text-foreground mb-3">
+              {tip.title}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              {tip.description}
+            </p>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

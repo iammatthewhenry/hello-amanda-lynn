@@ -1,88 +1,143 @@
-// components/sections/FavoriteSpots.tsx
+import Image from 'next/image';
+import Link from 'next/link';
+import { Section, SectionHeader } from './ui';
 
-'use client';
-
-import { useRouter } from "next/navigation";
-
-// ===================================================================
-// FAVORITE SPOTS SECTION
-// ===================================================================
-interface Spot {
+interface Restaurant {
+  id: string;
   name: string;
-  city: string;
-  state: string;
-  specialty: string;
-  slug: string;
+  location: string;
+  cuisine: string;
+  image: string;
+  rating: number;
+  description: string;
+  link?: string;
 }
 
 interface FavoriteSpotsProps {
-  spots?: Spot[];
-  title?: string;
-  subtitle?: string;
+  restaurants?: Restaurant[];
 }
 
-const defaultSpots: Spot[] = [
-  { 
-    name: "The Garden Bistro", 
-    city: "Portland", 
-    state: "OR", 
-    specialty: "Farm-to-table cuisine", 
-    slug: "the-garden-bistro" 
+const DEFAULT_RESTAURANTS: Restaurant[] = [
+  {
+    id: '1',
+    name: 'The Garden Bistro',
+    location: 'Downtown LA',
+    cuisine: 'Farm-to-Table',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 5,
+    description: 'A charming spot with fresh, locally-sourced ingredients and a cozy atmosphere. Their seasonal menu never disappoints!',
   },
-  { 
-    name: "Corner Café", 
-    city: "Seattle", 
-    state: "WA", 
-    specialty: "Best brunch in town", 
-    slug: "corner-cafe" 
+  {
+    id: '2',
+    name: 'Nonna\'s Kitchen',
+    location: 'Little Italy',
+    cuisine: 'Italian',
+    image: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 5,
+    description: 'Authentic Italian flavors that transport you straight to Italy. The homemade pasta is absolutely divine.',
   },
-  { 
-    name: "Le Petit Chef", 
-    city: "San Francisco", 
-    state: "CA", 
-    specialty: "Fine dining experience", 
-    slug: "le-petit-chef" 
+  {
+    id: '3',
+    name: 'Spice Route',
+    location: 'West Hollywood',
+    cuisine: 'Indian Fusion',
+    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 4,
+    description: 'Bold flavors and creative presentations make this my go-to spot for adventurous dining. The curry selection is incredible.',
+  },
+  {
+    id: '4',
+    name: 'Ocean View Grill',
+    location: 'Santa Monica',
+    cuisine: 'Seafood',
+    image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 5,
+    description: 'Fresh seafood with stunning ocean views. Perfect for special occasions and romantic dinners.',
+  },
+  {
+    id: '5',
+    name: 'The Coffee Corner',
+    location: 'Beverly Hills',
+    cuisine: 'Café',
+    image: 'https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 4,
+    description: 'My favorite spot for morning coffee and pastries. The atmosphere is perfect for both work and relaxation.',
+  },
+  {
+    id: '6',
+    name: 'Taco Libre',
+    location: 'East LA',
+    cuisine: 'Mexican',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    rating: 5,
+    description: 'Authentic street-style tacos that remind me of my travels through Mexico. The al pastor is unbeatable!',
   },
 ];
 
-export function FavoriteSpots({ 
-  spots = defaultSpots,
-  title = "My Favorite Spots",
-  subtitle = "These are the places that have captured my heart and my taste buds"
-}: FavoriteSpotsProps) {
-  const router = useRouter();
+export function FavoriteSpots({ restaurants = DEFAULT_RESTAURANTS }: FavoriteSpotsProps) {
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <span key={i} className={i < rating ? 'text-yellow-400' : 'text-gray-300'}>
+        ★
+      </span>
+    ));
+  };
 
   return (
-    <section className="pb-0 sm:pb-[9px] lg:pb-[25px] bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="mb-4 text-[36px] font-bold text-foreground">{title}</h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            {subtitle}
-          </p>
-        </div>
+    <Section spacing="lg" containerSize="6xl">
+      <SectionHeader
+        title="My Favorite Spots"
+        subtitle="Restaurants and cafes that have captured my heart and taste buds"
+        centered
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {spots.map((spot, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-8 text-center flex flex-col"
-              style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)' }}
-            >
-              <h3 className="mb-2 font-bold text-foreground text-lg">{spot.name}</h3>
-              <p className="text-foreground/60 text-sm mb-4">{spot.city}, {spot.state}</p>
-              <p className="text-foreground/80 mb-8">{spot.specialty}</p>
-              <button 
-                className="mt-auto flex items-center justify-center gap-2 text-green text-sm font-medium hover:gap-3 transition-all group"
-                onClick={() => router.push(`/out-of-kitchen/${spot.slug}`)}
-              >
-                <span>Read Review</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {restaurants.map((restaurant) => (
+          <div
+            key={restaurant.id}
+            className="bg-white rounded-lg overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow"
+          >
+            <div className="relative h-48 w-full">
+              <Image
+                src={restaurant.image}
+                alt={restaurant.name}
+                fill
+                className="object-cover"
+              />
             </div>
-          ))}
-        </div>
+            
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-semibold text-foreground">
+                  {restaurant.name}
+                </h3>
+                <div className="flex items-center">
+                  {renderStars(restaurant.rating)}
+                </div>
+              </div>
+              
+              <div className="flex items-center text-sm text-muted-foreground mb-3">
+                <span>{restaurant.cuisine}</span>
+                <span className="mx-2">•</span>
+                <span>{restaurant.location}</span>
+              </div>
+              
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {restaurant.description}
+              </p>
+              
+              {restaurant.link && (
+                <Link
+                  href={restaurant.link}
+                  className="inline-flex items-center text-green hover:text-green/80 transition-colors text-sm font-medium"
+                >
+                  Read Full Review →
+                </Link>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
