@@ -42,7 +42,7 @@ export default function FarmersMarketsAllPostsPage() {
       title={post.title}
       description={post.description}
       image={post.image}
-      onClick={() => router.push(`/out-of-kitchen/${post.slug}`)}
+      href={`/out-of-kitchen/${post.slug}`}
     />
   );
 

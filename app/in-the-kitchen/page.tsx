@@ -137,7 +137,7 @@ export default function InTheKitchenPage() {
       title={post.title}
       description={post.description}
       image={post.image}
-      onClick={() => router.push(`/in-the-kitchen/${post.slug}`)}
+      href={`/in-the-kitchen/${post.slug}`}
     />
   );
 
