@@ -166,10 +166,10 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
   };
 
   return (
-    // ✅ BACKGROUND FIX: Applied bg-[#FEFAF8] to the <footer> element itself
+    // ✅ BACKGROUND FIX: Applied bg-[#F5EBE8] to the <footer> element itself
     // This ensures the entire footer area (newsletter + main content) has the correct background
     // Previously, each section had its own background, creating visual separation
-    <footer className="mt-6 bg-[#FEFAF8]">
+    <footer className="mt-6 bg-[#F5EBE8]">
       {/* Banner Ad */}
       {showBannerAd && (
         <div className="bg-background">
