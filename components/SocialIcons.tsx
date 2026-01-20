@@ -108,7 +108,7 @@ export function SocialIconButton({
     'rounded-full flex items-center justify-center transition-all duration-300',
     'hover:opacity-70 hover:scale-105',
     sizeClasses[size],
-    variant === 'filled' ? 'bg-green text-white' : 'bg-white border-2 border-green text-green',
+    variant === 'filled' ? 'bg-[#7A9B8E] text-[#F5EBE8]' : 'bg-white border-2 border-green text-green',
     className
   );
 
