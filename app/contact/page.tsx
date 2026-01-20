@@ -89,7 +89,7 @@ export default function ContactPage() {
 
   return (
     <main>
-      <Section spacing="lg" containerSize="3xl">
+      <Section spacing="lg" containerSize="2xl">
         <SectionHeader
           title="Get In Touch"
           subtitle="Have a question or want to work together? I'd love to hear from you!"
