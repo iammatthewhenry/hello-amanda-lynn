@@ -3,6 +3,7 @@
 import { ArrowUp } from "lucide-react";
 import { useState } from "react";
 import Link from 'next/link';
+import { AsSeenOn } from './AsSeenOn';
 
 // ===================================================================
 // SOCIAL ICON COMPONENT
@@ -74,53 +75,6 @@ function SocialIcon({
     >
       {icons[platform]}
     </a>
-  );
-}
-
-// ===================================================================
-// AS SEEN ON BOX COMPONENT
-// ===================================================================
-interface SeenOnBoxProps {
-  className?: string;
-}
-
-function SeenOnBox({ className = '' }: SeenOnBoxProps) {
-  return (
-    <div 
-      className={`px-6 py-4 sm:px-8 sm:py-5 rounded-lg ${className}`.trim()} 
-      style={{ 
-        backgroundColor: '#F5EBE8',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)'
-      }}
-    >
-      <p className="text-xs sm:text-sm tracking-wider mb-3 sm:mb-4 text-center text-green font-semibold">
-        AS SEEN ON
-      </p>
-      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8">
-        {/* PBS */}
-        <div className="flex items-center">
-          <span className="text-2xl sm:text-3xl text-foreground font-bold" style={{ fontFamily: 'serif' }}>
-            PBS
-          </span>
-        </div>
-        
-        {/* Better Homes & Gardens */}
-        <div className="flex items-center">
-          <div className="text-center">
-            <div className="text-xs sm:text-sm tracking-wide text-foreground font-semibold">BETTER HOMES</div>
-            <div className="text-xs sm:text-sm tracking-wide -mt-1 text-foreground font-semibold">& GARDENS</div>
-          </div>
-        </div>
-        
-        {/* Food Network */}
-        <div className="flex items-center">
-          <div className="text-center">
-            <div className="text-base sm:text-lg text-foreground font-semibold">FOOD</div>
-            <div className="text-base sm:text-lg -mt-1 text-foreground font-semibold">NETWORK</div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -253,9 +207,9 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
               </div>
             </div>
 
-            {/* AS SEEN ON Box - Center */}
+            {/* AS SEEN ON - Center */}
             <div className="flex flex-col items-center order-2">
-              <SeenOnBox />
+              <AsSeenOn />
             </div>
 
             {/* Back to Top & Footer Links - Right */}
