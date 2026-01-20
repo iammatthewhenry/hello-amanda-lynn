@@ -1,170 +1,162 @@
+'use client';
+
 import { useState } from 'react';
 import { Button } from './ui';
 import Image from 'next/image';
 
-interface GameItem {
-  id: string;
-  image: string;
-  correctAnswer: string;
-  options: string[];
+export interface NameThisGameProps {
+  gameTitle?: string;
+  gameDescription?: string;
+  imageUrl?: string;
+  correctAnswer?: string;
   hint?: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
 }
 
-interface NameThisGameProps {
-  items?: GameItem[];
-}
+export function NameThisGame({
+  gameTitle = 'Name This Dish!',
+  gameDescription = 'Can you guess what this delicious creation is?',
+  imageUrl = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+  correctAnswer = 'Salad',
+  hint = 'It\'s fresh and healthy!',
+  difficulty = 'medium'
+}: NameThisGameProps) {
+  const [userAnswer, setUserAnswer] = useState('');
+  const [showHint, setShowHint] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [hasGuessed, setHasGuessed] = useState(false);
 
-const DEFAULT_ITEMS: GameItem[] = [
-  {
-    id: '1',
-    image: 'https://images.unsplash.com/photo-1574653853027-5a2d0275c0dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    correctAnswer: 'Whisk',
-    options: ['Whisk', 'Beater', 'Mixer', 'Stirrer'],
-    hint: 'Used for whipping cream and beating eggs',
-  },
-  {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    correctAnswer: 'Mandoline',
-    options: ['Mandoline', 'Slicer', 'Grater', 'Peeler'],
-    hint: 'Creates perfectly thin, uniform slices',
-  },
-  {
-    id: '3',
-    image: 'https://images.unsplash.com/photo-1565376872409-0d6efe2b7e86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    correctAnswer: 'Mortar and Pestle',
-    options: ['Mortar and Pestle', 'Grinder', 'Crusher', 'Bowl and Stick'],
-    hint: 'Traditional tool for grinding spices and herbs',
-  },
-];
-
-export function NameThisGame({ items = DEFAULT_ITEMS }: NameThisGameProps) {
-  const [currentItem, setCurrentItem] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
-
-  const handleAnswer = (answer: string) => {
-    setSelectedAnswer(answer);
-    setShowResult(true);
+  const handleSubmit = () => {
+    if (!userAnswer.trim()) return;
     
-    if (answer === items[currentItem].correctAnswer) {
-      setScore(score + 1);
-    }
+    const isAnswerCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
+    setIsCorrect(isAnswerCorrect);
+    setHasGuessed(true);
   };
 
-  const nextQuestion = () => {
-    if (currentItem < items.length - 1) {
-      setCurrentItem(currentItem + 1);
-      setSelectedAnswer(null);
-      setShowResult(false);
-    }
+  const handleReset = () => {
+    setUserAnswer('');
+    setShowHint(false);
+    setIsCorrect(null);
+    setHasGuessed(false);
   };
-
-  const resetGame = () => {
-    setCurrentItem(0);
-    setSelectedAnswer(null);
-    setShowResult(false);
-    setScore(0);
-  };
-
-  const isGameComplete = currentItem === items.length - 1 && showResult;
-  const currentGameItem = items[currentItem];
 
   return (
-    <section className="py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-green mb-4">
-            Name This Kitchen Tool!
-          </h2>
-          <p className="text-muted-foreground mb-2">
-            Test your kitchen knowledge with this fun game
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Score: {score} / {items.length} | Question {currentItem + 1} of {items.length}
-          </p>
-        </div>
+    <section className="py-[22px] sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '896px' }}>
+        <div 
+          className="bg-white rounded-xl p-6 sm:p-8 lg:p-10"
+          style={{ 
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            border: '2px solid #7A9B8E'
+          }}
+        >
+          <div className="text-center mb-6">
+            <h3 className="text-green text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+              {gameTitle}
+            </h3>
+            <p className="text-sm sm:text-base text-gray-600">
+              {gameDescription}
+            </p>
+            <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-semibold ${
+              difficulty === 'easy' ? 'bg-green-100 text-green-700' :
+              difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+              'bg-red-100 text-red-700'
+            }`}>
+              {difficulty.toUpperCase()}
+            </span>
+          </div>
 
-        {!isGameComplete ? (
-          <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-green/20">
-            <div className="text-center mb-6">
-              <div className="relative w-64 h-64 mx-auto mb-4">
-                <Image
-                  src={currentGameItem.image}
-                  alt="Kitchen tool"
-                  fill
-                  className="object-cover rounded-lg"
+          {/* Image */}
+          <div className="mb-6 rounded-lg overflow-hidden">
+            <Image
+              src={imageUrl}
+              alt="Guess this dish"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
+          {/* Game Input */}
+          {!hasGuessed ? (
+            <div className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  value={userAnswer}
+                  onChange={(e) => setUserAnswer(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
+                  placeholder="Enter your answer..."
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green text-base"
                 />
               </div>
-              {currentGameItem.hint && (
-                <p className="text-sm text-muted-foreground italic">
-                  Hint: {currentGameItem.hint}
-                </p>
+
+              <div className="flex gap-3 justify-center">
+                <Button 
+                  onClick={handleSubmit}
+                  variant="green" 
+                  size="lg"
+                  className="uppercase tracking-wider text-sm font-semibold"
+                >
+                  Submit Answer
+                </Button>
+                
+                {hint && !showHint && (
+                  <Button 
+                    onClick={() => setShowHint(true)}
+                    variant="outline" 
+                    size="lg"
+                    className="uppercase tracking-wider text-sm font-semibold"
+                  >
+                    Show Hint
+                  </Button>
+                )}
+              </div>
+
+              {showHint && hint && (
+                <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg text-center">
+                  <p className="text-sm font-medium text-yellow-800">
+                    💡 Hint: {hint}
+                  </p>
+                </div>
               )}
             </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {currentGameItem.options.map((option) => (
-                <Button
-                  key={option}
-                  variant={
-                    showResult
-                      ? option === currentGameItem.correctAnswer
-                        ? 'green'
-                        : option === selectedAnswer
-                        ? 'destructive'
-                        : 'outline'
-                      : selectedAnswer === option
-                      ? 'green'
-                      : 'outline'
-                  }
-                  className="h-12"
-                  onClick={() => !showResult && handleAnswer(option)}
-                  disabled={showResult}
-                >
-                  {option}
-                </Button>
-              ))}
-            </div>
-
-            {showResult && (
-              <div className="text-center">
-                <p className="mb-4">
-                  {selectedAnswer === currentGameItem.correctAnswer ? (
-                    <span className="text-green font-semibold">Correct! 🎉</span>
-                  ) : (
-                    <span className="text-red-600 font-semibold">
-                      Incorrect. The answer was: {currentGameItem.correctAnswer}
-                    </span>
-                  )}
+          ) : (
+            <div className="space-y-4">
+              {/* Result Display */}
+              <div className={`p-6 rounded-lg text-center ${
+                isCorrect 
+                  ? 'bg-green-50 border-2 border-green-500' 
+                  : 'bg-red-50 border-2 border-red-500'
+              }`}>
+                <p className={`text-2xl font-bold mb-2 ${
+                  isCorrect ? 'text-green-700' : 'text-red-700'
+                }`}>
+                  {isCorrect ? '🎉 Correct!' : '❌ Not Quite'}
                 </p>
-                {currentItem < items.length - 1 ? (
-                  <Button onClick={nextQuestion} variant="green">
-                    Next Question
-                  </Button>
-                ) : null}
+                <p className="text-base text-gray-700">
+                  {isCorrect 
+                    ? `Great job! It was ${correctAnswer}!` 
+                    : `The correct answer was: ${correctAnswer}`
+                  }
+                </p>
               </div>
-            )}
-          </div>
-        ) : (
-          <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-green text-center">
-            <h3 className="text-2xl font-bold text-green mb-4">Game Complete!</h3>
-            <p className="text-lg mb-6">
-              Final Score: {score} / {items.length}
-            </p>
-            <p className="text-muted-foreground mb-6">
-              {score === items.length
-                ? "Perfect! You're a kitchen tool expert! 🏆"
-                : score >= items.length * 0.7
-                ? "Great job! You know your way around the kitchen! 👏"
-                : "Keep practicing - you'll get better! 💪"}
-            </p>
-            <Button onClick={resetGame} variant="green">
-              Play Again
-            </Button>
-          </div>
-        )}
+
+              {/* Play Again Button */}
+              <div className="flex justify-center">
+                <Button 
+                  onClick={handleReset}
+                  variant="green" 
+                  size="lg"
+                  className="uppercase tracking-wider text-sm font-semibold"
+                >
+                  Play Again
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
