@@ -25,13 +25,16 @@ export function BlogPostCard({
 }: BlogPostCardProps) {
   return (
     <Link href={href} className="group block">
-      {/* Polaroid-style card with white border */}
+      {/* Polaroid-style card with thick white border */}
       <div 
-        className="bg-white p-4 transition-transform duration-300 hover:scale-[1.02]"
-        style={{ boxShadow: 'var(--shadow-card)' }}
+        className="bg-white transition-transform duration-300 hover:scale-[1.02]"
+        style={{ 
+          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)',
+          padding: '16px 16px 24px 16px' // Top/sides: 16px, bottom: 24px for polaroid look
+        }}
       >
-        {/* Image */}
-        <div className="aspect-square relative overflow-hidden mb-4">
+        {/* Image - no border, sits inside the white padding */}
+        <div className="aspect-square relative overflow-hidden mb-6 bg-muted">
           <Image
             src={image}
             alt={title}
@@ -41,25 +44,16 @@ export function BlogPostCard({
         </div>
 
         {/* Content */}
-        <div>
-          <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2 group-hover:text-green transition-colors">
+        <div className="px-2">
+          <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-green transition-colors">
             {title}
           </h3>
-          <p className="text-sm text-foreground/70 mb-4 line-clamp-3">
+          <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
             {description}
           </p>
           
-          {/* Metadata */}
-          {(category || location || date) && (
-            <div className="text-xs text-foreground/50">
-              {category && <span>{category}</span>}
-              {location && <span>{location}</span>}
-              {date && <span>{date}</span>}
-            </div>
-          )}
-          
           {/* Read More Link */}
-          <div className="mt-4 flex items-center gap-2 text-green text-sm font-medium group-hover:gap-3 transition-all">
+          <div className="flex items-center gap-2 text-green text-sm font-medium group-hover:gap-3 transition-all">
             <span>Read More</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </div>
