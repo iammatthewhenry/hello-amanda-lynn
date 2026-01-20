@@ -11,19 +11,22 @@ interface ContentCardProps {
 /**
  * ContentCard - Polaroid-style card with text BELOW the card
  * Text is outside the white frame, left-aligned to card edge
+ * 
+ * CRITICAL: This component should NOT fill its container edge-to-edge.
+ * The parent grid provides gap-10 spacing, and this card respects that spacing.
  */
 export function ContentCard({ title, description, image, href }: ContentCardProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       {/* Polaroid Card - White frame with image inside */}
-      <Link href={href} className="block group">
+      <Link href={href} className="block group w-full">
         <div 
-          className="bg-white p-3 sm:p-4"
+          className="bg-white p-3 sm:p-4 w-full"
           style={{ 
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
           }}
         >
-          <div className="aspect-square overflow-hidden">
+          <div className="aspect-square overflow-hidden w-full">
             <Image
               src={image}
               alt={title}
@@ -36,7 +39,7 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
       </Link>
 
       {/* Text Content - BELOW the card, left-aligned */}
-      <div className="mt-4">
+      <div className="mt-4 w-full">
         <h3 className="text-base sm:text-lg font-bold text-foreground mb-1 leading-tight">
           {title}
         </h3>

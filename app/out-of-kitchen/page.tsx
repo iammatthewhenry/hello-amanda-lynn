@@ -197,7 +197,7 @@ export default function OutOfKitchenPage() {
       </section>
 
       {/* View All Food Destinations Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-destination" label="View All Food Destinations" />
+      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-destination/all-posts" label="View All Food Destinations" />
 
       {/* Restaurants Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
@@ -210,7 +210,7 @@ export default function OutOfKitchenPage() {
       </section>
 
       {/* View All Restaurants Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/restaurants" label="View All Restaurants" />
+      <ViewAllPostsButton navigateTo="/out-of-kitchen/restaurants/all-posts" label="View All Restaurants" />
 
       {/* Farmers Markets Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
@@ -223,7 +223,7 @@ export default function OutOfKitchenPage() {
       </section>
 
       {/* View All Farmers Markets Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/farmers-markets" label="View All Farmers Markets" />
+      <ViewAllPostsButton navigateTo="/out-of-kitchen/farmers-markets/all-posts" label="View All Farmers Markets" />
 
       {/* Food Festivals Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
@@ -236,7 +236,7 @@ export default function OutOfKitchenPage() {
       </section>
 
       {/* View All Food Festivals Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-festivals" label="View All Food Festivals" />
+      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-festivals/all-posts" label="View All Food Festivals" />
 
       {/* Featured Section */}
       <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
