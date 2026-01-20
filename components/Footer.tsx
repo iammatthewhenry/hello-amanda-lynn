@@ -166,10 +166,13 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
   };
 
   return (
-    <footer className="mt-6">
+    // ✅ BACKGROUND FIX: Applied bg-[#FEFAF8] to the <footer> element itself
+    // This ensures the entire footer area (newsletter + main content) has the correct background
+    // Previously, each section had its own background, creating visual separation
+    <footer className="mt-6 bg-[#FEFAF8]">
       {/* Banner Ad */}
       {showBannerAd && (
-        <div className="bg-background border-b border-border">
+        <div className="bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <div className="w-full max-w-[728px] h-[90px] mx-auto bg-muted border-2 border-border flex items-center justify-center rounded-lg">
               <div className="text-center px-4">
@@ -182,7 +185,9 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
       )}
 
       {/* Newsletter Signup */}
-      <div className="bg-[#FEFAF8]">
+      {/* ✅ DIVIDER FIX: Removed bg-[#FEFAF8] class - background now inherited from <footer> */}
+      {/* Previous version had redundant background declaration here */}
+      <div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
@@ -218,7 +223,8 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
       </div>
 
       {/* Main Footer Content */}
-      <div style={{ backgroundColor: '#FEFAF8' }}>
+      {/* ✅ Removed inline style={{ backgroundColor: '#FEFAF8' }} - now inherited from <footer> */}
+      <div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 lg:justify-between">
             
