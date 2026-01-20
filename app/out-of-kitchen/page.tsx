@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { BlogPostCard } from "@/components/BlogPostCard";
+import { ContentCard } from "@/components/ContentCard";
 import { ViewAllPostsButton } from "@/components/ViewAllPostsButton";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -158,7 +158,7 @@ export default function OutOfKitchenPage() {
   ];
 
   const renderPost = (post: BlogPost, index: number) => (
-    <BlogPostCard
+    <ContentCard
       key={index}
       title={post.title}
       description={post.description}

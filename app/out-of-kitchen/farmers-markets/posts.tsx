@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { BlogPostCard } from "@/components/BlogPostCard";
+import { ContentCard } from "@/components/ContentCard";
 import { ListingPageLayout } from "@/components/ListingPageLayout";
 
 interface FarmersMarketPost {
@@ -37,7 +37,7 @@ export default function FarmersMarketsAllPostsPage() {
   ];
 
   const renderPost = (post: FarmersMarketPost, index: number) => (
-    <BlogPostCard
+    <ContentCard
       key={index}
       title={post.title}
       description={post.description}

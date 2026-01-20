@@ -11,10 +11,10 @@ export function ViewAllPostsButton({ navigateTo, label = "View All Posts" }: Vie
   const router = useRouter();
   
   return (
-    <div className="text-center -mt-[18px] sm:-mt-12 lg:-mt-16 mb-12 sm:mb-16 lg:mb-20">
+    <div className="text-center mt-6 sm:mt-8 mb-12 sm:mb-16 lg:mb-20">
       <button
         onClick={() => router.push(navigateTo)}
-        className="px-5 py-2 btn-green-scale text-sm"
+        className="inline-block px-6 py-2 bg-green text-white font-semibold text-sm hover:opacity-90 transition-opacity"
       >
         {label}
       </button>
