@@ -182,7 +182,7 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
       )}
 
       {/* Newsletter Signup */}
-      <div className="bg-background border-b border-border">
+      <div className="bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
@@ -218,7 +218,7 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
       </div>
 
       {/* Main Footer Content */}
-      <div className="bg-secondary">
+      <div style={{ backgroundColor: '#FEFAF8' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 lg:justify-between">
             
