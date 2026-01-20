@@ -87,8 +87,11 @@ interface SeenOnBoxProps {
 function SeenOnBox({ className = '' }: SeenOnBoxProps) {
   return (
     <div 
-      className={`px-6 py-4 sm:px-8 sm:py-5 bg-white rounded-lg ${className}`.trim()} 
-      style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
+      className={`px-6 py-4 sm:px-8 sm:py-5 rounded-lg ${className}`.trim()} 
+      style={{ 
+        backgroundColor: '#F5EBE8',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)'
+      }}
     >
       <p className="text-xs sm:text-sm tracking-wider mb-3 sm:mb-4 text-center text-green font-semibold">
         AS SEEN ON
@@ -279,7 +282,7 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
           </div>
 
           {/* Copyright */}
-          <div className="pt-6 sm:pt-8 border-t border-green/30 text-foreground/60 text-xs sm:text-sm">
+          <div className="pt-6 sm:pt-8 border-t border-[#7A9B8E] text-foreground/60 text-xs sm:text-sm">
             <div className="flex flex-col items-center">
               <p className="text-center">© {currentYear} hello Amanda Lynn. All rights reserved.</p>
             </div>
