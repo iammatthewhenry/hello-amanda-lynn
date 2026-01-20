@@ -4,7 +4,9 @@ import { ArrowUp } from "lucide-react";
 import { useState } from "react";
 import Link from 'next/link';
 
-// SocialIcon Component
+// ===================================================================
+// SOCIAL ICON COMPONENT
+// ===================================================================
 interface SocialIconProps {
   platform: 'facebook' | 'pinterest' | 'x' | 'youtube' | 'instagram';
   href?: string;
@@ -67,27 +69,36 @@ function SocialIcon({
       href={href}
       className={finalClasses}
       aria-label={platform.charAt(0).toUpperCase() + platform.slice(1)}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {icons[platform]}
     </a>
   );
 }
 
-// SeenOnBox Component
+// ===================================================================
+// AS SEEN ON BOX COMPONENT
+// ===================================================================
 interface SeenOnBoxProps {
   className?: string;
 }
 
 function SeenOnBox({ className = '' }: SeenOnBoxProps) {
   return (
-    <div className={`px-6 py-4 sm:py-6 w-full bg-white rounded-lg ${className}`.trim()} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
+    <div 
+      className={`px-6 py-4 sm:px-8 sm:py-5 bg-white rounded-lg ${className}`.trim()} 
+      style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
+    >
       <p className="text-xs sm:text-sm tracking-wider mb-3 sm:mb-4 text-center text-green font-semibold">
         AS SEEN ON
       </p>
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8">
         {/* PBS */}
         <div className="flex items-center">
-          <span className="text-2xl sm:text-3xl text-foreground font-bold" style={{ fontFamily: 'serif' }}>PBS</span>
+          <span className="text-2xl sm:text-3xl text-foreground font-bold" style={{ fontFamily: 'serif' }}>
+            PBS
+          </span>
         </div>
         
         {/* Better Homes & Gardens */}
@@ -110,6 +121,9 @@ function SeenOnBox({ className = '' }: SeenOnBoxProps) {
   );
 }
 
+// ===================================================================
+// FOOTER COMPONENT
+// ===================================================================
 interface FooterProps {
   showBannerAd?: boolean;
 }
@@ -166,9 +180,9 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
 
       {/* Newsletter Signup */}
       <div className="bg-background border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
               Get new recipes and kitchen tips delivered straight to your inbox!
             </h2>
             <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto items-center">
@@ -179,22 +193,22 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
                 placeholder="Enter your email"
                 required
                 disabled={status === 'loading'}
-                className="w-full sm:flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-white border-2 border-green focus:outline-none focus:ring-2 focus:ring-green/50 transition-all text-sm sm:text-base rounded-lg"
+                className="w-full sm:flex-1 px-3 py-2 sm:px-4 sm:py-2.5 bg-white border-2 border-green/20 focus:outline-none focus:ring-2 focus:ring-green/50 transition-all text-sm sm:text-base rounded-md"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="inline-block px-4 sm:px-5 py-2 sm:py-3 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity whitespace-nowrap rounded-lg"
+                className="inline-block px-6 sm:px-8 py-2 sm:py-2.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity whitespace-nowrap rounded-md"
               >
                 {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
             
             {status === 'success' && (
-              <p className="text-green mt-3 sm:mt-4">✓ Successfully subscribed!</p>
+              <p className="text-green mt-3 sm:mt-4 text-sm">✓ Successfully subscribed!</p>
             )}
             {status === 'error' && (
-              <p className="text-red-500 mt-3 sm:mt-4">✗ Failed to subscribe. Please try again.</p>
+              <p className="text-red-500 mt-3 sm:mt-4 text-sm">✗ Failed to subscribe. Please try again.</p>
             )}
           </div>
         </div>
@@ -202,8 +216,8 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
 
       {/* Main Footer Content */}
       <div className="bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:justify-between">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 lg:justify-between">
             
             {/* Social Icons and Butterfly - Left */}
             <div className="flex flex-col items-center gap-4 order-1">
@@ -217,15 +231,15 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
               </div>
               
               {/* Butterfly Image Placeholder */}
-              <div className="flex justify-center">
-                <div className="w-20 h-16 bg-green/20 rounded-lg flex items-center justify-center text-xs text-green">
-                  🦋 Butterfly
+              <div className="flex justify-center mt-2">
+                <div className="w-16 h-12 bg-gradient-to-br from-green/20 via-purple-200/30 to-green/20 rounded-full flex items-center justify-center text-2xl">
+                  🦋
                 </div>
               </div>
             </div>
 
             {/* AS SEEN ON Box - Center */}
-            <div className="flex flex-col items-center gap-4 order-2">
+            <div className="flex flex-col items-center order-2">
               <SeenOnBox />
             </div>
 
@@ -233,29 +247,29 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
             <div className="flex flex-col items-center gap-4 order-3">
               <button
                 onClick={scrollToTop}
-                className="flex items-center gap-1 text-green hover:text-green/70 transition-colors font-semibold"
+                className="flex items-center gap-1.5 text-green hover:text-green/70 transition-colors font-semibold"
                 aria-label="Back to top"
               >
-                <ArrowUp size={16} />
-                <span className="text-xs sm:text-sm">BACK TO TOP</span>
+                <ArrowUp size={14} strokeWidth={2.5} />
+                <span className="text-xs sm:text-sm tracking-wide">BACK TO TOP</span>
               </button>
               
-              <div className="flex flex-col gap-3 sm:gap-4 items-center text-xs sm:text-sm">
-                <div className="flex gap-2 sm:gap-4 items-center">
+              <div className="flex flex-col gap-2.5 sm:gap-3 items-center text-xs sm:text-sm">
+                <div className="flex gap-3 sm:gap-4 items-center">
                   <Link href="/work-with-me" className="text-green hover:text-green/70 transition-colors">
                     Work With Me
                   </Link>
-                  <span className="text-foreground/50 mx-2 sm:mx-3">•</span>
+                  <span className="text-foreground/40">•</span>
                   <Link href="/contact" className="text-green hover:text-green/70 transition-colors">
                     Contact
                   </Link>
                 </div>
                 
-                <div className="flex gap-2 sm:gap-4 items-center">
+                <div className="flex gap-3 sm:gap-4 items-center">
                   <Link href="/privacy" className="text-green hover:text-green/70 transition-colors">
                     Privacy
                   </Link>
-                  <span className="text-foreground/50 mx-2 sm:mx-3">•</span>
+                  <span className="text-foreground/40">•</span>
                   <Link href="/terms" className="text-green hover:text-green/70 transition-colors">
                     Terms
                   </Link>
@@ -265,9 +279,9 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
           </div>
 
           {/* Copyright */}
-          <div className="pt-6 sm:pt-8 border-t border-green text-foreground/70 text-xs sm:text-sm">
-            <div className="flex flex-col lg:flex-row items-center gap-4 lg:justify-center">
-              <p>&copy; {currentYear} hello Amanda Lynn. All rights reserved.</p>
+          <div className="pt-6 sm:pt-8 border-t border-green/30 text-foreground/60 text-xs sm:text-sm">
+            <div className="flex flex-col items-center">
+              <p className="text-center">© {currentYear} hello Amanda Lynn. All rights reserved.</p>
             </div>
           </div>
         </div>
