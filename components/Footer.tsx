@@ -1,9 +1,9 @@
 'use client';
 
 import { ArrowUp } from "lucide-react";
-import { useState } from "react";
 import Link from 'next/link';
-import { AsSeenOn } from './AsSeenOn';
+import Image from 'next/image';
+import { NewsletterSignup } from './NewsletterSignup';
 
 // ===================================================================
 // SOCIAL ICON COMPONENT
@@ -33,7 +33,7 @@ function SocialIcon({
     large: { width: 22, height: 22, className: '' },
   };
   
-  const baseClasses = `${sizeClasses[size]} rounded-full flex items-center justify-center hover:opacity-70 hover:scale-105 transition-all duration-300 bg-[#7A9B8E]`;
+  const baseClasses = `${sizeClasses[size]} rounded-full flex items-center justify-center hover:opacity-70 hover:scale-105 transition-all duration-300 bg-green`;
   const finalClasses = `${baseClasses} ${className}`.trim();
   const iconSize = iconSizes[size];
   
@@ -87,109 +87,39 @@ interface FooterProps {
 
 export default function Footer({ showBannerAd = true }: FooterProps) {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "instant"
     });
   };
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) throw new Error('Failed to subscribe');
-
-      setStatus('success');
-      setEmail('');
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
-  };
-
   return (
-    // ✅ BACKGROUND SPLIT: Footer divided into TWO sections with different backgrounds
-    // Section 1 (Newsletter): #FEFAF8 (lighter peachy/cream)
-    // Section 2 (Main Footer): #F5EBE8 (darker peachy/beige)
     <footer className="mt-6">
-      {/* ========================================= */}
-      {/* SECTION 1: Newsletter Area - #FEFAF8    */}
-      {/* ========================================= */}
-      <div className="bg-[#FEFAF8]">
-        {/* Banner Ad */}
-        {showBannerAd && (
-          <div className="bg-background">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-              <div className="w-full max-w-[728px] h-[90px] mx-auto bg-muted border-2 border-border flex items-center justify-center rounded-lg">
-                <div className="text-center px-4">
-                  <p className="text-muted-foreground text-xs sm:text-sm">Advertisement</p>
-                  <p className="text-muted-foreground text-[10px] sm:text-xs mt-1">728x90 Banner Ad</p>
-                </div>
+      {/* Banner Ad */}
+      {showBannerAd && (
+        <div className="bg-background border-b border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div className="w-full max-w-[728px] h-[90px] mx-auto bg-muted border-2 border-border flex items-center justify-center">
+              <div className="text-center px-4">
+                <p className="text-muted-foreground text-xs sm:text-sm">Advertisement</p>
+                <p className="text-muted-foreground text-[10px] sm:text-xs mt-1">728x90 Banner Ad</p>
               </div>
             </div>
           </div>
-        )}
-
-        {/* Newsletter Signup */}
-        {/* ✅ DIVIDER FIX: Removed bg-[#FEFAF8] class - background now inherited from section wrapper */}
-        {/* Previous version had redundant background declaration here */}
-        <div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
-            <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-xl sm:text-2xl text-foreground/80 mb-4 sm:mb-6 font-normal">
-                Get new recipes and kitchen tips delivered straight to your inbox!
-              </h2>
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto items-center">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  disabled={status === 'loading'}
-                  className="w-full sm:flex-1 px-3 py-2 sm:px-4 sm:py-2.5 bg-white border-2 border-green/20 focus:outline-none focus:ring-2 focus:ring-green/50 transition-all text-sm sm:text-base rounded-md"
-                />
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="inline-block px-6 sm:px-8 py-2 sm:py-2.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity whitespace-nowrap rounded-md"
-                >
-                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-                </button>
-              </form>
-              
-              {status === 'success' && (
-                <p className="text-green mt-3 sm:mt-4 text-sm">✓ Successfully subscribed!</p>
-              )}
-              {status === 'error' && (
-                <p className="text-red-500 mt-3 sm:mt-4 text-sm">✗ Failed to subscribe. Please try again.</p>
-              )}
-            </div>
-          </div>
         </div>
-      </div>
+      )}
 
-      {/* ========================================= */}
-      {/* SECTION 2: Main Footer - #F5EBE8         */}
-      {/* ========================================= */}
-      <div className="bg-[#F5EBE8]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 lg:justify-between">
-            
-            {/* Social Icons and Butterfly - Left */}
-            <div className="flex flex-col items-center gap-4 order-1">
+      {/* Newsletter Signup Section */}
+      <NewsletterSignup />
+
+      {/* Main Footer Section */}
+      <div className="bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:justify-between px-0 sm:px-0 lg:px-12">
+            {/* Social Icons and Butterfly - Left on desktop, first on mobile */}
+            <div className="flex flex-col items-center gap-4 order-1 lg:order-1">
               {/* Social Icons */}
               <div className="flex gap-3 sm:gap-4">
                 <SocialIcon platform="instagram" href="https://instagram.com" size="medium" />
@@ -200,45 +130,75 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
               </div>
               
               {/* Butterfly Image Placeholder */}
-              <div className="flex justify-center mt-2">
-                <div className="w-16 h-12 bg-gradient-to-br from-green/20 via-purple-200/30 to-green/20 rounded-full flex items-center justify-center text-2xl">
-                  🦋
+              <div className="flex justify-center">
+                <div className="w-20 h-auto">
+                  <div className="w-20 h-16 bg-gradient-to-br from-green/20 via-purple-200/30 to-green/20 rounded-full flex items-center justify-center text-3xl">
+                    🦋
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* AS SEEN ON - Center */}
-            <div className="flex flex-col items-center order-2">
-              <AsSeenOn />
+            {/* AS SEEN ON Box - Center on desktop, second on mobile */}
+            <div className="flex flex-col items-center gap-4 order-2 lg:order-2">
+              <div className="px-0 py-2 sm:py-3 w-full lg:w-fit bg-secondary" style={{ boxShadow: 'var(--shadow-card)' }}>
+                <p className="text-xs sm:text-sm tracking-wider mb-2 sm:mb-3 text-center w-fit mx-auto text-green">
+                  AS SEEN ON
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-5 px-3 sm:px-4">
+                  {/* PBS */}
+                  <div className="flex items-center">
+                    <span className="text-2xl sm:text-3xl text-foreground" style={{ fontFamily: 'serif' }}>PBS</span>
+                  </div>
+                  
+                  {/* Better Homes & Gardens */}
+                  <div className="flex items-center">
+                    <div className="text-center">
+                      <div className="text-xs sm:text-sm tracking-wide text-foreground">BETTER HOMES</div>
+                      <div className="text-xs sm:text-sm tracking-wide -mt-1 text-foreground">& GARDENS</div>
+                    </div>
+                  </div>
+                  
+                  {/* Food Network */}
+                  <div className="flex items-center">
+                    <div className="text-center">
+                      <div className="text-base sm:text-lg text-foreground">FOOD</div>
+                      <div className="text-base sm:text-lg -mt-1 text-foreground">NETWORK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Back to Top & Footer Links - Right */}
-            <div className="flex flex-col items-center gap-4 order-3">
+            {/* Back to Top Link and Footer Links - Right on desktop, last on mobile */}
+            <div className="lg:flex-shrink-0 flex flex-col items-center order-3 lg:order-3">
               <button
                 onClick={scrollToTop}
-                className="flex items-center gap-1.5 text-green hover:text-green/70 transition-colors font-semibold"
+                className="flex items-center gap-1 text-green hover:text-green/70 transition-colors font-semibold mb-4"
                 aria-label="Back to top"
               >
-                <ArrowUp size={14} strokeWidth={2.5} />
-                <span className="text-xs sm:text-sm tracking-wide">BACK TO TOP</span>
+                <span className="text-sm sm:text-sm">↑ BACK TO TOP</span>
               </button>
               
-              <div className="flex flex-col gap-2.5 sm:gap-3 items-center text-xs sm:text-sm">
-                <div className="flex gap-3 sm:gap-4 items-center">
+              {/* Footer Links */}
+              <div className="flex flex-col gap-2 items-center justify-center text-sm sm:text-sm">
+                {/* First line: Work With Me & Contact */}
+                <div className="flex gap-2 sm:gap-4 items-center">
                   <Link href="/work-with-me" className="text-green hover:text-green/70 transition-colors">
                     Work With Me
                   </Link>
-                  <span className="text-foreground/40">•</span>
+                  <span className="text-foreground/50">•</span>
                   <Link href="/contact" className="text-green hover:text-green/70 transition-colors">
                     Contact
                   </Link>
                 </div>
                 
-                <div className="flex gap-3 sm:gap-4 items-center">
+                {/* Second line: Privacy, Terms */}
+                <div className="flex gap-2 sm:gap-4 items-center">
                   <Link href="/privacy" className="text-green hover:text-green/70 transition-colors">
                     Privacy
                   </Link>
-                  <span className="text-foreground/40">•</span>
+                  <span className="text-foreground/50">•</span>
                   <Link href="/terms" className="text-green hover:text-green/70 transition-colors">
                     Terms
                   </Link>
@@ -247,10 +207,17 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="pt-6 sm:pt-8 border-t border-[#7A9B8E] text-foreground/60 text-xs sm:text-sm">
-            <div className="flex flex-col items-center">
-              <p className="text-center">© {currentYear} hello Amanda Lynn. All rights reserved.</p>
+          {/* Bottom - Copyright */}
+          <div className="pt-6 sm:pt-8 border-t border-green text-foreground/70 text-sm">
+            <div className="flex flex-col lg:flex-row items-center gap-6 lg:justify-between">
+              {/* Empty spacer for left side on desktop */}
+              <div className="hidden lg:block lg:flex-shrink-0" style={{ width: '176px' }}></div>
+              
+              {/* Copyright text - centered */}
+              <p className="text-center lg:w-fit">&copy; {currentYear} hello Amanda Lynn. All rights reserved.</p>
+              
+              {/* Empty spacer for right side on desktop */}
+              <div className="hidden lg:block lg:flex-shrink-0" style={{ width: '176px' }}></div>
             </div>
           </div>
         </div>
