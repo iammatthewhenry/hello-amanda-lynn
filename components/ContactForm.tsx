@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Mail } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 export function ContactForm() {
@@ -108,9 +108,9 @@ export function ContactForm() {
 
   return (
     <div className="relative inline-block w-full">
-      {/* The "Photo" - White Polaroid Border - tilted RIGHT */}
+      {/* The "Photo" - White Polaroid Border - tilted LEFT */}
       <div
-        className="relative bg-white p-4 sm:p-6 shadow-2xl transform rotate-[2deg]"
+        className="relative bg-white p-4 sm:p-6 shadow-2xl transform -rotate-[2deg]"
         style={{
           boxShadow: "0 10px 40px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)",
         }}
@@ -158,7 +158,7 @@ export function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/80 border-2 border-[#7A9B8E] focus:border-[#6A8B7E] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/80 border-2 border-[#C9B8AE] focus:border-[#7A9B8E] focus:outline-none transition-colors"
                     placeholder="Amanda Lynn"
                   />
                 </div>
@@ -177,7 +177,7 @@ export function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/80 border-2 border-[#7A9B8E] focus:border-[#6A8B7E] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/80 border-2 border-[#C9B8AE] focus:border-[#7A9B8E] focus:outline-none transition-colors"
                     placeholder="hello@example.com"
                   />
                 </div>
@@ -197,7 +197,7 @@ export function ContactForm() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-[11px] sm:py-3 bg-white/80 border-2 border-[#7A9B8E] focus:border-[#6A8B7E] focus:outline-none transition-colors"
+                  className="w-full px-4 py-[11px] sm:py-3 bg-white/80 border-2 border-[#C9B8AE] focus:border-[#7A9B8E] focus:outline-none transition-colors"
                 >
                   <option value="Brand Collaboration">Brand Collaboration</option>
                   <option value="Restaurant Review">Restaurant Review</option>
@@ -221,7 +221,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-[11px] sm:py-3 bg-white/80 border-2 border-[#7A9B8E] focus:border-[#6A8B7E] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-[11px] sm:py-3 bg-white/80 border-2 border-[#C9B8AE] focus:border-[#7A9B8E] focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your project, question, or just say hi..."
                 />
               </div>
@@ -237,7 +237,7 @@ export function ContactForm() {
                   className="px-8 py-3 bg-[#7A9B8E] text-white hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
-                  <ArrowRight size={18} />
+                  <Send size={18} />
                 </button>
               </div>
             </form>
@@ -260,11 +260,11 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Vintage photo aging effects - corner crease on left for right-tilted photo */}
+      {/* Vintage photo aging effects - corner crease on right for left-tilted photo */}
       <div
-        className="absolute top-2 left-2 w-8 h-8 bg-white/40 transform -rotate-45"
+        className="absolute top-2 right-2 w-8 h-8 bg-white/40 transform rotate-45"
         style={{
-          clipPath: "polygon(0 0, 100% 0, 0 100%)",
+          clipPath: "polygon(100% 0, 0 0, 100% 100%)",
           filter: "blur(1px)",
         }}
       ></div>
