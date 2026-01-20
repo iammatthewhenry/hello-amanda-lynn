@@ -3,23 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Section, SectionHeader } from '@/components/ui';
 
-// Fix TypeScript declaration for Cloudflare Turnstile
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (element: string | HTMLElement, options: {
-        sitekey: string;
-        callback?: (token: string) => void;
-        'error-callback'?: () => void;
-        theme?: 'light' | 'dark' | 'auto';
-        size?: 'normal' | 'compact';
-      }) => string;
-      reset: (widgetId: string) => void;
-      remove: (widgetId: string) => void;
-    };
-  }
-}
-
 interface FormData {
   name: string;
   email: string;
