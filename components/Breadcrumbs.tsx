@@ -43,7 +43,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         {/* Breadcrumb content */}
         <div className="bg-secondary px-3 py-1.5 inline-flex relative">
           <nav aria-label="Breadcrumb">
-            <ol className="inline-flex items-center gap-1.5 sm:gap-2.5">
+            <ol className="inline-flex items-center gap-1.5 sm:gap-2.5 text-sm">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
                 return (
