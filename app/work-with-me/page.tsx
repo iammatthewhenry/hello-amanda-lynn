@@ -3,32 +3,29 @@
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Instagram, FileText } from 'lucide-react';
 import Image from 'next/image';
-import { Container, Section, Button, Card, FramedImage } from '@/components/ui';
 
 export default function WorkWithMePage() {
-  const aboutImage = '/images/amanda-portrait.png';
-  const spicesImage = '/images/spices-flat-lay.png';
-  const pastaImage = '/images/pasta-carbonara.png';
-
   return (
     <main>
       {/* Breadcrumbs - Standalone */}
-      <Container size="4xl" className="-mt-1.5 mb-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1.5 mb-8">
         <Breadcrumbs items={[{ label: 'Work With Me' }]} />
-      </Container>
+      </div>
 
       {/* Hero Section */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-16 sm:mb-24 lg:mb-32">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
           {/* Portrait Photo - Tilted Polaroid Style */}
           <div className="flex-shrink-0 inline-flex justify-center lg:justify-start ml-[18px] lg:ml-0">
-            <FramedImage
-              src={aboutImage}
-              alt="Amanda Lynn"
-              width={250}
-              height={350}
-              variant="polaroid"
-            />
+            <div className="polaroid-image">
+              <Image
+                src="/images/amanda-portrait.png"
+                alt="Amanda Lynn"
+                width={250}
+                height={350}
+                className="w-full h-auto"
+              />
+            </div>
           </div>
 
           {/* Introduction Text */}
@@ -53,14 +50,15 @@ export default function WorkWithMePage() {
           {/* Instagram Reels */}
           <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
             <div className="lg:w-1/2">
-              <FramedImage
-                src="https://images.unsplash.com/photo-1564758596018-3e5b1f2340cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaG9uZSUyMGluc3RhZ3JhbSUyMGZvb2R8ZW58MXx8fHwxNzYyNzI4MjI3fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Instagram Reels on phone"
-                width={400}
-                height={500}
-                variant="polaroid-right"
-                containerClassName="mx-auto"
-              />
+              <div className="polaroid-image-right mx-auto">
+                <Image
+                  src="https://images.unsplash.com/photo-1564758596018-3e5b1f2340cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaG9uZSUyMGluc3RhZ3JhbSUyMGZvb2R8ZW58MXx8fHwxNzYyNzI4MjI3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Instagram Reels on phone"
+                  width={400}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
@@ -93,14 +91,15 @@ export default function WorkWithMePage() {
           {/* Instagram Stories */}
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
             <div className="lg:w-1/2">
-              <FramedImage
-                src={spicesImage}
-                alt="Colorful spices in spoons"
-                width={400}
-                height={400}
-                variant="polaroid"
-                containerClassName="mx-auto"
-              />
+              <div className="polaroid-image mx-auto">
+                <Image
+                  src="/images/spices-flat-lay.png"
+                  alt="Colorful spices in spoons"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
@@ -133,14 +132,15 @@ export default function WorkWithMePage() {
           {/* Blog Posts */}
           <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
             <div className="lg:w-1/2">
-              <FramedImage
-                src={pastaImage}
-                alt="Food blogging"
-                width={400}
-                height={400}
-                variant="polaroid-right"
-                containerClassName="mx-auto"
-              />
+              <div className="polaroid-image-right mx-auto">
+                <Image
+                  src="/images/pasta-carbonara.png"
+                  alt="Food blogging"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
@@ -173,23 +173,27 @@ export default function WorkWithMePage() {
       </section>
 
       {/* CTA Section */}
-      <Section spacing="lg">
-        <Card 
-          variant="feature"
-          className="p-6 sm:p-8 lg:p-12 xl:p-16 shadow-xl text-center"
-          centered
-        >
-          <h2 className="mb-4 sm:mb-6 text-green text-[36px]">
-            Ready To Collaborate?
-          </h2>
-          <p className="text-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">
-            I'd love to hear about your project and discuss how we can work together to create amazing content. Whether you need a one-time feature or ongoing content creation, let's chat about bringing your vision to life!
-          </p>
-          <Button href="/contact" variant="green" size="lg">
-            Get In Touch
-          </Button>
-        </Card>
-      </Section>
+      <section className="py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div 
+            className="p-6 sm:p-8 lg:p-12 xl:p-16 text-center"
+            style={{ backgroundColor: '#F5EBE8' }}
+          >
+            <h2 className="mb-4 sm:mb-6 text-green text-[36px]">
+              Ready To Collaborate?
+            </h2>
+            <p className="text-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">
+              I'd love to hear about your project and discuss how we can work together to create amazing content. Whether you need a one-time feature or ongoing content creation, let's chat about bringing your vision to life!
+            </p>
+            <a 
+              href="/contact"
+              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-green text-white font-semibold hover:opacity-90 transition-opacity"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
