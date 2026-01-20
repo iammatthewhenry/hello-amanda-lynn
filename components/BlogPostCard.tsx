@@ -1,100 +1,70 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { formatDate } from '@/lib/utils';
-import { FramedImage, ReadMoreLink } from '@/components/ui';
 
 // ===================================================================
-// TYPES
+// BLOG POST CARD
 // ===================================================================
 interface BlogPostCardProps {
-  id?: string;
-  slug?: string;
   title: string;
-  excerpt?: string;
-  description?: string;
+  description: string;
   image: string;
-  date?: string;
+  href: string;
   category?: string;
-  href?: string;
-  onClick?: () => void;
+  location?: string;
+  date?: string;
 }
 
-// ===================================================================
-// BLOG POST CARD COMPONENT
-// ===================================================================
-export function BlogPostCard({ 
-  id, 
-  slug,
-  title, 
-  excerpt, 
-  description, 
-  image, 
-  date, 
-  category,
+export function BlogPostCard({
+  title,
+  description,
+  image,
   href,
-  onClick,
+  category,
+  location,
+  date,
 }: BlogPostCardProps) {
-  const displayText = excerpt || description || '';
-  
-  // Determine the href
-  const cardHref = href || (slug && category ? `/${category.toLowerCase()}/${slug}` : undefined);
-  
-  const content = (
-    <article className="group cursor-pointer h-full">
-      <div className="mb-6 overflow-hidden rounded-lg">
-        <FramedImage
-          src={image}
-          alt={title}
-          width={400}
-          height={272}
-          variant="standard"
-          className="w-full h-[272px] group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-      
-      <h3 className="mb-3 group-hover:text-green transition-colors font-bold text-lg">
-        {title}
-      </h3>
-      
-      {displayText && (
-        <p className="text-muted-foreground mb-4 line-clamp-2">
-          {displayText}
-        </p>
-      )}
-      
-      {date && (
-        <p className="text-sm text-muted-foreground mb-3">
-          {formatDate(date)}
-        </p>
-      )}
-      
-      <ReadMoreLink href={cardHref || '#'} />
-    </article>
-  );
-
-  // Handle onClick
-  if (onClick) {
-    return (
+  return (
+    <Link href={href} className="group block">
+      {/* Polaroid-style card with white border */}
       <div 
-        onClick={onClick} 
-        className="cursor-pointer"
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && onClick()}
+        className="bg-white p-4 transition-transform duration-300 hover:scale-[1.02]"
+        style={{ boxShadow: 'var(--shadow-card)' }}
       >
-        {content}
+        {/* Image */}
+        <div className="aspect-square relative overflow-hidden mb-4">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+
+        {/* Content */}
+        <div>
+          <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2 group-hover:text-green transition-colors">
+            {title}
+          </h3>
+          <p className="text-sm text-foreground/70 mb-4 line-clamp-3">
+            {description}
+          </p>
+          
+          {/* Metadata */}
+          {(category || location || date) && (
+            <div className="text-xs text-foreground/50">
+              {category && <span>{category}</span>}
+              {location && <span>{location}</span>}
+              {date && <span>{date}</span>}
+            </div>
+          )}
+          
+          {/* Read More Link */}
+          <div className="mt-4 flex items-center gap-2 text-green text-sm font-medium group-hover:gap-3 transition-all">
+            <span>Read More</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </div>
+        </div>
       </div>
-    );
-  }
-
-  // Handle Link navigation
-  if (cardHref) {
-    return (
-      <Link href={cardHref} className="block">
-        {content}
-      </Link>
-    );
-  }
-
-  // Fallback: render without link
-  return content;
+    </Link>
+  );
 }

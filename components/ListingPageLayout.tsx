@@ -1,9 +1,9 @@
-'use client';
+import { ReactNode } from 'react';
+import { Breadcrumbs } from './Breadcrumbs';
 
-import { useState } from 'react';
-import { Pagination } from './Pagination';
-import { Container, Section, PageHeader } from './ui';
-
+// ===================================================================
+// TYPES
+// ===================================================================
 interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -14,93 +14,67 @@ interface ListingPageLayoutProps<T> {
   description: string;
   breadcrumbItems: BreadcrumbItem[];
   items: T[];
-  renderItem: (item: T, index: number) => React.ReactNode;
+  renderItem: (item: T, index: number) => ReactNode;
   itemsPerPage?: number;
-  heroClassName?: string; // For custom hero background styling
-  gridClassName?: string; // For custom grid layout
-  children?: React.ReactNode; // For additional sections like quick tips
+  heroClassName?: string;
+  gridClassName?: string;
+  children?: ReactNode; // Bottom sections
 }
 
+// ===================================================================
+// LISTING PAGE LAYOUT
+// ===================================================================
 export function ListingPageLayout<T>({
   title,
   description,
   breadcrumbItems,
   items,
   renderItem,
-  itemsPerPage = 12,
-  heroClassName = 'bg-white',
-  gridClassName = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8',
+  itemsPerPage = 10,
+  heroClassName = '',
+  gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12',
   children,
 }: ListingPageLayoutProps<T>) {
-  const [currentPage, setCurrentPage] = useState(1);
+  // Add "Home" as first breadcrumb item
+  const fullBreadcrumbs = [
+    { label: 'Home', href: '/' },
+    ...breadcrumbItems,
+  ];
 
-  // Pagination calculations
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // For now, show all items (pagination can be added later)
+  const displayedItems = items.slice(0, itemsPerPage);
 
   return (
-    <main>
+    <main className="min-h-screen">
       {/* Breadcrumbs */}
-      {breadcrumbItems.length > 0 && (
-        <Container className="-mt-1.5 mb-8">
-          <nav className="flex items-center gap-2 text-sm" aria-label="Breadcrumb">
-            {breadcrumbItems.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
-                {index > 0 && <span className="text-foreground/50">•</span>}
-                {item.href ? (
-                  <a href={item.href} className="text-green hover:text-green/70 transition-colors">
-                    {item.label}
-                  </a>
-                ) : (
-                  <span className="text-foreground">{item.label}</span>
-                )}
-              </div>
-            ))}
-          </nav>
-        </Container>
-      )}
+      <section className="bg-background py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={fullBreadcrumbs} />
+        </div>
+      </section>
 
-      {/* Hero/Description Section */}
-      <Section spacing="lg" className={`${heroClassName} border-b border-border`}>
-        <PageHeader
-          title={title}
-          description={description}
-          className="mb-0"
-        />
-      </Section>
+      {/* Page Header */}
+      <section className={`py-8 sm:py-12 lg:py-16 ${heroClassName}`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            {title}
+          </h1>
+          <p className="text-base sm:text-lg text-foreground/70">
+            {description}
+          </p>
+        </div>
+      </section>
 
-      {/* Grid Section */}
-      <Section spacing="lg">
-        {currentItems.length > 0 ? (
+      {/* Items Grid */}
+      <section className="py-8 sm:py-12 lg:py-16 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className={gridClassName}>
-            {currentItems.map((item, index) => renderItem(item, index))}
+            {displayedItems.map((item, index) => renderItem(item, index))}
           </div>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-lg text-foreground/70">No items found.</p>
-          </div>
-        )}
-      </Section>
+        </div>
+      </section>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <Section spacing="lg" className="pt-0">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </Section>
-      )}
-
-      {/* Additional Sections */}
+      {/* Bottom Sections (passed as children) */}
       {children}
     </main>
   );
