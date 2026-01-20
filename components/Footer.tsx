@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowUp } from "lucide-react";
 import { useState } from "react";
 import Link from 'next/link';
