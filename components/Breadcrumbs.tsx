@@ -1,6 +1,10 @@
 import Link from 'next/link';
+import { MoveRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// ===================================================================
+// TYPES
+// ===================================================================
 interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -12,32 +16,59 @@ interface BreadcrumbsProps {
 }
 
 /**
- * Breadcrumbs navigation component
+ * Breadcrumbs navigation component with crooked tape effect
+ * Used on all pages except homepage
  */
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <nav 
-      className={cn('flex items-center gap-2 text-sm', className)} 
-      aria-label="Breadcrumb"
-    >
-      {items.map((item, index) => (
-        <div key={index} className="flex items-center gap-2">
-          {index > 0 && <span className="text-foreground/50">•</span>}
-          {item.href ? (
-            <Link 
-              href={item.href} 
-              className="text-green hover:text-green/70 transition-colors"
-            >
-              {item.label}
-            </Link>
-          ) : (
-            <span className="text-foreground">{item.label}</span>
-          )}
+    <div className={cn('min-h-10 sm:min-h-12 flex items-center mb-4 sm:mb-6 mt-6 sm:mt-8', className)}>
+      <div className="relative inline-flex flex-wrap">
+        {/* Crooked tape effect behind breadcrumbs */}
+        <div 
+          className="absolute bg-[#F5EBE8]/80"
+          style={{
+            top: '-8px',
+            bottom: '-12px',
+            left: '-20px',
+            right: '-20px',
+            transform: 'skewY(-1deg)',
+            boxShadow: '0 3px 8px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,0.4)',
+            borderTop: '1px solid rgba(212, 165, 165, 0.2)',
+            borderBottom: '1px solid rgba(212, 165, 165, 0.2)',
+          }}
+        />
+        
+        {/* Breadcrumb content */}
+        <div className="bg-secondary px-3 py-1.5 inline-flex relative">
+          <nav aria-label="Breadcrumb">
+            <ol className="inline-flex items-center gap-1.5 sm:gap-2.5">
+              {items.map((item, index) => {
+                const isLast = index === items.length - 1;
+                return (
+                  <li key={index} className="inline-flex items-center gap-1.5 sm:gap-2.5">
+                    {isLast ? (
+                      <span className="text-green font-medium">{item.label}</span>
+                    ) : (
+                      <>
+                        <Link 
+                          href={item.href!}
+                          className="text-foreground hover:text-green transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                        <MoveRight className="w-4 h-4 text-foreground/50" />
+                      </>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
         </div>
-      ))}
-    </nav>
+      </div>
+    </div>
   );
 }
 
