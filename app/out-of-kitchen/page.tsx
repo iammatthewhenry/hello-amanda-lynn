@@ -1,8 +1,10 @@
+// app/out-of-kitchen/page.tsx
+
 'use client';
 
-import { useRouter } from "next/navigation";
-import { BlogPostCard } from '@/components/BlogPostCard';
-import { ListingPageLayout } from '@/components/ListingPageLayout';
+import { SectionPageCard } from '@/components/SectionPageCard';
+import { SectionPageLayout } from '@/components/SectionPageLayout';
+import { FavoriteSpots } from '@/components/sections/FavoriteSpots';
 
 // ===================================================================
 // TYPES
@@ -20,8 +22,6 @@ interface BlogPost {
 // OUT OF KITCHEN PAGE
 // ===================================================================
 export default function OutOfKitchenPage() {
-  const router = useRouter();
-  
   const posts: BlogPost[] = [
     {
       title: "A Cozy Evening at The Garden Bistro",
@@ -58,7 +58,7 @@ export default function OutOfKitchenPage() {
   ];
 
   const renderPost = (post: BlogPost, index: number) => (
-    <BlogPostCard
+    <SectionPageCard
       key={index}
       title={post.title}
       description={post.description}
@@ -70,7 +70,7 @@ export default function OutOfKitchenPage() {
   );
 
   return (
-    <ListingPageLayout
+    <SectionPageLayout
       title="Out of Kitchen"
       description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
       breadcrumbItems={[{ label: "Out of Kitchen" }]}
@@ -80,60 +80,8 @@ export default function OutOfKitchenPage() {
       heroClassName=""
       gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
     >
-      {/* Featured Section - My Favorite Spots */}
-      <section className="pb-0 sm:pb-[9px] lg:pb-[25px] bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 text-[36px] font-bold text-foreground">My Favorite Spots</h2>
-            <p className="text-foreground/70 max-w-2xl mx-auto">
-              These are the places that have captured my heart and my taste buds
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                name: "The Garden Bistro", 
-                city: "Portland", 
-                state: "OR", 
-                specialty: "Farm-to-table cuisine", 
-                slug: "the-garden-bistro" 
-              },
-              { 
-                name: "Corner Café", 
-                city: "Seattle", 
-                state: "WA", 
-                specialty: "Best brunch in town", 
-                slug: "corner-cafe" 
-              },
-              { 
-                name: "Le Petit Chef", 
-                city: "San Francisco", 
-                state: "CA", 
-                specialty: "Fine dining experience", 
-                slug: "le-petit-chef" 
-              },
-            ].map((spot, index) => (
-              <div 
-                key={index} 
-                className="bg-secondary p-6 border-2 border-border text-left flex flex-col"
-                style={{ boxShadow: 'var(--shadow-card)' }}
-              >
-                <h3 className="mb-2 font-bold text-foreground">{spot.name}</h3>
-                <p className="text-foreground/70 text-sm mb-2">{spot.city}, {spot.state}</p>
-                <p className="text-foreground/70 mb-6">{spot.specialty}</p>
-                <button 
-                  className="mt-auto flex items-center gap-2 text-green text-sm font-medium hover:gap-3 transition-all group"
-                  onClick={() => router.push(`/out-of-kitchen/${spot.slug}`)}
-                >
-                  <span>Read Review</span>
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </ListingPageLayout>
+      {/* Bottom Section */}
+      <FavoriteSpots />
+    </SectionPageLayout>
   );
 }

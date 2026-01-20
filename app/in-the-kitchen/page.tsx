@@ -1,9 +1,11 @@
+// app/in-the-kitchen/page.tsx
+
 'use client';
 
-import { Thermometer, BookOpen, Gamepad2 } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { BlogPostCard } from '@/components/BlogPostCard';
-import { ListingPageLayout } from '@/components/ListingPageLayout';
+import { SectionPageCard } from '@/components/SectionPageCard';
+import { SectionPageLayout } from '@/components/SectionPageLayout';
+import { QuickKitchenTips } from '@/components/sections/QuickKitchenTips';
+import { NameThisGame } from '@/components/sections/NameThisGame';
 
 // ===================================================================
 // TYPES
@@ -21,8 +23,6 @@ interface KitchenPost {
 // IN THE KITCHEN PAGE
 // ===================================================================
 export default function InTheKitchenPage() {
-  const router = useRouter();
-  
   const posts: KitchenPost[] = [
     {
       title: "Knife Skills for Beginners",
@@ -58,21 +58,8 @@ export default function InTheKitchenPage() {
     },
   ];
 
-  const quickTips = [
-    {
-      icon: Thermometer,
-      title: "Room Temperature Ingredients",
-      tip: "Bring eggs, butter, and dairy to room temperature before baking for better texture and consistency.",
-    },
-    {
-      icon: BookOpen,
-      title: "Read the Recipe First",
-      tip: "Always read through the entire recipe before starting. It helps you plan and avoid surprises.",
-    },
-  ];
-
   const renderPost = (post: KitchenPost, index: number) => (
-    <BlogPostCard
+    <SectionPageCard
       key={index}
       title={post.title}
       description={post.description}
@@ -84,7 +71,7 @@ export default function InTheKitchenPage() {
   );
 
   return (
-    <ListingPageLayout
+    <SectionPageLayout
       title="In The Kitchen"
       description="Tips, techniques, and behind the scenes stories from the kitchen. Learn the skills that will elevate your cooking and make time in the kitchen more enjoyable."
       breadcrumbItems={[{ label: "In The Kitchen" }]}
@@ -94,59 +81,9 @@ export default function InTheKitchenPage() {
       heroClassName=""
       gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
     >
-      {/* Quick Kitchen Tips */}
-      <section className="pb-0 sm:pb-[9px] lg:pb-[25px] bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 text-[36px] font-bold text-foreground">Quick Kitchen Tips</h2>
-            <p className="text-foreground/70 max-w-2xl mx-auto">
-              Simple tips that make a big difference
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {quickTips.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div 
-                  key={index} 
-                  className="bg-secondary p-6 border-2 border-border"
-                  style={{ boxShadow: 'var(--shadow-card)' }}
-                >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green/10 rounded-full mb-4">
-                    <Icon className="text-green" size={28} />
-                  </div>
-                  <h3 className="mb-3 font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-foreground/70">{item.tip}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Name This Game */}
-      <section className="pb-0 sm:pb-[9px] lg:pb-[25px] bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-secondary p-6 text-center max-w-3xl mx-auto border-2 border-border">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="inline-flex items-center justify-center w-10 h-10 bg-green/10 rounded-full">
-                <Gamepad2 className="text-green" size={18} />
-              </div>
-              <h3 className="font-semibold text-foreground">Name This Game</h3>
-            </div>
-            <p className="text-foreground/70 mb-4 text-sm">
-              Test your culinary knowledge! Can you identify these dishes, ingredients, and kitchen tools?
-            </p>
-            <button
-              onClick={() => router.push('/name-this')}
-              className="px-5 py-2 bg-green text-white font-semibold hover:opacity-90 transition-opacity text-sm"
-            >
-              Start Game
-            </button>
-          </div>
-        </div>
-      </section>
-    </ListingPageLayout>
+      {/* Bottom Sections */}
+      <QuickKitchenTips />
+      <NameThisGame />
+    </SectionPageLayout>
   );
 }
