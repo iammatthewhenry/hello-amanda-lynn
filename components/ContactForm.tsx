@@ -254,7 +254,12 @@ export function ContactForm() {
               fontSize: "calc(0.875rem + 7px)",
             }}
           >
-            <span style={{ fontSize: "calc(0.875rem + 7px)" }}>Drop me a line!</span>
+            <span style={{ 
+              fontSize: "calc(0.875rem + 7px)", 
+              color: "rgba(44, 44, 44, 0.6)",
+              fontWeight: 400,
+              fontFamily: "'Segoe Script', 'Bradley Hand', cursive"
+            }}>Drop me a line!</span>
             <Mail size={21} className="text-[#7A9B8E]" strokeWidth={1.5} style={{ transform: "translateY(1px)" }} />
           </p>
         </div>
