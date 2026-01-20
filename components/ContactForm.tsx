@@ -4,23 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Mail } from "lucide-react";
 import { toast } from "sonner";
 
-// Cloudflare Turnstile types
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (element: string | HTMLElement, options: {
-        sitekey: string;
-        callback: (token: string) => void;
-        "error-callback"?: () => void;
-        theme?: "light" | "dark" | "auto";
-        size?: "normal" | "compact" | "invisible";
-      }) => string;
-      reset: (widgetId: string) => void;
-      remove: (widgetId: string) => void;
-    };
-  }
-}
-
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
