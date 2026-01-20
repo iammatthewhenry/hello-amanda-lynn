@@ -122,6 +122,41 @@ export default function OutOfKitchenPage() {
     },
   ];
 
+  const foodFestivalPosts: BlogPost[] = [
+    {
+      title: "Summer Food Truck Festival",
+      description: "A day filled with amazing food trucks, live music, and community vibes. The variety of cuisines was incredible!",
+      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb29kJTIwdHJ1Y2slMjBmZXN0aXZhbHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      location: "City Park",
+      date: "July 15, 2025",
+      slug: "summer-food-truck-festival"
+    },
+    {
+      title: "Annual Harvest Festival",
+      description: "Celebrating the season's bounty with local farmers, artisan vendors, and delicious seasonal dishes.",
+      image: "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXJ2ZXN0JTIwZmVzdGl2YWx8ZW58MXx8fHwxNzYxNDc0NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      location: "Harvest Grounds",
+      date: "October 10, 2025",
+      slug: "annual-harvest-festival"
+    },
+    {
+      title: "International Food Fair",
+      description: "A journey around the world through food. From authentic tacos to traditional dim sum, this fair had it all.",
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnRlcm5hdGlvbmFsJTIwZm9vZHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      location: "Convention Center",
+      date: "June 20, 2025",
+      slug: "international-food-fair"
+    },
+    {
+      title: "BBQ & Blues Festival",
+      description: "Smoky meats, tangy sauces, and soulful blues music made this weekend unforgettable.",
+      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYnElMjBmZXN0aXZhbHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      location: "Riverside Park",
+      date: "May 25, 2025",
+      slug: "bbq-blues-festival"
+    },
+  ];
+
   const renderPost = (post: BlogPost, index: number) => (
     <BlogPostCard
       key={index}
@@ -189,6 +224,19 @@ export default function OutOfKitchenPage() {
 
       {/* View All Farmers Markets Button */}
       <ViewAllPostsButton navigateTo="/out-of-kitchen/farmers-markets" label="View All Farmers Markets" />
+
+      {/* Food Festivals Grid */}
+      <section className="pb-[22px] sm:pb-16 lg:pb-20">
+        <div className="container-max">
+          <h2 className="mb-8 text-[36px]">Food Festivals</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            {foodFestivalPosts.map((post, index) => renderPost(post, index))}
+          </div>
+        </div>
+      </section>
+
+      {/* View All Food Festivals Button */}
+      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-festivals" label="View All Food Festivals" />
 
       {/* Featured Section */}
       <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
