@@ -30,7 +30,7 @@ export default function WorkWithMePage() {
 
           {/* Introduction Text */}
           <div className="space-y-4 lg:pt-8 flex-1" style={{ marginLeft: '16px' }}>
-            <h1 className="mb-6">Let's Work Together</h1>
+            <h1 className="mb-6 text-[28px] sm:text-[36px] lg:text-[42px] font-bold leading-[1.5]">Let's Work Together</h1>
             <p className="text-foreground/70 leading-relaxed">
               Hi! I'm Amanda Lynn, and I'm passionate about creating beautiful, authentic content that tells your culinary story. Whether you're a restaurant looking to showcase your latest menu, a food brand wanting to highlight your products, or a destination seeking to share your unique flavors with the world, I'd love to help bring your vision to life.
             </p>
@@ -63,7 +63,7 @@ export default function WorkWithMePage() {
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <Instagram className="text-green" size={32} />
-                <h3>Instagram Reels</h3>
+                <h3 className="text-[18px] font-medium leading-[1.5]">Instagram Reels</h3>
               </div>
               <p className="text-foreground/70 leading-relaxed">
                 Short-form video content is king on Instagram, and I create eye-catching Reels that stop the scroll. From recipe tutorials to restaurant tours, behind-the-scenes moments to product showcases, I'll craft engaging 15-60 second videos that capture attention and drive engagement.
@@ -104,7 +104,7 @@ export default function WorkWithMePage() {
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <Instagram className="text-green" size={32} />
-                <h3>Instagram Stories</h3>
+                <h3 className="text-[18px] font-medium leading-[1.5]">Instagram Stories</h3>
               </div>
               <p className="text-foreground/70 leading-relaxed">
                 Instagram Stories offer a more casual, intimate way to connect with your audience. I create authentic, engaging story content that keeps your brand top-of-mind and encourages direct interaction with your followers through polls, questions, and swipe-up links.
@@ -145,7 +145,7 @@ export default function WorkWithMePage() {
             <div className="lg:w-1/2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <FileText className="text-green" size={32} />
-                <h3>Blog Posts</h3>
+                <h3 className="text-[18px] font-medium leading-[1.5]">Blog Posts</h3>
               </div>
               <p className="text-foreground/70 leading-relaxed">
                 Long-form content builds trust and authority. I write detailed blog posts that tell your story, showcase your offerings, and provide value to readers while improving your SEO. From restaurant reviews to recipe features, product spotlights to culinary travel guides, I create content that educates and inspires.
