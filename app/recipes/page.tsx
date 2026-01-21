@@ -1,7 +1,6 @@
 'use client';
 
 import { RecipeCard } from '@/components/RecipeCard';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
 import { PageHeader } from '@/components/PageHeader';
 import { Container, Section, SectionHeader, Button } from '@/components/ui';
@@ -60,11 +59,6 @@ export default function RecipesPage() {
 
   return (
     <main>
-      {/* Breadcrumbs - Standalone */}
-      <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: 'Recipes' }]} />
-      </Container>
-
       {/* Hero */}
       <Section spacing="none" className="pb-0 sm:pb-2 lg:pb-6">
         <PageHeader
