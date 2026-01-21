@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
+import { FavoriteSpotCard } from "@/components/FavoriteSpotCard";
 
 interface BlogPost {
   title: string;
@@ -199,9 +200,9 @@ export default function OutOfKitchenPage() {
       {/* Featured Section */}
       <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 text-[36px]">My Favorite Spots</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="mb-12">
+            <h2 className="mb-4 text-[36px] pl-[1.5%]">My Favorite Spots</h2>
+            <p className="text-muted-foreground max-w-2xl pl-[1.5%]">
               These are the places that have captured my heart and my taste buds
             </p>
           </div>
@@ -212,11 +213,14 @@ export default function OutOfKitchenPage() {
               { name: "Corner CafÃ©", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
               { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
             ].map((spot, index) => (
-              <div key={index} className="feature-card text-left">
-                <h3 className="mb-2 font-bold">{spot.name}</h3>
-                <p className="text-muted-foreground text-sm mb-2">{spot.city}, {spot.state}</p>
-                <p className="text-muted-foreground mb-6">{spot.specialty}</p>
-              </div>
+              <FavoriteSpotCard
+                key={index}
+                name={spot.name}
+                city={spot.city}
+                state={spot.state}
+                specialty={spot.specialty}
+                slug={spot.slug}
+              />
             ))}
           </div>
         </div>
