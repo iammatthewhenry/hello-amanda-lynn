@@ -1,9 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { ContentCard } from "@/components/ContentCard";
-import { ViewAllPostsButton } from "@/components/ViewAllPostsButton";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHeader } from "@/components/PageHeader";
+import { GridSection } from "@/components/GridSection";
 
 interface BlogPost {
   title: string;
@@ -157,86 +156,45 @@ export default function OutOfKitchenPage() {
     },
   ];
 
-  const renderPost = (post: BlogPost, index: number) => (
-    <ContentCard
-      key={index}
-      title={post.title}
-      description={post.description}
-      image={post.image}
-      href={`/out-of-kitchen/${post.slug}`}
-    />
-  );
-
   return (
     <>
-      {/* Breadcrumbs - Match recipe page positioning */}
-      <div className="max-w-4xl mx-auto px-[4vw] sm:px-6 lg:px-8 -mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: "Out of Kitchen" }]} />
-      </div>
+      <PageHeader 
+        title="Out of Kitchen"
+        description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
+        breadcrumbLabel="Out of Kitchen"
+      />
 
-      {/* Title & Description Section */}
-      <section className="section-spacing-bottom">
-        <div className="container-max px-8">
-          <div className="page-header -mb-[3px] pl-[1.5%]">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Out of Kitchen</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations.
-            </p>
-          </div>
-        </div>
-      </section>
+      <GridSection
+        title="Food Destination"
+        posts={foodDestinationPosts}
+        baseSlug="/out-of-kitchen"
+        viewAllLink="/out-of-kitchen/food-destination/all-posts"
+        viewAllLabel="View All Food Destinations"
+      />
 
-      {/* Food Destination Grid */}
-      <section className="pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20">
-        <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Food Destination</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-            {foodDestinationPosts.map((post, index) => renderPost(post, index))}
-          </div>
-        </div>
-      </section>
+      <GridSection
+        title="Restaurants"
+        posts={restaurantPosts}
+        baseSlug="/out-of-kitchen"
+        viewAllLink="/out-of-kitchen/restaurants/all-posts"
+        viewAllLabel="View All Restaurants"
+      />
 
-      {/* View All Food Destinations Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-destination/all-posts" label="View All Food Destinations" />
+      <GridSection
+        title="Farmers Markets"
+        posts={farmersMarketPosts}
+        baseSlug="/out-of-kitchen"
+        viewAllLink="/out-of-kitchen/farmers-markets/all-posts"
+        viewAllLabel="View All Farmers Markets"
+      />
 
-      {/* Restaurants Grid */}
-      <section className="pb-[22px] sm:pb-16 lg:pb-20">
-        <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Restaurants</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-            {restaurantPosts.map((post, index) => renderPost(post, index))}
-          </div>
-        </div>
-      </section>
-
-      {/* View All Restaurants Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/restaurants/all-posts" label="View All Restaurants" />
-
-      {/* Farmers Markets Grid */}
-      <section className="pb-[22px] sm:pb-16 lg:pb-20">
-        <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Farmers Markets</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-            {farmersMarketPosts.map((post, index) => renderPost(post, index))}
-          </div>
-        </div>
-      </section>
-
-      {/* View All Farmers Markets Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/farmers-markets/all-posts" label="View All Farmers Markets" />
-
-      {/* Food Festivals Grid */}
-      <section className="pb-[22px] sm:pb-16 lg:pb-20">
-        <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Food Festivals</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-            {foodFestivalPosts.map((post, index) => renderPost(post, index))}
-          </div>
-        </div>
-      </section>
-
-      {/* View All Food Festivals Button */}
-      <ViewAllPostsButton navigateTo="/out-of-kitchen/food-festivals/all-posts" label="View All Food Festivals" />
+      <GridSection
+        title="Food Festivals"
+        posts={foodFestivalPosts}
+        baseSlug="/out-of-kitchen"
+        viewAllLink="/out-of-kitchen/food-festivals/all-posts"
+        viewAllLabel="View All Food Festivals"
+      />
 
       {/* Featured Section */}
       <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
