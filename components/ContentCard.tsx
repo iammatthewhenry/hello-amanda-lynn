@@ -39,12 +39,12 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
 
       {/* Text Content - BELOW the card, scaled down proportionally to match smaller card size */}
       <div className="mt-2 mx-auto w-[63%]">
-        <h3 className="text-[10px] sm:text-xs font-bold text-foreground mb-0.5 leading-tight">
+        <h3 className="text-xs sm:text-sm font-bold text-foreground mb-0.5 leading-tight">
           {title}
         </h3>
         <Link 
           href={href}
-          className="inline-flex items-center gap-0.5 text-green hover:text-green/80 transition-colors text-[8px] sm:text-[10px]"
+          className="inline-flex items-center gap-0.5 text-green hover:text-green/80 transition-colors text-[10px] sm:text-xs"
         >
           Read More
           <span>→</span>
