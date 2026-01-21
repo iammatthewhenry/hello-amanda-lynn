@@ -39,7 +39,7 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
 
       {/* Text Content - BELOW the card, scaled down proportionally to match smaller card size */}
       <div className="mt-2 mx-auto w-[75.6%]">
-        <h3 className="text-sm sm:text-base font-bold text-foreground mb-0.5 leading-tight">
+        <h3 className="text-sm sm:text-base font-bold text-foreground mb-0.5 leading-tight pl-[1.5%]">
           {title}
         </h3>
       </div>
