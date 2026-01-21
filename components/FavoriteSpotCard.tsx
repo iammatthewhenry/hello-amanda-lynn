@@ -22,7 +22,7 @@ export function FavoriteSpotCard({
   return (
     <a 
       href={`${baseSlug}/${slug}`}
-      className="feature-card text-left block transition-colors cursor-pointer hover:text-green"
+      className="block p-6 bg-secondary rounded-lg border border-border transition-colors cursor-pointer hover:text-green"
     >
       <h3 className="mb-2 font-bold">{name}</h3>
       <p className="text-muted-foreground text-sm mb-2">{city}, {state}</p>
