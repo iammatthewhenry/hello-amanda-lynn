@@ -20,7 +20,7 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
       {/* Polaroid Card - White frame with image inside - fills 75.6% of cell (20% bigger) */}
       <Link href={href} className="block group mx-auto w-[75.6%]">
         <div 
-          className="bg-white p-1.5 sm:p-2"
+          className="bg-white p-4"
           style={{ 
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
           }}
