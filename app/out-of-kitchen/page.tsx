@@ -62,10 +62,10 @@ export default function OutOfKitchenPage() {
       slug: "the-garden-bistro"
     },
     {
-      title: "Sunday Brunch at Corner Café",
+      title: "Sunday Brunch at Corner CafÃ©",
       description: "Their signature pancakes and perfectly brewed coffee made this Sunday brunch absolutely delightful. The cozy ambiance and friendly service keep me coming back.",
       image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Corner Café",
+      location: "Corner CafÃ©",
       date: "September 29, 2025",
       slug: "corner-cafe"
     },
@@ -178,8 +178,8 @@ export default function OutOfKitchenPage() {
       <section className="section-spacing-bottom">
         <div className="container-max">
           <div className="page-header -mb-[3px]">
-            <h1>Out of Kitchen</h1>
-            <p>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Out of Kitchen</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl">
               Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations.
             </p>
           </div>
@@ -189,8 +189,8 @@ export default function OutOfKitchenPage() {
       {/* Food Destination Grid */}
       <section className="pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20">
         <div className="container-max">
-          <h2 className="mb-8 text-[36px]">Food Destination</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <h2 className="mb-8 text-[36px] text-left font-bold">Food Destination</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
             {foodDestinationPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -202,8 +202,8 @@ export default function OutOfKitchenPage() {
       {/* Restaurants Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
-          <h2 className="mb-8 text-[36px]">Restaurants</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <h2 className="mb-8 text-[36px] text-left font-bold">Restaurants</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
             {restaurantPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -215,8 +215,8 @@ export default function OutOfKitchenPage() {
       {/* Farmers Markets Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
-          <h2 className="mb-8 text-[36px]">Farmers Markets</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <h2 className="mb-8 text-[36px] text-left font-bold">Farmers Markets</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
             {farmersMarketPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -228,8 +228,8 @@ export default function OutOfKitchenPage() {
       {/* Food Festivals Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
-          <h2 className="mb-8 text-[36px]">Food Festivals</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <h2 className="mb-8 text-[36px] text-left font-bold">Food Festivals</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
             {foodFestivalPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function OutOfKitchenPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { name: "The Garden Bistro", city: "Portland", state: "OR", specialty: "Farm-to-table cuisine", slug: "the-garden-bistro" },
-              { name: "Corner Café", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
+              { name: "Corner CafÃ©", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
               { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
             ].map((spot, index) => (
               <div key={index} className="feature-card text-left">
