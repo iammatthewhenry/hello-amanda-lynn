@@ -4,6 +4,7 @@ import { ChefHat, Thermometer, BookOpen, Gamepad2 } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
+import { QuickTipCard } from "@/components/QuickTipCard";
 
 interface KitchenPost {
   title: string;
@@ -156,6 +157,7 @@ export default function InTheKitchenPage() {
         baseSlug="/in-the-kitchen"
         viewAllLink="/in-the-kitchen/techniques/all-posts"
         viewAllLabel="View All Techniques"
+        isFirstSection={true}
       />
 
       <GridSection
@@ -185,26 +187,22 @@ export default function InTheKitchenPage() {
       {/* Quick Kitchen Tips */}
       <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 text-[36px]">Quick Kitchen Tips</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="mb-12">
+            <h2 className="mb-4 text-[36px] pl-[1.5%]">Quick Kitchen Tips</h2>
+            <p className="text-muted-foreground max-w-2xl pl-[1.5%]">
               Simple tips that make a big difference
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {quickTips.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div key={index} className="feature-card">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green/10 rounded-full mb-4">
-                    <Icon className="text-green" size={28} />
-                  </div>
-                  <h3 className="mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.tip}</p>
-                </div>
-              );
-            })}
+            {quickTips.map((item, index) => (
+              <QuickTipCard
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                tip={item.tip}
+              />
+            ))}
           </div>
         </div>
       </section>

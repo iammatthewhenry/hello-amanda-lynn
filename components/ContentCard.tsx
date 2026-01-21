@@ -22,7 +22,7 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
         <div 
           className="bg-white p-4"
           style={{ 
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)'
           }}
         >
           <div className="aspect-square overflow-hidden">
