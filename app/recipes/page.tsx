@@ -3,7 +3,8 @@
 import { RecipeCard } from '@/components/RecipeCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
-import { Container, Section, PageHeader, SectionHeader, Button } from '@/components/ui';
+import { PageHeader } from '@/components/PageHeader';
+import { Container, Section, SectionHeader, Button } from '@/components/ui';
 
 export default function RecipesPage() {
   const allRecipes = [
