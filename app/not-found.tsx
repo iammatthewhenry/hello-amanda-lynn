@@ -1,83 +1,59 @@
-import { Button } from '@/components/ui';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function NotFoundPage() {
-  const errorImage = '/images/error-plate.png';
-
+export default function NotFound() {
   return (
-    // 404 Hero - Full viewport centered
-    // h-[calc(100dvh-64px)] = viewport - header (64px mobile)
-    // sm:h-[calc(100dvh-80px)] = viewport - header (80px desktop)
-    <section className="h-[calc(100dvh-64px)] sm:h-[calc(100dvh-80px)] flex items-center justify-center overflow-hidden">
-      <div className="w-full h-full flex flex-col items-center justify-center gap-4 sm:gap-6 px-4">
-        {/* Image with Text Overlay - Constrained to fit in viewport */}
-        <div className="relative w-full max-w-6xl flex-shrink" style={{ maxHeight: 'calc(100% - 100px)' }}>
-          <img
-            src={errorImage}
-            alt="Empty ceramic plate on white background"
-            className="w-full h-full object-contain block"
-          />
-          
-          {/* Text Overlay - Positioned to the right of plate */}
-          <div 
-            className="absolute text-left flex flex-col"
-            style={{ 
-              left: 'calc(55% + 15px)',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              gap: 'clamp(0.5rem, 1.5vw, 1rem)',
-              maxWidth: '42%'
-            }}
-          >
-            {/* Oops! Heading */}
-            <h1 
-              className="mb-0"
-              style={{ 
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(1.8rem, 5vw, 5rem)',
-                fontWeight: 500,
-                lineHeight: 1.1,
-                color: '#000000'
-              }}
-            >
+    <main className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left side - Image */}
+          <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+            <div className="relative">
+              <Image
+                src="/images/empty-plate.jpg" // You'll need to add this image to your public/images folder
+                alt="Empty ceramic plate"
+                width={400}
+                height={400}
+                className="rounded-lg"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Right side - Content */}
+          <div className="text-center lg:text-left order-1 lg:order-2">
+            <h1 className="text-6xl lg:text-7xl font-bold text-foreground mb-4">
               Oops!
             </h1>
-
-            {/* Body Text */}
-            <p 
-              style={{ 
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(0.9rem, 2.5vw, 2.5rem)',
-                lineHeight: 1.4,
-                color: '#000000'
-              }}
-            >
-              This Plate is Empty.<br />
+            
+            <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-8">
+              This Plate is Empty.
+            </h2>
+            
+            <p className="text-xl lg:text-2xl text-foreground mb-12">
               Let's get you back to<br />
               something delicious!
             </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+              >
+                BACK TO HOME
+              </Link>
+              
+              <Link
+                href="/recipes"
+                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+              >
+                BROWSE RECIPES
+              </Link>
+            </div>
           </div>
         </div>
-
-        {/* CTA Buttons - Below Image */}
-        <div className="flex flex-wrap gap-4 justify-center flex-shrink-0">
-          <Button
-            href="/"
-            variant="green"
-            rounded="full"
-            className="px-10 py-3 text-xs tracking-wider uppercase"
-          >
-            Back to Home
-          </Button>
-          <Button
-            href="/recipes"
-            variant="outline"
-            rounded="full"
-            className="px-10 py-3 text-xs tracking-wider uppercase border-primary text-primary hover:bg-primary hover:text-white"
-          >
-            Browse Recipes
-          </Button>
-        </div>
       </div>
-    </section>
+    </main>
   );
 }

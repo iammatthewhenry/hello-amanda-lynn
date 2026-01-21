@@ -1,86 +1,66 @@
-// app/error.tsx - Global Error Boundary
 'use client';
 
-import Link from 'next/link';
-import { useEffect } from 'react';
 import Image from 'next/image';
-import plateImage from '@/public/images/plate.png';
+import Link from 'next/link';
 
-export default function Error({
-  error,
-  reset,
-}: {
+interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
-  useEffect(() => {
-    // Log error to error reporting service (e.g., Sentry)
-    console.error('Application error:', error);
-  }, [error]);
+}
 
+export default function Error({ error, reset }: ErrorProps) {
   return (
-    <section className="h-[calc(100dvh-64px)] sm:h-[calc(100dvh-80px)] flex items-center justify-center overflow-hidden">
-      <div className="w-full h-full flex flex-col items-center justify-center gap-4 sm:gap-6 px-4">
-        <div className="relative w-full max-w-6xl flex-shrink" style={{ maxHeight: 'calc(100% - 100px)' }}>
-          <Image
-            src={plateImage}
-            alt="Empty ceramic plate on white background"
-            className="w-full h-full object-contain block"
-          />
-          
-          <div 
-            className="absolute text-left flex flex-col"
-            style={{ 
-              left: 'calc(55% + 15px)',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              gap: 'clamp(0.5rem, 1.5vw, 1rem)',
-              maxWidth: '42%'
-            }}
-          >
-            <h1 
-              className="mb-0"
-              style={{ 
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(1.8rem, 5vw, 5rem)',
-                fontWeight: 500,
-                lineHeight: 1.1,
-                color: '#000000'
-              }}
-            >
+    <main className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left side - Image */}
+          <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+            <div className="relative">
+              <Image
+                src="/images/empty-plate.jpg" // Same image as 404 page
+                alt="Empty ceramic plate"
+                width={400}
+                height={400}
+                className="rounded-lg"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Right side - Content */}
+          <div className="text-center lg:text-left order-1 lg:order-2">
+            <h1 className="text-6xl lg:text-7xl font-bold text-foreground mb-4">
               Oops!
             </h1>
-            <p 
-              style={{ 
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(0.9rem, 2.5vw, 2.5rem)',
-                lineHeight: 1.4,
-                color: '#000000'
-              }}
-            >
-              This Plate is Empty.<br />
-              Let's get you back to<br />
-              something delicious!
+            
+            <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-8">
+              Something Went Wrong.
+            </h2>
+            
+            <p className="text-xl lg:text-2xl text-foreground mb-12">
+              Don't worry, let's get you<br />
+              back to the kitchen!
             </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button
+                onClick={reset}
+                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+              >
+                TRY AGAIN
+              </button>
+              
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+              >
+                BACK TO HOME
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 justify-center flex-shrink-0">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center rounded-full btn-green px-10 py-3 text-xs tracking-wider uppercase"
-            style={{ fontWeight: 600, letterSpacing: '0.09em' }}
-          >
-            Back to Home
-          </Link>
-          <Link
-            href="/recipes"
-            className="inline-flex items-center justify-center rounded-full border-2 border-primary bg-white text-primary px-10 py-3 text-xs tracking-wider uppercase hover:bg-primary hover:text-white transition-all"
-            style={{ fontWeight: 600, letterSpacing: '0.09em' }}
-          >
-            Browse Recipes
-          </Link>
-        </div>
       </div>
-    </section>
+    </main>
   );
 }
