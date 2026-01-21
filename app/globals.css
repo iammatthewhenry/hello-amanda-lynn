@@ -123,4 +123,9 @@
       padding: 1rem;
     }
   }
+
+  /* Number Font - Montserrat for ranking numbers */
+  .number-font {
+    font-family: var(--font-montserrat);
+  }
 }
