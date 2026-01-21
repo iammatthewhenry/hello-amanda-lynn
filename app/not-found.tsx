@@ -3,52 +3,52 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <main className="min-h-screen bg-[#E8E4DF] flex items-center justify-center p-4">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left side - Image */}
-          <div className="flex justify-center lg:justify-end order-2 lg:order-1">
-            <div className="relative">
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[500px] lg:max-w-[600px]">
               <Image
-                src="/images/empty-plate.jpg" // You'll need to add this image to your public/images folder
+                src="/images/empty-plate.jpg"
                 alt="Empty ceramic plate"
-                width={400}
-                height={400}
-                className="rounded-lg"
+                width={600}
+                height={600}
+                className="w-full h-auto"
                 priority
               />
             </div>
           </div>
 
           {/* Right side - Content */}
-          <div className="text-center lg:text-left order-1 lg:order-2">
-            <h1 className="text-6xl lg:text-7xl font-bold text-foreground mb-4">
+          <div className="text-center lg:text-left space-y-6">
+            <h1 className="text-[80px] lg:text-[100px] font-bold text-foreground leading-none">
               Oops!
             </h1>
             
-            <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-8">
+            <h2 className="text-3xl lg:text-4xl font-medium text-foreground">
               This Plate is Empty.
             </h2>
             
-            <p className="text-xl lg:text-2xl text-foreground mb-12">
+            <p className="text-2xl lg:text-3xl text-foreground">
               Let's get you back to<br />
               something delicious!
             </p>
 
-            {/* Buttons - Always centered */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center px-10 py-4 bg-green text-white font-bold rounded-full hover:opacity-90 transition-opacity text-sm tracking-wider uppercase"
               >
-                BACK TO HOME
+                Back to Home
               </Link>
               
               <Link
                 href="/recipes"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-green border-2 border-green font-semibold rounded-full hover:bg-green hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-10 py-4 bg-white text-[#D4A5A5] border-2 border-[#D4A5A5] font-bold rounded-full hover:bg-[#D4A5A5] hover:text-white transition-all text-sm tracking-wider uppercase"
               >
-                BROWSE RECIPES
+                Browse Recipes
               </Link>
             </div>
           </div>
