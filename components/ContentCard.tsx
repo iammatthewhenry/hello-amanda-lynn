@@ -12,13 +12,13 @@ interface ContentCardProps {
  * ContentCard - Polaroid-style card with text BELOW the card
  * Text is outside the white frame, left-aligned to card edge
  * 
- * Updated: Cards fill 63% of grid cell (30% smaller), proportionally scaled fonts
+ * Updated: Cards fill 75.6% of grid cell (20% bigger), proportionally scaled fonts
  */
 export function ContentCard({ title, description, image, href }: ContentCardProps) {
   return (
     <div className="flex flex-col w-full">
-      {/* Polaroid Card - White frame with image inside - fills 63% of cell (30% smaller) */}
-      <Link href={href} className="block group mx-auto w-[63%]">
+      {/* Polaroid Card - White frame with image inside - fills 75.6% of cell (20% bigger) */}
+      <Link href={href} className="block group mx-auto w-[75.6%]">
         <div 
           className="bg-white p-1.5 sm:p-2"
           style={{ 
@@ -38,17 +38,10 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
       </Link>
 
       {/* Text Content - BELOW the card, scaled down proportionally to match smaller card size */}
-      <div className="mt-2 mx-auto w-[63%]">
-        <h3 className="text-xs sm:text-sm font-bold text-foreground mb-0.5 leading-tight">
+      <div className="mt-2 mx-auto w-[75.6%]">
+        <h3 className="text-sm sm:text-base font-bold text-foreground mb-0.5 leading-tight">
           {title}
         </h3>
-        <Link 
-          href={href}
-          className="inline-flex items-center gap-0.5 text-green hover:text-green/80 transition-colors text-[10px] sm:text-xs"
-        >
-          Read More
-          <span>→</span>
-        </Link>
       </div>
     </div>
   );

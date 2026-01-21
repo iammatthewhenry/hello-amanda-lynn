@@ -190,7 +190,7 @@ export default function OutOfKitchenPage() {
       <section className="pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20">
         <div className="container-max">
           <h2 className="mb-8 text-[36px] text-left font-bold px-4 sm:px-6">Food Destination</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {foodDestinationPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function OutOfKitchenPage() {
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
           <h2 className="mb-8 text-[36px] text-left font-bold px-4 sm:px-6">Restaurants</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {restaurantPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function OutOfKitchenPage() {
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
           <h2 className="mb-8 text-[36px] text-left font-bold px-4 sm:px-6">Farmers Markets</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {farmersMarketPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function OutOfKitchenPage() {
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max">
           <h2 className="mb-8 text-[36px] text-left font-bold px-4 sm:px-6">Food Festivals</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {foodFestivalPosts.map((post, index) => renderPost(post, index))}
           </div>
         </div>
