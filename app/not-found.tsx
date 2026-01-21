@@ -35,8 +35,8 @@ export default function NotFound() {
               something delicious!
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* Buttons - Always centered */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/"
                 className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
@@ -46,7 +46,7 @@ export default function NotFound() {
               
               <Link
                 href="/recipes"
-                className="inline-flex items-center justify-center px-8 py-3 bg-green text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-green border-2 border-green font-semibold rounded-full hover:bg-green hover:text-white transition-all"
               >
                 BROWSE RECIPES
               </Link>
