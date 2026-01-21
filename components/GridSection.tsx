@@ -15,6 +15,7 @@ interface GridSectionProps {
   baseSlug: string; // e.g., "/out-of-kitchen" or "/in-the-kitchen"
   viewAllLink?: string;
   viewAllLabel?: string;
+  isFirstSection?: boolean; // New prop to control spacing
 }
 
 /**
@@ -26,12 +27,18 @@ export function GridSection({
   posts, 
   baseSlug,
   viewAllLink, 
-  viewAllLabel = "View All Posts" 
+  viewAllLabel = "View All Posts",
+  isFirstSection = false
 }: GridSectionProps) {
+  // First section keeps full spacing, subsequent sections move up 8px
+  const sectionClass = isFirstSection 
+    ? "pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20"
+    : "pt-0 pb-[22px] sm:pt-[29px] sm:pb-16 lg:pt-[45px] lg:pb-20"; // Reduced by 8px
+  
   return (
     <>
       {/* Grid Section */}
-      <section className="pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20">
+      <section className={sectionClass}>
         <div className="container-max px-8">
           <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">{title}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">

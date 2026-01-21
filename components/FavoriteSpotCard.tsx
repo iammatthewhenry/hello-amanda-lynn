@@ -22,8 +22,11 @@ export function FavoriteSpotCard({
   return (
     <a 
       href={`${baseSlug}/${slug}`}
-      className="block p-8 bg-secondary text-center transition-colors cursor-pointer hover:text-green"
-      style={{ boxShadow: 'var(--shadow-card)' }}
+      className="block p-8 text-center transition-colors cursor-pointer hover:text-green"
+      style={{ 
+        backgroundColor: '#F5EBE8',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)'
+      }}
     >
       <h3 className="mb-2 font-bold">{name}</h3>
       <p className="text-muted-foreground text-sm mb-2">{city}, {state}</p>

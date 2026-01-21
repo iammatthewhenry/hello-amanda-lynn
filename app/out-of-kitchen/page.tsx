@@ -171,6 +171,7 @@ export default function OutOfKitchenPage() {
         baseSlug="/out-of-kitchen"
         viewAllLink="/out-of-kitchen/food-destination/all-posts"
         viewAllLabel="View All Food Destinations"
+        isFirstSection={true}
       />
 
       <GridSection
