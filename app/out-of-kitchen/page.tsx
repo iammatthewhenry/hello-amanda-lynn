@@ -177,7 +177,7 @@ export default function OutOfKitchenPage() {
       {/* Title & Description Section */}
       <section className="section-spacing-bottom">
         <div className="container-max px-8">
-          <div className="page-header -mb-[3px]">
+          <div className="page-header -mb-[3px] pl-[1.5%]">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">Out of Kitchen</h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations.
@@ -189,7 +189,7 @@ export default function OutOfKitchenPage() {
       {/* Food Destination Grid */}
       <section className="pt-0 pb-[22px] sm:pt-[37px] sm:pb-16 lg:pt-[53px] lg:pb-20">
         <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold">Food Destination</h2>
+          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Food Destination</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {foodDestinationPosts.map((post, index) => renderPost(post, index))}
           </div>
@@ -202,7 +202,7 @@ export default function OutOfKitchenPage() {
       {/* Restaurants Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold">Restaurants</h2>
+          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Restaurants</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {restaurantPosts.map((post, index) => renderPost(post, index))}
           </div>
@@ -215,7 +215,7 @@ export default function OutOfKitchenPage() {
       {/* Farmers Markets Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold">Farmers Markets</h2>
+          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Farmers Markets</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {farmersMarketPosts.map((post, index) => renderPost(post, index))}
           </div>
@@ -228,7 +228,7 @@ export default function OutOfKitchenPage() {
       {/* Food Festivals Grid */}
       <section className="pb-[22px] sm:pb-16 lg:pb-20">
         <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold">Food Festivals</h2>
+          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">Food Festivals</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {foodFestivalPosts.map((post, index) => renderPost(post, index))}
           </div>
