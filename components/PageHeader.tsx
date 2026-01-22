@@ -13,11 +13,11 @@ interface PageHeaderProps {
 
 /**
  * Page header with optional breadcrumbs and consistent container spacing
- * Use when you need a page title with or without breadcrumbs
+ * Updated to match Out of Kitchen page spacing patterns
  */
 export function PageHeader({ breadcrumbs, title, description }: PageHeaderProps) {
   return (
-    <section className="container-max px-8 pt-6 pb-8">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8">
       {breadcrumbs && <Breadcrumbs items={breadcrumbs} className="mb-6" />}
       <h1 className="text-[48px] font-bold text-foreground mb-4">{title}</h1>
       {description && (
