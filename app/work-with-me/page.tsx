@@ -1,6 +1,6 @@
 'use client';
 
-import { PageBreadcrumbs } from '@/components/PageBreadcrumbs';
+import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
 import { Instagram, FileText } from 'lucide-react';
 import Image from 'next/image';
 
@@ -8,7 +8,7 @@ export default function WorkWithMePage() {
   return (
     <>
       {/* Breadcrumbs - Consistent positioning via component */}
-      <PageBreadcrumbs items={[{ label: 'Work With Me' }]} />
+      <StandaloneBreadcrumbs items={[{ label: 'Work With Me' }]} />
 
       <main className="pt-6 sm:pt-8">
         {/* Hero Section */}
@@ -72,15 +72,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Professional filming and editing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Trending audio and hashtag research</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Optimized captions and calls-to-action</span>
                   </li>
                 </ul>
@@ -113,15 +113,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Story sequences and highlights</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Interactive stickers and engagement tools</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Branded templates and consistent aesthetic</span>
                   </li>
                 </ul>
@@ -154,15 +154,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>SEO-optimized writing (800-2000+ words)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Professional food photography included</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">•</span>
+                    <span className="text-green mt-1">â€¢</span>
                     <span>Social media promotion across my platforms</span>
                   </li>
                 </ul>

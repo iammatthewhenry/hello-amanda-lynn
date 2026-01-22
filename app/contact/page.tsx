@@ -1,4 +1,4 @@
-import { PageBreadcrumbs } from "@/components/PageBreadcrumbs";
+import { StandaloneBreadcrumbs } from "@/components/StandaloneBreadcrumbs";
 import { ContactForm } from "@/components/ContactForm";
 
 export const dynamic = 'force-static';
@@ -7,7 +7,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Breadcrumbs - Consistent positioning via component */}
-      <PageBreadcrumbs items={[{ label: "Contact" }]} />
+      <StandaloneBreadcrumbs items={[{ label: "Contact" }]} />
 
       <main className="pt-6 sm:pt-8">
         {/* Hero Section */}
