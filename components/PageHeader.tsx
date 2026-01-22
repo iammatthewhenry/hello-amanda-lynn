@@ -1,34 +1,32 @@
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { cn } from '@/lib/utils';
 
 interface PageHeaderProps {
   title: string;
-  description: string;
-  breadcrumbLabel?: string;
+  description?: string;
+  className?: string;
 }
 
 /**
- * PageHeader - Consistent page header for category pages
- * Includes breadcrumbs, page title, and description with proper alignment
+ * PageHeader component - handles page title and description only
+ * Breadcrumbs should be added separately using the Breadcrumbs component
  */
-export function PageHeader({ title, description, breadcrumbLabel }: PageHeaderProps) {
+export function PageHeader({ title, description, className }: PageHeaderProps) {
   return (
-    <>
-      {/* Breadcrumbs - Match recipe page positioning */}
-      <div className="max-w-4xl mx-auto px-[4vw] sm:px-6 lg:px-8 -mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: breadcrumbLabel || title }]} />
-      </div>
-
-      {/* Title & Description Section */}
-      <section className="section-spacing-bottom">
-        <div className="container-max px-8">
-          <div className="page-header -mb-[3px] pl-[1.5%]">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">{title}</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
+    <div className={cn('py-8 sm:py-12 lg:py-16', className)}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            {title}
+          </h1>
+          {description && (
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl">
               {description}
             </p>
-          </div>
+          )}
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
+
+export default PageHeader;

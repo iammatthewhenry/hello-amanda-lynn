@@ -1,10 +1,6 @@
 import Link from 'next/link';
-import { MoveRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// ===================================================================
-// TYPES
-// ===================================================================
 interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -16,59 +12,66 @@ interface BreadcrumbsProps {
 }
 
 /**
- * Breadcrumbs navigation component with crooked tape effect
- * Used on all pages except homepage
+ * Tape-style breadcrumbs navigation component
  */
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={cn('min-h-10 sm:min-h-12 flex items-center mb-4 sm:mb-6 mt-6 sm:mt-8', className)}>
-      <div className="relative inline-flex flex-wrap">
-        {/* Crooked tape effect behind breadcrumbs */}
-        <div 
-          className="absolute bg-[#F5EBE8]/80"
-          style={{
-            top: '-8px',
-            bottom: '-12px',
-            left: '-20px',
-            right: '-20px',
-            transform: 'skewY(-1deg)',
-            boxShadow: '0 3px 8px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,0.4)',
-            borderTop: '1px solid rgba(212, 165, 165, 0.2)',
-            borderBottom: '1px solid rgba(212, 165, 165, 0.2)',
-          }}
-        />
+    <nav 
+      className={cn('flex items-center text-xs overflow-hidden', className)} 
+      aria-label="Breadcrumb"
+    >
+      {items.map((item, index) => {
+        const isFirst = index === 0;
+        const isLast = index === items.length - 1;
         
-        {/* Breadcrumb content */}
-        <div className="bg-secondary px-3 py-1.5 inline-flex relative">
-          <nav aria-label="Breadcrumb">
-            <ol className="inline-flex items-center gap-1.5 sm:gap-2.5 text-sm">
-              {items.map((item, index) => {
-                const isLast = index === items.length - 1;
-                return (
-                  <li key={index} className="inline-flex items-center gap-1.5 sm:gap-2.5">
-                    {isLast ? (
-                      <span className="text-green font-medium">{item.label}</span>
-                    ) : (
-                      <>
-                        <Link 
-                          href={item.href!}
-                          className="text-foreground hover:text-green transition-colors"
-                        >
-                          {item.label}
-                        </Link>
-                        <MoveRight className="w-4 h-4 text-foreground/50" />
-                      </>
-                    )}
-                  </li>
-                );
-              })}
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
+        return (
+          <div
+            key={index}
+            className={cn(
+              'relative px-3 py-2 min-h-[32px] flex items-center',
+              'bg-green text-white transition-colors',
+              // First item - no left arrow
+              !isFirst && 'ml-[-8px] pl-4',
+              // Last item - different color and no right arrow
+              isLast && 'bg-[#F5EBE8] text-foreground',
+              // Right arrow for all except last
+              !isLast && "after:content-[''] after:absolute after:right-[-8px] after:top-0 after:w-0 after:h-0 after:border-l-[8px] after:border-t-[16px] after:border-b-[16px] after:border-t-transparent after:border-b-transparent after:z-10",
+              !isLast && 'after:border-l-green',
+              // Special case for second-to-last item
+              index === items.length - 2 && 'after:border-l-green',
+              // Left arrow for all except first
+              !isFirst && "before:content-[''] before:absolute before:left-0 before:top-0 before:w-0 before:h-0 before:border-l-[8px] before:border-t-[16px] before:border-b-[16px] before:border-t-transparent before:border-b-transparent before:border-l-white before:z-0"
+            )}
+            style={isLast ? {} : { 
+              clipPath: isFirst 
+                ? 'polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%)'
+                : 'polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 8px 50%)'
+            }}
+          >
+            {item.href ? (
+              <Link 
+                href={item.href} 
+                className={cn(
+                  'font-medium transition-opacity hover:opacity-80 relative z-10',
+                  isLast ? 'text-foreground' : 'text-white'
+                )}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <span className={cn(
+                'font-medium relative z-10',
+                isLast ? 'text-foreground' : 'text-white'
+              )}>
+                {item.label}
+              </span>
+            )}
+          </div>
+        );
+      })}
+    </nav>
   );
 }
 
