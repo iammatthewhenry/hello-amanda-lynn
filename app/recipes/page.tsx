@@ -1,4 +1,5 @@
 import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
+import { PageBreadcrumbs } from '@/components/PageBreadcrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,9 +19,14 @@ export const metadata: Metadata = {
 
 export default function RecipesPage() {
   return (
-    <main>
-      <BrowseByCategorySection />
-    </main>
+    <>
+      {/* Breadcrumbs - Consistent positioning via component */}
+      <PageBreadcrumbs items={[{ label: 'Recipes' }]} />
+
+      <main>
+        <BrowseByCategorySection />
+      </main>
+    </>
   );
 }
 
