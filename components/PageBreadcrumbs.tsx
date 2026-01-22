@@ -10,24 +10,30 @@ interface PageBreadcrumbsProps {
 }
 
 /**
- * PageBreadcrumbs - Wrapper component with standardized positioning
+ * PageBreadcrumbs component - Provides consistent breadcrumb positioning across all pages
  * 
- * This component automatically applies the North Star positioning specs:
- * - Container width with responsive padding
- * - Proper top spacing (pt-4)
- * - Left-aligned positioning
+ * Positioning:
+ * - Horizontal: container mx-auto px-4 sm:px-6 lg:px-8
+ * - Vertical: pt-4
+ * 
+ * This ensures breadcrumbs appear at the identical position on all pages,
+ * regardless of whether a PageHeader component follows or not.
  * 
  * Usage:
- * <PageBreadcrumbs items={breadcrumbItems} />
- * 
- * No need to manually add className or positioning - it's all handled automatically!
+ * - Pages WITH PageHeader: No additional spacing needed
+ * - Pages WITHOUT PageHeader: Add pt-6 sm:pt-8 to <main> tag for content spacing
  */
 export function PageBreadcrumbs({ items }: PageBreadcrumbsProps) {
+  // Automatically prepend "Home" to breadcrumb trail
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    ...items
+  ];
+
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-      <Breadcrumbs items={items} />
-    </div>
+    <Breadcrumbs 
+      items={breadcrumbItems} 
+      className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4" 
+    />
   );
 }
-
-export default PageBreadcrumbs;
