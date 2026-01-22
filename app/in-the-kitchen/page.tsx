@@ -1,8 +1,8 @@
 'use client';
 
+import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface BlogPost {
   title: string;
@@ -14,12 +14,6 @@ interface BlogPost {
 }
 
 export default function InTheKitchenPage() {
-  // Define breadcrumbs directly (no utils import needed)
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'In The Kitchen' }
-  ];
-  
   const cookingTipsPosts: BlogPost[] = [
     {
       title: "Knife Skills: The Foundation of Great Cooking",
@@ -118,47 +112,49 @@ export default function InTheKitchenPage() {
 
   return (
     <>
-      {/* Breadcrumbs at the top of the page */}
-      <Breadcrumbs items={breadcrumbItems} className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4" />
+      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
+      <StandaloneBreadcrumbs items={[{ label: 'In The Kitchen' }]} />
 
-      {/* PageHeader now only handles title and description - NO breadcrumbLabel prop */}
-      <PageHeader 
-        title="In The Kitchen"
-        description="Tips, techniques, and behind the scenes stories from the kitchen. Learn the skills that will elevate your cooking and make time in the kitchen more enjoyable."
-      />
+      <main className="pt-6 sm:pt-8">
+        {/* PageHeader now focuses only on title and description */}
+        <PageHeader 
+          title="In The Kitchen"
+          description="Tips, techniques, and behind the scenes stories from the kitchen. Learn the skills that will elevate your cooking and make time in the kitchen more enjoyable."
+        />
 
-      <GridSection
-        title="Cooking Tips"
-        posts={cookingTipsPosts}
-        baseSlug="/in-the-kitchen"
-        viewAllLink="/in-the-kitchen/cooking-tips/all-posts"
-        viewAllLabel="View All Cooking Tips"
-        isFirstSection={true}
-      />
+        <GridSection
+          title="Cooking Tips"
+          posts={cookingTipsPosts}
+          baseSlug="/in-the-kitchen"
+          viewAllLink="/in-the-kitchen/cooking-tips/all-posts"
+          viewAllLabel="View All Cooking Tips"
+          isFirstSection={true}
+        />
 
-      <GridSection
-        title="Techniques"
-        posts={techniquesPosts}
-        baseSlug="/in-the-kitchen"
-        viewAllLink="/in-the-kitchen/techniques/all-posts"
-        viewAllLabel="View All Techniques"
-      />
+        <GridSection
+          title="Techniques"
+          posts={techniquesPosts}
+          baseSlug="/in-the-kitchen"
+          viewAllLink="/in-the-kitchen/techniques/all-posts"
+          viewAllLabel="View All Techniques"
+        />
 
-      <GridSection
-        title="Kitchen Hacks"
-        posts={kitchenHacksPosts}
-        baseSlug="/in-the-kitchen"
-        viewAllLink="/in-the-kitchen/kitchen-hacks/all-posts"
-        viewAllLabel="View All Kitchen Hacks"
-      />
+        <GridSection
+          title="Kitchen Hacks"
+          posts={kitchenHacksPosts}
+          baseSlug="/in-the-kitchen"
+          viewAllLink="/in-the-kitchen/kitchen-hacks/all-posts"
+          viewAllLabel="View All Kitchen Hacks"
+        />
 
-      <GridSection
-        title="Equipment Guides"
-        posts={equipmentGuidesPosts}
-        baseSlug="/in-the-kitchen"
-        viewAllLink="/in-the-kitchen/equipment-guides/all-posts"
-        viewAllLabel="View All Equipment Guides"
-      />
+        <GridSection
+          title="Equipment Guides"
+          posts={equipmentGuidesPosts}
+          baseSlug="/in-the-kitchen"
+          viewAllLink="/in-the-kitchen/equipment-guides/all-posts"
+          viewAllLabel="View All Equipment Guides"
+        />
+      </main>
     </>
   );
 }

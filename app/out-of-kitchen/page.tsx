@@ -1,10 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 import { FavoriteSpotCard } from "@/components/FavoriteSpotCard";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface BlogPost {
   title: string;
@@ -17,12 +17,6 @@ interface BlogPost {
 
 export default function OutOfKitchenPage() {
   const router = useRouter();
-  
-  // Define breadcrumbs
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Out of Kitchen' }
-  ];
   
   const foodDestinationPosts: BlogPost[] = [
     {
@@ -69,10 +63,10 @@ export default function OutOfKitchenPage() {
       slug: "the-garden-bistro"
     },
     {
-      title: "Sunday Brunch at Corner CafÃƒÂ©",
+      title: "Sunday Brunch at Corner Café",
       description: "Their signature pancakes and perfectly brewed coffee made this Sunday brunch absolutely delightful. The cozy ambiance and friendly service keep me coming back.",
       image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Corner CafÃƒÂ©",
+      location: "Corner Café",
       date: "September 29, 2025",
       slug: "corner-cafe"
     },
@@ -166,76 +160,78 @@ export default function OutOfKitchenPage() {
 
   return (
     <>
-      {/* Add breadcrumbs at the top */}
-      <Breadcrumbs items={breadcrumbItems} className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4" />
+      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
+      <StandaloneBreadcrumbs items={[{ label: 'Out of Kitchen' }]} />
 
-      {/* PageHeader without breadcrumbLabel prop */}
-      <PageHeader 
-        title="Out of Kitchen"
-        description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
-      />
+      <main className="pt-6 sm:pt-8">
+        {/* PageHeader now focuses only on title and description */}
+        <PageHeader 
+          title="Out of Kitchen"
+          description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
+        />
 
-      <GridSection
-        title="Food Destination"
-        posts={foodDestinationPosts}
-        baseSlug="/out-of-kitchen"
-        viewAllLink="/out-of-kitchen/food-destination/all-posts"
-        viewAllLabel="View All Food Destinations"
-        isFirstSection={true}
-      />
+        <GridSection
+          title="Food Destination"
+          posts={foodDestinationPosts}
+          baseSlug="/out-of-kitchen"
+          viewAllLink="/out-of-kitchen/food-destination/all-posts"
+          viewAllLabel="View All Food Destinations"
+          isFirstSection={true}
+        />
 
-      <GridSection
-        title="Restaurants"
-        posts={restaurantPosts}
-        baseSlug="/out-of-kitchen"
-        viewAllLink="/out-of-kitchen/restaurants/all-posts"
-        viewAllLabel="View All Restaurants"
-      />
+        <GridSection
+          title="Restaurants"
+          posts={restaurantPosts}
+          baseSlug="/out-of-kitchen"
+          viewAllLink="/out-of-kitchen/restaurants/all-posts"
+          viewAllLabel="View All Restaurants"
+        />
 
-      <GridSection
-        title="Farmers Markets"
-        posts={farmersMarketPosts}
-        baseSlug="/out-of-kitchen"
-        viewAllLink="/out-of-kitchen/farmers-markets/all-posts"
-        viewAllLabel="View All Farmers Markets"
-      />
+        <GridSection
+          title="Farmers Markets"
+          posts={farmersMarketPosts}
+          baseSlug="/out-of-kitchen"
+          viewAllLink="/out-of-kitchen/farmers-markets/all-posts"
+          viewAllLabel="View All Farmers Markets"
+        />
 
-      <GridSection
-        title="Food Festivals"
-        posts={foodFestivalPosts}
-        baseSlug="/out-of-kitchen"
-        viewAllLink="/out-of-kitchen/food-festivals/all-posts"
-        viewAllLabel="View All Food Festivals"
-      />
+        <GridSection
+          title="Food Festivals"
+          posts={foodFestivalPosts}
+          baseSlug="/out-of-kitchen"
+          viewAllLink="/out-of-kitchen/food-festivals/all-posts"
+          viewAllLabel="View All Food Festivals"
+        />
 
-      {/* Featured Section */}
-      <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="mb-4 text-[36px] pl-[1.5%]">My Favorite Spots</h2>
-            <p className="text-muted-foreground max-w-2xl pl-[1.5%]">
-              These are the places that have captured my heart and my taste buds
-            </p>
+        {/* Featured Section */}
+        <section className="pb-0 sm:pb-[9px] lg:pb-[25px]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-12">
+              <h2 className="mb-4 text-[36px] pl-[1.5%]">My Favorite Spots</h2>
+              <p className="text-muted-foreground max-w-2xl pl-[1.5%]">
+                These are the places that have captured my heart and my taste buds
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { name: "The Garden Bistro", city: "Portland", state: "OR", specialty: "Farm-to-table cuisine", slug: "the-garden-bistro" },
+                { name: "Corner Café", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
+                { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
+              ].map((spot, index) => (
+                <FavoriteSpotCard
+                  key={index}
+                  name={spot.name}
+                  city={spot.city}
+                  state={spot.state}
+                  specialty={spot.specialty}
+                  slug={spot.slug}
+                />
+              ))}
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "The Garden Bistro", city: "Portland", state: "OR", specialty: "Farm-to-table cuisine", slug: "the-garden-bistro" },
-              { name: "Corner CafÃƒÂ©", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
-              { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
-            ].map((spot, index) => (
-              <FavoriteSpotCard
-                key={index}
-                name={spot.name}
-                city={spot.city}
-                state={spot.state}
-                specialty={spot.specialty}
-                slug={spot.slug}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 }
