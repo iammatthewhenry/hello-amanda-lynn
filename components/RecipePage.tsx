@@ -33,13 +33,13 @@ declare global {
   }
 }
 
-interface RecipePageProps {
+interface RecipeComponentProps {
   params: {
     slug: string;
   };
 }
 
-export default function RecipePage({ params }: RecipePageProps) {
+export default function RecipePage({ params }: RecipeComponentProps) {
   const { slug } = params;
   const recipe = getRecipeBySlug(slug);
 
