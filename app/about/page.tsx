@@ -1,16 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { PageBreadcrumbs } from '@/components/PageBreadcrumbs';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function AboutPage() {
   return (
     <main>
-      {/* Breadcrumbs - Standalone */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: 'About' }]} />
-      </div>
+      {/* Breadcrumbs - Now using standardized wrapper */}
+      <PageBreadcrumbs items={[{ label: 'About' }]} />
 
       {/* Introduction Section */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-16 sm:mb-24 lg:mb-32">
