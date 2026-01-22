@@ -3,7 +3,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { createSimpleBreadcrumbs } from "@/utils/breadcrumbUtils";
 
 interface BlogPost {
   title: string;
@@ -15,12 +14,11 @@ interface BlogPost {
 }
 
 export default function InTheKitchenPage() {
-  // Generate breadcrumbs for this page
-  const breadcrumbItems = createSimpleBreadcrumbs(
-    "In The Kitchen",
-    "Home",
-    "/"
-  );
+  // Define breadcrumbs directly (no utils import needed)
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'In The Kitchen' }
+  ];
   
   const cookingTipsPosts: BlogPost[] = [
     {
@@ -123,7 +121,7 @@ export default function InTheKitchenPage() {
       {/* Breadcrumbs at the top of the page */}
       <Breadcrumbs items={breadcrumbItems} className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4" />
 
-      {/* PageHeader now only handles title and description */}
+      {/* PageHeader now only handles title and description - NO breadcrumbLabel prop */}
       <PageHeader 
         title="In The Kitchen"
         description="Tips, techniques, and behind the scenes stories from the kitchen. Learn the skills that will elevate your cooking and make time in the kitchen more enjoyable."
