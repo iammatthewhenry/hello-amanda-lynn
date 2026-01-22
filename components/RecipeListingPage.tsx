@@ -62,7 +62,7 @@ export default function RecipeListingPage({ initialCategory }: RecipeListingPage
 
   return (
     <main>
-      <Section spacing="lg" containerSize="6xl">
+      <Section spacing="lg" containerSize="4xl">
         {/* Breadcrumbs */}
         <div className="mb-6">
           <Breadcrumbs items={breadcrumbs} />
