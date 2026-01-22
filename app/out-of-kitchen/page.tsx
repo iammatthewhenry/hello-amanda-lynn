@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 import { FavoriteSpotCard } from "@/components/FavoriteSpotCard";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface BlogPost {
   title: string;
@@ -16,6 +17,12 @@ interface BlogPost {
 
 export default function OutOfKitchenPage() {
   const router = useRouter();
+  
+  // Define breadcrumbs
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Out of Kitchen' }
+  ];
   
   const foodDestinationPosts: BlogPost[] = [
     {
@@ -62,10 +69,10 @@ export default function OutOfKitchenPage() {
       slug: "the-garden-bistro"
     },
     {
-      title: "Sunday Brunch at Corner CafÃ©",
+      title: "Sunday Brunch at Corner CafÃƒÂ©",
       description: "Their signature pancakes and perfectly brewed coffee made this Sunday brunch absolutely delightful. The cozy ambiance and friendly service keep me coming back.",
       image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Corner CafÃ©",
+      location: "Corner CafÃƒÂ©",
       date: "September 29, 2025",
       slug: "corner-cafe"
     },
@@ -159,10 +166,13 @@ export default function OutOfKitchenPage() {
 
   return (
     <>
+      {/* Add breadcrumbs at the top */}
+      <Breadcrumbs items={breadcrumbItems} className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4" />
+
+      {/* PageHeader without breadcrumbLabel prop */}
       <PageHeader 
         title="Out of Kitchen"
         description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
-        breadcrumbLabel="Out of Kitchen"
       />
 
       <GridSection
@@ -211,7 +221,7 @@ export default function OutOfKitchenPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { name: "The Garden Bistro", city: "Portland", state: "OR", specialty: "Farm-to-table cuisine", slug: "the-garden-bistro" },
-              { name: "Corner CafÃ©", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
+              { name: "Corner CafÃƒÂ©", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
               { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
             ].map((spot, index) => (
               <FavoriteSpotCard
