@@ -1,6 +1,6 @@
 'use client';
 
-import { PageHeader } from '@/components/layout/PageHeader';
+import { PageHeader } from '@/components/PageHeader';
 import { GridSection } from '@/components/GridSection';
 
 export default function AppetizersPage() {

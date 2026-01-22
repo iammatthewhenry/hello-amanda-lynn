@@ -1,6 +1,6 @@
 'use client';
 
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { PageHeader } from '@/components/PageHeader';
 import { GridSection } from '@/components/GridSection';
 
 export default function BreakfastPage() {
@@ -45,25 +45,15 @@ export default function BreakfastPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <div className="container-max px-8 pt-6 pb-4">
-        <Breadcrumbs 
-          items={[
-            { label: 'Recipes', href: '/recipes' },
-            { label: 'Breakfast' },
-          ]} 
-        />
-      </div>
+      <PageHeader
+        breadcrumbs={[
+          { label: 'Recipes', href: '/recipes' },
+          { label: 'Breakfast' },
+        ]}
+        title="Breakfast"
+        description="Start your day right with these delicious breakfast recipes from quick weekday options to leisurely weekend brunches."
+      />
 
-      {/* Page Header */}
-      <section className="container-max px-8 pb-8">
-        <h1 className="text-[48px] font-bold text-foreground mb-4">Breakfast</h1>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Start your day right with these delicious breakfast recipes from quick weekday options to leisurely weekend brunches.
-        </p>
-      </section>
-
-      {/* Recipe Grid */}
       <GridSection
         title="Breakfast Recipes"
         posts={breakfasts}

@@ -1,34 +1,22 @@
-import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
-import { PageBreadcrumbs } from '@/components/PageBreadcrumbs';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Recipes | hello Amanda Lynn',
-  description: 'Discover delicious recipes from Amanda\'s kitchen. From breakfast favorites to decadent desserts, find your next culinary adventure.',
-  openGraph: {
-    title: 'Recipes | hello Amanda Lynn',
-    description: 'Discover delicious recipes from Amanda\'s kitchen. From breakfast favorites to decadent desserts, find your next culinary adventure.',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Recipes | hello Amanda Lynn',
-    description: 'Discover delicious recipes from Amanda\'s kitchen. From breakfast favorites to decadent desserts, find your next culinary adventure.',
-  },
-};
+import { PageHeader } from '@/components/PageHeader';
+import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
+// Add other imports as needed for your existing components
 
 export default function RecipesPage() {
   return (
-    <>
-      {/* Breadcrumbs - Consistent positioning via component */}
-      <PageBreadcrumbs items={[{ label: 'Recipes' }]} />
+    <main>
+      {/* Replace the old "Browse by Category" title section with PageHeader */}
+      <PageHeader 
+        title="Browse by Category"
+      />
 
-      <main>
-        <BrowseByCategorySection />
-      </main>
-    </>
+      {/* Your existing BrowseByCategorySection component */}
+      <BrowseByCategorySection />
+
+      {/* Keep all your other existing sections here */}
+      {/* Recipe Builder, Featured Recipes, etc. */}
+    </main>
   );
 }
-
-// Enable ISR
-export const revalidate = 3600; // Revalidate every hour
