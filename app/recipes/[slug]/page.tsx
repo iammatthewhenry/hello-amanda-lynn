@@ -4,14 +4,15 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const recipe = getRecipeBySlug(params.slug);
+  const { slug } = await params;
+  const recipe = getRecipeBySlug(slug);
 
   if (!recipe) {
     return {
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [recipe.image],
     },
     alternates: {
-      canonical: `/recipes/${params.slug}`,
+      canonical: `/recipes/${slug}`,
     },
   };
 }
@@ -59,14 +60,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: PageProps) {
-  const recipe = getRecipeBySlug(params.slug);
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+  const recipe = getRecipeBySlug(slug);
 
   if (!recipe) {
     notFound();
   }
 
-  return <RecipePage params={params} />;
+  return <RecipePage params={{ slug }} />;
 }
 
 // Enable ISR for better performance
