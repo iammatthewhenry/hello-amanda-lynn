@@ -1,6 +1,6 @@
 'use client';
 
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { GridSection } from '@/components/GridSection';
 
 export default function AppetizersPage() {
@@ -45,25 +45,15 @@ export default function AppetizersPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <div className="container-max px-8 pt-6 pb-4">
-        <Breadcrumbs 
-          items={[
-            { label: 'Recipes', href: '/recipes' },
-            { label: 'Appetizers' },
-          ]} 
-        />
-      </div>
+      <PageHeader
+        breadcrumbs={[
+          { label: 'Recipes', href: '/recipes' },
+          { label: 'Appetizers' },
+        ]}
+        title="Appetizers"
+        description="Perfect starters and small bites for any occasion. From elegant party appetizers to simple snacks, find the perfect way to begin your meal."
+      />
 
-      {/* Page Header */}
-      <section className="container-max px-8 pb-8">
-        <h1 className="text-[48px] font-bold text-foreground mb-4">Appetizers</h1>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Perfect starters and small bites for any occasion. From elegant party appetizers to simple snacks, find the perfect way to begin your meal.
-        </p>
-      </section>
-
-      {/* Recipe Grid */}
       <GridSection
         title="Appetizer Recipes"
         posts={appetizers}
