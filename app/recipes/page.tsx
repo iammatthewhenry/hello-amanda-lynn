@@ -1,4 +1,4 @@
-import RecipeListingPage from '@/components/RecipeListingPage';
+import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +17,11 @@ export const metadata: Metadata = {
 };
 
 export default function RecipesPage() {
-  return <RecipeListingPage />;
+  return (
+    <main>
+      <BrowseByCategorySection />
+    </main>
+  );
 }
 
 // Enable ISR
