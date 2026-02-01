@@ -2,7 +2,7 @@
 
 import { Facebook, Share2, Twitter, Mail, Link as LinkIcon, Copy } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ShareBarProps {
   title: string;
@@ -13,19 +13,22 @@ interface ShareBarProps {
 
 export function ShareBar({ title, description, imageUrl, showPrint = false }: ShareBarProps) {
   const [copied, setCopied] = useState(false);
-  
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const [canShare, setCanShare] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('');
 
-  const shareData = {
-    title,
-    text: description,
-    url: currentUrl
-  };
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+    setCanShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+  }, []);
 
   const handleNativeShare = async () => {
-    if (navigator.share) {
+    if (canShare) {
       try {
-        await navigator.share(shareData);
+        await navigator.share({
+          title,
+          text: description,
+          url: currentUrl
+        });
       } catch (err) {
         // User cancelled or error occurred
         console.log('Share cancelled or failed');
@@ -132,7 +135,7 @@ export function ShareBar({ title, description, imageUrl, showPrint = false }: Sh
         {copied ? <Copy className="w-5 h-5" /> : <LinkIcon className="w-5 h-5" />}
       </button>
 
-      {navigator.share && (
+      {canShare && (
         <button
           onClick={handleNativeShare}
           className="share-button"
