@@ -191,6 +191,7 @@ div[style*="0 12px 17px"] {
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .share-icon-button:hover {
@@ -200,6 +201,22 @@ div[style*="0 12px 17px"] {
 
 .share-icon-button:active {
   transform: scale(0.95);
+}
+
+/* Ensure SVG icons inside buttons are white */
+.share-icon-button svg {
+  color: white;
+  fill: currentColor;
+}
+
+/* Override any default link styles */
+a.share-icon-button {
+  color: white;
+}
+
+a.share-icon-button:hover {
+  color: white;
+  text-decoration: none;
 }
 
 /* =========================================================
