@@ -13,21 +13,6 @@ import { RecipePageTemplate } from "@/components/RecipePageTemplate";
 import { toast } from "sonner";
 import { getRecipeBySlug } from "@/data/recipe-data";
 
-// Extend Window interface for Turnstile
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (element: string | HTMLElement, options: {
-        sitekey: string;
-        callback?: (token: string) => void;
-        theme?: string;
-        size?: string;
-      }) => string;
-      reset: (widgetId: string) => void;
-    };
-  }
-}
-
 interface RecipePageProps {
   params: {
     slug: string;
