@@ -319,7 +319,7 @@ export default function RecipePage({ params }: RecipePageProps) {
             </div>
 
             {/* Recipe Card */}
-            <div className="recipe-card-print bg-secondary p-4 sm:p-6 lg:p-8" style={{ boxShadow: '0 12px 17px -4px rgb(0 0 0 / 0.1), 0 5px 7px -5px rgb(0 0 0 / 0.1)' }}>
+            <div className="recipe-card-print p-4 sm:p-6 lg:p-8" style={{ backgroundColor: '#F5EBE8', boxShadow: '0 12px 17px -4px rgb(0 0 0 / 0.1), 0 5px 7px -5px rgb(0 0 0 / 0.1)' }}>
               {/* Print Header (shows above green line when printing) */}
               <div className="print-header hidden print:block">
                 <div className="flex items-start justify-between">
