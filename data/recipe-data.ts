@@ -358,6 +358,83 @@ export const recipes: Record<string, Recipe> = {
         link: "https://www.amazon.com/s?k=meat+thermometer"
       }
     ]
+  },
+  "eggs-benedict": {
+    id: "4",
+    slug: "eggs-benedict",
+    title: "Eggs Benedict",
+    image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZ2dzJTIwYmVuZWRpY3R8ZW58MXx8fHwxNzYxOTU1MzQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    publishedDate: "November 5, 2025",
+    author: "Amanda Lynn",
+    category: "Breakfast",
+    description: "Classic brunch dish with perfectly poached eggs, Canadian bacon, and silky hollandaise sauce on toasted English muffins.",
+    prepTime: "15 min",
+    cookTime: "20 min",
+    totalTime: "35 min",
+    servings: "4 servings",
+    content: [
+      "Eggs Benedict is the ultimate brunch indulgence. Perfectly poached eggs sit atop toasted English muffins and Canadian bacon, all crowned with rich, buttery hollandaise sauce.",
+      "The key to success is timing - you want everything to come together hot and fresh. I recommend making the hollandaise first and keeping it warm, then poaching the eggs last.",
+      "Don't be intimidated by the hollandaise! While it has a reputation for being tricky, following a few simple rules makes it foolproof. The key is to add the butter slowly and keep the heat gentle.",
+      "This restaurant-quality dish is easier than you think and will impress everyone at your brunch table."
+    ],
+    ingredients: [
+      { imperial: "4 English muffins, split", metric: "4 English muffins, split" },
+      { imperial: "8 slices Canadian bacon", metric: "8 slices Canadian bacon" },
+      { imperial: "8 large eggs", metric: "8 large eggs" },
+      { imperial: "1 tablespoon white vinegar", metric: "15 ml white vinegar" },
+      { imperial: "3 egg yolks", metric: "3 egg yolks" },
+      { imperial: "1 tablespoon lemon juice", metric: "15 ml lemon juice" },
+      { imperial: "1/2 cup butter, melted", metric: "115 g butter, melted" },
+      { imperial: "1/4 teaspoon salt", metric: "1.5 g salt" },
+      { imperial: "Pinch of cayenne pepper", metric: "Pinch of cayenne pepper" },
+      { imperial: "Fresh chives for garnish", metric: "Fresh chives for garnish" },
+      { imperial: "Paprika for garnish", metric: "Paprika for garnish" }
+    ],
+    instructions: [
+      "Make the hollandaise: In a blender, combine egg yolks, lemon juice, salt, and cayenne. Blend for 30 seconds.",
+      "With the blender running on low, slowly drizzle in the hot melted butter until the sauce is thick and creamy. Keep warm by placing the blender container in a bowl of warm water.",
+      "Fill a large, deep skillet with 3 inches of water and bring to a gentle simmer. Add the vinegar.",
+      "Crack each egg into a small cup. Create a gentle whirlpool in the water and slide each egg into the center. Poach for 3-4 minutes for runny yolks.",
+      "While eggs are poaching, toast the English muffins and warm the Canadian bacon in a separate pan.",
+      "To assemble: Place two muffin halves on each plate. Top each with a slice of Canadian bacon, then a poached egg.",
+      "Spoon hollandaise sauce generously over each egg. Garnish with fresh chives and a light dusting of paprika.",
+      "Serve immediately while everything is hot."
+    ],
+    notes: [
+      "For perfect poached eggs, use the freshest eggs possible - they hold their shape better.",
+      "If hollandaise breaks, add a tablespoon of hot water and blend again.",
+      "You can substitute ham, smoked salmon, or sautéed spinach for the Canadian bacon.",
+      "To keep hollandaise warm without breaking, place it in a thermos or over a bowl of warm (not hot) water.",
+      "Make-ahead tip: Poach eggs the night before, store in ice water in the fridge, and reheat in simmering water for 1 minute."
+    ],
+    equipment: [
+      {
+        name: "Blender",
+        image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        link: "https://www.amazon.com/s?k=blender"
+      },
+      {
+        name: "Large Skillet",
+        image: "https://images.unsplash.com/photo-1567954046925-780ec4ab0157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        link: "https://www.amazon.com/s?k=large+skillet"
+      },
+      {
+        name: "Slotted Spoon",
+        image: "https://images.unsplash.com/photo-1621516564261-edd66d1e8b22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        link: "https://www.amazon.com/s?k=slotted+spoon"
+      },
+      {
+        name: "Small Bowls",
+        image: "https://images.unsplash.com/photo-1675179181679-f636d0a7c629?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        link: "https://www.amazon.com/s?k=small+bowls"
+      },
+      {
+        name: "Toaster",
+        image: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        link: "https://www.amazon.com/s?k=toaster"
+      }
+    ]
   }
 };
 

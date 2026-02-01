@@ -5,10 +5,10 @@ import { useParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, Copy, Printer } from 'lucide-react';
+import { Star, Copy, Printer, Facebook, Instagram, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 
-// UI Components (assuming these exist in your project)
+// UI Components
 import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
@@ -33,8 +33,10 @@ export default function RecipePage({ params }: RecipeComponentProps) {
   const [isMetric, setIsMetric] = useState(false);
   const [checkedIngredients, setCheckedIngredients] = useState<{[key: number]: boolean}>({});
   const [userRating, setUserRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
   const [submittedRatings, setSubmittedRatings] = useState<number[]>([]);
   const [turnstileToken, setTurnstileToken] = useState<string>('');
+  const [servingMultiplier, setServingMultiplier] = useState(1);
   
   const turnstileRef = useRef<HTMLDivElement>(null);
 
@@ -54,10 +56,46 @@ export default function RecipePage({ params }: RecipeComponentProps) {
     return text;
   };
 
-  // Get ingredient text based on metric/imperial preference
+  // Scale ingredient amounts
+  const scaleIngredient = (ingredientText: string): string => {
+    if (servingMultiplier === 1) return ingredientText;
+    
+    // Scale whole numbers and fractions
+    return ingredientText.replace(/(\d+(?:\/\d+)?|\d+\.\d+)/g, (match) => {
+      if (match.includes('/')) {
+        const [num, den] = match.split('/').map(Number);
+        const scaled = (num / den) * servingMultiplier;
+        // Convert back to fraction if reasonable, otherwise decimal
+        if (scaled < 1 && scaled * 2 === Math.floor(scaled * 2)) {
+          const newNum = Math.floor(scaled * 2);
+          return `${newNum}/2`;
+        }
+        if (scaled < 1 && scaled * 4 === Math.floor(scaled * 4)) {
+          const newNum = Math.floor(scaled * 4);
+          return `${newNum}/4`;
+        }
+        return scaled % 1 === 0 ? scaled.toString() : scaled.toFixed(1);
+      }
+      const scaled = parseFloat(match) * servingMultiplier;
+      return scaled % 1 === 0 ? scaled.toString() : scaled.toFixed(1);
+    });
+  };
+
+  // Get ingredient text based on metric/imperial preference with scaling
   const getIngredientText = (index: number): string => {
     const ingredient = recipe.ingredients[index];
-    return convertTemperatureText(isMetric ? ingredient.metric : ingredient.imperial);
+    const text = isMetric ? ingredient.metric : ingredient.imperial;
+    const scaledText = scaleIngredient(text);
+    return convertTemperatureText(scaledText);
+  };
+
+  // Get scaled servings
+  const getScaledServings = (): string => {
+    const match = recipe.servings.match(/(\d+)/);
+    if (!match) return recipe.servings;
+    const baseServings = parseInt(match[1]);
+    const scaledServings = baseServings * servingMultiplier;
+    return recipe.servings.replace(/\d+/, scaledServings.toString());
   };
 
   // Clipboard copy functionality
@@ -199,7 +237,7 @@ export default function RecipePage({ params }: RecipeComponentProps) {
             </div>
             <div className="text-center">
               <div className="text-xs sm:text-sm text-foreground/60 mb-1">Servings</div>
-              <div className="font-semibold text-sm sm:text-base">{recipe.servings}</div>
+              <div className="font-semibold text-sm sm:text-base">{getScaledServings()}</div>
             </div>
           </div>
 
@@ -231,8 +269,9 @@ export default function RecipePage({ params }: RecipeComponentProps) {
 
           {/* Recipe Details Container */}
           <div className="bg-background rounded-lg border-2 border-green p-4 sm:p-6 lg:p-8">
-            {/* Unit Toggle */}
-            <div className="flex justify-center mb-4 sm:mb-6 print:hidden">
+            {/* Unit Toggle and Scale Controls */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4 sm:mb-6 print:hidden">
+              {/* Imperial/Metric Toggle */}
               <div className="flex items-center gap-3 p-2 bg-muted rounded-lg">
                 <span className={`text-sm ${!isMetric ? 'font-semibold' : ''}`}>Imperial</span>
                 <Switch
@@ -242,6 +281,28 @@ export default function RecipePage({ params }: RecipeComponentProps) {
                 />
                 <span className={`text-sm ${isMetric ? 'font-semibold' : ''}`}>Metric</span>
               </div>
+
+              {/* Scale Controls */}
+              {activeTab === 'ingredients' && (
+                <div className="flex items-center gap-3 p-2 bg-muted rounded-lg">
+                  <span className="text-sm font-medium text-foreground/70">Scale:</span>
+                  <div className="flex gap-1">
+                    {[1, 2, 3].map((multiplier) => (
+                      <button
+                        key={multiplier}
+                        onClick={() => setServingMultiplier(multiplier)}
+                        className={`px-3 py-1 text-sm font-semibold rounded transition-colors ${
+                          servingMultiplier === multiplier
+                            ? 'bg-green text-green-foreground'
+                            : 'bg-background text-foreground hover:bg-green/10'
+                        }`}
+                      >
+                        {multiplier}x
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Tab Navigation */}
@@ -408,12 +469,14 @@ export default function RecipePage({ params }: RecipeComponentProps) {
                     onClick={() => {
                       setUserRating(star);
                     }}
+                    onMouseEnter={() => setHoveredRating(star)}
+                    onMouseLeave={() => setHoveredRating(0)}
                     className="transition-all hover:scale-110"
                     aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                   >
                     <Star 
                       className={`w-8 h-8 sm:w-10 sm:h-10 text-[#D4A5A5] transition-all ${
-                        star <= userRating ? 'fill-[#D4A5A5]' : 'fill-transparent hover:fill-[#D4A5A5]'
+                        star <= (hoveredRating || userRating) ? 'fill-[#D4A5A5]' : 'fill-transparent'
                       }`}
                     />
                   </button>
