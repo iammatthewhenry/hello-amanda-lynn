@@ -89,7 +89,7 @@ export default function RecipePage({ params }: RecipePageProps) {
             setTurnstileToken(token);
           },
           theme: 'light',
-          size: 'invisible'
+          size: 'compact'
         });
       }
     };
