@@ -24,6 +24,8 @@
   /* SHADOWS */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
   --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-hero: 0 10px 40px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12);
 
   /* RADIUS */
   --radius-lg: 16px;
@@ -127,5 +129,168 @@
   /* Number Font - Montserrat for ranking numbers */
   .number-font {
     font-family: var(--font-montserrat);
+  }
+}
+
+/* =========================================================
+   RECIPE PAGE STYLES
+   ========================================================= */
+
+/* Ensure textured background renders correctly */
+.recipe-template-card {
+  position: relative;
+  z-index: 1;
+}
+
+.recipe-template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FCFCFC;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Recipe Page Polaroid Images - Force shadows to render */
+img[style*="shadow-hero"],
+.polaroid-image,
+[style*="boxShadow: 'var(--shadow-hero')"] {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Equipment images */
+div[style*="shadow-hero"] {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Recipe card shadow */
+.recipe-card-print,
+div[style*="0 12px 17px"] {
+  box-shadow: 0 12px 17px -4px rgba(0, 0, 0, 0.1), 0 5px 7px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Share Bar Styles */
+.share-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.share-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #7A9B8E;
+  color: white;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.share-icon-button:hover {
+  background-color: #6A8B7E;
+  transform: scale(1.1);
+}
+
+.share-icon-button:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   RECIPE PAGE PRINT STYLES
+   ========================================================= */
+@media print {
+  /* Hide elements that shouldn't print */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Print-specific layouts */
+  .print-columns {
+    column-count: 2;
+    column-gap: 2rem;
+    break-inside: avoid;
+  }
+
+  .print-columns > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Print header (shows at top of first page) */
+  .print-header {
+    display: block !important;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Print notes section */
+  .print-notes {
+    display: block !important;
+    margin-top: 2rem;
+    page-break-before: auto;
+  }
+
+  /* Logo footer that appears on every page */
+  .print-logo-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-top: 2px solid #7A9B8E;
+    background: white;
+  }
+
+  .print-logo-container {
+    width: 80px;
+    height: auto;
+  }
+
+  .print-logo-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .print-title-container {
+    flex: 1;
+    text-align: right;
+  }
+
+  .print-footer-title {
+    font-size: 14px;
+    color: #7A9B8E;
+    font-weight: 600;
+  }
+
+  /* Recipe card adjustments for print */
+  .recipe-card-print {
+    box-shadow: none !important;
+    border: 2px solid #7A9B8E !important;
+  }
+
+  /* Ensure proper page breaks */
+  h3 {
+    page-break-after: avoid;
+  }
+
+  /* Keep ingredient/instruction items together */
+  li, p {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure images don't break */
+  img {
+    page-break-inside: avoid;
+    max-width: 100%;
   }
 }
