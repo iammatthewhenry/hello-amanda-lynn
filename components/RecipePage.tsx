@@ -405,7 +405,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                       alt="Recipe Card"
                       width={214}
                       height={214}
-                      className="w-[40vw] max-w-[164px] sm:w-[164px] lg:w-[188px] xl:w-[214px] aspect-square object-cover border-8 sm:border-[12px] lg:border-[16px] border-white border border-gray-200"
+                      className="w-[40vw] max-w-[164px] sm:w-[164px] lg:w-[188px] xl:w-[214px] aspect-square object-cover border-[5px] sm:border-[7px] lg:border-[10px] border-white border border-gray-200"
                       style={{
                         boxShadow: 'var(--shadow-hero)'
                       }}
