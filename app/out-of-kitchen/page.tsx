@@ -18,143 +18,155 @@ interface BlogPost {
 export default function OutOfKitchenPage() {
   const router = useRouter();
   
+  // Food Destinations - matches food-destinations-page.tsx
   const foodDestinationPosts: BlogPost[] = [
     {
-      title: "Exploring Local Food Markets",
-      description: "Nothing beats the vibrant energy of a local farmer's market. Today's haul included fresh produce, artisanal cheeses, and the most amazing sourdough bread.",
-      image: "https://images.unsplash.com/photo-1649871198591-61ebbcd13940?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBmb29kJTIwbWFya2V0fGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Farmer's Market",
+      title: "A Culinary Weekend in Portland",
+      description: "From food trucks to fine dining, Portland's diverse food scene offers something for every palate. A perfect culinary destination just a short drive from Seattle.",
+      image: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Portland, Oregon",
       date: "October 8, 2025",
-      slug: "local-food-markets"
+      slug: "portland-food-scene"
     },
     {
-      title: "Wine Tasting at Sunset Vineyard",
-      description: "An afternoon of wine tasting in the rolling hills. The sommelier's passion and knowledge made each sip a journey of discovery.",
-      image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aW5lJTIwdGFzdGluZ3xlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Sunset Vineyard",
-      date: "September 12, 2025",
-      slug: "wine-tasting"
+      title: "Cross-Border Culinary Adventure in Vancouver",
+      description: "Just a few hours north, Vancouver offers an incredible Asian food scene, fresh Pacific seafood, and a multicultural dining experience that rivals any major food city.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Vancouver, BC",
+      date: "October 1, 2025",
+      slug: "vancouver-bc-eats"
     },
     {
-      title: "Street Food Adventure",
-      description: "Exploring the city's vibrant street food scene. From tacos to banh mi, every bite told a story of culture and tradition.",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJlZXQlMjBmb29kfGVufDF8fHx8MTc2MTQ3NDQwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "City Streets",
-      date: "September 5, 2025",
-      slug: "street-food-adventure"
+      title: "Spring Flavors During Tulip Season in La Conner",
+      description: "The annual tulip festival brings visitors for the flowers, but the local food scene showcases the best of Skagit Valley's agricultural abundance.",
+      image: "https://images.unsplash.com/photo-1520637836862-4d197d17c3a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "La Conner, Washington",
+      date: "September 22, 2025",
+      slug: "la-conner-tulip-festival"
     },
     {
-      title: "Chocolate Tasting Experience",
-      description: "A delightful journey through different cocoa origins and chocolate-making techniques. Pure indulgence for chocolate lovers.",
-      image: "https://images.unsplash.com/photo-1511381939415-e44015466834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaG9jb2xhdGUlMjBkZXNzZXJ0fGVufDF8fHx8MTc2MTQ3NDQwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Cocoa House",
-      date: "July 20, 2025",
-      slug: "chocolate-tasting"
+      title: "Fruit Country Adventures in Hood River",
+      description: "The Columbia River Gorge isn't just scenic – it's one of the West Coast's premier fruit-growing regions, with orchards, wineries, and restaurants that celebrate local agriculture.",
+      image: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Hood River, Oregon",
+      date: "September 18, 2025",
+      slug: "hood-river-gorge"
     },
   ];
 
+  // Restaurants - matches restaurants-page.tsx
   const restaurantPosts: BlogPost[] = [
     {
       title: "A Cozy Evening at The Garden Bistro",
       description: "Discovered this hidden gem tucked away in the heart of downtown. The seasonal menu and intimate atmosphere made for an unforgettable dining experience.",
-      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDF8fHx8MTc2MTQwOTc1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Downtown",
+      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Downtown Seattle",
       date: "October 15, 2025",
       slug: "the-garden-bistro"
     },
     {
-      title: "Sunday Brunch at Corner Café",
-      description: "Their signature pancakes and perfectly brewed coffee made this Sunday brunch absolutely delightful. The cozy ambiance and friendly service keep me coming back.",
-      image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Corner Café",
-      date: "September 29, 2025",
-      slug: "corner-cafe"
+      title: "Home Cooking at Mama's Kitchen",
+      description: "This family-owned restaurant serves comfort food that reminds you of Sunday dinners at your grandmother's house.",
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Fremont",
+      date: "October 10, 2025",
+      slug: "mamas-kitchen"
     },
     {
-      title: "Tasting Menu Experience",
-      description: "An incredible 7-course tasting menu that showcased seasonal ingredients in the most creative ways. Each dish was a work of art.",
-      image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3VybWV0JTIwZm9vZCUyMHBsYXRpbmd8ZW58MXx8fHwxNzYxNDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Le Petit Chef",
-      date: "September 20, 2025",
-      slug: "le-petit-chef"
+      title: "Fresh Catch at The Seafood Shack",
+      description: "No-frills seafood restaurant where the fish is so fresh it was swimming this morning. A local favorite for over 30 years.",
+      image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Ballard",
+      date: "October 2, 2025",
+      slug: "seafood-shack"
     },
     {
-      title: "Farm-to-Table Dinner",
-      description: "A memorable dinner featuring ingredients sourced from local farms. The chef's creativity shined in every course.",
-      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdG8lMjB0YWJsZSUyMGRpbm5lcnxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Harvest Table",
-      date: "August 20, 2025",
-      slug: "farm-to-table"
+      title: "Authentic Flavors at Thai Garden",
+      description: "Family recipes brought directly from Bangkok create some of the most authentic Thai food in the Pacific Northwest.",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "International District",
+      date: "September 25, 2025",
+      slug: "thai-garden"
     },
     {
-      title: "Coastal Seafood Feast",
-      description: "Fresh catch of the day prepared with simple elegance. The ocean view and sea breeze made it picture perfect.",
-      image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZWFmb29kJTIwcGxhdHRlcnxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "The Wharf",
-      date: "August 12, 2025",
-      slug: "coastal-seafood"
-    },
-    {
-      title: "Rooftop Dining Under the Stars",
-      description: "An enchanting evening of fine dining with a stunning city skyline view. The ambiance was magical.",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb29mdG9wJTIwcmVzdGF1cmFudHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Sky Terrace",
-      date: "July 28, 2025",
-      slug: "rooftop-dining"
+      title: "New York Style at Pizza Corner",
+      description: "Thin crust pizza that rivals anything you'd find on the East Coast, made by a chef who learned his craft in Brooklyn.",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Capitol Hill",
+      date: "September 18, 2025",
+      slug: "pizza-corner"
     },
   ];
 
-  const farmersMarketPosts: BlogPost[] = [
+  // Markets & Shops - matches markets-and-shops-page.tsx
+  const marketsAndShopsPosts: BlogPost[] = [
     {
-      title: "Afternoon Tea at The Rose Garden",
-      description: "An elegant afternoon tea service complete with delicate sandwiches, scones, and an impressive selection of teas.",
-      image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnRlcm5vb24lMjB0ZWF8ZW58MXx8fHwxNzYxNDc0NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "The Rose Garden",
-      date: "August 28, 2025",
-      slug: "afternoon-tea"
+      title: "Early Morning at Pike Place Market",
+      description: "The best time to experience Seattle's iconic market is before the crowds arrive. Fresh seafood, seasonal produce, and the energy of vendors starting their day.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Pike Place, Seattle",
+      date: "October 12, 2025",
+      slug: "pike-place-market"
     },
     {
-      title: "Artisan Bakery Discovery",
-      description: "Found this charming bakery where every pastry is handcrafted with love. The croissants are absolutely divine.",
-      image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWtlcnklMjBwYXN0cmllc3xlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Village Bakery",
-      date: "August 5, 2025",
-      slug: "artisan-bakery"
+      title: "Community Shopping at PCC Natural Markets",
+      description: "More than just a grocery store, PCC represents a commitment to local, organic, and sustainable food that has shaped Seattle's food culture for decades.",
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Multiple locations",
+      date: "October 8, 2025",
+      slug: "pcc-natural-markets"
+    },
+    {
+      title: "Vintage Kitchen Treasures at Golden Age Collectables",
+      description: "A treasure hunter's paradise for vintage kitchen equipment and collectibles. You never know what culinary gems you'll discover in this eclectic shop.",
+      image: "https://images.unsplash.com/photo-1552566090-4a3b6d8f9c6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Georgetown",
+      date: "October 3, 2025",
+      slug: "golden-age-collectables"
+    },
+    {
+      title: "Global Flavors at The Spice Merchant",
+      description: "A specialty spice shop where every jar contains stories from around the world. This is where serious cooks come to find ingredients that transform ordinary dishes into extraordinary experiences.",
+      image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Pike Place Market",
+      date: "September 30, 2025",
+      slug: "spice-merchant"
     },
   ];
 
+  // Food Festivals - matches food-festivals-page.tsx
   const foodFestivalPosts: BlogPost[] = [
     {
-      title: "Summer Food Truck Festival",
-      description: "A day filled with amazing food trucks, live music, and community vibes. The variety of cuisines was incredible!",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb29kJTIwdHJ1Y2slMjBmZXN0aXZhbHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "City Park",
+      title: "Taste of Seattle: A Summer Food Celebration",
+      description: "Seattle's premier food festival brings together the city's best restaurants, food trucks, and local vendors for a weekend of incredible flavors at Seattle Center.",
+      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Seattle Center",
       date: "July 15, 2025",
-      slug: "summer-food-truck-festival"
+      slug: "taste-of-seattle"
     },
     {
-      title: "Annual Harvest Festival",
-      description: "Celebrating the season's bounty with local farmers, artisan vendors, and delicious seasonal dishes.",
-      image: "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXJ2ZXN0JTIwZmVzdGl2YWx8ZW58MXx8fHwxNzYxNDc0NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Harvest Grounds",
-      date: "October 10, 2025",
-      slug: "annual-harvest-festival"
+      title: "Pike Place Chowder Fest: Battle of the Bowls",
+      description: "An annual celebration of the Pacific Northwest's finest chowders, where restaurants compete for the title of best bowl while visitors sample infinite variations of this coastal classic.",
+      image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Pike Place Market",
+      date: "February 8, 2025",
+      slug: "pike-place-chowder-fest"
     },
     {
-      title: "International Food Fair",
-      description: "A journey around the world through food. From authentic tacos to traditional dim sum, this fair had it all.",
-      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnRlcm5hdGlvbmFsJTIwZm9vZHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Convention Center",
-      date: "June 20, 2025",
-      slug: "international-food-fair"
+      title: "International District Night Market: Street Food Paradise",
+      description: "A vibrant evening celebration of Asian street food, where the aromas of grilled meats, steaming dumplings, and exotic spices fill the streets of Seattle's historic International District.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "International District",
+      date: "August 22, 2025",
+      slug: "international-district-night-market"
     },
     {
-      title: "BBQ & Blues Festival",
-      description: "Smoky meats, tangy sauces, and soulful blues music made this weekend unforgettable.",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYnElMjBmZXN0aXZhbHxlbnwxfHx8fDE3NjE0NzQ0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      location: "Riverside Park",
-      date: "May 25, 2025",
-      slug: "bbq-blues-festival"
+      title: "Wenatchee Apple Blossom Festival: Orchard to Table",
+      description: "Eastern Washington's celebration of apple harvest season combines small-town charm with incredible local food, wine, and the beauty of orchards in full bloom.",
+      image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Wenatchee Valley",
+      date: "April 26, 2025",
+      slug: "apple-blossom-festival"
     },
   ];
 
@@ -167,14 +179,14 @@ export default function OutOfKitchenPage() {
         {/* PageHeader now focuses only on title and description */}
         <PageHeader 
           title="Out of Kitchen"
-          description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers market, and exploring food destinations."
+          description="Join me on culinary adventures beyond the kitchen. From restaurant reviews to farmers markets, and exploring food destinations."
         />
 
         <GridSection
-          title="Food Destination"
+          title="Food Destinations"
           posts={foodDestinationPosts}
-          baseSlug="/out-of-kitchen"
-          viewAllLink="/out-of-kitchen/food-destination/all-posts"
+          baseSlug="/out-of-kitchen/food-destinations"
+          viewAllLink="/out-of-kitchen/food-destinations/all-posts"
           viewAllLabel="View All Food Destinations"
           isFirstSection={true}
         />
@@ -182,23 +194,23 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Restaurants"
           posts={restaurantPosts}
-          baseSlug="/out-of-kitchen"
+          baseSlug="/out-of-kitchen/restaurants"
           viewAllLink="/out-of-kitchen/restaurants/all-posts"
           viewAllLabel="View All Restaurants"
         />
 
         <GridSection
-          title="Farmers Markets"
-          posts={farmersMarketPosts}
-          baseSlug="/out-of-kitchen"
-          viewAllLink="/out-of-kitchen/farmers-markets/all-posts"
-          viewAllLabel="View All Farmers Markets"
+          title="Markets & Shops"
+          posts={marketsAndShopsPosts}
+          baseSlug="/out-of-kitchen/markets-and-shops"
+          viewAllLink="/out-of-kitchen/markets-and-shops/all-posts"
+          viewAllLabel="View All Markets & Shops"
         />
 
         <GridSection
           title="Food Festivals"
           posts={foodFestivalPosts}
-          baseSlug="/out-of-kitchen"
+          baseSlug="/out-of-kitchen/food-festivals"
           viewAllLink="/out-of-kitchen/food-festivals/all-posts"
           viewAllLabel="View All Food Festivals"
         />
@@ -215,9 +227,9 @@ export default function OutOfKitchenPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { name: "The Garden Bistro", city: "Portland", state: "OR", specialty: "Farm-to-table cuisine", slug: "the-garden-bistro" },
-                { name: "Corner Café", city: "Seattle", state: "WA", specialty: "Best brunch in town", slug: "corner-cafe" },
-                { name: "Le Petit Chef", city: "San Francisco", state: "CA", specialty: "Fine dining experience", slug: "le-petit-chef" },
+                { name: "The Garden Bistro", city: "Seattle", state: "WA", specialty: "Farm-to-table cuisine", slug: "restaurants/the-garden-bistro" },
+                { name: "Pike Place Market", city: "Seattle", state: "WA", specialty: "Fresh seafood & produce", slug: "markets-and-shops/pike-place-market" },
+                { name: "Taste of Seattle", city: "Seattle", state: "WA", specialty: "Multi-vendor food festival", slug: "food-festivals/taste-of-seattle" },
               ].map((spot, index) => (
                 <FavoriteSpotCard
                   key={index}
