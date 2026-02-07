@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/recipes', label: 'Recipes' },
   { href: '/in-the-kitchen', label: 'In The Kitchen' },
-  { href: '/out-of-kitchen', label: 'Out of Kitchen' },
+  { href: '/ook', label: 'Out of Kitchen' },
   { href: '/about', label: 'About' },
 ] as const;
 
