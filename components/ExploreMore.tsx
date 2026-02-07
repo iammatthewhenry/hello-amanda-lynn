@@ -44,7 +44,7 @@ const DEFAULT_CATEGORIES: ExploreCategory[] = [
     ),
     image:
       'https://images.unsplash.com/photo-1758275682464-ddd906bf34fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    page: 'out-of-kitchen',
+    page: 'ook',
   },
 ];
 
