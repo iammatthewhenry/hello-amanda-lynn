@@ -6,8 +6,7 @@ import { Pagination } from '@/components/Pagination';
 import { useState } from 'react';
 import { Container } from '@/components/Container';
 import { PageHeader } from '@/components/PageHeader';
-import { ReadMoreLink } from '@/components/ReadMoreLink';
-import { Section } from '@/components/ui';
+import { Section, ReadMoreLink } from '@/components/ui';
 
 interface FoodDestinationPost {
   title: string;
