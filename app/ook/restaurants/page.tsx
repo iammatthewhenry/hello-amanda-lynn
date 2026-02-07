@@ -61,7 +61,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
   );
 }
 
-export function RestaurantReviewsIndexPage() {
+export default function RestaurantReviewsIndexPage() {  // ✅ CHANGED TO DEFAULT EXPORT
   const router = useRouter();
 
   const restaurantReviews: RestaurantReview[] = [
@@ -184,9 +184,4 @@ export function RestaurantReviewsIndexPage() {
       </section>
     </main>
   );
-}
-
-// Next.js page component
-export default function RestaurantReviewsPage() {
-  return <RestaurantReviewsIndexPage />;
 }

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Search } from 'lucide-react';
 import { SocialIconsRow, DEFAULT_SOCIAL_LINKS } from './SocialIcons';
-import { Container } from './ui';
+import { Container } from './Container';
 
 // ===================================================================
 // CONFIGURATION

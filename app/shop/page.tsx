@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Container, Section, Card, Button } from '@/components/ui';
+import { Container } from '@/components/Container';
+import { Section, Card, Button } from '@/components/ui';
 
 export default function ShopPage() {
   const shopItems = [

@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Clock, Star, Users, DollarSign, Tag } from 'lucide-react';
 import { ShareBar } from '@/components/ShareBar';
-import { Container, Card, Button } from '@/components/ui';
+import { Container } from '@/components/Container';
+import { Card, Button } from '@/components/ui';
 
 interface BlogPost {
   title: string;
@@ -132,11 +133,10 @@ export default function BlogPostPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const blogPost = inTheKitchenPosts[slug];
-    if (blogPost) {
-      setPost(blogPost);
+    if (inTheKitchenPosts[slug]) {
+      setPost(inTheKitchenPosts[slug]);
+    } else {
+      setPost(null);
     }
     setLoading(false);
   }, [slug]);

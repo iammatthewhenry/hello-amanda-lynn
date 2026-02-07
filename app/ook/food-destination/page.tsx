@@ -4,7 +4,10 @@ import { useRouter } from 'next/navigation';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Pagination } from '@/components/Pagination';
 import { useState } from 'react';
-import { Container, Section, PageHeader, ReadMoreLink } from '@/components/ui';
+import { Container } from '@/components/Container';
+import { PageHeader } from '@/components/PageHeader';
+import { ReadMoreLink } from '@/components/ReadMoreLink';
+import { Section } from '@/components/ui';
 
 interface FoodDestinationPost {
   title: string;

@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { RotateCcw, Clock } from 'lucide-react';
-import { Container, Button, Card } from '@/components/ui';
+import { Container } from '@/components/Container';
+import { Button, Card } from '@/components/ui';
 
 interface GameCard {
   id: number;

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
-import { Container, Button } from '@/components/ui';
+import { Container } from './Container';
+import { Button } from '@/components/ui';
 
 // Cookie helper functions
 function setCookie(name: string, value: string, days: number = 365) {

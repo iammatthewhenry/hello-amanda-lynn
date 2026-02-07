@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ShareBar } from '@/components/ShareBar';
 import { BlogPostTemplate } from '@/components/BlogPostTemplate';
-import { Container } from '@/components/ui';
+import { Container } from '@/components/Container';
 
 interface BlogPost {
   title: string;
