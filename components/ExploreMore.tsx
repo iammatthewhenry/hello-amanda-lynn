@@ -1,5 +1,6 @@
 import { CategoryCard } from './CategoryCard';
-import { Section, SectionHeader } from './ui';
+import { SectionHeader } from './SectionHeader';
+import { Section } from './ui';
 import { ReactNode } from 'react';
 
 // ===================================================================

@@ -61,7 +61,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
   );
 }
 
-export default function RestaurantReviewsIndexPage() {  // ✅ CHANGED TO DEFAULT EXPORT
+export default function RestaurantReviewsIndexPage() {
   const router = useRouter();
 
   const restaurantReviews: RestaurantReview[] = [
@@ -93,7 +93,7 @@ export default function RestaurantReviewsIndexPage() {  // ✅ CHANGED TO DEFAUL
       description: "A hidden gem with seasonal menu and intimate atmosphere.",
       slug: "the-garden-bistro",
       date: "October 15, 2025",
-      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDF8fHx8MTc2MTQwOTc1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDF8fHx8MTc2MTQwOTc1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     }
   ].sort((a, b) => a.name.localeCompare(b.name));
 
