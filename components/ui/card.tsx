@@ -1,83 +1,43 @@
-import { type ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-
-export type CardVariant = 'default' | 'accordion' | 'feature' | 'content';
 
 interface CardProps {
   children: ReactNode;
-  variant?: CardVariant;
-  /** Center content (useful for feature cards) */
-  centered?: boolean;
   className?: string;
-  as?: 'div' | 'article' | 'section';
+  variant?: 'default' | 'outline' | 'ghost' | 'vintage';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-const variantStyles: Record<CardVariant, string> = {
-  default: 'bg-card p-6 shadow-[0_8px_30px_rgba(0,0,0,0.18),0_2px_12px_rgba(0,0,0,0.12)]',
-  accordion: 'bg-secondary p-6 shadow-[0_8px_30px_rgba(0,0,0,0.18),0_2px_12px_rgba(0,0,0,0.12)]',
-  feature: 'bg-secondary p-8 shadow-[0_8px_30px_rgba(0,0,0,0.18),0_2px_12px_rgba(0,0,0,0.12)]',
-  content: 'bg-content-box p-6',
+const variantClasses = {
+  default: 'bg-white border border-gray-200',
+  outline: 'border border-gray-200',
+  ghost: '',
+  vintage: 'bg-white border-2 border-green/20'
 };
 
-/**
- * Card component with various styles
- * Replaces: .accordion-card, .feature-card CSS classes
- */
-export function Card({
-  children,
+const paddingClasses = {
+  sm: 'p-3',
+  md: 'p-4',
+  lg: 'p-6',
+  xl: 'p-8'
+};
+
+export function Card({ 
+  children, 
+  className, 
   variant = 'default',
-  centered = false,
-  className,
-  as: Component = 'div',
+  padding = 'lg'
 }: CardProps) {
   return (
-    <Component
+    <div 
       className={cn(
-        variantStyles[variant],
-        centered && 'text-center',
+        'rounded-lg',
+        variantClasses[variant],
+        paddingClasses[padding],
         className
       )}
+      style={variant === 'vintage' ? { boxShadow: 'var(--shadow-card)' } : undefined}
     >
-      {children}
-    </Component>
-  );
-}
-
-interface CardHeaderProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function CardHeader({ children, className }: CardHeaderProps) {
-  return (
-    <div className={cn('mb-4', className)}>
-      {children}
-    </div>
-  );
-}
-
-interface CardTitleProps {
-  children: ReactNode;
-  as?: 'h2' | 'h3' | 'h4';
-  className?: string;
-}
-
-export function CardTitle({ children, as: Component = 'h3', className }: CardTitleProps) {
-  return (
-    <Component className={cn('font-bold', className)}>
-      {children}
-    </Component>
-  );
-}
-
-interface CardContentProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function CardContent({ children, className }: CardContentProps) {
-  return (
-    <div className={className}>
       {children}
     </div>
   );
