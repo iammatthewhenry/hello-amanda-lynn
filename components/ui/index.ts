@@ -3,14 +3,8 @@ export { ShoppingBasket } from './ShoppingBasket';
 export { DollarSign } from './DollarSign';
 
 // Layout Components  
-export { Container } from './Container';
-export { Section } from './Section';
-export { Card } from './Card';
-
-// Text Components
-export { SectionHeader } from './SectionHeader';
-export { PageHeader } from './PageHeader';
+export { Section } from './section';
+export { Card } from './card';
 
 // Interactive Components
-export { Button } from './Button';
-export { ReadMoreLink } from './ReadMoreLink';
+export { Button } from './button';
