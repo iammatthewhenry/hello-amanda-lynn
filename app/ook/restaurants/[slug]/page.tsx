@@ -4,7 +4,8 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { ShoppingBasket } from '@/components/ShoppingBasket';
+import { RatingStars } from '@/components/RatingStars';
+import { PriceRange } from '@/components/PriceRange';
 
 // Mock data - replace with WordPress API call
 const getRestaurantBySlug = (slug: string) => {
@@ -138,40 +139,6 @@ const getRestaurantBySlug = (slug: string) => {
 
   return restaurants.find(r => r.slug === slug);
 };
-
-// Rating stars component
-function RatingStars({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <ShoppingBasket
-          key={star}
-          size={20}
-          className={`${
-            star <= rating ? 'text-green' : 'text-gray-300'
-          }`}
-        />
-      ))}
-      <span className="ml-2 text-sm text-muted-foreground">
-        {rating}/5
-      </span>
-    </div>
-  );
-}
-
-// Price range component
-function PriceRange({ price }: { price: string }) {
-  return (
-    <div className="flex items-center gap-1">
-      <span className="text-green font-bold">{price}</span>
-      <span className="text-xs text-muted-foreground ml-1">
-        {price === "$" ? "Budget-friendly" : 
-         price === "$$" ? "Moderate" : 
-         price === "$$$" ? "Upscale" : "Fine dining"}
-      </span>
-    </div>
-  );
-}
 
 export default function RestaurantReviewPage() {
   const params = useParams();
