@@ -247,7 +247,7 @@ export default function NameThisPage() {
         ) : (
           // Game Complete Screen
           <div className="text-center py-20">
-            <Card variant="feature" className="bg-green/10 border-4 border-green p-12 max-w-md mx-auto">
+            <Card variant="vintage" className="bg-green/10 border-4 border-green p-12 max-w-md mx-auto">
               <h2 className="mb-4">🎉 Game Complete!</h2>
               <p className="text-muted-foreground">
                 You've revealed all {gameCards.length} herbs!
