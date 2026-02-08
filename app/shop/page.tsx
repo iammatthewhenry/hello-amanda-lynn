@@ -66,7 +66,7 @@ export default function ShopPage() {
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 lg:py-2.5 pb-12 sm:pb-16 lg:pb-20" style={{ maxWidth: '85%' }}>
         <Card 
-          variant="feature"
+          variant="vintage"
           className="p-6 sm:p-8 lg:p-10 xl:p-12 shadow-xl"
         >
           <div className="text-center mb-8 sm:mb-10">
