@@ -133,10 +133,8 @@ export default function BlogPostPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (inTheKitchenPosts[slug]) {
+    if (slug && inTheKitchenPosts[slug]) {
       setPost(inTheKitchenPosts[slug]);
-    } else {
-      setPost(null);
     }
     setLoading(false);
   }, [slug]);
@@ -224,7 +222,7 @@ export default function BlogPostPage() {
       {/* Tips Section */}
       {post.tips && post.tips.length > 0 && (
         <Container size="4xl" className="mb-12">
-          <Card variant="feature" className="p-8 rounded-lg border border-gray-200">
+          <Card variant="vintage" className="p-8 rounded-lg border border-gray-200">
             <h2 className="text-2xl font-bold mb-6">Key Takeaways</h2>
             <ul className="space-y-3">
               {post.tips.map((tip, index) => (
