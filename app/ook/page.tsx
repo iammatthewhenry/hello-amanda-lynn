@@ -51,97 +51,182 @@ function FavoriteSpotCard({
 }
 
 export default function OutOfKitchenPage() {
-  const favoriteSpots = [
+  const foodDestinations: BlogPost[] = [
     {
-      name: "Corner Café",
-      city: "Seattle",
-      state: "WA",
-      specialty: "Perfect Sunday brunch spot with legendary pancakes",
+      title: "Exploring Local Food Markets",
+      description: "Discovering treasures at the weekly farmer's market and connecting with local vendors.",
+      image: "https://images.unsplash.com/photo-1649871198591-61ebbcd13940?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Various Locations",
+      date: "October 8, 2025",
+      slug: "local-food-markets"
+    },
+    {
+      title: "Wine Tasting at Sunset Vineyard", 
+      description: "An afternoon of wine tasting paired with local artisan cheeses in Napa Valley.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Napa Valley, CA",
+      date: "September 15, 2025",
+      slug: "sunset-vineyard-tasting"
+    },
+    {
+      title: "Street Food Adventures",
+      description: "Exploring the vibrant street food scene and discovering hidden gems in Portland.",
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Portland, OR",
+      date: "August 28, 2025",
+      slug: "street-food-adventures"
+    }
+  ];
+
+  const restaurants: BlogPost[] = [
+    {
+      title: "A Cozy Evening at The Garden Bistro",
+      description: "An intimate farm-to-table experience showcasing seasonal ingredients.",
+      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Portland, OR", 
+      date: "October 15, 2025",
+      slug: "the-garden-bistro"
+    },
+    {
+      title: "Sunday Brunch at Corner Café",
+      description: "The perfect weekend brunch spot with legendary pancakes and fresh coffee.",
+      image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Seattle, WA",
+      date: "September 29, 2025",
       slug: "corner-cafe"
     },
     {
-      name: "Le Petit Chef", 
-      city: "San Francisco",
-      state: "CA",
-      specialty: "7-course journey through seasonal ingredients",
+      title: "Tasting Menu Experience",
+      description: "A seven-course journey through seasonal flavors at San Francisco's Le Petit Chef.",
+      image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "San Francisco, CA",
+      date: "September 20, 2025", 
       slug: "le-petit-chef"
+    }
+  ];
+
+  const farmersMarkets: BlogPost[] = [
+    {
+      title: "Pike Place Tea at The Rose Market",
+      description: "Discovering artisanal teas and local honey at Seattle's beloved weekend market.",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Seattle, WA",
+      date: "August 20, 2025",
+      slug: "pike-place-tea-rose-market"
     },
+    {
+      title: "Artisan Bakery Discovery", 
+      description: "Finding the perfect sourdough and meeting passionate bread makers.",
+      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Portland, OR",
+      date: "August 10, 2025",
+      slug: "artisan-bakery-discovery"
+    }
+  ];
+
+  const foodFestivals: BlogPost[] = [
+    {
+      title: "Seafood Town Food Festival",
+      description: "A celebration of coastal cuisine featuring local seafood and craft beverages.",
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", 
+      location: "Monterey, CA",
+      date: "July 25, 2025",
+      slug: "seafood-town-festival"
+    },
+    {
+      title: "Annual Harvest Festival",
+      description: "Farm-to-table dining experiences celebrating the autumn harvest season.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Napa Valley, CA", 
+      date: "July 15, 2025",
+      slug: "annual-harvest-festival"
+    },
+    {
+      title: "International Food Fair",
+      description: "Global flavors and cultural food experiences in the heart of the city.",
+      image: "https://images.unsplash.com/photo-1544025162-d76694265947?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "San Francisco, CA",
+      date: "July 5, 2025", 
+      slug: "international-food-fair"
+    }
+  ];
+
+  const favoriteSpots = [
     {
       name: "The Garden Bistro",
       city: "Portland", 
       state: "OR",
-      specialty: "Hidden gem with seasonal menu and intimate atmosphere",
+      specialty: "Farm-to-table cuisine",
       slug: "the-garden-bistro"
-    }
-  ];
-
-  const foodDestinations: BlogPost[] = [
-    {
-      title: "Pike Place Market Guide",
-      description: "Beyond the fish throwing: discovering the hidden gems and local favorites in Seattle's iconic market.",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      location: "Seattle, WA",
-      date: "August 28, 2025",
-      slug: "pike-place-market-guide"
     },
     {
-      title: "Napa Valley Food Trail",
-      description: "Wine country's best kept culinary secrets. Where to eat between tastings for the perfect Napa Valley experience.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      location: "Napa Valley, CA",
-      date: "August 15, 2025",
-      slug: "napa-valley-food-trail"
-    }
-  ];
-
-  const travelFood: BlogPost[] = [
-    {
-      title: "Food Truck Finds in Austin",
-      description: "The best mobile eats in the Live Music Capital. From breakfast tacos to late-night barbecue.",
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      location: "Austin, TX",
-      date: "July 20, 2025",
-      slug: "austin-food-truck-finds"
+      name: "Corner Café",
+      city: "Seattle",
+      state: "WA", 
+      specialty: "Best brunch in town",
+      slug: "corner-cafe"
     },
     {
-      title: "Charleston's Lowcountry Flavors",
-      description: "Exploring the rich culinary heritage of the South. From shrimp and grits to she-crab soup.",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      location: "Charleston, SC", 
-      date: "July 10, 2025",
-      slug: "charleston-lowcountry-flavors"
+      name: "Le Petit Chef",
+      city: "San Francisco",
+      state: "CA",
+      specialty: "Fine dining experience", 
+      slug: "le-petit-chef"
     }
   ];
 
   return (
     <>
-      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
       <StandaloneBreadcrumbs items={[{ label: 'Out of Kitchen' }]} />
 
       <main className="pt-6 sm:pt-8">
-        {/* PageHeader now focuses only on title and description */}
         <PageHeader 
           title="Out of Kitchen"
           description="Join me as I explore the culinary world beyond my kitchen. From restaurant reviews to food destinations, discover amazing dining experiences and culinary adventures."
         />
 
-        {/* Restaurant Reviews Section with FavoriteSpotCards */}
+        <GridSection
+          title="Food Destination"
+          posts={foodDestinations}
+          baseSlug="/ook"
+          viewAllLink="/ook/food-destinations"
+          viewAllLabel="View All Food Destinations"
+          isFirstSection={true}
+        />
+
+        <GridSection
+          title="Restaurants"
+          posts={restaurants}
+          baseSlug="/ook"
+          viewAllLink="/ook/restaurants" 
+          viewAllLabel="View All Restaurants"
+        />
+
+        <GridSection
+          title="Farmers Markets"
+          posts={farmersMarkets}
+          baseSlug="/ook"
+          viewAllLink="/ook/farmers-markets"
+          viewAllLabel="View All Farmers Markets"
+        />
+
+        <GridSection
+          title="Food Festivals"
+          posts={foodFestivals}
+          baseSlug="/ook"
+          viewAllLink="/ook/food-festivals"
+          viewAllLabel="View All Food Festivals"
+        />
+
+        {/* My Favorite Spots Section - Beige Cards at Bottom */}
         <section className="py-16 lg:py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-green">Restaurant Reviews</h2>
-              <a 
-                href="/ook/restaurants"
-                className="inline-flex items-center gap-2 text-green font-semibold hover:text-green/70 transition-colors"
-              >
-                View All Restaurants
-                <span>→</span>
-              </a>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-green mb-4">My Favorite Spots</h2>
+              <p className="text-muted-foreground">
+                These are the places that have captured my heart and my taste buds
+              </p>
             </div>
-            
-            <p className="text-muted-foreground mb-12">
-              My honest reviews of dining experiences from cozy cafés to fine dining establishments.
-            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {favoriteSpots.map((spot) => (
@@ -157,22 +242,6 @@ export default function OutOfKitchenPage() {
             </div>
           </div>
         </section>
-
-        <GridSection
-          title="Food Destinations"
-          posts={foodDestinations}
-          baseSlug="/ook"
-          viewAllLink="/ook/food-destinations"
-          viewAllLabel="View All Destinations"
-        />
-
-        <GridSection
-          title="Travel & Food"
-          posts={travelFood}
-          baseSlug="/ook"
-          viewAllLink="/ook/travel-food"
-          viewAllLabel="View All Travel Food"
-        />
       </main>
     </>
   );
