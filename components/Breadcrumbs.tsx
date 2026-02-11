@@ -71,5 +71,3 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
 }
 
 export default Breadcrumbs;
-
-export default Breadcrumbs;

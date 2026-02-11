@@ -93,7 +93,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
           key={category.title}
           title={category.title}
           image={category.image}
-          href={`/${category.page}`}
+          href={category.page}
           objectPosition={category.objectPosition}
         />
       ))}
