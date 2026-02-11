@@ -125,7 +125,7 @@ export default function OutOfKitchenPage() {
           description="Join me as I explore the culinary world beyond my kitchen. From restaurant reviews to food destinations, discover amazing dining experiences and culinary adventures."
         />
 
-        {/* Favorite Spots Section with Custom Cards */}
+        {/* Restaurant Reviews Section with FavoriteSpotCards */}
         <section className="py-16 lg:py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
