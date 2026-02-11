@@ -13,30 +13,64 @@ interface BlogPost {
   slug: string;
 }
 
+interface FavoriteSpotCardProps {
+  name: string;
+  city: string;
+  state: string;
+  specialty: string;
+  slug: string;
+  baseSlug?: string;
+}
+
+/**
+ * FavoriteSpotCard - Card component for displaying favorite restaurants/spots
+ * Features pink/beige background with text that turns green on hover
+ */
+function FavoriteSpotCard({ 
+  name, 
+  city, 
+  state, 
+  specialty, 
+  slug,
+  baseSlug = "/ook"
+}: FavoriteSpotCardProps) {
+  return (
+    <a 
+      href={`${baseSlug}/${slug}`}
+      className="block p-8 text-center transition-colors cursor-pointer hover:text-green"
+      style={{ 
+        backgroundColor: '#F5EBE8',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)'
+      }}
+    >
+      <h3 className="mb-2 font-bold">{name}</h3>
+      <p className="text-muted-foreground text-sm mb-2">{city}, {state}</p>
+      <p className="text-muted-foreground mb-6">{specialty}</p>
+    </a>
+  );
+}
+
 export default function OutOfKitchenPage() {
-  const restaurantReviews: BlogPost[] = [
+  const favoriteSpots = [
     {
-      title: "Corner Café",
-      description: "The perfect Sunday brunch spot with legendary pancakes. Seattle's cozy neighborhood gem delivers on both atmosphere and flavor.",
-      image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      location: "Seattle, WA",
-      date: "September 29, 2025",
+      name: "Corner Café",
+      city: "Seattle",
+      state: "WA",
+      specialty: "Perfect Sunday brunch spot with legendary pancakes",
       slug: "corner-cafe"
     },
     {
-      title: "Le Petit Chef",
-      description: "A 7-course journey through seasonal ingredients and creativity. San Francisco fine dining at its most inventive and delicious.",
-      image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3VybWV0JTIwZm9vZCUyMHBsYXRpbmd8ZW58MXx8fHwxNzYxNDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      location: "San Francisco, CA",
-      date: "September 20, 2025",
+      name: "Le Petit Chef", 
+      city: "San Francisco",
+      state: "CA",
+      specialty: "7-course journey through seasonal ingredients",
       slug: "le-petit-chef"
     },
     {
-      title: "The Garden Bistro",
-      description: "A hidden gem with seasonal menu and intimate atmosphere. Portland's farm-to-table movement at its most authentic.",
-      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDF8fHx8MTc2MTQwOTc1MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      location: "Portland, OR",
-      date: "October 15, 2025",
+      name: "The Garden Bistro",
+      city: "Portland", 
+      state: "OR",
+      specialty: "Hidden gem with seasonal menu and intimate atmosphere",
       slug: "the-garden-bistro"
     }
   ];
@@ -91,14 +125,38 @@ export default function OutOfKitchenPage() {
           description="Join me as I explore the culinary world beyond my kitchen. From restaurant reviews to food destinations, discover amazing dining experiences and culinary adventures."
         />
 
-        <GridSection
-          title="Restaurant Reviews"
-          posts={restaurantReviews}
-          baseSlug="/ook"
-          viewAllLink="/ook/restaurants"
-          viewAllLabel="View All Restaurants"
-          isFirstSection={true}
-        />
+        {/* Favorite Spots Section with Custom Cards */}
+        <section className="py-16 lg:py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-3xl sm:text-4xl font-bold text-green">Restaurant Reviews</h2>
+              <a 
+                href="/ook/restaurants"
+                className="inline-flex items-center gap-2 text-green font-semibold hover:text-green/70 transition-colors"
+              >
+                View All Restaurants
+                <span>→</span>
+              </a>
+            </div>
+            
+            <p className="text-muted-foreground mb-12">
+              My honest reviews of dining experiences from cozy cafés to fine dining establishments.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {favoriteSpots.map((spot) => (
+                <FavoriteSpotCard
+                  key={spot.slug}
+                  name={spot.name}
+                  city={spot.city}
+                  state={spot.state}
+                  specialty={spot.specialty}
+                  slug={spot.slug}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
 
         <GridSection
           title="Food Destinations"
