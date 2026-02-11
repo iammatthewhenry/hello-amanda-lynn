@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { X, Search, Clock, ChefHat, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Container } from '@/components/ui';
 
 export interface SearchItem {
   id: string;
@@ -122,7 +121,7 @@ export function SearchOverlay({
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
       {/* Search Container */}
-      <Container className="pt-8 sm:pt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-20 max-w-6xl">
         <div className="bg-white shadow-lg max-h-[85vh] flex flex-col rounded-lg overflow-hidden">
           {/* Search Input */}
           <div className="border-b-2 border-green p-4 sm:p-6">
@@ -325,7 +324,7 @@ export function SearchOverlay({
             Press <kbd className="px-2 py-1 bg-gray-100 text-foreground/70 mx-1 rounded">ESC</kbd> to close
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
