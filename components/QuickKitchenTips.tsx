@@ -1,4 +1,4 @@
-import { Section, SectionHeader } from './ui';
+
 
 interface KitchenTip {
   id: string;
@@ -52,31 +52,38 @@ const DEFAULT_TIPS: KitchenTip[] = [
 
 export function QuickKitchenTips({ tips = DEFAULT_TIPS }: QuickKitchenTipsProps) {
   return (
-    <Section spacing="lg" containerSize="4xl">
-      <SectionHeader
-        title="Quick Kitchen Tips"
-        subtitle="Essential techniques to elevate your cooking"
-        centered
-      />
+    <section className="py-[22px] sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        {/* Section Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green tracking-tight mb-4">
+            Quick Kitchen Tips
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Essential techniques to elevate your cooking
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tips.map((tip) => (
-          <div
-            key={tip.id}
-            className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
-          >
-            {tip.icon && (
-              <div className="text-3xl mb-4">{tip.icon}</div>
-            )}
-            <h3 className="text-lg font-semibold text-foreground mb-3">
-              {tip.title}
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {tip.description}
-            </p>
-          </div>
-        ))}
+        {/* Tips Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tips.map((tip) => (
+            <div
+              key={tip.id}
+              className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
+            >
+              {tip.icon && (
+                <div className="text-3xl mb-4">{tip.icon}</div>
+              )}
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                {tip.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {tip.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
