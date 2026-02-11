@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 import { Search, Filter } from 'lucide-react';
 
 import { getAllRecipes, getRecipesByCategory, RECIPE_CATEGORIES, type Recipe } from '@/data/recipe-data';
-import { Section, SectionHeader } from '@/components/ui';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ContentCard } from '@/components/ContentCard';
 
@@ -62,18 +61,22 @@ export default function RecipeListingPage({ initialCategory }: RecipeListingPage
 
   return (
     <main>
-      <Section spacing="lg" containerSize="4xl">
-        {/* Breadcrumbs */}
-        <div className="mb-6">
-          <Breadcrumbs items={breadcrumbs} />
-        </div>
+      <section className="py-[22px] sm:py-16 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          {/* Breadcrumbs */}
+          <div className="mb-6">
+            <Breadcrumbs items={breadcrumbs} />
+          </div>
 
-        {/* Header */}
-        <SectionHeader
-          title={selectedCategory === 'All' ? 'All Recipes' : `${selectedCategory} Recipes`}
-          subtitle={`Discover ${filteredRecipes.length} delicious recipes from Amanda's kitchen`}
-          centered
-        />
+          {/* Section Header */}
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green tracking-tight mb-4">
+              {selectedCategory === 'All' ? 'All Recipes' : `${selectedCategory} Recipes`}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Discover {filteredRecipes.length} delicious recipes from Amanda's kitchen
+            </p>
+          </div>
 
         {/* Search and Filter Controls */}
         <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between md:gap-6">
@@ -162,7 +165,8 @@ export default function RecipeListingPage({ initialCategory }: RecipeListingPage
             )}
           </div>
         )}
-      </Section>
+        </div>
+      </section>
     </main>
   );
 }
