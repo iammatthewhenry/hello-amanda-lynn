@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   variant?: 'default' | 'green' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
   href?: string;
   onClick?: () => void;
   disabled?: boolean;
@@ -27,11 +28,21 @@ const sizeClasses = {
   xl: 'px-8 py-4 text-xl'
 };
 
+const roundedClasses = {
+  none: 'rounded-none',
+  sm: 'rounded-sm',
+  md: 'rounded-md', 
+  lg: 'rounded-lg',
+  xl: 'rounded-xl',
+  full: 'rounded-full'
+};
+
 export function Button({ 
   children, 
   className, 
   variant = 'default',
   size = 'md',
+  rounded = 'md',
   href,
   onClick,
   disabled = false,
@@ -43,6 +54,7 @@ export function Button({
     'disabled:opacity-50 disabled:pointer-events-none',
     variantClasses[variant],
     sizeClasses[size],
+    roundedClasses[rounded],
     className
   );
 
