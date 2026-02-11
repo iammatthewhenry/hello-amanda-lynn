@@ -1,5 +1,4 @@
 import { CategoryCard } from './CategoryCard';
-import { Section, SectionHeader } from './ui';
 import { ReactNode } from 'react';
 
 // ===================================================================
@@ -53,24 +52,31 @@ const DEFAULT_CATEGORIES: ExploreCategory[] = [
 // ===================================================================
 export function ExploreMore({ categories = DEFAULT_CATEGORIES }: ExploreMoreProps) {
   return (
-    <Section spacing="lg" containerSize="4xl">
-      <SectionHeader
-        title="Explore More"
-        subtitle="Dive deeper into my culinary world with stories, tips, and adventures"
-        centered
-      />
+    <section className="py-[22px] sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        {/* Section Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green tracking-tight mb-4">
+            Explore More
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Dive deeper into my culinary world with stories, tips, and adventures
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-        {categories.map((category) => (
-          <CategoryCard
-            key={category.title}
-            title={category.title}
-            description={category.description}
-            image={category.image}
-            href={`/${category.page}`}
-          />
-        ))}
+        {/* Category Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.title}
+              title={category.title}
+              description={category.description}
+              image={category.image}
+              href={`/${category.page}`}
+            />
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
