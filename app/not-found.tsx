@@ -10,7 +10,7 @@ export default function NotFound() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[500px] lg:max-w-[600px]">
               <Image
-                src="/images/empty-plate.jpg"
+                src="/ceramic-plate.png"
                 alt="Empty ceramic plate"
                 width={600}
                 height={600}
