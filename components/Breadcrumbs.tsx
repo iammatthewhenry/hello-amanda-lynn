@@ -1,13 +1,5 @@
 import Link from 'next/link';
-import { MoveRight } from 'lucide-react';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from './ui/breadcrumb';
+import { cn } from '@/lib/utils';
 
 interface BreadcrumbItem {
   label: string;
@@ -19,53 +11,34 @@ interface BreadcrumbsProps {
   className?: string;
 }
 
+/**
+ * Breadcrumbs navigation component
+ * Font size reduced from 14px (text-sm) to 12px (text-xs)
+ */
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+  if (!items || items.length === 0) return null;
+
   return (
-    <div className={`min-h-10 sm:min-h-12 flex items-center mb-4 sm:mb-6 mt-6 sm:mt-8 ${className || ''}`}>
-      <div className="relative inline-flex flex-wrap">
-        {/* Crooked tape effect behind breadcrumbs */}
-        <div 
-          className="absolute bg-[#F5EBE8]/80"
-          style={{
-            top: '-8px',
-            bottom: '-12px',
-            left: '-20px',
-            right: '-20px',
-            transform: 'skewY(-1deg)',
-            boxShadow: '0 3px 8px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,0.4)',
-            borderTop: '1px solid rgba(212, 165, 165, 0.2)',
-            borderBottom: '1px solid rgba(212, 165, 165, 0.2)',
-          }}
-        ></div>
-        <div className="bg-secondary px-3 py-1.5 inline-flex relative">
-          <Breadcrumb>
-            <BreadcrumbList>
-              {items.map((item, index) => {
-                const isLast = index === items.length - 1;
-                return (
-                  <div key={index} className="inline-flex items-center gap-1.5 sm:gap-2.5">
-                    <BreadcrumbItem>
-                      {isLast ? (
-                        <BreadcrumbPage className="text-green">{item.label}</BreadcrumbPage>
-                      ) : (
-                        <BreadcrumbLink asChild>
-                          <Link href={item.href!}>{item.label}</Link>
-                        </BreadcrumbLink>
-                      )}
-                    </BreadcrumbItem>
-                    {!isLast && (
-                      <BreadcrumbSeparator>
-                        <MoveRight />
-                      </BreadcrumbSeparator>
-                    )}
-                  </div>
-                );
-              })}
-            </BreadcrumbList>
-          </Breadcrumb>
+    <nav 
+      className={cn('flex items-center gap-2 text-xs', className)} 
+      aria-label="Breadcrumb"
+    >
+      {items.map((item, index) => (
+        <div key={index} className="flex items-center gap-2">
+          {index > 0 && <span className="text-foreground/50">•</span>}
+          {item.href ? (
+            <Link 
+              href={item.href} 
+              className="text-green hover:text-green/70 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <span className="text-foreground">{item.label}</span>
+          )}
         </div>
-      </div>
-    </div>
+      ))}
+    </nav>
   );
 }
 

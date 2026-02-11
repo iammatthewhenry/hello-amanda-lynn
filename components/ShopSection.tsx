@@ -40,8 +40,8 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
     <section className="py-[22px] sm:py-16 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '85%' }}>
         <div 
-          className="p-1 sm:p-1.5 lg:p-2 xl:p-2.5 bg-white"
-          style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)' }}
+          className="p-1 sm:p-1.5 lg:p-2 xl:p-2.5 bg-background"
+          style={{ boxShadow: 'var(--shadow-card)' }}
         >
           <div className="text-center mb-3 sm:mb-4">
             <h2 className="text-green text-[36px] font-bold tracking-tight">
