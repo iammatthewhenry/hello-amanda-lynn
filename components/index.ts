@@ -56,27 +56,6 @@ export { Breadcrumbs } from './Breadcrumbs';
 export { FramedPhoto } from './FramedPhoto';
 export { TiltedPhoto } from './TiltedPhoto';
 
-// UI Components (new consolidated components)
-export {
-  Button,
-  type ButtonVariant,
-  type ButtonSize,
-  Container,
-  type ContainerSize,
-  Section,
-  type SectionSpacing,
-  FramedImage,
-  type FrameVariant,
-  ImageOverlay,
-  PageHeader,
-  SectionHeader,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  type CardVariant,
-  ReadMoreLink,
-  Checkbox,
-  Switch,
-  cn,
-} from './ui';
+// UI Components (micro items only)
+// Note: Most UI components have been moved to main components folder
+// Only basic micro components remain in ./ui
