@@ -4,135 +4,117 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { RatingStars } from '@/components/RatingStars';
-import { PriceRange } from '@/components/PriceRange';
 
-// Mock data - replace with WordPress API call
+// Mock data - clean content matching Figma design
 const getRestaurantBySlug = (slug: string) => {
   const restaurants = [
-    {
-      name: "Corner Café",
-      city: "Seattle",
-      state: "WA",
-      cuisine: "Brunch & Café",
-      description: "The perfect Sunday brunch spot with legendary pancakes.",
-      slug: "corner-cafe",
-      date: "September 29, 2025",
-      image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwYnJ1bmNofGVufDF8fHx8MTc2MTUxMzQyOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      rating: 4.5,
-      priceRange: "$",
-      address: "1234 Pine Street, Seattle, WA 98101",
-      phone: "(206) 555-0123",
-      website: "https://cornercafeseattle.com",
-      hours: "Mon-Sun: 7:00 AM - 3:00 PM",
-      content: `
-        <p>Nestled in the heart of Seattle's bustling downtown, Corner Café has become my go-to spot for weekend brunch. From the moment you walk in, the warm atmosphere and the aroma of freshly brewed coffee welcome you like an old friend.</p>
-        
-        <h3>The Standout Dishes</h3>
-        <p>Their legendary buttermilk pancakes are truly something special. Fluffy, golden, and served with real maple syrup and a pat of butter that melts into perfect pools. I also highly recommend their eggs Benedict - the hollandaise is rich and perfectly tangy.</p>
-        
-        <h3>Atmosphere & Service</h3>
-        <p>The service here is consistently excellent. Our server, Maria, was attentive without being intrusive, and she knew the menu inside and out. The café has that perfect neighborhood feel - cozy enough for a quiet morning read, but lively enough for catching up with friends.</p>
-        
-        <h3>Value & Overall Experience</h3>
-        <p>For the quality and portion sizes, Corner Café offers excellent value. Most entrees are under $15, and you definitely won't leave hungry. It's the kind of place that makes you feel good about supporting local business.</p>
-        
-        <p>Whether you're a local looking for your new weekend tradition or a visitor wanting to experience authentic Seattle café culture, Corner Café delivers on all fronts. I'll definitely be back to try their dinner menu!</p>
-      `,
-      tags: ["Brunch", "Coffee", "Local", "Casual Dining"],
-      pros: [
-        "Amazing pancakes and coffee",
-        "Friendly, knowledgeable staff", 
-        "Great value for money",
-        "Cozy neighborhood atmosphere"
-      ],
-      cons: [
-        "Can get busy on weekends",
-        "Limited parking nearby"
-      ]
-    },
-    {
-      name: "Le Petit Chef",
-      city: "San Francisco", 
-      state: "CA",
-      cuisine: "Fine Dining",
-      description: "A 7-course journey through seasonal ingredients and creativity.",
-      slug: "le-petit-chef",
-      date: "September 20, 2025",
-      image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3VybWV0JTIwZm9vZCUyMHBsYXRpbmd8ZW58MXx8fHwxNzYxNDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      rating: 4.8,
-      priceRange: "$$$",
-      address: "567 Market Street, San Francisco, CA 94102",
-      phone: "(415) 555-0789", 
-      website: "https://lepetitchefsf.com",
-      hours: "Tue-Sat: 5:30 PM - 10:00 PM",
-      content: `
-        <p>Le Petit Chef represents everything I love about fine dining - creativity, technique, and an unwavering commitment to quality ingredients. This intimate 32-seat restaurant in San Francisco's Financial District offers a dining experience that transcends the typical restaurant meal.</p>
-        
-        <h3>The Tasting Menu Experience</h3>
-        <p>Chef Laurent's 7-course tasting menu is a masterclass in seasonal cooking. Each dish tells a story, from the delicate amuse-bouche featuring local uni to the stunning duck breast with cherry gastrique. The wine pairings, curated by sommelier Elena, complement each course perfectly.</p>
-        
-        <h3>Standout Moments</h3>
-        <p>The highlight of the evening was undoubtedly the signature "Garden" course - a vegetable-forward dish that managed to be both visually stunning and deeply satisfying. The attention to detail in both flavor and presentation was remarkable.</p>
-        
-        <h3>Service & Ambiance</h3>
-        <p>The service here is choreographed perfection. Every team member knows their role, and the timing between courses allows for perfect pacing. The intimate dining room, with its warm lighting and carefully curated music, creates an atmosphere of relaxed elegance.</p>
-        
-        <p>Le Petit Chef is undoubtedly a special occasion restaurant, but for those seeking a memorable culinary journey, it delivers an experience worth every penny. Reservations are essential, and I recommend booking at least a month in advance.</p>
-      `,
-      tags: ["Fine Dining", "Tasting Menu", "Wine Pairing", "Special Occasion"],
-      pros: [
-        "Exceptional culinary creativity",
-        "Flawless service and timing",
-        "Beautiful presentation", 
-        "Intimate, elegant atmosphere"
-      ],
-      cons: [
-        "Very expensive ($200+ per person)",
-        "Difficult to get reservations",
-        "May be too formal for some"
-      ]
-    },
     {
       name: "The Garden Bistro",
       city: "Portland",
       state: "OR", 
-      cuisine: "Farm-to-table",
-      description: "A hidden gem with seasonal menu and intimate atmosphere.",
+      priceRange: "$$$",
       slug: "the-garden-bistro",
-      date: "October 15, 2025",
-      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDF8fHx8MTc2MTQwOTc1MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      rating: 4.6,
-      priceRange: "$$",
-      address: "891 NW 23rd Avenue, Portland, OR 97210",
-      phone: "(503) 555-0456",
-      website: "https://gardenbistropdx.com",
-      hours: "Wed-Sun: 5:00 PM - 9:30 PM",
-      content: `
-        <p>Tucked away on a quiet side street in Portland's trendy Nob Hill neighborhood, The Garden Bistro embodies everything I love about the Pacific Northwest dining scene. This 40-seat restaurant champions local ingredients and changes its menu with the seasons.</p>
+      author: "Amanda Lynn",
+      publishDate: "October 15, 2025",
+      image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      description: "A hidden gem with seasonal menu and intimate atmosphere.",
+      content: [
+        "Tucked away on a quiet side street downtown, The Garden Bistro is the kind of place you'd walk right past if you weren't looking for it. And that's exactly how they like it. This intimate 20-seat restaurant has become my go-to spot for special occasions and whenever I need to remember why I love food so much.",
         
-        <h3>Farm-to-Table Excellence</h3>
-        <p>Chef Sarah's commitment to local sourcing is evident in every dish. The autumn menu features ingredients from farms within 50 miles of the restaurant. The roasted beet salad with goat cheese from Jacobs Creamery was a perfect example of how simple, quality ingredients can create magic on the plate.</p>
+        "The moment you step inside, you're transported. Exposed brick walls are adorned with trailing pothos plants and warm Edison bulbs. Reclaimed wood tables are set simply with fresh flowers and linen napkins. It feels like dining in someone's impossibly chic living room.",
         
-        <h3>Seasonal Highlights</h3>
-        <p>The pan-seared salmon with mushroom risotto showcased Pacific Northwest flavors beautifully. The fish was cooked to perfection, and the accompanying wild mushrooms added an earthy depth that spoke to the season. Don't skip dessert - the pear tart with hazelnut ice cream is worth the splurge.</p>
+        "The menu changes monthly based on what's available from local farms, but the philosophy remains constant: simple preparations that let quality ingredients shine. During my recent visit, I started with their heirloom tomato salad. The tomatoes—clearly picked at peak ripeness—were simply dressed with olive oil, flaky salt, and torn basil. Sometimes simplicity is sophistication.",
         
-        <h3>Atmosphere & Philosophy</h3>
-        <p>The restaurant feels like dining in a friend's beautiful home. The exposed brick walls are adorned with art from local artists, and the open kitchen allows you to watch the passionate team at work. There's a genuine commitment to sustainability here that goes beyond the ingredients to encompass every aspect of the operation.</p>
+        "For my main, I chose the pan-roasted chicken breast with seasonal vegetables. The skin was impossibly crispy, almost shattering when I cut into it, while the meat remained juicy and tender. The vegetables—roasted carrots, turnips, and fennel—were caramelized to bring out their natural sweetness. The jus was rich without being heavy, tying everything together perfectly.",
         
-        <p>The Garden Bistro represents the best of Portland's food scene - creative, sustainable, and deeply connected to the local community. It's a place that makes you proud to support local business while delivering a truly memorable meal.</p>
-      `,
-      tags: ["Farm-to-table", "Seasonal Menu", "Local Ingredients", "Sustainable"],
-      pros: [
-        "Outstanding local ingredient sourcing",
-        "Cozy, welcoming atmosphere",
-        "Knowledgeable staff about ingredients",
-        "Commitment to sustainability"
+        "My dining companion ordered the house-made pasta with brown butter and sage. The pasta was clearly made in-house—you could taste the difference in texture and flavor. The sauce was a masterclass in restraint: just enough brown butter to coat the noodles, crispy sage leaves for aroma, and a shower of parmesan. Sometimes the simplest dishes are the hardest to execute, and this was flawless.",
+        
+        "Dessert was their signature chocolate mousse, served in a small glass jar with a dollop of fresh whipped cream. Light and airy with intense chocolate flavor, it was the perfect ending to the meal. Not too heavy, not too sweet—just right.",
+        
+        "What makes The Garden Bistro special isn't just the food—it's the care evident in every detail. The staff knows regulars by name but makes newcomers feel equally welcome. The wine list is small but thoughtfully curated. The pace of service allows you to actually enjoy your company and conversation. In our rushed world, this unhurried approach to dining feels revolutionary.",
+        
+        "If you go (and you should), make a reservation well in advance. This little gem has been 'discovered' despite its hidden location. Try to snag a table by the window for the best ambiance. And whatever you do, don't skip dessert. Tuesday through Saturday, 5-10pm. You can thank me later."
       ],
-      cons: [
-        "Limited menu options",
-        "Can be noisy when full",
-        "No reservations for parties under 6"
+      keyTakeaways: [
+        "Make reservations at least 2 weeks in advance",
+        "Request a window table for the best ambiance", 
+        "The menu changes monthly—check their Instagram for current offerings",
+        "Arrive slightly early to enjoy a drink at their small bar",
+        "Don't skip dessert—the chocolate mousse is legendary"
+      ]
+    },
+    {
+      name: "Corner Café",
+      city: "Seattle", 
+      state: "WA",
+      priceRange: "$$",
+      slug: "corner-cafe",
+      author: "Amanda Lynn",
+      publishDate: "September 29, 2025",
+      image: "https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      description: "The perfect Sunday brunch spot with legendary pancakes.",
+      content: [
+        "Sunday brunch is sacred in my household, and Corner Café has become our ritual destination. Located in a converted Victorian house with a wraparound porch, this neighborhood café has mastered the art of the leisurely weekend brunch.",
+        
+        "The space itself is charming without trying too hard. Mismatched vintage chairs, fresh flowers on every table, and windows that flood the space with natural light. There's both indoor seating and the coveted porch tables where you can watch the neighborhood come to life on Sunday morning.",
+        
+        "Let's talk about those pancakes. Their buttermilk pancakes have achieved legendary status in our town, and for good reason. They're impossibly fluffy—almost soufflé-like—with crispy, buttery edges. The secret, I've learned after chatting up the chef, is separating the eggs and folding in whipped egg whites just before cooking. It makes all the difference.",
+        
+        "The pancakes come with real maple syrup (none of that corn syrup nonsense) and your choice of additions. I'm partial to the fresh blueberry version, where they fold plump berries into the batter. My partner always gets the chocolate chip, which arrives with extra chocolate chips melted on top. They're not stingy with portions—two pancakes easily feed one person.",
+        
+        "But Corner Café is more than just pancakes. Their eggs Benedict is textbook perfect: Canadian bacon, poached eggs with jammy yolks, hollandaise that's lemony and rich without being heavy, all on a toasted English muffin. The breakfast burrito—stuffed with scrambled eggs, black beans, cheese, avocado, and salsa—is the size of a football and incredibly satisfying.",
+        
+        "The coffee deserves its own paragraph. They roast their own beans and take their coffee seriously. The drip coffee is consistently excellent—hot, fresh, and refilled promptly. Their cappuccinos are properly made with microfoam and lovely latte art. They even do pour-overs if you're in the mood for something special.",
+        
+        "Service is warm and efficient without being rushed. The staff seems genuinely happy to be there, which creates a welcoming atmosphere. They know regulars by name but make everyone feel like a regular. During busy times, there might be a wait, but they're upfront about it and have coffee available while you wait.",
+        
+        "The vibe is relaxed and unhurried—exactly what Sunday brunch should be. People linger over multiple cups of coffee, catching up with friends, reading the paper. There's no pressure to vacate your table. This unhurried approach to hospitality is increasingly rare and deeply appreciated."
+      ],
+      keyTakeaways: [
+        "Arrive before 9am or after 11am to avoid peak wait times",
+        "The porch tables are first-come-first-served",
+        "Ask about their daily pancake specials", 
+        "Try the house-made jam—it's available for purchase",
+        "Come with time to linger—rushing defeats the purpose"
+      ]
+    },
+    {
+      name: "Le Petit Chef",
+      city: "San Francisco",
+      state: "CA",
+      priceRange: "$$$$", 
+      slug: "le-petit-chef",
+      author: "Amanda Lynn",
+      publishDate: "September 20, 2025",
+      image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      description: "A 7-course journey through seasonal ingredients and creativity.",
+      content: [
+        "Tasting menus intimidate some people. The commitment, the cost, the unknown. But when done right, they're transcendent—an opportunity to completely surrender to a chef's vision and experience flavors and combinations you'd never order yourself. Le Petit Chef's autumn tasting menu was exactly that kind of experience.",
+        
+        "The evening began with an amuse-bouche that set the tone: a single, perfect scallop on a spoon, topped with citrus foam and edible flowers. One bite—sweet, acidic, oceanic—and I knew we were in for something special. This wasn't just dinner; it was a story told through food.",
+        
+        "Course one was a play on autumn in New England: butternut squash soup with sage oil, toasted pumpkin seeds, and a quenelle of mascarpone. The soup was silky smooth with concentrated squash flavor, the sage oil added aromatic depth, and the mascarpone provided richness. Simple ingredients, flawless execution.",
+        
+        "Course two showcased local mushrooms three ways: a mushroom tart with herb crust, pickled wild mushrooms, and a mushroom duxelles. Each preparation highlighted different aspects of mushrooms—earthiness, texture, umami. The wine pairing, a light Oregon pinot noir, complemented perfectly.",
+        
+        "The third course was the most visually striking: beet-cured salmon with dill cream, pickled mustard seeds, and microgreens. The salmon was jewel-toned from the beet cure, the acidity from pickles cut through the richness, and the presentation looked like abstract art on the plate.",
+        
+        "Course four, the palate cleanser, was a revelation: grapefruit granita with Campari and fresh mint. Icy, bitter, sweet, refreshing—it reset our palates beautifully and provided a moment of lightness before the heavier courses to come.",
+        
+        "The main event—course five—was slow-braised short rib with celery root puree, roasted root vegetables, and red wine reduction. The meat was fork-tender, falling apart at the touch. The puree was impossibly smooth and velvety. The reduction was concentrated and glossy. This was comfort food elevated to fine art.",
+        
+        "Course six featured local artisanal cheeses with housemade crackers, honeycomb, and fruit compote. I appreciated that they offered three small portions rather than an overwhelming board—just enough to transition from savory to sweet. The honeycomb's addition was inspired, adding textural interest and natural sweetness.",
+        
+        "Dessert—course seven—was a deconstructed apple pie: apple sorbet, cinnamon streusel, vanilla crème anglaise, and caramelized apple chips. All the flavors of classic apple pie but light and sophisticated. After a rich meal, this dessert felt refreshing rather than heavy.",
+        
+        "The entire experience lasted three hours, but time seemed suspended. Between courses, we talked, savored, anticipated the next creation. The service was impeccable—attentive without hovering, knowledgeable without being pretentious. Each dish arrived with a brief description that enhanced rather than overshadowed the food."
+      ],
+      keyTakeaways: [
+        "Reserve well in advance—these seats fill up fast",
+        "Opt for the wine pairing to enhance each course",
+        "Pace yourself—it's a marathon, not a sprint",
+        "Ask questions—the staff loves talking about the food", 
+        "Come with an open mind and empty stomach"
       ]
     }
   ];
@@ -151,7 +133,7 @@ export default function RestaurantReviewPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Restaurant Not Found</h1>
-          <Link href="/ook/restaurants" className="text-green hover:text-green/70">
+          <Link href="/out-of-kitchen/restaurants" className="text-green hover:text-green/70">
             ← Back to Restaurant Reviews
           </Link>
         </div>
@@ -164,14 +146,14 @@ export default function RestaurantReviewPage() {
       {/* Breadcrumbs */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1.5 mb-8">
         <Breadcrumbs items={[
-          { label: "Out of Kitchen", href: "/ook" },
-          { label: "Restaurants", href: "/ook/restaurants" },
+          { label: "Out of Kitchen", href: "/out-of-kitchen" },
+          { label: "Restaurant Reviews", href: "/out-of-kitchen/restaurants" },
           { label: restaurant.name }
         ]} />
       </div>
 
       {/* Hero Image */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="relative h-64 sm:h-80 lg:h-96 w-full overflow-hidden">
           <Image
             src={restaurant.image}
@@ -185,117 +167,91 @@ export default function RestaurantReviewPage() {
         </div>
       </section>
 
-      {/* Restaurant Info */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-green mb-4">
-            {restaurant.name}
-          </h1>
-          
-          <div className="flex flex-wrap items-center gap-6 mb-6">
-            <RatingStars rating={restaurant.rating} />
-            <PriceRange price={restaurant.priceRange} />
-            <span className="text-muted-foreground">{restaurant.cuisine}</span>
-            <span className="text-muted-foreground">
-              {restaurant.city}, {restaurant.state}
-            </span>
-          </div>
-
-          <p className="text-lg text-muted-foreground mb-8">
-            {restaurant.description}
-          </p>
-
-          {/* Restaurant Details Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 p-6 bg-background rounded-lg border border-gray-200">
-            <div>
-              <h4 className="font-semibold text-green mb-2">Address</h4>
-              <p className="text-sm text-muted-foreground">{restaurant.address}</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-green mb-2">Phone</h4>
-              <p className="text-sm text-muted-foreground">{restaurant.phone}</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-green mb-2">Hours</h4>
-              <p className="text-sm text-muted-foreground">{restaurant.hours}</p>
-            </div>
-            <div className="sm:col-span-2 lg:col-span-3">
-              <h4 className="font-semibold text-green mb-2">Website</h4>
-              <Link 
-                href={restaurant.website} 
-                target="_blank"
-                className="text-sm text-green hover:text-green/70 transition-colors"
-              >
-                {restaurant.website}
-              </Link>
-            </div>
+      {/* Restaurant Header */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-green mb-4">
+          {restaurant.name}
+        </h1>
+        
+        <div className="flex flex-wrap items-center gap-4 mb-4">
+          <span className="text-lg text-muted-foreground">
+            {restaurant.city}, {restaurant.state}
+          </span>
+          <div className="flex items-center gap-1">
+            <span className="text-lg font-medium">{restaurant.priceRange}</span>
           </div>
         </div>
 
-        {/* Review Content */}
-        <article className="prose prose-lg max-w-none mb-12">
-          <div 
-            className="prose-headings:text-green prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: restaurant.content }}
-          />
-        </article>
-
-        {/* Pros & Cons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-green/5 p-6 rounded-lg border border-green/20">
-            <h3 className="font-bold text-green mb-4 flex items-center gap-2">
-              <span>✓</span> What I Loved
-            </h3>
-            <ul className="space-y-2">
-              {restaurant.pros.map((pro, index) => (
-                <li key={index} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-green mt-1">•</span>
-                  {pro}
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
-            <h3 className="font-bold text-orange-700 mb-4 flex items-center gap-2">
-              <span>⚠</span> Keep in Mind
-            </h3>
-            <ul className="space-y-2">
-              {restaurant.cons.map((con, index) => (
-                <li key={index} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-orange-600 mt-1">•</span>
-                  {con}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
+          <span>By {restaurant.author}</span>
+          <span>Published {restaurant.publishDate}</span>
         </div>
 
-        {/* Tags */}
-        <div className="mb-12">
-          <h3 className="font-bold text-green mb-4">Categories</h3>
-          <div className="flex flex-wrap gap-2">
-            {restaurant.tags.map((tag, index) => (
-              <span 
-                key={index}
-                className="px-3 py-1 bg-green/10 text-green text-sm rounded-full border border-green/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="border-t border-gray-200 pt-8 pb-12">
-          <Link 
-            href="/ook/restaurants"
-            className="inline-flex items-center gap-2 text-green font-semibold hover:text-green/70 transition-colors"
-          >
-            ← Back to Restaurant Reviews
-          </Link>
+        {/* Social Sharing Buttons */}
+        <div className="flex gap-3 mb-8">
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">f</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">@</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">in</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">✉</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">📱</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <span className="text-gray-600">🔗</span>
+          </button>
         </div>
       </section>
+
+      {/* Description */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <p className="text-lg text-muted-foreground italic">
+          {restaurant.description}
+        </p>
+      </section>
+
+      {/* Article Content */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="prose prose-lg max-w-none">
+          {restaurant.content.map((paragraph, index) => (
+            <p key={index} className="mb-6 text-muted-foreground leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      {/* Key Takeaways */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="bg-green/5 p-8 rounded-lg border border-green/20">
+          <h3 className="text-xl font-bold text-green mb-6">Key Takeaways</h3>
+          <ul className="space-y-3">
+            {restaurant.keyTakeaways.map((takeaway, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
+                <span className="text-muted-foreground">{takeaway}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-8 pb-12">
+        <Link 
+          href="/out-of-kitchen/restaurants"
+          className="inline-flex items-center gap-2 text-green font-semibold hover:text-green/70 transition-colors"
+        >
+          ← Back to Restaurant Reviews
+        </Link>
+      </div>
     </main>
   );
 }

@@ -32,7 +32,7 @@ function FavoriteSpotCard({
   state, 
   specialty, 
   slug,
-  baseSlug = "/ook/restaurant"
+  baseSlug = "/ook/restaurants"
 }: FavoriteSpotCardProps) {
   return (
     <a 
@@ -197,7 +197,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Restaurants"
           posts={restaurants}
-          baseSlug="/ook/restaurant"
+          baseSlug="/ook/restaurants"
           viewAllLink="/ook/restaurants" 
           viewAllLabel="View All Restaurants"
         />
