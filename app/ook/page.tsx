@@ -32,7 +32,7 @@ function FavoriteSpotCard({
   state, 
   specialty, 
   slug,
-  baseSlug = "/ook"
+  baseSlug = "/ook/restaurant"
 }: FavoriteSpotCardProps) {
   return (
     <a 
@@ -188,7 +188,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Food Destination"
           posts={foodDestinations}
-          baseSlug="/ook"
+          baseSlug="/ook/food-destination"
           viewAllLink="/ook/food-destinations"
           viewAllLabel="View All Food Destinations"
           isFirstSection={true}
@@ -197,7 +197,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Restaurants"
           posts={restaurants}
-          baseSlug="/ook"
+          baseSlug="/ook/restaurant"
           viewAllLink="/ook/restaurants" 
           viewAllLabel="View All Restaurants"
         />
@@ -205,7 +205,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Farmers Markets"
           posts={farmersMarkets}
-          baseSlug="/ook"
+          baseSlug="/ook/farmers-market"
           viewAllLink="/ook/farmers-markets"
           viewAllLabel="View All Farmers Markets"
         />
@@ -213,7 +213,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Food Festivals"
           posts={foodFestivals}
-          baseSlug="/ook"
+          baseSlug="/ook/food-festival"
           viewAllLink="/ook/food-festivals"
           viewAllLabel="View All Food Festivals"
         />
