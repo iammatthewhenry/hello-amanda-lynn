@@ -55,27 +55,13 @@ const getRestaurantBySlug = (slug: string) => {
       description: "The perfect Sunday brunch spot with legendary pancakes.",
       content: [
         "Sunday brunch is sacred in my household, and Corner Café has become our ritual destination. Located in a converted Victorian house with a wraparound porch, this neighborhood café has mastered the art of the leisurely weekend brunch.",
-        
         "The space itself is charming without trying too hard. Mismatched vintage chairs, fresh flowers on every table, and windows that flood the space with natural light. There's both indoor seating and the coveted porch tables where you can watch the neighborhood come to life on Sunday morning.",
-        
-        "Let's talk about those pancakes. Their buttermilk pancakes have achieved legendary status in our town, and for good reason. They're impossibly fluffy—almost soufflé-like—with crispy, buttery edges. The secret, I've learned after chatting up the chef, is separating the eggs and folding in whipped egg whites just before cooking. It makes all the difference.",
-        
-        "The pancakes come with real maple syrup (none of that corn syrup nonsense) and your choice of additions. I'm partial to the fresh blueberry version, where they fold plump berries into the batter. My partner always gets the chocolate chip, which arrives with extra chocolate chips melted on top. They're not stingy with portions—two pancakes easily feed one person.",
-        
-        "But Corner Café is more than just pancakes. Their eggs Benedict is textbook perfect: Canadian bacon, poached eggs with jammy yolks, hollandaise that's lemony and rich without being heavy, all on a toasted English muffin. The breakfast burrito—stuffed with scrambled eggs, black beans, cheese, avocado, and salsa—is the size of a football and incredibly satisfying.",
-        
-        "The coffee deserves its own paragraph. They roast their own beans and take their coffee seriously. The drip coffee is consistently excellent—hot, fresh, and refilled promptly. Their cappuccinos are properly made with microfoam and lovely latte art. They even do pour-overs if you're in the mood for something special.",
-        
-        "Service is warm and efficient without being rushed. The staff seems genuinely happy to be there, which creates a welcoming atmosphere. They know regulars by name but make everyone feel like a regular. During busy times, there might be a wait, but they're upfront about it and have coffee available while you wait.",
-        
-        "The vibe is relaxed and unhurried—exactly what Sunday brunch should be. People linger over multiple cups of coffee, catching up with friends, reading the paper. There's no pressure to vacate your table. This unhurried approach to hospitality is increasingly rare and deeply appreciated."
+        "Let's talk about those pancakes. Their buttermilk pancakes have achieved legendary status in our town, and for good reason. They're impossibly fluffy—almost soufflé-like—with crispy, buttery edges."
       ],
       keyTakeaways: [
         "Arrive before 9am or after 11am to avoid peak wait times",
         "The porch tables are first-come-first-served",
-        "Ask about their daily pancake specials", 
-        "Try the house-made jam—it's available for purchase",
-        "Come with time to linger—rushing defeats the purpose"
+        "Ask about their daily pancake specials"
       ]
     },
     {
@@ -89,31 +75,12 @@ const getRestaurantBySlug = (slug: string) => {
       image: "https://images.unsplash.com/photo-1750943082012-efe6d2fd9e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       description: "A 7-course journey through seasonal ingredients and creativity.",
       content: [
-        "Tasting menus intimidate some people. The commitment, the cost, the unknown. But when done right, they're transcendent—an opportunity to completely surrender to a chef's vision and experience flavors and combinations you'd never order yourself. Le Petit Chef's autumn tasting menu was exactly that kind of experience.",
-        
-        "The evening began with an amuse-bouche that set the tone: a single, perfect scallop on a spoon, topped with citrus foam and edible flowers. One bite—sweet, acidic, oceanic—and I knew we were in for something special. This wasn't just dinner; it was a story told through food.",
-        
-        "Course one was a play on autumn in New England: butternut squash soup with sage oil, toasted pumpkin seeds, and a quenelle of mascarpone. The soup was silky smooth with concentrated squash flavor, the sage oil added aromatic depth, and the mascarpone provided richness. Simple ingredients, flawless execution.",
-        
-        "Course two showcased local mushrooms three ways: a mushroom tart with herb crust, pickled wild mushrooms, and a mushroom duxelles. Each preparation highlighted different aspects of mushrooms—earthiness, texture, umami. The wine pairing, a light Oregon pinot noir, complemented perfectly.",
-        
-        "The third course was the most visually striking: beet-cured salmon with dill cream, pickled mustard seeds, and microgreens. The salmon was jewel-toned from the beet cure, the acidity from pickles cut through the richness, and the presentation looked like abstract art on the plate.",
-        
-        "Course four, the palate cleanser, was a revelation: grapefruit granita with Campari and fresh mint. Icy, bitter, sweet, refreshing—it reset our palates beautifully and provided a moment of lightness before the heavier courses to come.",
-        
-        "The main event—course five—was slow-braised short rib with celery root puree, roasted root vegetables, and red wine reduction. The meat was fork-tender, falling apart at the touch. The puree was impossibly smooth and velvety. The reduction was concentrated and glossy. This was comfort food elevated to fine art.",
-        
-        "Course six featured local artisanal cheeses with housemade crackers, honeycomb, and fruit compote. I appreciated that they offered three small portions rather than an overwhelming board—just enough to transition from savory to sweet. The honeycomb's addition was inspired, adding textural interest and natural sweetness.",
-        
-        "Dessert—course seven—was a deconstructed apple pie: apple sorbet, cinnamon streusel, vanilla crème anglaise, and caramelized apple chips. All the flavors of classic apple pie but light and sophisticated. After a rich meal, this dessert felt refreshing rather than heavy.",
-        
-        "The entire experience lasted three hours, but time seemed suspended. Between courses, we talked, savored, anticipated the next creation. The service was impeccable—attentive without hovering, knowledgeable without being pretentious. Each dish arrived with a brief description that enhanced rather than overshadowed the food."
+        "Tasting menus intimidate some people. The commitment, the cost, the unknown. But when done right, they're transcendent—an opportunity to completely surrender to a chef's vision and experience flavors and combinations you'd never order yourself.",
+        "The evening began with an amuse-bouche that set the tone: a single, perfect scallop on a spoon, topped with citrus foam and edible flowers. One bite—sweet, acidic, oceanic—and I knew we were in for something special."
       ],
       keyTakeaways: [
         "Reserve well in advance—these seats fill up fast",
         "Opt for the wine pairing to enhance each course",
-        "Pace yourself—it's a marathon, not a sprint",
-        "Ask questions—the staff loves talking about the food", 
         "Come with an open mind and empty stomach"
       ]
     }
@@ -152,69 +119,77 @@ export default function RestaurantReviewPage() {
         ]} />
       </div>
 
-      {/* Hero Image */}
+      {/* Header Section - Two Column Layout */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="relative h-64 sm:h-80 lg:h-96 w-full overflow-hidden">
-          <Image
-            src={restaurant.image}
-            alt={restaurant.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 896px, 896px"
-            className="object-cover border-[16px] border-white"
-            style={{ boxShadow: 'var(--shadow-hero)' }}
-            priority
-          />
-        </div>
-      </section>
-
-      {/* Restaurant Header */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-green mb-4">
-          {restaurant.name}
-        </h1>
-        
-        <div className="flex flex-wrap items-center gap-4 mb-4">
-          <span className="text-lg text-muted-foreground">
-            {restaurant.city}, {restaurant.state}
-          </span>
-          <div className="flex items-center gap-1">
-            <span className="text-lg font-medium">{restaurant.priceRange}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left: Restaurant Image */}
+          <div className="relative">
+            <Image
+              src={restaurant.image}
+              alt={restaurant.name}
+              width={400}
+              height={300}
+              className="w-full h-auto object-cover border-[16px] border-white"
+              style={{ boxShadow: 'var(--shadow-hero)' }}
+              priority
+            />
           </div>
-        </div>
 
-        <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
-          <span>By {restaurant.author}</span>
-          <span>Published {restaurant.publishDate}</span>
-        </div>
+          {/* Right: Restaurant Info */}
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-green mb-2">
+              {restaurant.name}
+            </h1>
+            
+            <div className="flex items-center gap-4 mb-4 text-muted-foreground">
+              <span>{restaurant.city}, {restaurant.state}</span>
+              <span>$</span>
+              <span className="font-medium">{restaurant.priceRange}</span>
+            </div>
 
-        {/* Social Sharing Buttons */}
-        <div className="flex gap-3 mb-8">
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">f</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">@</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">in</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">✉</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">📱</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-            <span className="text-gray-600">🔗</span>
-          </button>
+            <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+              <span>By {restaurant.author}</span>
+              <span>Published {restaurant.publishDate}</span>
+            </div>
+
+            {/* Social Sharing Buttons */}
+            <div className="flex gap-2 mb-6">
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">f</span>
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">@</span>
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">in</span>
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">📧</span>
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">📱</span>
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <span className="text-xs text-gray-600">🔗</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Description */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <p className="text-lg text-muted-foreground italic">
+        <p className="text-lg text-muted-foreground italic text-center">
           {restaurant.description}
         </p>
+      </section>
+
+      {/* Advertisement Section */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
+          <p className="text-sm text-gray-500 mb-2">Advertisement</p>
+          <p className="text-xs text-gray-400">728x90 Banner Ad</p>
+        </div>
       </section>
 
       {/* Article Content */}
@@ -243,7 +218,68 @@ export default function RestaurantReviewPage() {
         </div>
       </section>
 
-      {/* Navigation */}
+      {/* Advertisement Section */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
+          <p className="text-sm text-gray-500 mb-2">Advertisement</p>
+          <p className="text-xs text-gray-400">728x90 Banner Ad</p>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="text-center mb-8">
+          <p className="text-muted-foreground mb-6">
+            Get new recipes and kitchen tips delivered straight to your inbox!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
+            />
+            <button className="px-6 py-2 bg-green text-white rounded-md hover:bg-green/90 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Links */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="flex justify-center gap-4">
+          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
+            <span className="text-sm">📷</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
+            <span className="text-sm">f</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
+            <span className="text-sm">📌</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
+            <span className="text-sm">✖</span>
+          </button>
+          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
+            <span className="text-sm">📺</span>
+          </button>
+        </div>
+        
+        <div className="text-center mt-8">
+          <div className="inline-block">
+            <div className="bg-gray-100 px-8 py-4 rounded-lg mb-4">
+              <p className="text-sm text-gray-600 mb-1">AS SEEN ON</p>
+              <div className="flex items-center gap-4">
+                <span className="text-xs font-medium">PBS</span>
+                <span className="text-xs">BETTER HOMES & GARDENS</span>
+                <span className="text-xs">FOOD NETWORK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Back Navigation */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-8 pb-12">
         <Link 
           href="/out-of-kitchen/restaurants"
