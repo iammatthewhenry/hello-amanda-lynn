@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat, Tinos } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteContainer from '@/components/layout/SiteContainer';
 import './globals.css';
 
 // ===================================================================
@@ -69,7 +71,8 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable} ${tinos.variable}`}
     >
       <body className="min-h-screen bg-page text-foreground flex flex-col">
-        {/* Accessibility */}
+
+        {/* Accessibility skip link */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-green text-white px-4 py-2 rounded"
@@ -79,12 +82,11 @@ export default function RootLayout({
 
         <Header />
 
-        {/* MAIN PAGE WRAPPER */}
-        <main
-          id="main-content"
-          className="flex-1"
-        >
-          {children}
+        {/* GLOBAL GRID LOCK */}
+        <main id="main-content" className="flex-1">
+          <SiteContainer>
+            {children}
+          </SiteContainer>
         </main>
 
         <Footer />

@@ -335,3 +335,28 @@ div[style*="background-color: rgb(245, 235, 232)"] {
     max-width: 100%;
   }
 }
+/* =========================================
+   GLOBAL LAYOUT LOCK — DO NOT REMOVE
+   Prevents layout drift across site
+========================================= */
+
+.layout-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Prevent rogue full-width containers */
+main > div:not(.layout-container) {
+  max-width: 100%;
+}
+
+/* Ensure no component can push outside grid */
+.layout-container * {
+  max-width: 100%;
+}
+
+/* Images and media never break layout */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}

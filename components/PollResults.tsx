@@ -1,3 +1,4 @@
+// components/PollResults.tsx
 import { Button } from '@/components/ui';
 
 export interface PollResultItem {
@@ -29,7 +30,7 @@ export function PollResults({
 }: PollResultsProps) {
   return (
     <section className="py-[22px] sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '896px' }}>
+      <div className="mx-auto" style={{ maxWidth: '896px' }}>
         <div 
           className="bg-white rounded-xl p-6 sm:p-8 lg:p-10"
           style={{ 
@@ -73,7 +74,6 @@ export function PollResults({
             ))}
           </div>
 
-          {/* Take the Poll Button */}
           <div className="flex justify-center">
             <Button 
               href={pollLink} 
