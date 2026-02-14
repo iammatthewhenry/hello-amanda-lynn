@@ -5,13 +5,13 @@ interface RecipePageTemplateProps {
 }
 
 /*
- Recipe page textured card wrapper
- Layout width is controlled ONLY by SiteContainer
- This component must NEVER set its own width or centering
+ LOCKED RECIPE TEMPLATE
+ Uses global spacing from layout.tsx
+ No page-specific vertical pushing allowed
 */
 export function RecipePageTemplate({ children }: RecipePageTemplateProps) {
   return (
-    <div className="mt-[50px]">
+    <div className="mt-6 sm:mt-8">
       <div 
         className="border border-border pt-6 pb-8 px-[4vw] sm:pt-10 sm:pb-16 sm:px-8 lg:pt-[63px] lg:pb-24 lg:px-14 relative w-full"
         style={{

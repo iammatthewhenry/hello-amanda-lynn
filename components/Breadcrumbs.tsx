@@ -13,23 +13,25 @@ interface BreadcrumbsProps {
 }
 
 /*
- Locked breadcrumb layout
+ GLOBAL LOCKED BREADCRUMBS
  - Tape will never clip
- - Same vertical start on all pages
- - Matches global grid
+ - No extra page-specific vertical drift
+ - Aligns to global SiteContainer grid
 */
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={cn(
-      "pt-8 sm:pt-10 pb-2 relative z-10", 
-      className
-    )}>
+    <div
+      className={cn(
+        "pt-6 sm:pt-8 pb-2 relative z-20 overflow-visible",
+        className
+      )}
+    >
       <div className="relative inline-flex flex-wrap overflow-visible">
-        
+
         {/* Tape background */}
-        <div 
+        <div
           className="absolute bg-[#F5EBE8]/80 pointer-events-none"
           style={{
             top: '-10px',
@@ -37,7 +39,8 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             left: '-22px',
             right: '-22px',
             transform: 'skewY(-1deg)',
-            boxShadow: '0 3px 8px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,0.4)',
+            boxShadow:
+              '0 3px 8px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,0.4)',
             borderTop: '1px solid rgba(212,165,165,0.2)',
             borderBottom: '1px solid rgba(212,165,165,0.2)',
           }}
@@ -49,6 +52,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             <ol className="flex items-center flex-wrap">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
+
                 return (
                   <div key={index} className="inline-flex items-center gap-2">
                     <li>
@@ -57,7 +61,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                           {item.label}
                         </span>
                       ) : (
-                        <Link 
+                        <Link
                           href={item.href!}
                           className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                         >
@@ -65,6 +69,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                         </Link>
                       )}
                     </li>
+
                     {!isLast && (
                       <ChevronRight className="w-4 h-4 text-muted-foreground" />
                     )}
@@ -74,7 +79,6 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             </ol>
           </nav>
         </div>
-
       </div>
     </div>
   );
