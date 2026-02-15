@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat, Tinos } from 'next/font/google';
 import Header from '@/components/Header';
@@ -10,7 +9,6 @@ import './globals.css';
 // ENVIRONMENT VARIABLES
 // ===================================================================
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://amandalynn.com';
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
 // ===================================================================
 // FONTS
@@ -72,7 +70,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-page text-foreground flex flex-col">
 
-        {/* Accessibility skip link */}
+        {/* Skip link */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-green text-white px-4 py-2 rounded"
@@ -82,14 +80,12 @@ export default function RootLayout({
 
         <Header />
 
-        {/* GLOBAL GRID LOCK */}
+        {/* GLOBAL CONTENT WRAP */}
         <main id="main-content" className="flex-1">
           <SiteContainer>
-            <div className="pt-8 sm:pt-10">
-              {children}
-          </div>
-        </SiteContainer>
-       </main>
+            {children}
+          </SiteContainer>
+        </main>
 
         <Footer />
       </body>
