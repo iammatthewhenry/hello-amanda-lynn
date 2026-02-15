@@ -54,8 +54,9 @@ export function BrowseByCategorySection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20">
+    <section className="pb-16 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
         {/* Section header */}
         <div className="mb-12 text-left">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
