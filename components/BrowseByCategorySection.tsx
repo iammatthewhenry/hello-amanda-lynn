@@ -13,7 +13,7 @@ export function BrowseByCategorySection() {
   ];
 
   return (
-    <section className="mt-6 sm:mt-8">
+    <section>
       {/* header */}
       <div className="mb-10">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
