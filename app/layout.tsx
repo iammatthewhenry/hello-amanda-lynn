@@ -85,9 +85,11 @@ export default function RootLayout({
         {/* GLOBAL GRID LOCK */}
         <main id="main-content" className="flex-1">
           <SiteContainer>
-            {children}
-          </SiteContainer>
-        </main>
+            <div className="pt-8 sm:pt-10">
+              {children}
+          </div>
+        </SiteContainer>
+       </main>
 
         <Footer />
       </body>

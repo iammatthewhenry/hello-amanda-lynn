@@ -24,7 +24,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <div
       className={cn(
-        "pt-6 sm:pt-8 pb-2 relative z-20 overflow-visible",
+        "pb-2 relative z-20 overflow-visible",
         className
       )}
     >
