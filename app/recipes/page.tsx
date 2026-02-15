@@ -8,10 +8,8 @@ export default function RecipesPage() {
     <>
       <StandaloneBreadcrumbs items={[{ label: 'Recipes' }]} />
 
-      {/* REMOVE extra <main> — layout.tsx already has one */}
-      <div className="pt-2 sm:pt-4">
-        <BrowseByCategorySection />
-      </div>
+      {/* NO extra top padding here */}
+      <BrowseByCategorySection />
     </>
   );
 }
