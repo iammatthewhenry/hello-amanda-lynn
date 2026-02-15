@@ -54,18 +54,16 @@ export function BrowseByCategorySection() {
   ];
 
   return (
-    <section className="pb-16 sm:pb-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        {/* Section header */}
-        <div className="mb-12 text-left">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Browse by Category
-          </h2>
-        </div>
-
-        <CategoryGrid categories={recipeCategories} />
+    <section className="pt-2 sm:pt-4 pb-16 sm:pb-20">
+      {/* REMOVE max width + padding wrapper (SiteContainer already handles this) */}
+      
+      <div className="mb-10">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          Browse by Category
+        </h2>
       </div>
+
+      <CategoryGrid categories={recipeCategories} />
     </section>
   );
 }
