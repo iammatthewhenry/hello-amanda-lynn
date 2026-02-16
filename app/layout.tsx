@@ -3,6 +3,7 @@ import { Inter, Montserrat, Tinos } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SiteContainer from '@/components/layout/SiteContainer';
+import GlobalBreadcrumbs from '@/components/layout/GlobalBreadcrumbs';
 import './globals.css';
 
 // ===================================================================
@@ -83,6 +84,7 @@ export default function RootLayout({
         {/* GLOBAL CONTENT WRAP */}
         <main id="main-content" className="flex-1">
           <SiteContainer>
+            <GlobalBreadcrumbs />
             {children}
           </SiteContainer>
         </main>
