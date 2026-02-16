@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
- } 
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function AboutPage() {
