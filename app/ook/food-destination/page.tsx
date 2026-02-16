@@ -45,14 +45,7 @@ export default function FoodDestinationIndexPage() {
 
   return (
     <main>
-      {/* Breadcrumbs - Standalone */}
-      <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs items={[
-          { label: 'Out of Kitchen', href: '/out-of-kitchen' },
-          { label: 'Food Destination' }
-        ]} />
-      </Container>
-
+      
       {/* Hero */}
       <Section spacing="lg" containerSize="4xl">
         <PageHeader

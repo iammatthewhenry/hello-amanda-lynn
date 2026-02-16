@@ -163,16 +163,7 @@ export default function BlogPostPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs
-          items={[
-            { label: 'Blog', href: '/blog' },
-            { label: post.title }
-          ]}
-        />
-      </Container>
-
+      
       {/* Hero Image */}
       <Container size="4xl" className="mb-12">
         <img

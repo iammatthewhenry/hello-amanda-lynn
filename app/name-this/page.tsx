@@ -145,11 +145,7 @@ export default function NameThisPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs 
-      </Container>
-
+      
       {/* Game Content */}
       <section className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Score and Reset */}
