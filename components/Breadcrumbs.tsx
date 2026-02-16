@@ -28,8 +28,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         className
       )}
     >
-      <div className="relative inline-flex flex-wrap overflow-visible">
-
+      <div className="relative inline-block overflow-visible">
         {/* Tape background */}
         <div
           className="absolute bg-[#F5EBE8]/80 pointer-events-none"
@@ -49,13 +48,12 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         {/* Breadcrumb content */}
         <div className="relative px-3 py-1.5 inline-flex">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center flex-wrap">
+            <ol className="flex items-center gap-2 whitespace-nowrap">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
 
                 return (
-                  <div key={index} className="inline-flex items-center gap-2">
-                    <li>
+                 <li key={index} className="inline-flex items-center gap-2">
                       {isLast ? (
                         <span className="text-green text-sm font-medium">
                           {item.label}
