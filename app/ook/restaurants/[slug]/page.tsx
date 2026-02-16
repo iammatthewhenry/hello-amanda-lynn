@@ -208,6 +208,8 @@ export default function RestaurantReviewPage() {
             ))}
           </ul>
         </div>
-      </section>
+            </section>
 
+    </main>
+  );
 }
