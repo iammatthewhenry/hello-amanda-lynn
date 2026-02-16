@@ -4,16 +4,13 @@ import { PageHeader } from "@/components/PageHeader";
 
 export default function AppetizersPage() {
   return (
+    <main className="pt-6 sm:pt-8">
+      <PageHeader 
+        title="Appetizers"
+        description="Start your meal with these delicious appetizer recipes"
+      />
 
-      <main className="pt-6 sm:pt-8">
-        {/* PageHeader now focuses only on title and description */}
-        <PageHeader 
-          title="Appetizers"
-          description="Start your meal with these delicious appetizer recipes"
-        />
-
-        {/* Your existing content goes here */}
-      </main>
-    </>
+      {/* Your existing content goes here */}
+    </main>
   );
 }

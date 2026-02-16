@@ -37,22 +37,19 @@ export default function BreakfastPage() {
   ];
 
   return (
+  <main className="pt-6 sm:pt-8">
+    <PageHeader 
+      title="Breakfast"
+      description="Start your day right with these delicious breakfast recipes from quick weekday options to leisurely weekend brunches."
+    />
 
-      <main className="pt-6 sm:pt-8">
-        {/* PageHeader now focuses only on title and description */}
-        <PageHeader 
-          title="Breakfast"
-          description="Start your day right with these delicious breakfast recipes from quick weekday options to leisurely weekend brunches."
-        />
+    <GridSection
+      title="Breakfast Recipes"
+      posts={breakfasts}
+      baseSlug="/recipes/breakfast"
+      isFirstSection={true}
+    />
+  </main>
+);
 
-        {/* Recipe Grid */}
-        <GridSection
-          title="Breakfast Recipes"
-          posts={breakfasts}
-          baseSlug="/recipes/breakfast"
-          isFirstSection={true}
-        />
-      </main>
-    </>
-  );
 }

@@ -42,9 +42,9 @@ export default function DessertsPage() {
     },
   ];
 
-  return (
-
-      <main className="pt-6 sm:pt-8">
+return (
+  <>
+    <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}
         <PageHeader 
           title="Desserts"
