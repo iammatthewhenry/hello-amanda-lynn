@@ -110,14 +110,6 @@ export default function RestaurantReviewPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1.5 mb-8">
-        <Breadcrumbs items={[
-          { label: "Out of Kitchen", href: "/out-of-kitchen" },
-          { label: "Restaurant Reviews", href: "/out-of-kitchen/restaurants" },
-          { label: restaurant.name }
-        ]} />
-      </div>
 
       {/* Header Section - Two Column Layout */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
@@ -218,76 +210,4 @@ export default function RestaurantReviewPage() {
         </div>
       </section>
 
-      {/* Advertisement Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
-          <p className="text-sm text-gray-500 mb-2">Advertisement</p>
-          <p className="text-xs text-gray-400">728x90 Banner Ad</p>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="text-center mb-8">
-          <p className="text-muted-foreground mb-6">
-            Get new recipes and kitchen tips delivered straight to your inbox!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
-            />
-            <button className="px-6 py-2 bg-green text-white rounded-md hover:bg-green/90 transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Links */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex justify-center gap-4">
-          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
-            <span className="text-sm">📷</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
-            <span className="text-sm">f</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
-            <span className="text-sm">📌</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
-            <span className="text-sm">✖</span>
-          </button>
-          <button className="w-10 h-10 rounded-full bg-green text-white flex items-center justify-center hover:bg-green/90 transition-colors">
-            <span className="text-sm">📺</span>
-          </button>
-        </div>
-        
-        <div className="text-center mt-8">
-          <div className="inline-block">
-            <div className="bg-gray-100 px-8 py-4 rounded-lg mb-4">
-              <p className="text-sm text-gray-600 mb-1">AS SEEN ON</p>
-              <div className="flex items-center gap-4">
-                <span className="text-xs font-medium">PBS</span>
-                <span className="text-xs">BETTER HOMES & GARDENS</span>
-                <span className="text-xs">FOOD NETWORK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Back Navigation */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-8 pb-12">
-        <Link 
-          href="/out-of-kitchen/restaurants"
-          className="inline-flex items-center gap-2 text-green font-semibold hover:text-green/70 transition-colors"
-        >
-          ← Back to Restaurant Reviews
-        </Link>
-      </div>
-    </main>
-  );
 }
