@@ -1,6 +1,4 @@
 'use client';
-
- } 
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 

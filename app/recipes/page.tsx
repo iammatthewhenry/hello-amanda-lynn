@@ -1,6 +1,5 @@
 'use client';
 
- } 
 import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
 
 export default function RecipesPage() {

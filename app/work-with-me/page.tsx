@@ -1,6 +1,5 @@
 'use client';
 
- } 
 import { Instagram, FileText } from 'lucide-react';
 import Image from 'next/image';
 
