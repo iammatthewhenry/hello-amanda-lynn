@@ -1,6 +1,6 @@
 'use client';
 
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 
@@ -112,8 +112,8 @@ export default function InTheKitchenPage() {
 
   return (
     <>
-      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
-      <StandaloneBreadcrumbs items={[{ label: 'In The Kitchen' }]} />
+      {/*  handles container, positioning, and spacing */}
+       items={[{ label: 'In The Kitchen' }]} />
 
       <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}

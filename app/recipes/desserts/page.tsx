@@ -1,6 +1,6 @@
 'use client';
 
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { PageHeader } from '@/components/PageHeader';
 import { GridSection } from '@/components/GridSection';
 
@@ -46,8 +46,8 @@ export default function DessertsPage() {
 
   return (
     <>
-      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
-      <StandaloneBreadcrumbs items={[
+      {/*  handles container, positioning, and spacing */}
+       items={[
         { label: 'Recipes', href: '/recipes' },
         { label: 'Desserts' }
       ]} />

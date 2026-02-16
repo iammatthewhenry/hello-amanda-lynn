@@ -1,6 +1,6 @@
 'use client';
 
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { PageHeader } from "@/components/PageHeader";
 import { GridSection } from "@/components/GridSection";
 
@@ -177,7 +177,7 @@ export default function OutOfKitchenPage() {
 
   return (
     <>
-      <StandaloneBreadcrumbs items={[{ label: 'Out of Kitchen' }]} />
+       items={[{ label: 'Out of Kitchen' }]} />
 
       <main className="pt-6 sm:pt-8">
         <PageHeader 

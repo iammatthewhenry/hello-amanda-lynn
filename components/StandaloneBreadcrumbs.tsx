@@ -5,7 +5,7 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-interface StandaloneBreadcrumbsProps {
+interface Props {
   items: BreadcrumbItem[];
 }
 
@@ -14,7 +14,7 @@ interface StandaloneBreadcrumbsProps {
  Must match recipe page breadcrumb position exactly
  NO extra top padding allowed
 */
-export function StandaloneBreadcrumbs({ items }: StandaloneBreadcrumbsProps) {
+export function ({ items }: Props) {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-4">
       <Breadcrumbs items={items} />

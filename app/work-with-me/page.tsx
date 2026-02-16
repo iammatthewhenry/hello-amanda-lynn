@@ -1,6 +1,6 @@
 'use client';
 
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { Instagram, FileText } from 'lucide-react';
 import Image from 'next/image';
 
@@ -8,7 +8,7 @@ export default function WorkWithMePage() {
   return (
     <>
       {/* Breadcrumbs - Consistent positioning via component */}
-      <StandaloneBreadcrumbs items={[{ label: 'Work With Me' }]} />
+       items={[{ label: 'Work With Me' }]} />
 
       <main className="pt-6 sm:pt-8">
         {/* Hero Section */}

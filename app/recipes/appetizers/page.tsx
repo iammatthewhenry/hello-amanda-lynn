@@ -1,14 +1,14 @@
 'use client';
 
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { PageHeader } from "@/components/PageHeader";
 // Add other imports as needed
 
 export default function AppetizersPage() {
   return (
     <>
-      {/* StandaloneBreadcrumbs handles container, positioning, and spacing */}
-      <StandaloneBreadcrumbs items={[
+      {/*  handles container, positioning, and spacing */}
+       items={[
         { label: 'Recipes', href: '/recipes' },
         { label: 'Appetizers' }
       ]} />

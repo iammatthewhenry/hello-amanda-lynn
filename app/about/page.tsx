@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { StandaloneBreadcrumbs } from '@/components/StandaloneBreadcrumbs';
+ } 
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function AboutPage() {
   return (
     <>
       {/* Breadcrumbs - Now matches recipe category page positioning */}
-      <StandaloneBreadcrumbs items={[{ label: 'About' }]} />
+       items={[{ label: 'About' }]} />
 
       <main className="pt-6 sm:pt-8">
         {/* Introduction Section */}
