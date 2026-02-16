@@ -147,7 +147,7 @@ export default function NameThisPage() {
     <main>
       {/* Breadcrumbs */}
       <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: 'In The Kitchen', href: '/in-the-kitchen' }, { label: 'Name This' }]} />
+        <Breadcrumbs 
       </Container>
 
       {/* Game Content */}

@@ -111,7 +111,7 @@ export default function InTheKitchenPage() {
   return (
     <>
       {/*  handles container, positioning, and spacing */}
-       items={[{ label: 'In The Kitchen' }]} />
+       
 
       <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}

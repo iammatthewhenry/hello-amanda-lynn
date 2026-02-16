@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Breadcrumbs - Now matches recipe category page positioning */}
-       items={[{ label: 'About' }]} />
+       
 
       <main className="pt-6 sm:pt-8">
         {/* Introduction Section */}

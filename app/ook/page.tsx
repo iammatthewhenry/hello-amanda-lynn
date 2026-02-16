@@ -175,7 +175,7 @@ export default function OutOfKitchenPage() {
 
   return (
     <>
-       items={[{ label: 'Out of Kitchen' }]} />
+       
 
       <main className="pt-6 sm:pt-8">
         <PageHeader 

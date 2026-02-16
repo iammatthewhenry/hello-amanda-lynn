@@ -61,7 +61,7 @@ export default function ShopPage() {
     <main className="bg-background">
       {/* Breadcrumbs - Standalone */}
       <Container size="4xl" className="-mt-1.5 mb-8">
-        <Breadcrumbs items={[{ label: 'Shop' }]} />
+        <Breadcrumbs 
       </Container>
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 lg:py-2.5 pb-12 sm:pb-16 lg:pb-20" style={{ maxWidth: '85%' }}>

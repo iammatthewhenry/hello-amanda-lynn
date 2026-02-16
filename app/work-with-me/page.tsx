@@ -7,7 +7,7 @@ export default function WorkWithMePage() {
   return (
     <>
       {/* Breadcrumbs - Consistent positioning via component */}
-       items={[{ label: 'Work With Me' }]} />
+       
 
       <main className="pt-6 sm:pt-8">
         {/* Hero Section */}
