@@ -47,7 +47,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="bg-secondary px-3 py-1.5 inline-flex relative">
+        <div className="relative px-3 py-1.5 inline-flex">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center flex-wrap">
               {items.map((item, index) => {
