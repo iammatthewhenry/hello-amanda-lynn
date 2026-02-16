@@ -4,12 +4,6 @@ import { PageHeader } from "@/components/PageHeader";
 
 export default function AppetizersPage() {
   return (
-    <>
-      {/*  handles container, positioning, and spacing */}
-       items={[
-        { label: 'Recipes', href: '/recipes' },
-        { label: 'Appetizers' }
-      ]} />
 
       <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}

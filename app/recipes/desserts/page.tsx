@@ -43,12 +43,6 @@ export default function DessertsPage() {
   ];
 
   return (
-    <>
-      {/*  handles container, positioning, and spacing */}
-       items={[
-        { label: 'Recipes', href: '/recipes' },
-        { label: 'Desserts' }
-      ]} />
 
       <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}

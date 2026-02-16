@@ -37,12 +37,6 @@ export default function BreakfastPage() {
   ];
 
   return (
-    <>
-      {/*  handles container, positioning, and spacing */}
-       items={[
-        { label: 'Recipes', href: '/recipes' },
-        { label: 'Breakfast' }
-      ]} />
 
       <main className="pt-6 sm:pt-8">
         {/* PageHeader now focuses only on title and description */}
