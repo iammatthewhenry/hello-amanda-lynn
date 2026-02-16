@@ -29,6 +29,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
       )}
     >
       <div className="relative inline-block overflow-visible">
+        
         {/* Tape background */}
         <div
           className="absolute bg-[#F5EBE8]/80 pointer-events-none"
@@ -46,32 +47,34 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="relative px-3 py-1.5 inline-flex">
+        <div className="relative px-3 py-1.5">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 whitespace-nowrap">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
 
                 return (
-                 <li key={index} className="inline-flex items-center gap-2">
-                      {isLast ? (
-                        <span className="text-green text-sm font-medium">
-                          {item.label}
-                        </span>
-                      ) : (
-                        <Link
-                          href={item.href!}
-                          className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                        >
-                          {item.label}
-                        </Link>
-                      )}
-                    </li>
+                  <li
+                    key={index}
+                    className="inline-flex items-center gap-2"
+                  >
+                    {isLast ? (
+                      <span className="text-green text-sm font-medium">
+                        {item.label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.href!}
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
 
                     {!isLast && (
                       <ChevronRight className="w-4 h-4 text-muted-foreground" />
                     )}
-                  </div>
+                  </li>
                 );
               })}
             </ol>
