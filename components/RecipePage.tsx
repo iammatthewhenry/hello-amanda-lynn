@@ -155,16 +155,6 @@ export default function RecipePage({ params }: RecipePageProps) {
 
   return (
     <main>
-      <div className="max-w-4xl mx-auto px-[4vw] sm:px-6 lg:px-8 -mt-1.5 mb-0 sm:mb-[50px]">
-        {/* Breadcrumbs */}
-        <Breadcrumbs 
-          items={[
-            { label: "Recipes", href: "/recipes" },
-            { label: recipe.category, href: `/${recipe.category.toLowerCase()}` },
-            { label: recipe.title }
-          ]}
-        />
-      </div>
       
       <RecipePageTemplate>
           {/* Header with Image and Title */}
