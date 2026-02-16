@@ -6,24 +6,18 @@ interface SiteContainerProps {
 }
 
 /*
- MASTER GRID CONTAINER — HARD LOCK
- Defines permanent site layout width.
- Breadcrumb alignment becomes global grid.
- Nothing else should control page width.
+ MASTER GRID CONTAINER — CONTROLLED BREAKOUT SYSTEM
+ - Locks content at 1180px
+ - Allows decorative elements to visually extend
+ - Keeps horizontal rhythm consistent site-wide
 */
 export default function SiteContainer({ children, className = '' }: SiteContainerProps) {
   return (
-    <div className="w-full flex justify-center">
-      <div
-        className={`
-          w-full
-          max-w-[1180px]
-          px-[4vw] sm:px-6 lg:px-8
-          layout-container
-          ${className}
-        `}
-      >
-        {children}
+    <div className="w-full relative">
+      <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-6 lg:px-8">
+        <div className={`relative ${className}`}>
+          {children}
+        </div>
       </div>
     </div>
   );
