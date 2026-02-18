@@ -1,6 +1,6 @@
 'use client';
 
-import { Poll } from '@/components/poll';
+import { Poll } from '@/components';
 
 const DESSERT_CHOICES = [
   { id: '1', text: 'Chocolate Cake' },

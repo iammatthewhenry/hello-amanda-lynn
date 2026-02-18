@@ -1,12 +1,6 @@
 'use client';
 
-import { Hero } from '@/components/hero';
-import { AboutSection } from '@/components/about-section';
-import { ShopSection } from '@/components/shop-section';
-import { PollResults } from '@/components/poll-results';
-import { TopFive } from '@/components/top-five';
-import { BrowseByCategorySection } from '@/components/browse-by-category-section';
-import { ExploreMore } from '@/components/explore-more';
+import { Hero, AboutSection, ShopSection, PollResults, TopFive, BrowseByCategorySection, ExploreMore } from '@/components';
 
 export const dynamic = 'force-static';
 

@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import SiteContainer from '@/components/layout/site-container';
-import { OokHeader } from '@/components/ook-header';
+import { OokHeader } from '@/components';
 
 // Mock data - clean content matching Figma design
 const getRestaurantBySlug = (slug: string) => {

@@ -44,6 +44,7 @@ export type { PollResultItem } from './poll-results';
 // Templates & Layouts
 export { BlogPostTemplate } from './blog-post-template';
 export { RecipePageTemplate } from './recipe-page-template';
+export { default as RecipePage } from './recipe-page';
 export { ListingPageLayout } from './listing-page-layout';
 export { SectionPageLayout } from './section-page-layout';
 
@@ -56,6 +57,7 @@ export { Container } from './container';
 export { PageHeader } from './page-header';
 export { GridSection } from './grid-section';
 export { ContentCard } from './content-card';
+export { ViewAllPostsButton } from './view-all-posts-button';
 
 // Photo Components
 export { FramedPhoto } from './framed-photo';

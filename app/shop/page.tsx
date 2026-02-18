@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { Container } from '@/components/container';
+import { Breadcrumbs, Container } from '@/components';
 import { Section, Card, Button } from '@/components/ui';
 
 export default function ShopPage() {

@@ -4,8 +4,7 @@ import { useState, useMemo } from 'react';
 import { Search, Filter } from 'lucide-react';
 
 import { getAllRecipes, getRecipesByCategory, RECIPE_CATEGORIES, type Recipe } from '@/data/recipe-data';
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { ContentCard } from '@/components/content-card';
+import { Breadcrumbs, ContentCard } from '@/components';
 
 interface RecipeListingPageProps {
   initialCategory?: string;

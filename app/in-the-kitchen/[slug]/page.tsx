@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { ShareBar } from '@/components/share-bar';
-import { BlogPostTemplate } from '@/components/blog-post-template';
-import { Container } from '@/components/container';
+import { Breadcrumbs, ShareBar, BlogPostTemplate, Container } from '@/components';
 
 interface BlogPost {
   title: string;

@@ -1,6 +1,5 @@
 'use client';
-import { PageHeader } from "@/components/page-header";
-import { GridSection } from "@/components/grid-section";
+import { PageHeader, GridSection } from "@/components";
 
 interface BlogPost {
   title: string;

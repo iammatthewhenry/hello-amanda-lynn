@@ -1,7 +1,6 @@
 'use client';
 
-import { ListingPageLayout } from '@/components/listing-page-layout';
-import { RecipeCard } from '@/components/recipe-card';
+import { ListingPageLayout, RecipeCard } from '@/components';
 
 export default function AmericanaPage() {
   const americanaRecipes = [

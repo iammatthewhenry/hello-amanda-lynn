@@ -1,6 +1,6 @@
 'use client';
 
-import { BrowseByCategorySection } from '@/components/browse-by-category-section';
+import { BrowseByCategorySection } from '@/components';
 
 export default function RecipesPage() {
   return (

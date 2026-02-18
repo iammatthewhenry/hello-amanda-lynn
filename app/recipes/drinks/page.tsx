@@ -1,7 +1,6 @@
 'use client';
 
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { GridSection } from '@/components/grid-section';
+import { Breadcrumbs, GridSection } from '@/components';
 
 export default function DrinksPage() {
   const drinks = [

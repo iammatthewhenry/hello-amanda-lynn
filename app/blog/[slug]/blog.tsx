@@ -2,10 +2,10 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Breadcrumbs } from '@/components/breadcrumbs';
+import { Breadcrumbs } from '@/components';
 import { Clock, Star, Users, DollarSign, Tag } from 'lucide-react';
-import { ShareBar } from '@/components/share-bar';
-import { Container } from '@/components/container';
+import { ShareBar } from '@/components';
+import { Container } from '@/components';
 import { Card, Button } from '@/components/ui';
 
 interface BlogPost {

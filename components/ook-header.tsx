@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Star } from 'lucide-react';
-import { ShareBar } from '@/components/share-bar';
+import { ShareBar } from '@/components';
 
 // ===================================================================
 // TYPES

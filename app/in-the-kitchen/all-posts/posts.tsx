@@ -1,8 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { BlogPostCard } from "@/components/BlogPostCard";
-import { ListingPageLayout } from "@/components/ListingPageLayout";
+import { BlogPostCard, ListingPageLayout } from "@/components";
 
 interface KitchenPost {
   title: string;

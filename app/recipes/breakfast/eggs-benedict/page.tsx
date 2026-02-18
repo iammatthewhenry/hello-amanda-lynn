@@ -1,4 +1,4 @@
-import RecipePage from '@/components/recipe-page';
+import { RecipePage } from '@/components';
 import { getRecipeBySlug } from '@/data/recipe-data';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
