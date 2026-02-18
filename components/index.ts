@@ -43,7 +43,7 @@ export type { PollResultItem } from './PollResults';
 
 // Templates & Layouts
 export { BlogPostTemplate } from './BlogPostTemplate';
-export { RecipePageTemplate } from './recipe-page-template;
+export { RecipePageTemplate } from './recipe-page-template';
 export { ListingPageLayout } from './ListingPageLayout';
 
 // Navigation & UI
