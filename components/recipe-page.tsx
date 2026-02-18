@@ -8,7 +8,7 @@ import { Star, Copy, Printer } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { ShareBar } from "@/components/ShareBar";
-import { RecipePageTemplate } from "@/components/RecipePageTemplate";
+import { RecipePageTemplate } from "@/components/recipe-page-template";
 import { toast } from "sonner";
 import { getRecipeBySlug } from "@/data/recipe-data";
 
