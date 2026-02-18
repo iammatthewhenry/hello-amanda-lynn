@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Star, Copy, Printer } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ShareBar } from "@/components/ShareBar";
 import { RecipePageTemplate } from "@/components/RecipePageTemplate";
 import { toast } from "sonner";

@@ -1,9 +1,9 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import SiteContainer from '@/components/SiteContainer';
+import { OokHeader } from '@/components/ook-header';
 
 // Mock data - clean content matching Figma design
 const getRestaurantBySlug = (slug: string) => {
@@ -110,106 +110,77 @@ export default function RestaurantReviewPage() {
 
   return (
     <main>
-
-      {/* Header Section - Two Column Layout */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left: Restaurant Image */}
-          <div className="relative">
-            <Image
-              src={restaurant.image}
-              alt={restaurant.name}
-              width={400}
-              height={300}
-              className="w-full h-auto object-cover border-[16px] border-white"
-              style={{ boxShadow: 'var(--shadow-hero)' }}
-              priority
-            />
-          </div>
-
-          {/* Right: Restaurant Info */}
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-green mb-2">
-              {restaurant.name}
-            </h1>
-            
-            <div className="flex items-center gap-4 mb-4 text-muted-foreground">
-              <span>{restaurant.city}, {restaurant.state}</span>
-              <span>$</span>
-              <span className="font-medium">{restaurant.priceRange}</span>
-            </div>
-
-            <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-              <span>By {restaurant.author}</span>
-              <span>Published {restaurant.publishDate}</span>
-            </div>
-
-            {/* Social Sharing Buttons */}
-            <div className="flex gap-2 mb-6">
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">f</span>
-              </button>
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">@</span>
-              </button>
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">in</span>
-              </button>
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">📧</span>
-              </button>
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">📱</span>
-              </button>
-              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <span className="text-xs text-gray-600">🔗</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Header Section - Using OOK Header Component */}
+      <SiteContainer>
+        <OokHeader
+          title={restaurant.name}
+          image={restaurant.image}
+          location={{
+            city: restaurant.city,
+            state: restaurant.state
+          }}
+          rating={{
+            type: 'price',
+            value: restaurant.priceRange
+          }}
+          author={restaurant.author}
+          publishDate={restaurant.publishDate}
+          shareProps={{
+            title: restaurant.name,
+            description: restaurant.description,
+            imageUrl: restaurant.image
+          }}
+        />
+      </SiteContainer>
 
       {/* Description */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <p className="text-lg text-muted-foreground italic text-center">
-          {restaurant.description}
-        </p>
-      </section>
+      <SiteContainer>
+        <section className="mb-8">
+          <p className="text-lg text-muted-foreground italic text-center">
+            {restaurant.description}
+          </p>
+        </section>
+      </SiteContainer>
 
       {/* Advertisement Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
-          <p className="text-sm text-gray-500 mb-2">Advertisement</p>
-          <p className="text-xs text-gray-400">728x90 Banner Ad</p>
-        </div>
-      </section>
+      <SiteContainer>
+        <section className="mb-8">
+          <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
+            <p className="text-sm text-gray-500 mb-2">Advertisement</p>
+            <p className="text-xs text-gray-400">728x90 Banner Ad</p>
+          </div>
+        </section>
+      </SiteContainer>
 
       {/* Article Content */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="prose prose-lg max-w-none">
-          {restaurant.content.map((paragraph, index) => (
-            <p key={index} className="mb-6 text-muted-foreground leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </section>
+      <SiteContainer>
+        <section className="mb-12">
+          <div className="prose prose-lg max-w-none">
+            {restaurant.content.map((paragraph, index) => (
+              <p key={index} className="mb-6 text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      </SiteContainer>
 
       {/* Key Takeaways */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-green/5 p-8 rounded-lg border border-green/20">
-          <h3 className="text-xl font-bold text-green mb-6">Key Takeaways</h3>
-          <ul className="space-y-3">
-            {restaurant.keyTakeaways.map((takeaway, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
-                <span className="text-muted-foreground">{takeaway}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-            </section>
-
+      <SiteContainer>
+        <section className="mb-12">
+          <div className="bg-green/5 p-8 rounded-lg border border-green/20">
+            <h3 className="text-xl font-bold text-green mb-6">Key Takeaways</h3>
+            <ul className="space-y-3">
+              {restaurant.keyTakeaways.map((takeaway, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="text-muted-foreground">{takeaway}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </SiteContainer>
     </main>
   );
 }
