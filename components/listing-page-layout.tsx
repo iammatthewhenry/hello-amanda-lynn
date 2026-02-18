@@ -1,7 +1,5 @@
-// components/SectionPageLayout.tsx
-
 import { ReactNode } from 'react';
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs } from './breadcrumbs';
 
 // ===================================================================
 // TYPES
@@ -11,7 +9,7 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-interface SectionPageLayoutProps<T> {
+interface ListingPageLayoutProps<T> {
   title: string;
   description: string;
   breadcrumbItems: BreadcrumbItem[];
@@ -24,9 +22,9 @@ interface SectionPageLayoutProps<T> {
 }
 
 // ===================================================================
-// SECTION PAGE LAYOUT
+// LISTING PAGE LAYOUT
 // ===================================================================
-export function SectionPageLayout<T>({
+export function ListingPageLayout<T>({
   title,
   description,
   breadcrumbItems,
@@ -36,7 +34,7 @@ export function SectionPageLayout<T>({
   heroClassName = '',
   gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12',
   children,
-}: SectionPageLayoutProps<T>) {
+}: ListingPageLayoutProps<T>) {
   // Add "Home" as first breadcrumb item
   const fullBreadcrumbs = [
     { label: 'Home', href: '/' },

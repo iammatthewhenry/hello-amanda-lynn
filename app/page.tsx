@@ -1,12 +1,12 @@
 'use client';
 
-import { Hero } from '@/components/Hero';
-import { AboutSection } from '@/components/AboutSection';
-import { ShopSection } from '@/components/ShopSection';
-import { PollResults } from '@/components/PollResults';
-import { TopFive } from '@/components/TopFive';
-import { BrowseByCategorySection } from '@/components/BrowseByCategorySection';
-import { ExploreMore } from '@/components/ExploreMore';
+import { Hero } from '@/components/hero';
+import { AboutSection } from '@/components/about-section';
+import { ShopSection } from '@/components/shop-section';
+import { PollResults } from '@/components/poll-results';
+import { TopFive } from '@/components/top-five';
+import { BrowseByCategorySection } from '@/components/browse-by-category-section';
+import { ExploreMore } from '@/components/explore-more';
 
 export const dynamic = 'force-static';
 

@@ -3,7 +3,7 @@
 import { ArrowUp } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { NewsletterSignup } from './NewsletterSignup';
+import { NewsletterSignup } from './newsletter-signup';
 
 // ===================================================================
 // SOCIAL ICON COMPONENT

@@ -2,8 +2,8 @@
 export const dynamic = 'force-dynamic';
 
 import { useParams } from 'next/navigation';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { ShareBar } from '@/components/ShareBar';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { BlogPostTemplate } from '@/components/BlogPostTemplate';
 import NotFoundPage from '@/app/not-found';
 

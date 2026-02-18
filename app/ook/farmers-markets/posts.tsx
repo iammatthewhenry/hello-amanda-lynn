@@ -1,9 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ContentCard } from "@/components/ContentCard";
-import { ListingPageLayout } from "@/components/ListingPageLayout";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { ContentCard } from "@/components/content-card";
+import { ListingPageLayout } from "@/components/listing-page-layout";
 
 interface FarmersMarketPost {
   title: string;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
-import { Container } from './Container';
+import { Container } from './container';
 import { Button } from '@/components/ui';
 
 // Cookie helper functions

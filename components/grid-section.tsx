@@ -1,5 +1,5 @@
-import { ContentCard } from "@/components/ContentCard";
-import { ViewAllPostsButton } from "@/components/ViewAllPostsButton";
+import { ContentCard } from "@/components/content-card";
+import { ViewAllPostsButton } from "@/components/view-all-posts-button";
 
 interface Post {
   title: string;

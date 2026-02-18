@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Search } from 'lucide-react';
-import { SocialIconsRow, DEFAULT_SOCIAL_LINKS } from './SocialIcons';
-import { Container } from './Container';
+import { SocialIconsRow, DEFAULT_SOCIAL_LINKS } from './social-icons';
+import { Container } from './container';
 
 // ===================================================================
 // CONFIGURATION

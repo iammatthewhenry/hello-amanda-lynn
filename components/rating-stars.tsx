@@ -1,4 +1,4 @@
-import { ShoppingBasket } from './ui/ShoppingBasket';
+import { ShoppingBasket } from './ui/shopping-basket';
 
 interface RatingStarsProps {
   rating: number;

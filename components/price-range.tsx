@@ -1,4 +1,4 @@
-import { DollarSign } from './ui/DollarSign';
+import { DollarSign } from './ui/dollar-sign';
 
 interface PriceRangeProps {
   price: string; // "$", "$$", "$$$", "$$$$"

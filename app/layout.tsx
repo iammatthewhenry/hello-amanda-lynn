@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat, Tinos } from 'next/font/google';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import SiteContainer from '@/components/layout/SiteContainer';
-import GlobalBreadcrumbs from '@/components/layout/GlobalBreadcrumbs';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import SiteContainer from '@/components/layout/site-container';
+import GlobalBreadcrumbs from '@/components/layout/global-breadcrumbs';
 import './globals.css';
 
 // ===================================================================

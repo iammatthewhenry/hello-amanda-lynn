@@ -1,4 +1,4 @@
-import { CategoryGrid } from './CategoryCard';
+import { CategoryGrid } from './category-card';
 
 export function BrowseByCategorySection() {
   const recipeCategories = [

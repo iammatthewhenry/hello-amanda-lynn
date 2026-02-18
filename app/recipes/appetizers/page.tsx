@@ -1,5 +1,5 @@
 'use client';
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "@/components/page-header";
 // Add other imports as needed
 
 export default function AppetizersPage() {

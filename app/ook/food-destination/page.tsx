@@ -1,11 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Pagination } from '@/components/Pagination';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { Pagination } from '@/components/pagination';
 import { useState } from 'react';
-import { Container } from '@/components/Container';
-import { PageHeader } from '@/components/PageHeader';
+import { Container } from '@/components/container';
+import { PageHeader } from '@/components/page-header';
 import { Section, ReadMoreLink } from '@/components/ui';
 
 interface FoodDestinationPost {

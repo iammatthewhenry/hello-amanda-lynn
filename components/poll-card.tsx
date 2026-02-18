@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Container } from '@/components/Container';
+import { Container } from '@/components/container';
 import { Card, Button } from '@/components/ui';
 
 interface PollCardProps {

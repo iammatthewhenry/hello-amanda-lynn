@@ -3,18 +3,18 @@
 // ===================================================================
 
 // Layout Components
-export { default as Header } from './Header';
-export { default as Footer } from './Footer';
+export { default as Header } from './header';
+export { default as Footer } from './footer';
 
 // Hero & Featured
-export { Hero } from './Hero';
-export type { HeroSlide } from './Hero';
+export { Hero } from './hero';
+export type { HeroSlide } from './hero';
 
 // Cards & Grid
-export { CategoryCard, CategoryGrid } from './CategoryCard';
-export { BlogPostCard } from './BlogPostCard';
-export { RecipeCard } from './RecipeCard';
-export { PollCard } from './PollCard';
+export { CategoryCard, CategoryGrid } from './category-card';
+export { BlogPostCard } from './blog-post-card';
+export { RecipeCard } from './recipe-card';
+export { PollCard } from './poll-card';
 
 // Social & Sharing
 export { 
@@ -22,39 +22,39 @@ export {
   SocialIconsRow, 
   getSocialIcon,
   DEFAULT_SOCIAL_LINKS,
-} from './SocialIcons';
-export type { SocialPlatform, SocialLink } from './SocialIcons';
-export { ShareBar } from './ShareBar';
+} from './social-icons';
+export type { SocialPlatform, SocialLink } from './social-icons';
+export { ShareBar } from './share-bar';
 
 // Sections
-export { AboutSection } from './AboutSection';
-export { BrowseByCategorySection } from './BrowseByCategorySection';
-export { ShopSection } from './ShopSection';
-export type { ShopItem } from './ShopSection';
-export { TopFive } from './TopFive';
-export type { TopFiveItem, TopFiveData } from './TopFive';
-export { SeenOnBox } from './SeenOnBox';
+export { AboutSection } from './about-section';
+export { BrowseByCategorySection } from './browse-by-category-section';
+export { ShopSection } from './shop-section';
+export type { ShopItem } from './shop-section';
+export { TopFive } from './top-five';
+export type { TopFiveItem, TopFiveData } from './top-five';
+export { SeenOnBox } from './seen-on-box';
 
 // Poll Components
-export { Poll } from './Poll';
-export type { PollItem } from './Poll';
-export { PollResults } from './PollResults';
-export type { PollResultItem } from './PollResults';
+export { Poll } from './poll';
+export type { PollItem } from './poll';
+export { PollResults } from './poll-results';
+export type { PollResultItem } from './poll-results';
 
 // Templates & Layouts
-export { BlogPostTemplate } from './BlogPostTemplate';
+export { BlogPostTemplate } from './blog-post-template';
 export { RecipePageTemplate } from './recipe-page-template';
-export { ListingPageLayout } from './ListingPageLayout';
+export { ListingPageLayout } from './listing-page-layout';
 
 // Navigation & UI
-export { Pagination } from './Pagination';
-export { SearchOverlay } from './SearchOverlay';
-export type { SearchItem } from './SearchOverlay';
-export { Breadcrumbs } from './Breadcrumbs';
+export { Pagination } from './pagination';
+export { SearchOverlay } from './search-overlay';
+export type { SearchItem } from './search-overlay';
+export { Breadcrumbs } from './breadcrumbs';
 
 // Photo Components
-export { FramedPhoto } from './FramedPhoto';
-export { TiltedPhoto } from './TiltedPhoto';
+export { FramedPhoto } from './framed-photo';
+export { TiltedPhoto } from './tilted-photo';
 
 // UI Components (micro items only)
 // Note: Most UI components have been moved to main components folder

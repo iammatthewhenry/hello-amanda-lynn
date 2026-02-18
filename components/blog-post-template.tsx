@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
-import { ShareBar } from './ShareBar';
+import { ShareBar } from './share-bar';
 import { Sparkles } from 'lucide-react';
 
 interface BlogPostTemplateProps {

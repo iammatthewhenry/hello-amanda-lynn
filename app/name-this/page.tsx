@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Breadcrumbs } from '@/components/breadcrumbs';
 import { RotateCcw, Clock } from 'lucide-react';
-import { Container } from '@/components/Container';
+import { Container } from '@/components/container';
 import { Button, Card } from '@/components/ui';
 
 interface GameCard {
