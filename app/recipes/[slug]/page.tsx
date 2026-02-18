@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,13 +13,13 @@ import { toast } from "sonner";
 import { getRecipeBySlug } from "@/data/recipe-data";
 
 interface RecipePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function RecipePage({ params }: RecipePageProps) {
-  const { slug } = params;
+  const { slug } = use(params);
   const recipe = getRecipeBySlug(slug);
   
   const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions' | 'notes'>('ingredients');
