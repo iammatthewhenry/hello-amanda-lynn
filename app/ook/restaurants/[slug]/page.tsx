@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import SiteContainer from '@/components/layout/SiteContainer';
+import SiteContainer from '@/components/layout/site-container';
 import { OokHeader } from '@/components/ook-header';
 
 // Mock data - clean content matching Figma design

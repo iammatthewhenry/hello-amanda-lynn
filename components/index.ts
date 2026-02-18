@@ -45,16 +45,24 @@ export type { PollResultItem } from './poll-results';
 export { BlogPostTemplate } from './blog-post-template';
 export { RecipePageTemplate } from './recipe-page-template';
 export { ListingPageLayout } from './listing-page-layout';
+export { SectionPageLayout } from './section-page-layout';
 
 // Navigation & UI
 export { Pagination } from './pagination';
 export { SearchOverlay } from './search-overlay';
 export type { SearchItem } from './search-overlay';
 export { Breadcrumbs } from './breadcrumbs';
+export { Container } from './container';
+export { PageHeader } from './page-header';
+export { GridSection } from './grid-section';
+export { ContentCard } from './content-card';
 
 // Photo Components
 export { FramedPhoto } from './framed-photo';
 export { TiltedPhoto } from './tilted-photo';
+
+// Additional Components  
+export { OokHeader } from './ook-header';
 
 // UI Components (micro items only)
 // Note: Most UI components have been moved to main components folder
