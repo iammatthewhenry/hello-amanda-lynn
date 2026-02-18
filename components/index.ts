@@ -34,6 +34,7 @@ export type { ShopItem } from './shop-section';
 export { TopFive } from './top-five';
 export type { TopFiveItem, TopFiveData } from './top-five';
 export { SeenOnBox } from './seen-on-box';
+export { ExploreMore } from './explore-more';
 
 // Poll Components
 export { Poll } from './poll';
