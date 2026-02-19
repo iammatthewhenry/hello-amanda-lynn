@@ -173,7 +173,7 @@ export function OokHeader({
 
     {/* Market/Shop Details - Centered below both columns */}
     {(contentType === 'restaurant' || contentType === 'markets-and-shops') && (marketType || specialty || openDays) && (
-      <div className="flex flex-wrap gap-2 justify-center mt-6 sm:mt-8">
+      <div className="flex flex-wrap gap-2 justify-center mt-6 sm:mt-8 pt-[7px]">
         {marketType && (
           <span className="bg-green/10 text-green text-xl font-semibold px-2 py-1 rounded-full capitalize">
             {marketType.replace(/-/g, ' ')}
