@@ -175,17 +175,17 @@ export function OokHeader({
     {(contentType === 'restaurant' || contentType === 'markets-and-shops') && (marketType || specialty || openDays) && (
       <div className="flex flex-wrap gap-2 justify-center mt-6 sm:mt-8">
         {marketType && (
-          <span className="bg-green/10 text-green text-base font-semibold px-2 py-1 rounded-full capitalize">
+          <span className="bg-green/10 text-green text-xl font-semibold px-2 py-1 rounded-full capitalize">
             {marketType.replace(/-/g, ' ')}
           </span>
         )}
         {specialty && (
-          <span className="bg-green/10 text-green text-base font-semibold px-2 py-1 rounded-full">
+          <span className="bg-green/10 text-green text-xl font-semibold px-2 py-1 rounded-full">
             {specialty}
           </span>
         )}
         {openDays && (
-          <span className="bg-green/10 text-green text-base font-semibold px-2 py-1 rounded-full">
+          <span className="bg-green/10 text-green text-xl font-semibold px-2 py-1 rounded-full">
             {openDays}
           </span>
         )}
