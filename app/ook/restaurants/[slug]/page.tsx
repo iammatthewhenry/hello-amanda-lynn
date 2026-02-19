@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import SiteContainer from '@/components/layout/site-container';
-import { OokHeader } from '@/components';
+import { OokHeader, Takeaway } from '@/components';
 
 // ===================================================================
 // TYPES
@@ -199,19 +199,10 @@ export default function RestaurantReviewPage() {
 
       {/* Key Takeaways */}
       <SiteContainer>
-        <section className="mb-12">
-          <div className="bg-green/5 p-8 rounded-lg border border-green/20">
-            <h3 className="text-xl font-bold text-green mb-6">Key Takeaways</h3>
-            <ul className="space-y-3">
-              {restaurant.keyTakeaways.map((takeaway, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-muted-foreground">{takeaway}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <Takeaway 
+          title="Key Takeaways"
+          items={restaurant.keyTakeaways}
+        />
       </SiteContainer>
     </main>
   );

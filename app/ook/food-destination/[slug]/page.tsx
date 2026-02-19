@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import SiteContainer from '@/components/layout/site-container';
-import { OokHeader } from '@/components';
+import { OokHeader, Takeaway } from '@/components';
 
 // ===================================================================
 // TYPES
@@ -154,19 +154,10 @@ export default function FoodDestinationPage() {
 
       {/* Experience Tips */}
       <SiteContainer>
-        <section className="mb-12">
-          <div className="bg-green/5 p-8 rounded-lg border border-green/20">
-            <h3 className="text-xl font-bold text-green mb-6">Experience Tips</h3>
-            <ul className="space-y-3">
-              {destination.experienceTips.map((tip, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-muted-foreground">{tip}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <Takeaway 
+          title="Experience Tips"
+          items={destination.experienceTips}
+        />
       </SiteContainer>
     </main>
   );
