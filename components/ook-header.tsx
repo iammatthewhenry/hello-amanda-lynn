@@ -24,9 +24,12 @@ export interface OokShareProps {
   imageUrl?: string;
 }
 
+export type OokContentType = 'restaurant' | 'farmers-market' | 'markets-and-shops' | 'food-destination' | 'food-festival';
+
 export interface OokHeaderProps {
   title: string;
   image: string;
+  contentType?: OokContentType;
   location?: OokLocation;
   rating?: OokRating;
   author: string;
@@ -100,6 +103,7 @@ function RatingDisplay({ rating }: { rating: OokRating }) {
 export function OokHeader({
   title,
   image,
+  contentType,
   location,
   rating,
   author,
@@ -143,8 +147,8 @@ export function OokHeader({
           <p className="text-[3.8vw] sm:text-[15px] md:text-base">Published {publishDate}</p>
         </div>
 
-        {/* Dynamic Rating Display */}
-        {rating && <RatingDisplay rating={rating} />}
+        {/* Dynamic Rating Display - Restaurants only */}
+        {contentType === 'restaurant' && rating && <RatingDisplay rating={rating} />}
 
         {/* Share Bar - Matches Recipe Layout */}
         {shareProps && (

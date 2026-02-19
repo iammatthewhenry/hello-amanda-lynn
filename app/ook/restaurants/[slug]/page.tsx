@@ -115,6 +115,7 @@ export default function RestaurantReviewPage() {
         <OokHeader
           title={restaurant.name}
           image={restaurant.image}
+          contentType="restaurant"
           location={{
             city: restaurant.city,
             state: restaurant.state

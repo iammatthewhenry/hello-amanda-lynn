@@ -201,11 +201,11 @@ export default function OutOfKitchenPage() {
         />
 
         <GridSection
-          title="Farmers Markets"
+          title="Markets &amp; Shops"
           posts={farmersMarkets}
-          baseSlug="/ook/farmers-market"
-          viewAllLink="/ook/farmers-markets"
-          viewAllLabel="View All Farmers Markets"
+          baseSlug="/ook/markets-and-shops"
+          viewAllLink="/ook/markets-and-shops"
+          viewAllLabel="View All Markets &amp; Shops"
         />
 
         <GridSection
