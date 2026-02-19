@@ -55,6 +55,7 @@ const getMarketOrShopBySlug = (slug: string): MarketOrShop | undefined => {
       ]
     },
     {
+      name: "Green Acres Farmers Market",
       city: "Portland",
       state: "Oregon",
       type: "farmers-market",
