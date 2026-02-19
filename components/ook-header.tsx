@@ -118,7 +118,8 @@ export function OokHeader({
   openDays,
 }: OokHeaderProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-6 sm:gap-6 lg:gap-8 mb-8 sm:mb-8 pt-6 sm:pt-10 lg:pt-[63px]">
+    <>
+      <div className="flex flex-col md:flex-row gap-6 sm:gap-6 lg:gap-8 mb-8 sm:mb-8 pt-6 sm:pt-10 lg:pt-[63px]">
       {/* Left: Polaroid Image - Matches Recipe Header Exactly */}
       <div className="w-[280px] md:w-[339px] h-[200px] md:h-[250px] flex-shrink-0 mx-auto md:mx-0 overflow-visible mt-[7px] sm:mt-0">
         <Image
@@ -190,6 +191,7 @@ export function OokHeader({
         )}
       </div>
     )}
+    </>
   );
 }
 
