@@ -168,40 +168,15 @@ export default function MarketOrShopPage() {
           }}
           author={place.author}
           publishDate={place.publishDate}
+          marketType={place.type}
+          specialty={place.specialty}
+          openDays={place.openDays}
           shareProps={{
             title: place.name,
             description: place.description,
             imageUrl: place.image
           }}
         />
-      </SiteContainer>
-
-      {/* Description */}
-      <SiteContainer>
-        <section className="mb-8">
-          <p className="text-lg text-muted-foreground italic text-center">
-            {place.description}
-          </p>
-        </section>
-      </SiteContainer>
-
-      {/* Meta badges (type, specialty, open days) */}
-      <SiteContainer>
-        <section className="mb-8">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <span className="bg-green/10 text-green text-sm font-medium px-3 py-1 rounded-full capitalize">
-              {place.type.replace(/-/g, ' ')}
-            </span>
-            <span className="bg-green/10 text-green text-sm font-medium px-3 py-1 rounded-full">
-              {place.specialty}
-            </span>
-            {place.openDays && (
-              <span className="bg-green/10 text-green text-sm font-medium px-3 py-1 rounded-full">
-                {place.openDays}
-              </span>
-            )}
-          </div>
-        </section>
       </SiteContainer>
 
       {/* Advertisement Section */}

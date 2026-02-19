@@ -35,6 +35,10 @@ export interface OokHeaderProps {
   author: string;
   publishDate: string;
   shareProps?: OokShareProps;
+  // Market/Shop specific fields
+  marketType?: string;
+  specialty?: string;
+  openDays?: string;
 }
 
 // ===================================================================
@@ -109,6 +113,9 @@ export function OokHeader({
   author,
   publishDate,
   shareProps,
+  marketType,
+  specialty,
+  openDays,
 }: OokHeaderProps) {
   return (
     <div className="flex flex-col md:flex-row gap-6 sm:gap-6 lg:gap-8 mb-8 sm:mb-8 pt-6 sm:pt-10 lg:pt-[63px]">
@@ -162,6 +169,27 @@ export function OokHeader({
         )}
       </div>
     </div>
+
+    {/* Market/Shop Details - Centered below both columns */}
+    {(contentType === 'restaurant' || contentType === 'markets-and-shops') && (marketType || specialty || openDays) && (
+      <div className="flex flex-wrap gap-2 justify-center mt-6 sm:mt-8">
+        {marketType && (
+          <span className="bg-green/10 text-green text-xs font-medium px-2 py-1 rounded-full capitalize">
+            {marketType.replace(/-/g, ' ')}
+          </span>
+        )}
+        {specialty && (
+          <span className="bg-green/10 text-green text-xs font-medium px-2 py-1 rounded-full">
+            {specialty}
+          </span>
+        )}
+        {openDays && (
+          <span className="bg-green/10 text-green text-xs font-medium px-2 py-1 rounded-full">
+            {openDays}
+          </span>
+        )}
+      </div>
+    )}
   );
 }
 
