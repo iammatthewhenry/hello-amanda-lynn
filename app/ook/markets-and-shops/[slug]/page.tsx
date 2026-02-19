@@ -30,7 +30,31 @@ interface MarketOrShop {
 const getMarketOrShopBySlug = (slug: string): MarketOrShop | undefined => {
   const places: MarketOrShop[] = [
     {
-      name: "Green Acres Farmers Market",
+      name: "Pike Place Tea at The Rose Market",
+      city: "Seattle",
+      state: "Washington",
+      type: "farmers-market",
+      specialty: "Artisanal teas, local honey, and handcrafted preserves",
+      openDays: "Saturdays & Sundays, 9am–3pm year-round",
+      slug: "pike-place-tea-rose-market",
+      author: "Amanda Lynn",
+      publishDate: "August 2025",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      description: "Tucked inside Seattle's iconic Pike Place Market, The Rose Market stall is a fragrant haven of loose-leaf teas, wildflower honeys, and small-batch fruit preserves from growers across the Pacific Northwest.",
+      content: [
+        "Finding The Rose Market stall is half the adventure. Wedged between a flower vendor and a jam-maker on Pike Place's lower level, it announces itself with an unmistakable cloud of jasmine, chamomile, and roasted oolong that drifts into the corridor and pulls you in whether you meant to stop or not.",
+        "The tea selection spans more than 80 varieties sourced from small farms in Taiwan, Japan, Nepal, and Darjeeling, alongside a Pacific Northwest-specific collection that includes a Douglas fir needle tisane and a smoked Cascades blend unlike anything you'd typically find in a market stall. Owner and tea specialist Dana Rosetti blends many of these herself in small batches, adjusting ratios seasonally based on what she's tasting.",
+        "The honey table deserves equal attention. Dana sources directly from three Washington State apiaries, and the difference in flavor between the early-season clover honey and the late-summer blackberry blossom variety is striking enough to make you rethink honey as a category entirely. Tastings are offered freely—just ask.",
+        "A rotating shelf of house-made preserves rounds out the offering: strawberry rhubarb jam in spring, peach ginger in late summer, and a savory fig and onion spread that pairs beautifully with aged cheeses. Everything is made in small enough quantities that the selection changes week to week. Come back often and you'll rarely see the exact same lineup twice."
+      ],
+      visitTips: [
+        "Come mid-morning on Saturday for the widest tea selection before popular blends sell out",
+        "Ask Dana for a guided tasting—she'll walk you through three or four teas based on your flavor preferences",
+        "The smoked Cascades blend makes an exceptional gift and is exclusive to this stall",
+        "Pair a honey purchase with one of the soft cheeses from the artisan cheese vendor two stalls down"
+      ]
+    },
+    {
       city: "Portland",
       state: "Oregon",
       type: "farmers-market",
