@@ -175,24 +175,23 @@ export default function RestaurantReviewPage() {
         </section>
       </SiteContainer>
 
-      {/* Advertisement Section */}
-      <SiteContainer>
-        <section className="mb-8">
-          <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center">
-            <p className="text-sm text-gray-500 mb-2">Advertisement</p>
-            <p className="text-xs text-gray-400">728x90 Banner Ad</p>
-          </div>
-        </section>
-      </SiteContainer>
-
       {/* Article Content */}
       <SiteContainer>
         <section className="mb-12">
           <div className="prose prose-lg max-w-none">
             {restaurant.content.map((paragraph, index) => (
-              <p key={index} className="mb-6 text-muted-foreground leading-relaxed">
-                {paragraph}
-              </p>
+              <div key={index}>
+                <p className="mb-6 text-muted-foreground leading-relaxed">
+                  {paragraph}
+                </p>
+                {/* Advertisement after 3rd paragraph */}
+                {index === 2 && (
+                  <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center mb-8">
+                    <p className="text-sm text-gray-500 mb-2">Advertisement</p>
+                    <p className="text-xs text-gray-400">728x90 Banner Ad</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </section>
