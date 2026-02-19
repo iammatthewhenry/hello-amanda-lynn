@@ -5,14 +5,37 @@ import Link from 'next/link';
 import SiteContainer from '@/components/layout/site-container';
 import { OokHeader } from '@/components';
 
+// ===================================================================
+// TYPES
+// ===================================================================
+interface Restaurant {
+  name: string;
+  city: string;
+  state: string;
+  priceRange: string;
+  marketType: string;
+  specialty: string;
+  openDays: string;
+  slug: string;
+  author: string;
+  publishDate: string;
+  image: string;
+  description: string;
+  content: string[];
+  keyTakeaways: string[];
+}
+
 // Mock data - clean content matching Figma design
-const getRestaurantBySlug = (slug: string) => {
-  const restaurants = [
+const getRestaurantBySlug = (slug: string): Restaurant | undefined => {
+  const restaurants: Restaurant[] = [
     {
       name: "The Garden Bistro",
       city: "Portland",
       state: "OR", 
       priceRange: "$$$",
+      marketType: "fine-dining",
+      specialty: "Farm-to-table cuisine with seasonal ingredients",
+      openDays: "Tuesday–Saturday, 5pm–10pm",
       slug: "the-garden-bistro",
       author: "Amanda Lynn",
       publishDate: "October 15, 2025",
@@ -48,6 +71,9 @@ const getRestaurantBySlug = (slug: string) => {
       city: "Seattle", 
       state: "WA",
       priceRange: "$$",
+      marketType: "casual-dining",
+      specialty: "Weekend brunch and legendary pancakes",
+      openDays: "Daily, 7am–3pm",
       slug: "corner-cafe",
       author: "Amanda Lynn",
       publishDate: "September 29, 2025",
@@ -68,7 +94,10 @@ const getRestaurantBySlug = (slug: string) => {
       name: "Le Petit Chef",
       city: "San Francisco",
       state: "CA",
-      priceRange: "$$$$", 
+      priceRange: "$$$$",
+      marketType: "fine-dining",
+      specialty: "Seven-course tasting menu with seasonal ingredients",
+      openDays: "Tuesday–Saturday, 6pm–10pm",
       slug: "le-petit-chef",
       author: "Amanda Lynn",
       publishDate: "September 20, 2025",
@@ -126,6 +155,9 @@ export default function RestaurantReviewPage() {
           }}
           author={restaurant.author}
           publishDate={restaurant.publishDate}
+          marketType={restaurant.marketType}
+          specialty={restaurant.specialty}
+          openDays={restaurant.openDays}
           shareProps={{
             title: restaurant.name,
             description: restaurant.description,
