@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface TakeawayProps {
   title: string;
@@ -8,16 +8,16 @@ interface TakeawayProps {
 
 export function Takeaway({ title, items }: TakeawayProps) {
   return (
-    <div className="mt-12 p-8 bg-accent/30 rounded-lg">
-      <div className="flex items-center gap-2 mb-4">
-        <Tag className="text-green" size={20} />
-        <h3 className="m-0">{title}</h3>
-      </div>
-      <ul className="space-y-3">
+    <div className="mt-12 p-8 bg-secondary rounded-lg border-l-4 border-green">
+      <h3 className="mb-6 font-bold text-xl">{title}</h3>
+      <ul className="space-y-4">
         {items.map((item, index) => (
-          <li key={index} className="text-muted-foreground flex items-start gap-3">
-            <span className="text-green mt-1">•</span>
-            <span>{item}</span>
+          <li
+            key={index}
+            className="flex items-start gap-3 transition-transform duration-200 hover:translate-x-1"
+          >
+            <Sparkles className="w-5 h-5 text-green mt-0.5 flex-shrink-0" />
+            <span className="text-foreground">{item}</span>
           </li>
         ))}
       </ul>
