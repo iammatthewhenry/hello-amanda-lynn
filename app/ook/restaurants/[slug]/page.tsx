@@ -178,7 +178,7 @@ export default function RestaurantReviewPage() {
       {/* Article Content */}
       <SiteContainer>
         <section className="mb-12">
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none pt-3">
             {restaurant.content.map((paragraph, index) => (
               <div key={index}>
                 <p className="mb-6 text-muted-foreground leading-relaxed">
