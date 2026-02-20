@@ -14,7 +14,7 @@ export function Takeaway({ title, items }: TakeawayProps) {
         {items.map((item, index) => (
           <li
             key={index}
-            className="flex items-start gap-3 transition-transform duration-200 hover:translate-x-1"
+            className="flex items-start gap-3"
           >
             <Sparkles className="w-5 h-5 text-green mt-0.5 flex-shrink-0" />
             <span className="text-foreground">{item}</span>
