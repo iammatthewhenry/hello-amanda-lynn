@@ -121,8 +121,6 @@ export default function WineryPage() {
           author={winery.author}
           publishDate={winery.publishDate}
           marketType={winery.type}
-          specialty={winery.specialty}
-          openDays={winery.openDays}
           shareProps={{
             title: winery.name,
             description: winery.description,
