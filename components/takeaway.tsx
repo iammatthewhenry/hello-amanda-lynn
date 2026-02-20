@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tag } from 'lucide-react';
 
 interface TakeawayProps {
   title: string;
@@ -7,19 +8,20 @@ interface TakeawayProps {
 
 export function Takeaway({ title, items }: TakeawayProps) {
   return (
-    <section className="mb-12">
-      <div className="bg-green/5 p-8 rounded-lg border border-green/20">
-        <h3 className="text-xl font-bold text-green mb-6">{title}</h3>
-        <ul className="space-y-3">
-          {items.map((item, index) => (
-            <li key={index} className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-green rounded-full mt-2 flex-shrink-0"></span>
-              <span className="text-muted-foreground">{item}</span>
-            </li>
-          ))}
-        </ul>
+    <div className="mt-12 p-8 bg-accent/30 rounded-lg">
+      <div className="flex items-center gap-2 mb-4">
+        <Tag className="text-green" size={20} />
+        <h3 className="m-0">{title}</h3>
       </div>
-    </section>
+      <ul className="space-y-3">
+        {items.map((item, index) => (
+          <li key={index} className="text-muted-foreground flex items-start gap-3">
+            <span className="text-green mt-1">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

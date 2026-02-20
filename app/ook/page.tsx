@@ -211,7 +211,7 @@ export default function OutOfKitchenPage() {
         <GridSection
           title="Food Festivals"
           posts={foodFestivals}
-          baseSlug="/ook/food-festival"
+          baseSlug="/ook/food-festivals"
           viewAllLink="/ook/food-festivals"
           viewAllLabel="View All Food Festivals"
         />
