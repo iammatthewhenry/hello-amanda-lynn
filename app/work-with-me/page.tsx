@@ -71,15 +71,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Professional filming and editing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Trending audio and hashtag research</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Optimized captions and calls-to-action</span>
                   </li>
                 </ul>
@@ -112,15 +112,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Story sequences and highlights</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Interactive stickers and engagement tools</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Branded templates and consistent aesthetic</span>
                   </li>
                 </ul>
@@ -153,15 +153,15 @@ export default function WorkWithMePage() {
                 </p>
                 <ul className="space-y-2 text-foreground/70">
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>SEO-optimized writing (800-2000+ words)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Professional food photography included</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green mt-1">â€¢</span>
+                    <span className="text-green mt-1">•</span>
                     <span>Social media promotion across my platforms</span>
                   </li>
                 </ul>
