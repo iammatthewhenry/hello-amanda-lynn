@@ -212,7 +212,7 @@ export default function BlogPostPage() {
 
       {/* Tips Section */}
       {post.tips && post.tips.length > 0 && (
-        <Container size="4xl" className="mb-12">
+        <Container size="4xl" className="mb-12 mt-6">
           <Card variant="vintage" className="p-8 rounded-lg border border-gray-200">
             <h2 className="text-2xl font-bold mb-6">Key Takeaways</h2>
             <ul className="space-y-3">

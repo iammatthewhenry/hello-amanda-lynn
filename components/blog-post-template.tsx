@@ -115,7 +115,7 @@ export function BlogPostTemplate({
 
         {/* Tips/Highlights Section */}
         {tipSection && tipSection.tips.length > 0 && (
-          <div className="mt-12 p-8 bg-secondary rounded-lg border-l-4 border-green">
+          <div className="mt-18 p-8 bg-secondary rounded-lg border-l-4 border-green">
             <h3 className="mb-6 font-bold text-xl">{tipSection.title}</h3>
             <ul className="space-y-4">
               {tipSection.tips.map((tip, index) => (
