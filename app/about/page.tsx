@@ -17,7 +17,7 @@ export default function AboutPage() {
             <div className="flex-shrink-0 inline-flex justify-center lg:justify-start ml-[18px] lg:ml-0">
               <div className="polaroid-image">
                 <Image
-                  src="/images/amanda-portrait.png"
+                  src="/amanda-portrait.png"
                   alt="Amanda Lynn"
                   width={250}
                   height={350}
@@ -48,7 +48,7 @@ export default function AboutPage() {
             <div className="flex-shrink-0 flex justify-center lg:justify-end ml-[18px] lg:ml-0">
               <div className="polaroid-image-right">
                 <Image
-                  src="/images/amanda-restaurant.png"
+                  src="/amanda-restaurant.png"
                   alt="Travel adventures"
                   width={250}
                   height={350}
@@ -76,7 +76,7 @@ export default function AboutPage() {
             <div className="flex-shrink-0 flex justify-center lg:justify-start ml-[18px] lg:ml-0">
               <div className="polaroid-image">
                 <Image
-                  src="/images/cocktail-mint.png"
+                  src="/cocktail-mint.png"
                   alt="Culinary creations"
                   width={250}
                   height={350}

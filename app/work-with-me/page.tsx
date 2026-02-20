@@ -17,7 +17,7 @@ export default function WorkWithMePage() {
             <div className="flex-shrink-0 inline-flex justify-center lg:justify-start ml-[18px] lg:ml-0">
               <div className="polaroid-image">
                 <Image
-                  src="/images/amanda-portrait.png"
+                  src="/amanda-portrait.png"
                   alt="Amanda Lynn"
                   width={250}
                   height={350}
@@ -91,7 +91,7 @@ export default function WorkWithMePage() {
               <div className="lg:w-1/2">
                 <div className="polaroid-image mx-auto">
                   <Image
-                    src="/images/spices-flat-lay.png"
+                    src="/spices-flat-lay.png"
                     alt="Colorful spices in spoons"
                     width={400}
                     height={400}
@@ -132,7 +132,7 @@ export default function WorkWithMePage() {
               <div className="lg:w-1/2">
                 <div className="polaroid-image-right mx-auto">
                   <Image
-                    src="/images/pasta-carbonara.png"
+                    src="/pasta-carbonara.png"
                     alt="Food blogging"
                     width={400}
                     height={400}
