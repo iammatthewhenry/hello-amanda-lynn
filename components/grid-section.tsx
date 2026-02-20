@@ -41,15 +41,42 @@ export function GridSection({
         <div className="container-max px-8">
           <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">{title}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-            {posts.map((post, index) => (
-              <ContentCard
-                key={index}
-                title={post.title}
-                description={post.description}
-                image={post.image}
-                href={`${baseSlug}/${post.slug}`}
-              />
-            ))}
+            {posts.map((post, index) => {
+              // Only show date and time for farmers market section
+              if (title === "Markets & Shops") {
+                // First card: show date/time, others: show only description
+                if (index === 0) {
+                  return (
+                    <ContentCard
+                      key={index}
+                      title={post.title}
+                      description={post.description}
+                      image={post.image}
+                      href={`${baseSlug}/${post.slug}`}
+                    />
+                  );
+                } else {
+                  return (
+                    <ContentCard
+                      key={index}
+                      title={post.title}
+                      description={post.description}
+                      image={post.image}
+                      href={`${baseSlug}/${post.slug}`}
+                    />
+                  );
+                }
+              }
+              return (
+                <ContentCard
+                  key={index}
+                  title={post.title}
+                  description={post.description}
+                  image={post.image}
+                  href={`${baseSlug}/${post.slug}`}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

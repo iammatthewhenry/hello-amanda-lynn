@@ -105,19 +105,19 @@ export default function OutOfKitchenPage() {
 
   const farmersMarkets: BlogPost[] = [
     {
-      title: "Pike Place Tea at The Rose Market",
-      description: "Discovering artisanal teas and local honey at Seattle's beloved weekend market.",
+      title: "Farmers Market",
+      description: "Artisanal teas, local honey, and more\nSaturday & Sunday",
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       location: "Seattle, WA",
-      date: "August 20, 2025",
+      date: "Saturday & Sunday",
       slug: "pike-place-tea-rose-market"
     },
     {
-      title: "Artisan Bakery Discovery", 
-      description: "Finding the perfect sourdough and meeting passionate bread makers.",
+      title: "Farmers Market",
+      description: "Artisanal teas, local honey, and more",
       image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       location: "Portland, OR",
-      date: "August 10, 2025",
+      date: "",
       slug: "artisan-bakery-discovery"
     }
   ];
