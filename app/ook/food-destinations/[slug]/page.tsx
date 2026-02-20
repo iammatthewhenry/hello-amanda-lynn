@@ -107,28 +107,30 @@ export default function FoodDestinationPage() {
 
   return (
     <main>
-      {/* Header Section */}
-      <SiteContainer>
-        <OokHeader
-          title={destination.name}
-          image={destination.image}
-          contentType="food-destination"
-          location={{
-            city: destination.city,
-            state: destination.state
-          }}
-          author={destination.author}
-          publishDate={destination.publishDate}
-          marketType={destination.type}
-          specialty={destination.specialty}
-          openDays={destination.openDays}
-          shareProps={{
-            title: destination.name,
-            description: destination.description,
-            imageUrl: destination.image
-          }}
-        />
-      </SiteContainer>
+      {/* Header Section - hidden for wineries */}
+      {destination.type !== 'winery' && (
+        <SiteContainer>
+          <OokHeader
+            title={destination.name}
+            image={destination.image}
+            contentType="food-destination"
+            location={{
+              city: destination.city,
+              state: destination.state
+            }}
+            author={destination.author}
+            publishDate={destination.publishDate}
+            marketType={destination.type}
+            specialty={destination.specialty}
+            openDays={destination.openDays}
+            shareProps={{
+              title: destination.name,
+              description: destination.description,
+              imageUrl: destination.image
+            }}
+          />
+        </SiteContainer>
+      )}
 
       {/* Article Content */}
       <SiteContainer>
