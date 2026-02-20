@@ -8,6 +8,7 @@ const config: Config = {
         page: 'var(--page-bg)',
         green: 'var(--green)',
         foreground: 'var(--foreground)',
+        secondary: 'var(--secondary)',
       },
       boxShadow: {
         soft: 'var(--shadow-sm)',

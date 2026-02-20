@@ -153,10 +153,10 @@ export default function WineryPage() {
         </section>
       </SiteContainer>
 
-      {/* Visit Tips */}
+      {/* Tips */}
       <SiteContainer>
         <Takeaway 
-          title="Visit Tips"
+          title="Tips"
           items={winery.visitTips}
         />
       </SiteContainer>
