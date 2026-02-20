@@ -149,6 +149,17 @@ export default function OutOfKitchenPage() {
     }
   ];
 
+  const wineries: BlogPost[] = [
+    {
+      title: "Sunset Ridge Winery",
+      description: "Small-batch Pinot Noir and Chardonnay with organic farming practices in Sonoma County.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      location: "Sonoma, CA",
+      date: "September 15, 2025",
+      slug: "sunset-ridge-winery"
+    }
+  ];
+
   const favoriteSpots = [
     {
       name: "The Garden Bistro",
@@ -184,9 +195,9 @@ export default function OutOfKitchenPage() {
         />
 
         <GridSection
-          title="Food Destination"
+          title="Food Destinations"
           posts={foodDestinations}
-          baseSlug="/ook/food-destination"
+          baseSlug="/ook/food-destinations"
           viewAllLink="/ook/food-destinations"
           viewAllLabel="View All Food Destinations"
           isFirstSection={true}
@@ -214,6 +225,14 @@ export default function OutOfKitchenPage() {
           baseSlug="/ook/food-festivals"
           viewAllLink="/ook/food-festivals"
           viewAllLabel="View All Food Festivals"
+        />
+
+        <GridSection
+          title="Wineries"
+          posts={wineries}
+          baseSlug="/ook/wineries"
+          viewAllLink="/ook/wineries"
+          viewAllLabel="View All Wineries"
         />
 
         {/* My Favorite Spots Section - Beige Cards at Bottom */}

@@ -46,19 +46,19 @@ export default function FoodDestinationIndexPage() {
       {/* Hero */}
       <Section spacing="lg" containerSize="4xl">
         <PageHeader
-          title="Food Destination"
+          title="Food Destinations"
           description="Exploring culinary adventures beyond the kitchen. From local food markets to hidden gems in different cities, discover the places that inspire my recipes."
         />
       </Section>
 
-      {/* Food Destination Posts List */}
+      {/* Food Destinations Posts List */}
       <Container size="4xl" className="py-20">
         <div className="space-y-8">
           {currentPosts.map((post) => (
             <article 
               key={post.slug}
               className="border-b border-gray-200 pb-8 last:border-b-0 cursor-pointer group"
-              onClick={() => router.push(`/out-of-kitchen/${post.slug}`)}
+              onClick={() => router.push(`/ook/food-destinations/${post.slug}`)}
             >
               <div className="flex flex-col sm:flex-row sm:items-start gap-6">
                 <div className="flex-1 order-2 sm:order-1">
@@ -75,7 +75,7 @@ export default function FoodDestinationIndexPage() {
                   <p className="text-muted-foreground mb-4">
                     {post.description}
                   </p>
-                  <ReadMoreLink href={`/out-of-kitchen/${post.slug}`} />
+                  <ReadMoreLink href={`/ook/food-destinations/${post.slug}`} />
                 </div>
                 <div className="w-full sm:w-48 h-48 flex-shrink-0 order-1 sm:order-2">
                   <img
