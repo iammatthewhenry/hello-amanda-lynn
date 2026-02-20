@@ -24,7 +24,7 @@ export interface OokShareProps {
   imageUrl?: string;
 }
 
-export type OokContentType = 'restaurant' | 'farmers-market' | 'markets-and-shops' | 'food-destination' | 'food-festival';
+export type OokContentType = 'restaurant' | 'farmers-market' | 'markets-and-shops' | 'food-destination' | 'food-festival' | 'winery';
 
 export interface OokHeaderProps {
   title: string;
