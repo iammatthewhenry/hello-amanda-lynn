@@ -134,7 +134,7 @@ export default function WineryPage() {
       {/* Article Content */}
       <SiteContainer>
         <section className="mb-12">
-          <div className="prose prose-lg max-w-none pt-3">
+          <div className="prose prose-lg max-w-none pt-[23px]">
             {winery.content.map((paragraph, index) => (
               <div key={index}>
                 <p className="mb-6 text-muted-foreground leading-relaxed">
