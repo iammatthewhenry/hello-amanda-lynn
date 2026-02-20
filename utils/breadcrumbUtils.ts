@@ -63,7 +63,7 @@ export function createNestedBreadcrumbs(
     });
   }
 
-  // Add category (like "Desserts" or "Food Destinations")
+  // Add category (like "Desserts" or "Culinary Destinations")
   items.push({
     label: category,
     href: categoryPath

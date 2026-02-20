@@ -99,7 +99,7 @@ export default function WineryPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Winery Not Found</h1>
           <Link href="/ook/wineries" className="text-green hover:text-green/70">
-            ← Back to Wineries
+            ← Back to Wineries & Tasting Rooms
           </Link>
         </div>
       </div>
@@ -151,10 +151,10 @@ export default function WineryPage() {
         </section>
       </SiteContainer>
 
-      {/* Tips */}
+      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway 
-          title="Tips"
+        <Takeaway
+          title="Tasting Notes"
           items={winery.visitTips}
         />
       </SiteContainer>

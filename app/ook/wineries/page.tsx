@@ -55,8 +55,8 @@ export default function WineriesIndexPage() {
       {/* Hero */}
       <Section spacing="lg" containerSize="4xl">
         <PageHeader
-          title="Wineries"
-          description="Discover exceptional wineries and taste the passion behind every bottle. From boutique family operations to innovative estates, explore the places where great wine stories begin."
+          title="Wineries & Tasting Rooms"
+          description="Discover exceptional wineries & tasting rooms and taste the passion behind every bottle. From boutique family operations to innovative estates, explore the places where great wine stories begin."
         />
       </Section>
 

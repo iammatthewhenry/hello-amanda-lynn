@@ -197,10 +197,10 @@ export default function RestaurantReviewPage() {
         </section>
       </SiteContainer>
 
-      {/* Key Takeaways */}
+      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway 
-          title="Key Takeaways"
+        <Takeaway
+          title="Dining Notes"
           items={restaurant.keyTakeaways}
         />
       </SiteContainer>

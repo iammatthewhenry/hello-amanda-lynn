@@ -195,28 +195,28 @@ export default function OutOfKitchenPage() {
         />
 
         <GridSection
-          title="Food Destinations"
+          title="Culinary Destinations"
           posts={foodDestinations}
           baseSlug="/ook/food-destinations"
           viewAllLink="/ook/food-destinations"
-          viewAllLabel="View All Food Destinations"
+          viewAllLabel="View All Culinary Destinations"
           isFirstSection={true}
         />
 
         <GridSection
-          title="Restaurants"
+          title="Dining"
           posts={restaurants}
           baseSlug="/ook/restaurants"
           viewAllLink="/ook/restaurants" 
-          viewAllLabel="View All Restaurants"
+          viewAllLabel="View All Dining"
         />
 
         <GridSection
-          title="Markets &amp; Shops"
+          title="Markets & Shops"
           posts={farmersMarkets}
           baseSlug="/ook/markets-and-shops"
           viewAllLink="/ook/markets-and-shops"
-          viewAllLabel="View All Markets &amp; Shops"
+          viewAllLabel="View All Markets & Shops"
         />
 
         <GridSection
@@ -228,11 +228,11 @@ export default function OutOfKitchenPage() {
         />
 
         <GridSection
-          title="Wineries"
+          title="Wineries & Tasting Rooms"
           posts={wineries}
           baseSlug="/ook/wineries"
           viewAllLink="/ook/wineries"
-          viewAllLabel="View All Wineries"
+          viewAllLabel="View All Wineries & Tasting Rooms"
         />
 
         {/* My Favorite Spots Section - Beige Cards at Bottom */}

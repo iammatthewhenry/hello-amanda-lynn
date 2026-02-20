@@ -98,7 +98,7 @@ export default function FoodDestinationPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Destination Not Found</h1>
           <Link href="/ook/food-destinations" className="text-green hover:text-green/70">
-            ← Back to Food Destinations
+            ← Back to Culinary Destinations
           </Link>
         </div>
       </div>
@@ -152,10 +152,10 @@ export default function FoodDestinationPage() {
         </section>
       </SiteContainer>
 
-      {/* Experience Tips */}
+      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway 
-          title="Experience Tips"
+        <Takeaway
+          title="Worth the Trip"
           items={destination.experienceTips}
         />
       </SiteContainer>

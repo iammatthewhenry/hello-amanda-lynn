@@ -153,10 +153,10 @@ export default function FoodFestivalPage() {
         </section>
       </SiteContainer>
 
-      {/* Festival Tips */}
+      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway 
-          title="Festival Tips"
+        <Takeaway
+          title="Festival Highlights"
           items={festival.festivalTips}
         />
       </SiteContainer>

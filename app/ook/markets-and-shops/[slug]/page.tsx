@@ -201,10 +201,10 @@ export default function MarketOrShopPage() {
         </section>
       </SiteContainer>
 
-      {/* Visit Tips */}
+      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway 
-          title="Visit Tips"
+        <Takeaway
+          title="Market Highlights"
           items={place.visitTips}
         />
       </SiteContainer>
