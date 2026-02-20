@@ -119,9 +119,11 @@ export default function FoodDestinationPage() {
           }}
           author={destination.author}
           publishDate={destination.publishDate}
-          marketType={destination.type}
-          specialty={destination.specialty}
-          openDays={destination.openDays}
+          {...(destination.type !== 'winery' && {
+            marketType: destination.type,
+            specialty: destination.specialty,
+            openDays: destination.openDays
+          })}
           shareProps={{
             title: destination.name,
             description: destination.description,
