@@ -181,7 +181,7 @@ export default function MarketOrShopPage() {
 
       {/* Article Content */}
       <SiteContainer>
-        <section className="mb-20">
+        <section className="mb-24">
           <div className="prose prose-lg max-w-none pt-[37px]">
             {place.content.map((paragraph, index) => (
               <div key={index}>
