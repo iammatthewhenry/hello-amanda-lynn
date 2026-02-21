@@ -8,7 +8,7 @@ interface TakeawayProps {
 
 export function Takeaway({ title, items }: TakeawayProps) {
   return (
-    <div className="mt-26 p-8 bg-secondary border-l-4 border-green">
+    <div className="mt-9 p-8 bg-secondary border-l-4 border-green">
       <h3 className="mb-6 font-bold text-xl">{title}</h3>
       <ul className="space-y-4">
         {items.map((item, index) => (
