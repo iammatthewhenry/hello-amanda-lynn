@@ -32,7 +32,7 @@ export function PollResults({
     <section className="py-[22px] sm:py-16 lg:py-20">
       <div className="mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '896px' }}>
         <div 
-          className="bg-white rounded-xl p-6 sm:p-8 lg:p-10"
+          className="bg-white p-6 sm:p-8 lg:p-10"
           style={{ 
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
             border: '2px solid #7A9B8E'
