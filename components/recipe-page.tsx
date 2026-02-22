@@ -188,9 +188,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                       key={star}
                       className={`w-[5vw] h-[5vw] sm:w-5 sm:h-5 md:w-6 md:h-6 ${
                         star <= averageRating
-                          ? 'fill-primary text-primary'
-                          : 'fill-none text-green'
+                          ? 'fill-[#D4A5A5] text-[#D4A5A5]'
+                          : 'fill-none'
                       }`}
+                      style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                     />
                   ))}
                 </div>
@@ -321,9 +322,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                             key={star}
                             className={`w-4 h-4 ${
                               star <= averageRating
-                                ? 'fill-primary text-primary'
-                                : 'fill-none text-green'
+                                ? 'fill-[#D4A5A5] text-[#D4A5A5]'
+                                : 'fill-none'
                             }`}
+                            style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                           />
                         ))}
                       </div>
@@ -374,9 +376,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                             key={star}
                             className={`w-4 h-4 sm:w-5 sm:h-5 ${
                               star <= averageRating
-                                ? 'fill-primary text-primary'
-                                : 'fill-none text-green'
+                                ? 'fill-[#D4A5A5] text-[#D4A5A5]'
+                                : 'fill-none'
                             }`}
+                            style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                           />
                         ))}
                       </div>
@@ -718,7 +721,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-green transition-colors text-sm shadow-md"
+                          className="px-[18px] py-[9px] bg-green transition-colors text-[15px] font-medium shadow-md"
                           style={{ color: '#F5EBE8' }}
                         >
                           Buy Now
