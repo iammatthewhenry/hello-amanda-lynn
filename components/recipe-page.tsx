@@ -439,9 +439,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(1)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 1
-                            ? 'bg-green text-green-foreground border-green'
+                            ? 'text-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
+                        style={scale === 1 ? { backgroundColor: '#F5EBE8' } : undefined}
                       >
                         1x
                       </button>
@@ -449,9 +450,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(2)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 2
-                            ? 'bg-green text-green-foreground border-green'
+                            ? 'text-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
+                        style={scale === 2 ? { backgroundColor: '#F5EBE8' } : undefined}
                       >
                         2x
                       </button>
@@ -459,9 +461,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(3)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 3
-                            ? 'bg-green text-green-foreground border-green'
+                            ? 'text-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
+                        style={scale === 3 ? { backgroundColor: '#F5EBE8' } : undefined}
                       >
                         3x
                       </button>
@@ -476,9 +479,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setUseMetric(false)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           !useMetric
-                            ? 'bg-green text-green-foreground border-green'
+                            ? 'text-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
+                        style={!useMetric ? { backgroundColor: '#F5EBE8' } : undefined}
                       >
                         Imperial
                       </button>
@@ -486,9 +490,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setUseMetric(true)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           useMetric
-                            ? 'bg-green text-green-foreground border-green'
+                            ? 'text-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
+                        style={useMetric ? { backgroundColor: '#F5EBE8' } : undefined}
                       >
                         Metric
                       </button>
@@ -713,7 +718,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-green text-green-foreground transition-colors hover:bg-[#6A8B7E] text-sm shadow-md"
+                          className="px-4 py-2 text-green transition-colors text-sm shadow-md"
+                          style={{ backgroundColor: '#F5EBE8' }}
                         >
                           Buy Now
                         </a>
@@ -758,7 +764,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                     toast.error('Please select a star rating first');
                   }
                 }}
-                className="px-8 py-3 bg-green text-green-foreground hover:bg-green-hover transition-colors text-sm sm:text-base"
+                className="px-8 py-3 text-green transition-colors text-sm sm:text-base"
+                style={{ backgroundColor: '#F5EBE8' }}
               >
                 Submit Review
               </button>

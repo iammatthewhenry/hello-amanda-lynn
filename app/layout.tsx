@@ -3,6 +3,7 @@ import { Inter, Montserrat, Tinos } from 'next/font/google';
 import { Header, Footer } from '@/components';
 import SiteContainer from '@/components/layout/site-container';
 import GlobalBreadcrumbs from '@/components/layout/global-breadcrumbs';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 // ===================================================================
@@ -89,6 +90,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
