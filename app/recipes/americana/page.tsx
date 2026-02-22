@@ -74,10 +74,6 @@ export default function AmericanaPage() {
     <ListingPageLayout
       title="Americana"
       description="Celebrate America's culinary heritage with these classic American recipes. From coast to coast, these timeless dishes represent the heart and soul of American cooking."
-      breadcrumbItems={[
-        { label: 'Recipes', href: '/recipes' },
-        { label: 'Americana' },
-      ]}
       items={americanaRecipes}
       renderItem={(recipe, index) => <RecipeCard key={index} {...recipe} />}
       itemsPerPage={10}

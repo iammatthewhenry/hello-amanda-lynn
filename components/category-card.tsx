@@ -28,7 +28,7 @@ export function CategoryCard({
   const card = (
     <div
       className={cn(
-        'group relative cursor-pointer h-[160px] sm:h-[220px] lg:h-[248px] max-w-[77%] md:max-w-[90%] mx-auto',
+        'group relative cursor-pointer h-[200px] max-w-[280px] mx-auto',
         className
       )}
     >

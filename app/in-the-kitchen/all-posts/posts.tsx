@@ -233,10 +233,6 @@ export default function InTheKitchenAllPostsPage() {
     <ListingPageLayout
       title="All Posts - In The Kitchen"
       description="Browse all In The Kitchen posts organized by date. Tips, techniques, and behind the scenes stories from the kitchen."
-      breadcrumbItems={[
-        { label: "In The Kitchen", href: "/in-the-kitchen" },
-        { label: "All Posts" }
-      ]}
       items={posts}
       renderItem={renderPost}
       itemsPerPage={20}

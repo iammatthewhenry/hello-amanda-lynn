@@ -24,7 +24,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <div
       className={cn(
-        "h-[72px] sm:h-[84px] flex items-end mb-6 sm:mb-10 relative z-20 overflow-visible",
+        "h-[72px] sm:h-[84px] flex items-end mb-6 sm:mb-10 relative z-20 overflow-visible ml-[45px] pl-4 sm:pl-6",
         className
       )}
     >

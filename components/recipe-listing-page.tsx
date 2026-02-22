@@ -52,20 +52,10 @@ export default function RecipeListingPage({ initialCategory }: RecipeListingPage
     return recipes;
   }, [allRecipes, selectedCategory, searchTerm, sortBy]);
 
-  const breadcrumbs = [
-    { label: 'Home', href: '/' },
-    { label: 'Recipes', href: '/recipes' },
-    ...(selectedCategory !== 'All' ? [{ label: selectedCategory }] : [])
-  ];
-
   return (
     <main>
       <section className="py-[22px] sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          {/* Breadcrumbs */}
-          <div className="mb-6">
-            <Breadcrumbs items={breadcrumbs} />
-          </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl ml-[45px] pl-4 sm:pl-6">
 
           {/* Section Header */}
           <div className="text-center mb-8 sm:mb-12">

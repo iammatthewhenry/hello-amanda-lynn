@@ -44,15 +44,6 @@ export default function DinnersPage() {
 
   return (
     <main>
-      {/* Breadcrumbs */}
-      <div className="container-max px-4 sm:px-8 pt-6 pb-4">
-        <Breadcrumbs 
-          items={[
-            { label: 'Recipes', href: '/recipes' },
-            { label: 'Dinners' },
-          ]} 
-        />
-      </div>
 
       {/* Page Header */}
       <section className="container-max px-4 sm:px-8 pb-8">
