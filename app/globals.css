@@ -352,6 +352,12 @@ main > div:not(.layout-container) {
   max-width: 100%;
 }
 
+/* Exception: Share icon SVGs need fixed sizing */
+.layout-container .share-icon-button svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
 /* Images and media never break layout */
 img, video, iframe {
   max-width: 100%;
