@@ -189,9 +189,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                       className={`w-[5vw] h-[5vw] sm:w-5 sm:h-5 md:w-6 md:h-6 ${
                         star <= averageRating
                           ? 'fill-[#D4A5A5] text-[#D4A5A5]'
-                          : 'fill-none'
+                          : 'fill-none text-green'
                       }`}
-                      style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                     />
                   ))}
                 </div>
@@ -323,9 +322,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                             className={`w-4 h-4 ${
                               star <= averageRating
                                 ? 'fill-[#D4A5A5] text-[#D4A5A5]'
-                                : 'fill-none'
+                                : 'fill-none text-green'
                             }`}
-                            style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                           />
                         ))}
                       </div>
@@ -377,9 +375,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                             className={`w-4 h-4 sm:w-5 sm:h-5 ${
                               star <= averageRating
                                 ? 'fill-[#D4A5A5] text-[#D4A5A5]'
-                                : 'fill-none'
+                                : 'fill-none text-green'
                             }`}
-                            style={star > averageRating ? { color: '#F5EBE8' } : undefined}
                           />
                         ))}
                       </div>
