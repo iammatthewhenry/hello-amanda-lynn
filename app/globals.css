@@ -234,6 +234,12 @@ div[style*="background-color: rgb(245, 235, 232)"] {
   color: #FEFAF8;
 }
 
+/* Ensure SVG icons in share buttons maintain their specified size */
+.share-icon-button svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
 /* =========================================================
    RECIPE PAGE PRINT STYLES
    ========================================================= */
