@@ -718,8 +718,8 @@ export default function RecipePage({ params }: RecipePageProps) {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 text-green transition-colors text-sm shadow-md"
-                          style={{ backgroundColor: '#F5EBE8' }}
+                          className="px-4 py-2 bg-green transition-colors text-sm shadow-md"
+                          style={{ color: '#F5EBE8' }}
                         >
                           Buy Now
                         </a>

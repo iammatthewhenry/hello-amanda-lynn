@@ -70,7 +70,8 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
                 </h3>
                 <Link
                   href={item.link || shopLink}
-                  className="inline-block px-3 py-1 bg-green text-white text-base font-semibold hover:opacity-90 transition-opacity"
+                  className="inline-block px-3 py-1 bg-green text-base font-semibold hover:opacity-90 transition-opacity"
+                  style={{ color: '#F5EBE8' }}
                 >
                   Buy This
                 </Link>
