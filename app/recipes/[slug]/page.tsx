@@ -439,10 +439,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(1)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 1
-                            ? 'text-green border-green'
+                            ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 1 ? { backgroundColor: '#F5EBE8' } : undefined}
+                        style={scale === 1 ? { color: '#F5EBE8' } : undefined}
                       >
                         1x
                       </button>
@@ -450,10 +450,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(2)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 2
-                            ? 'text-green border-green'
+                            ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 2 ? { backgroundColor: '#F5EBE8' } : undefined}
+                        style={scale === 2 ? { color: '#F5EBE8' } : undefined}
                       >
                         2x
                       </button>
@@ -461,10 +461,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setScale(3)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           scale === 3
-                            ? 'text-green border-green'
+                            ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 3 ? { backgroundColor: '#F5EBE8' } : undefined}
+                        style={scale === 3 ? { color: '#F5EBE8' } : undefined}
                       >
                         3x
                       </button>
@@ -479,10 +479,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setUseMetric(false)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           !useMetric
-                            ? 'text-green border-green'
+                            ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={!useMetric ? { backgroundColor: '#F5EBE8' } : undefined}
+                        style={!useMetric ? { color: '#F5EBE8' } : undefined}
                       >
                         Imperial
                       </button>
@@ -490,10 +490,10 @@ export default function RecipePage({ params }: RecipePageProps) {
                         onClick={() => setUseMetric(true)}
                         className={`px-2.5 sm:px-4 py-2 border transition-colors text-sm sm:text-base ${
                           useMetric
-                            ? 'text-green border-green'
+                            ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={useMetric ? { backgroundColor: '#F5EBE8' } : undefined}
+                        style={useMetric ? { color: '#F5EBE8' } : undefined}
                       >
                         Metric
                       </button>
