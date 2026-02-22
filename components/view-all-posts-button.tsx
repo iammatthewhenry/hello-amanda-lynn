@@ -14,7 +14,7 @@ export function ViewAllPostsButton({ navigateTo, label = "View All Posts" }: Vie
     <div className="text-center mb-12 sm:mb-16 lg:mb-20" style={{ marginTop: '-15px' }}>
       <button
         onClick={() => router.push(navigateTo)}
-        className="inline-block px-6 py-3.5 bg-green text-white font-semibold text-base hover:opacity-90 transition-opacity"
+        className="inline-block px-6 py-3.5 bg-green text-button-text font-semibold text-base hover:opacity-90 transition-opacity"
       >
         {label}
       </button>

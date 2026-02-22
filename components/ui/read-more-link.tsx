@@ -26,7 +26,7 @@ export function ReadMoreLink({
       <Link 
         href={href} 
         className={cn(
-          'inline-block px-4 py-2 bg-green text-white rounded-lg hover:bg-green/90 transition-colors',
+          'inline-block px-4 py-2 bg-green text-button-text rounded-lg hover:bg-green/90 transition-colors',
           className
         )}
       >

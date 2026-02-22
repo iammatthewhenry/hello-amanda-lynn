@@ -45,7 +45,7 @@ export function AboutSection() {
               
               <Link
                 href="/about"
-                className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity"
+                className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-green text-[#D4A5A5] font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity"
               >
                 My Story
               </Link>

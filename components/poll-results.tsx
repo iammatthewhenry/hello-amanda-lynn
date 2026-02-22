@@ -55,7 +55,7 @@ export function PollResults({
           <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
             {results.map((item) => (
               <div key={item.rank} className="flex items-center gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-green text-white flex items-center justify-center text-sm sm:text-base font-bold">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-green text-button-text flex items-center justify-center text-sm sm:text-base font-bold">
                   {item.rank}
                 </div>
                 <div className="flex-1">

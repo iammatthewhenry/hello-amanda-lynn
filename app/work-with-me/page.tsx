@@ -185,7 +185,7 @@ export default function WorkWithMePage() {
               </p>
               <a 
                 href="/contact"
-                className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-green text-white font-semibold hover:opacity-90 transition-opacity"
+                className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-green text-[#D4A5A5] font-semibold hover:opacity-90 transition-opacity"
               >
                 Get In Touch
               </a>

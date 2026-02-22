@@ -25,7 +25,7 @@ export function PollCard({
           <p className="text-lg text-foreground/70 mb-6 max-w-2xl mx-auto">
             {description}
           </p>
-          <div className="inline-block bg-green text-white px-8 py-3 rounded-lg font-semibold group-hover:opacity-90 transition-opacity">
+          <div className="inline-block bg-green text-button-text px-8 py-3 rounded-lg font-semibold group-hover:opacity-90 transition-opacity">
             {buttonText}
           </div>
         </Card>

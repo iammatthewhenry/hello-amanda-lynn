@@ -234,7 +234,7 @@ export function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-8 py-3 bg-[#7A9B8E] text-white hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-8 py-3 bg-[#7A9B8E] text-[#D4A5A5] hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                   <SendHorizontal size={18} />

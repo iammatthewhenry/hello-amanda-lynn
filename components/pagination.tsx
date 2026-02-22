@@ -54,7 +54,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center justify-center w-10 h-10 border border-green text-green hover:bg-green hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-green rounded"
+        className="flex items-center justify-center w-10 h-10 border border-green text-green hover:bg-green hover:text-[#D4A5A5] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-green rounded"
         aria-label="Previous page"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -80,8 +80,8 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
             className={`
               w-10 h-10 border transition-colors rounded
               ${isActive 
-                ? 'bg-green text-white border-green' 
-                : 'border-green text-green hover:bg-green hover:text-white'
+                ? 'bg-green text-button-text border-green' 
+                : 'border-green text-green hover:bg-green hover:text-button-text'
               }
             `}
             aria-label={`Page ${pageNum}`}
@@ -96,7 +96,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center justify-center w-10 h-10 border border-green text-green hover:bg-green hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-green rounded"
+        className="flex items-center justify-center w-10 h-10 border border-green text-green hover:bg-green hover:text-[#D4A5A5] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-green rounded"
         aria-label="Next page"
       >
         <ChevronRight className="w-5 h-5" />

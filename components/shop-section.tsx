@@ -82,7 +82,7 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
           <div className="text-center mt-[46px] sm:mt-8 mb-3 sm:mb-4">
             <Link
               href={shopLink}
-              className="inline-block px-4 sm:px-5 py-1 sm:py-1.5 bg-green text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity scale-[1.20] sm:scale-100"
+              className="inline-block px-4 sm:px-5 py-1 sm:py-1.5 bg-green text-[#D4A5A5] font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity scale-[1.20] sm:scale-100"
             >
               Shop All
             </Link>

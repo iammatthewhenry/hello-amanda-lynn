@@ -16,8 +16,8 @@ interface ButtonProps {
 
 const variantClasses = {
   default: 'bg-foreground text-background hover:bg-foreground/90',
-  green: 'bg-green text-white hover:bg-green/90',
-  outline: 'border-2 border-green text-green hover:bg-green hover:text-white',
+  green: 'bg-green text-button-text hover:bg-green/90',
+  outline: 'border-2 border-green text-green hover:bg-green hover:text-button-text',
   ghost: 'text-green hover:bg-green/10'
 };
 

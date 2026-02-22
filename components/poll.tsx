@@ -187,7 +187,7 @@ export function Poll({
                 {rankedItems.map((item, index) =>
                   item ? (
                     <div key={item.id} className="flex items-center gap-4 text-left">
-                      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-green rounded-full flex items-center justify-center text-white font-bold">
+                      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-green rounded-full flex items-center justify-center text-[#D4A5A5] font-bold">
                         {index + 1}
                       </div>
                       <span className="text-base sm:text-lg font-medium">
@@ -239,7 +239,7 @@ export function Poll({
                     draggable={false}
                   >
                     <div className="flex items-start gap-2">
-                      <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 bg-green rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm">
+                      <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 bg-green rounded-full flex items-center justify-center text-[#D4A5A5] font-bold text-xs sm:text-sm">
                         {index + 1}
                       </div>
                       <p className="text-sm font-medium flex-1 break-words">
