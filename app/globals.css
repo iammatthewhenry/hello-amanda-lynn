@@ -22,7 +22,7 @@
   --font-size-base: 16px;
 
   /* LAYOUT */
-  --container-max: 1240px;
+  --container-max: 1488px;
 
   /* SHADOWS */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
@@ -235,8 +235,8 @@ div[style*="background-color: rgb(245, 235, 232)"] {
 }
 
 .share-button svg {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 }
 
 /* Backwards compatibility class */
