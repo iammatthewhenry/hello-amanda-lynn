@@ -44,7 +44,7 @@ export function ShopSection({ items = defaultItems, shopLink = '/shop' }: ShopSe
           style={{ boxShadow: 'var(--shadow-card)' }}
         >
           <div className="text-center mb-3 sm:mb-4">
-            <h2 className="text-green text-[36px] font-bold tracking-tight">
+            <h2 className="text-green text-2xl sm:text-3xl lg:text-[36px] font-bold tracking-tight">
               SHOP MY KITCHEN
             </h2>
           </div>

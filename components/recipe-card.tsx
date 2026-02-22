@@ -28,7 +28,7 @@ export function RecipeCard({
             alt={title}
             width={400}
             height={272}
-            className="w-full h-[272px] object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-auto aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
         <h3 className="text-lg font-bold text-foreground group-hover:text-green transition-colors mb-3">

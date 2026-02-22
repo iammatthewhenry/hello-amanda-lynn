@@ -44,7 +44,7 @@ export default function WorkWithMePage() {
 
         {/* Services Section */}
         <section className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-16 sm:mb-24">
-          <div className="space-y-16 sm:space-y-24">
+          <div className="space-y-10 sm:space-y-16 lg:space-y-24">
             {/* Instagram Reels */}
             <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2">
@@ -177,7 +177,7 @@ export default function WorkWithMePage() {
               className="p-6 sm:p-8 lg:p-12 xl:p-16 text-center"
               style={{ backgroundColor: '#F5EBE8' }}
             >
-              <h2 className="mb-4 sm:mb-6 text-green text-[36px]">
+              <h2 className="mb-4 sm:mb-6 text-green text-2xl sm:text-3xl lg:text-[36px]">
                 Ready To Collaborate?
               </h2>
               <p className="text-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">

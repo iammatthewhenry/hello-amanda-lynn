@@ -10,7 +10,7 @@ interface PageHeaderProps {
 export function PageHeader({ title, description }: PageHeaderProps) {
   return (
     <section className="mb-12 sm:mb-16">
-      <h1 className="text-[48px] font-bold mb-4">
+      <h1 className="text-2xl sm:text-3xl lg:text-[48px] font-bold mb-4">
         {title}
       </h1>
 

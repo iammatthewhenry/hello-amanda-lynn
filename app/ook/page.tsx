@@ -236,7 +236,7 @@ export default function OutOfKitchenPage() {
         />
 
         {/* My Favorite Spots Section - Beige Cards at Bottom */}
-        <section className="py-16 lg:py-20">
+        <section className="py-8 sm:py-12 lg:py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-green mb-4">My Favorite Spots</h2>

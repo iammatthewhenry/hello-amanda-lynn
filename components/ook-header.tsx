@@ -138,7 +138,7 @@ export function OokHeader({
       {/* Right: Title and Meta - Matches Recipe Header Structure */}
       <div className="flex-1 pt-0 sm:pt-0">
         {/* Title */}
-        <h1 className="mb-[2vh] sm:mb-3 md:mb-4 text-[6vw] sm:text-[24px] md:text-[28px] lg:text-[42px] leading-[1.2] mt-[13px] md:mt-0 whitespace-nowrap">
+        <h1 className="mb-[2vh] sm:mb-3 md:mb-4 text-[6vw] sm:text-[24px] md:text-[28px] lg:text-[42px] leading-[1.2] mt-[13px] md:mt-0">
           {title}
         </h1>
 

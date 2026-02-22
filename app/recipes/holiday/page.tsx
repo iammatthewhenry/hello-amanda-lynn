@@ -45,7 +45,7 @@ export default function HolidayPage() {
   return (
     <main>
       {/* Breadcrumbs */}
-      <div className="container-max px-8 pt-6 pb-4">
+      <div className="container-max px-4 sm:px-8 pt-6 pb-4">
         <Breadcrumbs 
           items={[
             { label: 'Recipes', href: '/recipes' },
@@ -55,8 +55,8 @@ export default function HolidayPage() {
       </div>
 
       {/* Page Header */}
-      <section className="container-max px-8 pb-8">
-        <h1 className="text-[48px] font-bold text-foreground mb-4">Holiday</h1>
+      <section className="container-max px-4 sm:px-8 pb-8">
+        <h1 className="text-2xl sm:text-3xl lg:text-[48px] font-bold text-foreground mb-4">Holiday</h1>
         <p className="text-lg text-muted-foreground max-w-3xl">
           Celebrate special occasions with these festive recipes. From traditional favorites to creative new dishes perfect for making memories.
         </p>

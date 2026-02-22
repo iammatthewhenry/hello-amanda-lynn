@@ -38,8 +38,8 @@ export function GridSection({
     <>
       {/* Grid Section */}
       <section className={sectionClass}>
-        <div className="container-max px-8">
-          <h2 className="mb-8 text-[36px] text-left font-bold pl-[1.5%]">{title}</h2>
+        <div className="container-max px-4 sm:px-8">
+          <h2 className="mb-8 text-xl sm:text-2xl lg:text-[36px] text-left font-bold pl-[1.5%]">{title}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {posts.map((post, index) => {
               // Only show date and time for farmers market section

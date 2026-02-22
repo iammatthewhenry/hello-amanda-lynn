@@ -88,7 +88,7 @@ export function BlogPostTemplate({
       </div>
 
       {/* Article Content */}
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Description */}
         <div className="mb-8">
           <p className="text-lg text-muted-foreground">{description}</p>
