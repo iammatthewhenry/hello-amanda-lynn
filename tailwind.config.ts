@@ -9,7 +9,7 @@ const config: Config = {
         green: 'var(--green)',
         foreground: 'var(--foreground)',
         secondary: 'var(--secondary)',
-        'button-text': '#D4A5A5',
+        'button-text': '#F5EBE8',
       },
       boxShadow: {
         soft: 'var(--shadow-sm)',

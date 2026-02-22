@@ -55,7 +55,7 @@ export function NewsletterSignup({ className = '' }: NewsletterSignupProps) {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="px-6 py-1.5 sm:px-6 sm:py-3 bg-green text-[#D4A5A5] font-semibold hover:opacity-70 transition-opacity whitespace-nowrap text-sm sm:text-base disabled:opacity-50"
+              className="px-6 py-1.5 sm:px-6 sm:py-3 bg-green text-button-text font-semibold hover:opacity-70 transition-opacity whitespace-nowrap text-sm sm:text-base disabled:opacity-50"
             >
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
