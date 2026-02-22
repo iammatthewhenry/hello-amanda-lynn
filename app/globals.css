@@ -259,33 +259,6 @@ div[style*="background-color: rgb(245, 235, 232)"] {
   background-color: #D4A5A5;
   color: #FEFAF8;
 }
-}
-
-/* Backwards compatibility class */
-.share-icon-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1.5px solid #D4A5A5;
-  color: #D4A5A5;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.share-icon-button:hover {
-  background-color: #D4A5A5;
-  color: #FEFAF8;
-}
-
-.share-icon-button svg {
-  width: 16px;
-  height: 16px;
-}
 
 /* =========================================================
    RECIPE PAGE PRINT STYLES
