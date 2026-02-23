@@ -152,7 +152,7 @@ export default function RecipePage({ params }: RecipePageProps) {
   }
 
   return (
-    <main className="pt-6 sm:pt-8">
+    <main>
       
       <RecipePageTemplate>
           {/* Header with Image and Title */}
