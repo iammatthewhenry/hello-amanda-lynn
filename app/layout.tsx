@@ -3,14 +3,8 @@ import { Inter, Montserrat, Tinos } from 'next/font/google';
 import { Header, Footer } from '@/components';
 import SiteContainer from '@/components/layout/site-container';
 import GlobalBreadcrumbs from '@/components/layout/global-breadcrumbs';
-import dynamic from 'next/dynamic';
+import { ToasterProvider } from '@/components/toaster-provider';
 import './globals.css';
-
-// Lazy-load Toaster: toasts are only needed after user interactions,
-// so keeping it out of the critical bundle path is safe.
-const Toaster = dynamic(() => import('sonner').then((m) => ({ default: m.Toaster })), {
-  ssr: false,
-});
 
 // ===================================================================
 // ENVIRONMENT VARIABLES
@@ -133,7 +127,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
-        <Toaster />
+        <ToasterProvider />
       </body>
     </html>
   );
