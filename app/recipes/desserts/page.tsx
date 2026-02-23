@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Dessert Recipes',
+  description: 'Indulgent dessert recipes from Amanda Lynn — cakes, cookies, pies, and sweet treats for every occasion.',
+};
 
 export default function DessertsPage() {
   const desserts = [

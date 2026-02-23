@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Poll } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Food Poll',
+  description: 'Vote in Amanda Lynn\'s latest food poll and see what other readers think!',
+};
 
 const DESSERT_CHOICES = [
   { id: '1', text: 'Chocolate Cake' },

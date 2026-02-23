@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Food Festivals',
+  description: 'The best food festivals worth attending — a guide to celebrating local flavors, cultures, and culinary traditions.',
+};
 
 export default function FoodFestivalsIndexPage() {
   const foodFestivals = [

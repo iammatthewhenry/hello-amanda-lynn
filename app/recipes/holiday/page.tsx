@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Breadcrumbs, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Holiday Recipes',
+  description: 'Festive holiday recipes from Amanda Lynn — Thanksgiving, Christmas, and celebrations worth cooking for.',
+};
 
 export default function HolidayPage() {
   const holidayRecipes = [

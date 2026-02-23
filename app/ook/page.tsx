@@ -1,6 +1,11 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader } from "@/components/page-header";
 import { GridSection } from "@/components/grid-section";
+
+export const metadata: Metadata = {
+  title: 'Out of the Kitchen',
+  description: 'Explore restaurants, food festivals, farmers markets, wineries, and more food destinations with Amanda Lynn.',
+};
 
 interface BlogPost {
   title: string;

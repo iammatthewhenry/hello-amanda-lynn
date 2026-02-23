@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from "@/components";
+
+export const metadata: Metadata = {
+  title: 'In The Kitchen',
+  description: 'Cooking tips, techniques, and kitchen wisdom from Amanda Lynn to help you cook with confidence.',
+};
 
 interface BlogPost {
   title: string;

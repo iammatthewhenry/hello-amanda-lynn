@@ -1,7 +1,6 @@
-'use client';
-
 import { Hero, AboutSection, ShopSection, PollResults, TopFive, BrowseByCategorySection, ExploreMore } from '@/components';
 
+// Route segment config — tell Next.js to fully statically render this page.
 export const dynamic = 'force-static';
 
 // ===================================================================

@@ -1,12 +1,13 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '@/components';
 import { Clock, Star, Users, DollarSign, Tag } from 'lucide-react';
 import { ShareBar } from '@/components';
 import { Container } from '@/components';
-import { Card, Button } from '@/components/ui';
+import { Card } from '@/components/ui';
 
 interface BlogPost {
   title: string;
@@ -126,7 +127,6 @@ const inTheKitchenPosts: Record<string, BlogPost> = {
 
 export default function BlogPostPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params.slug as string;
   
   const [post, setPost] = useState<BlogPost | null>(null);
@@ -153,9 +153,9 @@ export default function BlogPostPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Post Not Found</h1>
           <p className="text-muted-foreground mb-4">The blog post you're looking for doesn't exist.</p>
-          <Button onClick={() => router.push('/blog')} variant="ghost" className="text-green hover:underline">
+          <Link href="/blog" className="text-green hover:underline">
             Back to Blog
-          </Button>
+          </Link>
         </div>
       </main>
     );

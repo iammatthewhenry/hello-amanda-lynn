@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'About Amanda Lynn',
+  description: 'Meet Amanda Lynn, the passionate food lover and recipe creator behind this blog. Learn about her culinary journey and philosophy.',
+};
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function AboutPage() {

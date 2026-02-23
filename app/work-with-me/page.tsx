@@ -1,7 +1,12 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Instagram, FileText } from 'lucide-react';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: "Work With Me",
+  description: 'Collaborate with Amanda Lynn on Instagram Reels, Stories, restaurant features, brand partnerships, and more.',
+};
 
 export default function WorkWithMePage() {
   return (

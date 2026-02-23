@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Breakfast Recipes',
+  description: 'Delicious breakfast recipes from Amanda Lynn — fluffy pancakes, eggs benedict, and more morning favorites.',
+};
 
 export default function BreakfastPage() {
   const breakfasts = [

@@ -3,8 +3,14 @@ import { Inter, Montserrat, Tinos } from 'next/font/google';
 import { Header, Footer } from '@/components';
 import SiteContainer from '@/components/layout/site-container';
 import GlobalBreadcrumbs from '@/components/layout/global-breadcrumbs';
-import { Toaster } from 'sonner';
+import dynamic from 'next/dynamic';
 import './globals.css';
+
+// Lazy-load Toaster: toasts are only needed after user interactions,
+// so keeping it out of the critical bundle path is safe.
+const Toaster = dynamic(() => import('sonner').then((m) => ({ default: m.Toaster })), {
+  ssr: false,
+});
 
 // ===================================================================
 // ENVIRONMENT VARIABLES
@@ -41,11 +47,48 @@ const tinos = Tinos({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Amanda Lynn - Food Blog & Recipes',
-    template: '%s | Amanda Lynn',
+    default: 'Hello Amanda Lynn - Food Blog & Recipes',
+    template: '%s | Hello Amanda Lynn',
   },
   description:
-    'Discover delicious recipes, cooking tips, and food stories from Amanda Lynn.',
+    'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
+  keywords: ['food blog', 'recipes', 'cooking tips', 'restaurant reviews', 'Amanda Lynn'],
+  authors: [{ name: 'Amanda Lynn', url: SITE_URL }],
+  creator: 'Amanda Lynn',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: SITE_URL,
+    siteName: 'Hello Amanda Lynn',
+    title: 'Hello Amanda Lynn - Food Blog & Recipes',
+    description: 'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Hello Amanda Lynn - Food Blog & Recipes',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hello Amanda Lynn - Food Blog & Recipes',
+    description: 'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
+    images: [`${SITE_URL}/og-image.png`],
+    creator: '@helloamandalynn',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 // ===================================================================

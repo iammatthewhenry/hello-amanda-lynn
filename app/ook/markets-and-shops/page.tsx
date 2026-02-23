@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Markets & Shops',
+  description: 'Farmers markets, specialty shops, and artisan producers worth a visit — where to find the best ingredients.',
+};
 
 export default function MarketsAndShopsIndexPage() {
   const marketsAndShops = [

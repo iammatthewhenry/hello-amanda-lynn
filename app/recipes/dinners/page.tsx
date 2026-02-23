@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Breadcrumbs, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Dinner Recipes',
+  description: 'Satisfying dinner recipes from Amanda Lynn — weeknight favorites and special occasion meals the whole family will love.',
+};
 
 export default function DinnersPage() {
   const dinners = [

@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { ListingPageLayout, RecipeCard } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Americana Recipes',
+  description: 'Classic American recipes — apple pie, burgers, BBQ ribs, and all the comfort food favorites.',
+};
 
 export default function AmericanaPage() {
   const americanaRecipes = [

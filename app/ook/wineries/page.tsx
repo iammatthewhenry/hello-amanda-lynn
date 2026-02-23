@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Wineries',
+  description: 'Beautiful wineries and tasting rooms worth visiting — explore terroir, varietals, and unforgettable wine experiences.',
+};
 
 export default function WineriesIndexPage() {
   const wineries = [

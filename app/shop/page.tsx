@@ -1,7 +1,12 @@
-'use client';
 
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs, Container } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Shop',
+  description: "Amanda Lynn's favorite kitchen tools, cookbooks, and food essentials — curated picks to elevate your cooking.",
+};
 import { Section, Card, Button } from '@/components/ui';
 
 export default function ShopPage() {

@@ -1,6 +1,11 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader } from "@/components";
 // Add other imports as needed
+
+export const metadata: Metadata = {
+  title: 'Appetizer Recipes',
+  description: 'Easy and impressive appetizer recipes from Amanda Lynn — perfect starters for parties, gatherings, and entertaining.',
+};
 
 export default function AppetizersPage() {
   return (

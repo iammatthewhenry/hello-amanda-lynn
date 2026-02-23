@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Restaurant Reviews',
+  description: 'Honest, passionate restaurant reviews from Amanda Lynn — finding the best dining experiences from cozy cafés to fine dining.',
+};
 
 export default function RestaurantReviewsIndexPage() {
   const restaurants = [

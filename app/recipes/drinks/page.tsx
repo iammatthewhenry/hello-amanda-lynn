@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Breadcrumbs, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Drink Recipes',
+  description: 'Refreshing drink recipes from Amanda Lynn — cocktails, mocktails, smoothies, and seasonal beverages.',
+};
 
 export default function DrinksPage() {
   const drinks = [

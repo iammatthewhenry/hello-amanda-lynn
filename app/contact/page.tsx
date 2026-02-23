@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { ContactForm } from "@/components/contact-form";
 
 export const dynamic = 'force-static';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'Get in touch with Amanda Lynn for brand collaborations, recipe inquiries, or general questions.',
+};
 
 export default function ContactPage() {
   return (

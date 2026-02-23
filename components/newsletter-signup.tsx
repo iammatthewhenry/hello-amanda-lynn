@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { subscribeToNewsletter } from '@/app/actions/newsletter';
 
 // ===================================================================
 // NEWSLETTER SIGNUP COMPONENT
@@ -17,19 +18,13 @@ export function NewsletterSignup({ className = '' }: NewsletterSignupProps) {
     e.preventDefault();
     setStatus('loading');
 
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
+    const result = await subscribeToNewsletter(email);
 
-      if (!response.ok) throw new Error('Failed to subscribe');
-
+    if (result.success) {
       setStatus('success');
       setEmail('');
       setTimeout(() => setStatus('idle'), 5000);
-    } catch {
+    } else {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

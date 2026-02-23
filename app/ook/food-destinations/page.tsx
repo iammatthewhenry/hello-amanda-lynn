@@ -1,5 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
 import { PageHeader, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Food Destinations',
+  description: 'Discover incredible food destinations around the world — markets, streets, and cities worth eating your way through.',
+};
 
 export default function FoodDestinationIndexPage() {
   const foodDestinations = [

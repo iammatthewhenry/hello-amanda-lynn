@@ -1,6 +1,11 @@
-'use client';
 
+import type { Metadata } from 'next';
 import { Breadcrumbs, GridSection } from '@/components';
+
+export const metadata: Metadata = {
+  title: 'Side Dish Recipes',
+  description: 'Delicious side dish recipes from Amanda Lynn — salads, roasted vegetables, grains, and perfect accompaniments.',
+};
 
 export default function SidesPage() {
   const sides = [
