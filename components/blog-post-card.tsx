@@ -27,7 +27,7 @@ export function BlogPostCard({
     <Link href={href} className="group block">
       {/* Polaroid-style card with thick white border */}
       <div 
-        className="bg-white transition-transform duration-300 hover:scale-[1.02]"
+        className="bg-white"
         style={{ 
           boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)',
           padding: '16px 16px 24px 16px' // Top/sides: 16px, bottom: 24px for polaroid look
@@ -39,7 +39,7 @@ export function BlogPostCard({
             src={image}
             alt={title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
           />
         </div>
 

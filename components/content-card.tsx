@@ -31,7 +31,7 @@ export function ContentCard({ title, description, image, href }: ContentCardProp
               alt={title}
               width={400}
               height={400}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
