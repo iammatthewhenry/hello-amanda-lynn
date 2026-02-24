@@ -1,34 +1,16 @@
-import { Hero, AboutSection, ShopSection, PollResults, TopFive, BrowseByCategorySection, ExploreMore } from '@/components';
+export const dynamic = "force-dynamic";
 
-// Route segment config — tell Next.js to fully statically render this page.
-export const dynamic = 'force-static';
+export default async function Home() {
+  const res = await fetch("https://example.com", {
+    cache: "no-store",
+  });
 
-// ===================================================================
-// HOME PAGE
-// ===================================================================
-export default function HomePage() {
+  const text = await res.text();
+
   return (
-    <main>
-      {/* Hero */}
-      <Hero />
-
-      {/* Poll Results */}
-      <PollResults />
-
-      {/* Browse by Recipe Category */}
-      <BrowseByCategorySection />
-
-      {/* Explore More */}
-      <ExploreMore />
-
-      {/* About */}
-      <AboutSection />
-
-      {/* Top Five Recipes */}
-      <TopFive />
-
-      {/* Shop */}
-      <ShopSection />
-    </main>
+    <div>
+      <h1>SSR is active</h1>
+      <p>Length: {text.length}</p>
+    </div>
   );
 }
