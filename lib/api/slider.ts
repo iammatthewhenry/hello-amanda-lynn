@@ -106,29 +106,31 @@ export async function getSliderItems(): Promise<HeroSlide[]> {
       300 // Revalidate every 5 minutes (300 seconds)
     );
     
-    // Log the response for debugging
-    console.log('Slider Manager Response:', {
-      hasData: !!data.sliderManager,
-      count: data.sliderManager?.length || 0,
-      items: data.sliderManager?.map(p => ({
-        id: p.databaseId,
-        title: p.title,
-        contentType: p.contentType?.node?.name,
-        hasFeaturedImage: !!p.featuredImage?.node?.sourceUrl
-      }))
-    });
+    // Log the raw response for debugging
+    console.log('=== SLIDER MANAGER DEBUG ===');
+    console.log('Raw data received:', JSON.stringify(data, null, 2));
+    console.log('Has sliderManager field:', 'sliderManager' in data);
+    console.log('sliderManager value:', data.sliderManager);
+    console.log('sliderManager type:', typeof data.sliderManager);
+    console.log('sliderManager is array:', Array.isArray(data.sliderManager));
     
     // Return empty array if no slider data
     if (!data.sliderManager || data.sliderManager.length === 0) {
-      console.log('No slider items returned from WordPress');
+      console.log('❌ No slider items returned from WordPress');
+      console.log('This could mean:');
+      console.log('  1. Slider Manager plugin has no configured slides');
+      console.log('  2. The sliderManager GraphQL field is not registered');
+      console.log('  3. GraphQL query structure is incorrect');
       return [];
     }
+    
+    console.log(`✓ Found ${data.sliderManager.length} slide(s) from WordPress`);
     
     // Transform WPGraphQL posts to HeroSlide objects
     const slides: HeroSlide[] = data.sliderManager
       .filter((post) => {
         if (!post.featuredImage?.node?.sourceUrl) {
-          console.warn(`Skipping slide ${post.databaseId} (${post.title}) - no featured image`);
+          console.warn(`⚠ Skipping slide ${post.databaseId} (${post.title}) - no featured image`);
           return false;
         }
         return true;
@@ -143,10 +145,25 @@ export async function getSliderItems(): Promise<HeroSlide[]> {
         link: getSlideLink(post.contentType?.node?.name || null, post.slug),
       }));
     
-    console.log(`Successfully transformed ${slides.length} slides`);
+    console.log(`✓ Successfully transformed ${slides.length} slide(s)`);
+    slides.forEach((slide, i) => {
+      console.log(`  ${i + 1}. ${slide.title} [${slide.category}]`);
+    });
+    console.log('=== END SLIDER DEBUG ===\n');
+    
     return slides;
   } catch (error) {
-    console.error('Error fetching slider items:', error);
+    console.error('❌ ERROR fetching slider items:');
+    console.error(error);
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
+    console.log('Possible causes:');
+    console.log('  1. WordPress GraphQL endpoint unreachable');
+    console.log('  2. sliderManager field does not exist in schema');
+    console.log('  3. Plugin not activated or configured correctly');
+    console.log('=== END SLIDER DEBUG ===\n');
     // Return empty array on error - HeroSlider will use its defaults
     return [];
   }
