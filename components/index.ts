@@ -7,7 +7,7 @@ export { default as Header } from './header';
 export { default as Footer } from './footer';
 
 // Hero & Featured
-export { default as heroSlider, HeroSliderClient } from './hero-slider';
+export { default as HeroSlider, HeroSliderClient } from './hero-slider';
 export type { HeroSlide } from './hero-slider';
 
 // Cards & Grid

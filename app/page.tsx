@@ -1,4 +1,4 @@
-import { heroSlider as HeroSlider } from '@/components/hero-slider';
+import HeroSlider from '@/components/hero-slider';
 import { PollResults } from '@/components/poll-results';
 import { BrowseByCategorySection } from '@/components/browse-by-category-section';
 import { ExploreMore } from '@/components/explore-more';
