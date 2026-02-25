@@ -4,6 +4,17 @@ import { ArrowUp } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
 import { NewsletterSignup } from './newsletter-signup';
+import { AsSeenOn } from './as-seen-on';
+
+// ===================================================================
+// TYPES
+// ===================================================================
+interface AsSeenOnLogo {
+  name: string;
+  image?: string;
+  text?: string;
+  altText?: string;
+}
 
 // ===================================================================
 // SOCIAL ICON COMPONENT
@@ -83,9 +94,10 @@ function SocialIcon({
 // ===================================================================
 interface FooterProps {
   showBannerAd?: boolean;
+  logos?: AsSeenOnLogo[];
 }
 
-export default function Footer({ showBannerAd = true }: FooterProps) {
+export default function Footer({ showBannerAd = true, logos }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -140,35 +152,11 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
             </div>
 
             {/* AS SEEN ON Box - Center on desktop, second on mobile */}
-            <div className="flex flex-col items-center gap-4 order-2 lg:order-2">
-              <div className="px-0 py-2 sm:py-3 w-full lg:w-fit bg-secondary" style={{ boxShadow: 'var(--shadow-card)' }}>
-                <p className="text-xs sm:text-sm tracking-wider mb-2 sm:mb-3 text-center w-fit mx-auto text-green">
-                  AS SEEN ON
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-5 px-3 sm:px-4">
-                  {/* PBS */}
-                  <div className="flex items-center">
-                    <span className="text-2xl sm:text-3xl text-foreground" style={{ fontFamily: 'serif' }}>PBS</span>
-                  </div>
-                  
-                  {/* Better Homes & Gardens */}
-                  <div className="flex items-center">
-                    <div className="text-center">
-                      <div className="text-xs sm:text-sm tracking-wide text-foreground">BETTER HOMES</div>
-                      <div className="text-xs sm:text-sm tracking-wide -mt-1 text-foreground">& GARDENS</div>
-                    </div>
-                  </div>
-                  
-                  {/* Food Network */}
-                  <div className="flex items-center">
-                    <div className="text-center">
-                      <div className="text-base sm:text-lg text-foreground">FOOD</div>
-                      <div className="text-base sm:text-lg -mt-1 text-foreground">NETWORK</div>
-                    </div>
-                  </div>
-                </div>
+            {logos && logos.length > 0 && (
+              <div className="flex flex-col items-center gap-4 order-2 lg:order-2">
+                <AsSeenOn logos={logos} />
               </div>
-            </div>
+            )}
 
             {/* Back to Top Link and Footer Links - Right on desktop, last on mobile */}
             <div className="lg:flex-shrink-0 flex flex-col items-center order-3 lg:order-3">
@@ -208,7 +196,7 @@ export default function Footer({ showBannerAd = true }: FooterProps) {
           </div>
 
           {/* Bottom - Copyright */}
-          <div className="pt-6 sm:pt-8 border-t border-green text-foreground/70 text-sm">
+          <div className="pt-6 sm:pt-8 border-t border-green text-foreground/70 text-lg">
             <div className="flex flex-col lg:flex-row items-center gap-6 lg:justify-between">
               {/* Empty spacer for left side on desktop */}
               <div className="hidden lg:block lg:flex-shrink-0" style={{ width: '176px' }}></div>

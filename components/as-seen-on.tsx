@@ -39,9 +39,14 @@ const DEFAULT_LOGOS: AsSeenOnLogo[] = [
 // ===================================================================
 export function AsSeenOn({ 
   title = 'AS SEEN ON',
-  logos = DEFAULT_LOGOS,
+  logos,
   className = '' 
 }: AsSeenOnProps) {
+  // Return null if no logos provided
+  if (!logos || logos.length === 0) {
+    return null;
+  }
+
   return (
     <div 
       className={`px-6 py-4 sm:px-8 sm:py-5 ${className}`.trim()} 

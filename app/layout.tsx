@@ -4,12 +4,35 @@ import { Header, Footer } from '@/components';
 import SiteContainer from '@/components/layout/site-container';
 import GlobalBreadcrumbs from '@/components/layout/global-breadcrumbs';
 import { ToasterProvider } from '@/components/toaster-provider';
+import { fetchGraphQL } from '@/lib/wordpress';
+import { GET_AS_SEEN_ON_LOGOS } from '@/lib/queries/as-seen-on';
 import './globals.css';
 
 // ===================================================================
 // ENVIRONMENT VARIABLES
 // ===================================================================
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://amandalynn.com';
+
+// ===================================================================
+// TYPES
+// ===================================================================
+interface AsSeenOnLogoResponse {
+  name: string;
+  imageUrl: string;
+  altText?: string;
+  link?: string;
+}
+
+interface AsSeenOnLogosResponse {
+  asSeenOnLogos: AsSeenOnLogoResponse[];
+}
+
+interface AsSeenOnLogo {
+  name: string;
+  image?: string;
+  text?: string;
+  altText?: string;
+}
 
 // ===================================================================
 // FONTS
@@ -96,11 +119,34 @@ export const viewport: Viewport = {
 // ===================================================================
 // ROOT LAYOUT
 // ===================================================================
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Fetch As Seen On logos from WordPress
+  let logos: AsSeenOnLogo[] = [];
+  
+  try {
+    const response = await fetchGraphQL<AsSeenOnLogosResponse>(
+      GET_AS_SEEN_ON_LOGOS,
+      {},
+      86400 // Revalidate once per day (24 hours)
+    );
+    
+    // Map WordPress response to component props
+    if (response.asSeenOnLogos && response.asSeenOnLogos.length > 0) {
+      logos = response.asSeenOnLogos.map((logo) => ({
+        name: logo.name,
+        image: logo.imageUrl,
+        altText: logo.altText,
+      }));
+    }
+  } catch (error) {
+    console.error('Failed to fetch As Seen On logos:', error);
+    // logos remains empty array, component will not render
+  }
+
   return (
     <html
       lang="en"
@@ -126,7 +172,7 @@ export default function RootLayout({
           </SiteContainer>
         </main>
 
-        <Footer />
+        <Footer logos={logos} />
         <ToasterProvider />
       </body>
     </html>
