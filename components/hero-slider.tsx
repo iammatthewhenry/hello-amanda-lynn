@@ -198,9 +198,45 @@ export function HeroSliderClient({
 import { getSliderItems } from '@/lib/api/slider';
 import React from 'react';
 
+const FALLBACK_SLIDES: HeroSlide[] = [
+  {
+    id: '1',
+    image: 'https://images.unsplash.com/photo-1636743713732-125909a35dcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Fluffy buttermilk pancakes',
+    category: 'BREAKFAST FAVORITE',
+    title: 'Fluffy Buttermilk Pancakes',
+    description: 'Light and fluffy pancakes with maple syrup and fresh berries. The secret to their fluffiness is the buttermilk.',
+    link: '/recipes/fluffy-buttermilk-pancakes',
+  },
+  {
+    id: '2',
+    image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Chocolate chip cookies',
+    category: "CHEF'S PICK",
+    title: 'Perfect Chocolate Chip Cookies',
+    description: 'Crispy edges with a soft, chewy center. These classic cookies are loaded with chocolate chips.',
+    link: '/recipes/chocolate-chip-cookies',
+  },
+  {
+    id: '3',
+    image: 'https://images.unsplash.com/photo-1606313564948-b37f0802b5bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Classic banana bread',
+    category: 'COMFORT BAKING',
+    title: 'Classic Banana Bread',
+    description: 'Moist and flavorful banana bread perfect for breakfast or an afternoon snack.',
+    link: '/recipes/classic-banana-bread',
+  },
+];
+
 const HeroSlider = async (props: Omit<HeroSliderProps, 'slides'>) => {
-  const slides = await getSliderItems();
-  return <HeroSliderClient slides={slides.length > 0 ? slides : undefined} {...props} />;
+  let slides: HeroSlide[] = [];
+  try {
+    slides = await getSliderItems();
+  } catch (e) {
+    slides = [];
+  }
+  // Always pass fallback if no slides
+  return <HeroSliderClient slides={slides.length > 0 ? slides : FALLBACK_SLIDES} {...props} />;
 };
 
 export default HeroSlider;
