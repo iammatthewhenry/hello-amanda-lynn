@@ -24,20 +24,48 @@ interface HeroSliderProps {
   showControls?: boolean;
 }
 
+// ===================================================================
+// FALLBACK SLIDES
+// ===================================================================
+const FALLBACK_SLIDES: HeroSlide[] = [
+  {
+    id: '1',
+    image: 'https://images.unsplash.com/photo-1636743713732-125909a35dcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Fluffy buttermilk pancakes',
+    category: 'BREAKFAST FAVORITE',
+    title: 'Fluffy Buttermilk Pancakes',
+    description: 'Light and fluffy pancakes with maple syrup and fresh berries. The secret to their fluffiness is the buttermilk.',
+  },
+  {
+    id: '2',
+    image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Chocolate chip cookies',
+    category: "CHEF'S PICK",
+    title: 'Perfect Chocolate Chip Cookies',
+    description: 'Crispy edges with a soft, chewy center. These classic cookies are loaded with chocolate chips.',
+  },
+  {
+    id: '3',
+    image: 'https://images.unsplash.com/photo-1606313564948-b37f0802b5bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    alt: 'Classic banana bread',
+    category: 'COMFORT BAKING',
+    title: 'Classic Banana Bread',
+    description: 'Moist and flavorful banana bread perfect for breakfast or an afternoon snack.',
+  },
+];
+
 const DEFAULT_AUTO_PLAY_DELAY = 5000;
 
 // ===================================================================
 // HERO SLIDER (FIGMA-ACCURATE)
 // ===================================================================
 export function HeroSlider({
-  slides,
+  slides = FALLBACK_SLIDES,
   autoPlayDelay = DEFAULT_AUTO_PLAY_DELAY,
   showControls = true,
 }: HeroSliderProps) {
-  // Don't render if no slides provided
-  if (!slides || slides.length === 0) {
-    return null;
-  }
+  // Use fallback slides if none provided or empty
+  const displaySlides = slides && slides.length > 0 ? slides : FALLBACK_SLIDES;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
@@ -48,25 +76,25 @@ export function HeroSlider({
   }, []);
 
   const nextSlide = useCallback(
-    () => goToSlide((currentSlide + 1) % slides.length),
-    [currentSlide, slides.length, goToSlide]
+    () => goToSlide((currentSlide + 1) % displaySlides.length),
+    [currentSlide, displaySlides.length, goToSlide]
   );
 
   const prevSlide = useCallback(
-    () => goToSlide((currentSlide - 1 + slides.length) % slides.length),
-    [currentSlide, slides.length, goToSlide]
+    () => goToSlide((currentSlide - 1 + displaySlides.length) % displaySlides.length),
+    [currentSlide, displaySlides.length, goToSlide]
   );
 
   useEffect(() => {
-    if (!autoPlay || slides.length <= 1) return;
+    if (!autoPlay || displaySlides.length <= 1) return;
     const timer = setInterval(
-      () => setCurrentSlide((prev) => (prev + 1) % slides.length),
+      () => setCurrentSlide((prev) => (prev + 1) % displaySlides.length),
       autoPlayDelay
     );
     return () => clearInterval(timer);
-  }, [autoPlay, slides.length, autoPlayDelay]);
+  }, [autoPlay, displaySlides.length, autoPlayDelay]);
 
-  const slide = slides[currentSlide];
+  const slide = displaySlides[currentSlide];
 
   return (
     <section className="w-full py-2 sm:py-4 lg:py-6">

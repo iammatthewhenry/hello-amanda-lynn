@@ -53,7 +53,15 @@ function getCategoryLabel(contentTypeName: string | null): string {
     'post': 'FEATURED',
     'recipe': 'FEATURED RECIPE',
     'restaurant-review': 'RESTAURANT REVIEW',
+    'restaurant': 'RESTAURANT REVIEW',
     'kitchen-tip': 'IN THE KITCHEN',
+    'kitchen_tip': 'IN THE KITCHEN',
+    'winery': 'OUT OF KITCHEN',
+    'food-destination': 'OUT OF KITCHEN',
+    'food_destination': 'OUT OF KITCHEN',
+    'market': 'OUT OF KITCHEN',
+    'food-festival': 'OUT OF KITCHEN',
+    'food_festival': 'OUT OF KITCHEN',
   };
   
   return categoryMap[normalized] || contentTypeName.toUpperCase();
@@ -69,8 +77,16 @@ function getSlideLink(contentTypeName: string | null, slug: string): string {
   
   const pathMap: Record<string, string> = {
     'recipe': `/recipes/${slug}`,
-    'restaurant-review': `/out-of-kitchen/${slug}`,
+    'restaurant-review': `/ook/${slug}`,
+    'restaurant': `/ook/${slug}`,
     'kitchen-tip': `/in-the-kitchen/${slug}`,
+    'kitchen_tip': `/in-the-kitchen/${slug}`,
+    'winery': `/ook/${slug}`,
+    'food-destination': `/ook/${slug}`,
+    'food_destination': `/ook/${slug}`,
+    'market': `/ook/${slug}`,
+    'food-festival': `/ook/${slug}`,
+    'food_festival': `/ook/${slug}`,
     'post': `/blog/${slug}`,
   };
   
@@ -90,14 +106,33 @@ export async function getSliderItems(): Promise<HeroSlide[]> {
       300 // Revalidate every 5 minutes (300 seconds)
     );
     
+    // Log the response for debugging
+    console.log('Slider Manager Response:', {
+      hasData: !!data.sliderManager,
+      count: data.sliderManager?.length || 0,
+      items: data.sliderManager?.map(p => ({
+        id: p.databaseId,
+        title: p.title,
+        contentType: p.contentType?.node?.name,
+        hasFeaturedImage: !!p.featuredImage?.node?.sourceUrl
+      }))
+    });
+    
     // Return empty array if no slider data
     if (!data.sliderManager || data.sliderManager.length === 0) {
+      console.log('No slider items returned from WordPress');
       return [];
     }
     
     // Transform WPGraphQL posts to HeroSlide objects
     const slides: HeroSlide[] = data.sliderManager
-      .filter((post) => post.featuredImage?.node?.sourceUrl) // Only include posts with featured images
+      .filter((post) => {
+        if (!post.featuredImage?.node?.sourceUrl) {
+          console.warn(`Skipping slide ${post.databaseId} (${post.title}) - no featured image`);
+          return false;
+        }
+        return true;
+      })
       .map((post) => ({
         id: post.databaseId.toString(),
         image: post.featuredImage!.node.sourceUrl,
@@ -108,6 +143,7 @@ export async function getSliderItems(): Promise<HeroSlide[]> {
         link: getSlideLink(post.contentType?.node?.name || null, post.slug),
       }));
     
+    console.log(`Successfully transformed ${slides.length} slides`);
     return slides;
   } catch (error) {
     console.error('Error fetching slider items:', error);
