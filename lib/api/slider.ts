@@ -168,3 +168,43 @@ export async function getSliderItems(): Promise<HeroSlide[]> {
     return [];
   }
 }
+
+/**
+ * Fetch slides from Slider Manager plugin (pre-formatted)
+ * 
+ * This uses the SLIDER_MANAGER_QUERY which expects the plugin to return
+ * slides in the exact HeroSlide format (no transformation needed).
+ * 
+ * @returns Array of HeroSlide objects
+ */
+export async function getSliderManagerSlides(): Promise<HeroSlide[]> {
+  try {
+    const { SLIDER_MANAGER_QUERY } = await import('@/lib/queries/slider');
+    
+    const data = await fetchGraphQL<{ sliderManager: HeroSlide[] | null }>(
+      SLIDER_MANAGER_QUERY,
+      {},
+      300 // Revalidate every 5 minutes
+    );
+    
+    if (!data.sliderManager || data.sliderManager.length === 0) {
+      console.warn('No slides returned from sliderManager');
+      return [];
+    }
+    
+    // Filter out invalid slides (missing required fields)
+    const validSlides = data.sliderManager.filter((slide) => {
+      if (!slide.id || !slide.image) {
+        console.warn('Skipping invalid slide:', slide);
+        return false;
+      }
+      return true;
+    });
+    
+    console.log(`✓ Loaded ${validSlides.length} slide(s) from Slider Manager`);
+    return validSlides;
+  } catch (error) {
+    console.error('Error fetching slider manager slides:', error);
+    return [];
+  }
+}

@@ -29,3 +29,21 @@ export const GET_SLIDER_ITEMS = `
     }
   }
 `;
+
+/**
+ * Get pre-formatted slider data from the Slider Manager plugin
+ * Returns slides in the exact format needed by HeroSlider component
+ */
+export const SLIDER_MANAGER_QUERY = `
+  query HeroSlider {
+    sliderManager {
+      id
+      image
+      alt
+      category
+      title
+      description
+      link
+    }
+  }
+`;

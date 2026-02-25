@@ -7,6 +7,7 @@ export { default as Header } from './header';
 export { default as Footer } from './footer';
 
 // Hero & Featured
+export { Hero } from './Hero';
 export { HeroSlider } from './hero-slider';
 export type { HeroSlide } from './hero-slider';
 

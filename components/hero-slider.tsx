@@ -25,26 +25,6 @@ interface HeroSliderProps {
 }
 
 // ===================================================================
-// GRAPHQL QUERY
-// Use this in your Hero component (or a server component parent) to
-// fetch slides from the plugin and pass them as the `slides` prop:
-//
-//   const SLIDER_QUERY = `
-//     query HeroSlider {
-//       sliderManager {
-//         id
-//         image
-//         alt
-//         category
-//         title
-//         description
-//         link
-//       }
-//     }
-//   `;
-// ===================================================================
-
-// ===================================================================
 // FALLBACK SLIDES
 // ===================================================================
 const FALLBACK_SLIDES: HeroSlide[] = [
