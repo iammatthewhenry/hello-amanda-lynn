@@ -152,11 +152,9 @@ export default function Footer({ showBannerAd = true, logos }: FooterProps) {
             </div>
 
             {/* AS SEEN ON Box - Center on desktop, second on mobile */}
-            {logos && logos.length > 0 && (
-              <div className="flex flex-col items-center gap-4 order-2 lg:order-2">
-                <AsSeenOn logos={logos} />
-              </div>
-            )}
+            <div className="flex flex-col items-center gap-4 order-2 lg:order-2">
+              <AsSeenOn logos={logos} />
+            </div>
 
             {/* Back to Top Link and Footer Links - Right on desktop, last on mobile */}
             <div className="lg:flex-shrink-0 flex flex-col items-center order-3 lg:order-3">
