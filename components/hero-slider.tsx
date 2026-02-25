@@ -18,52 +18,26 @@ export interface HeroSlide {
   link?: string;
 }
 
-interface HeroProps {
+interface HeroSliderProps {
   slides?: HeroSlide[];
   autoPlayDelay?: number;
   showControls?: boolean;
 }
 
-// ===================================================================
-// DEFAULT SLIDES
-// ===================================================================
-const DEFAULT_SLIDES: HeroSlide[] = [
-  {
-    id: '1',
-    image: 'https://images.unsplash.com/photo-1636743713732-125909a35dcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    alt: 'Fluffy buttermilk pancakes',
-    category: 'BREAKFAST FAVORITE',
-    title: 'Fluffy Buttermilk Pancakes',
-    description: 'Light and fluffy pancakes with maple syrup and fresh berries. The secret to their fluffiness is the buttermilk.',
-  },
-  {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    alt: 'Chocolate chip cookies',
-    category: "CHEF'S PICK",
-    title: 'Perfect Chocolate Chip Cookies',
-    description: 'Crispy edges with a soft, chewy center. These classic cookies are loaded with chocolate chips.',
-  },
-  {
-    id: '3',
-    image: 'https://images.unsplash.com/photo-1606313564948-b37f0802b5bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    alt: 'Classic banana bread',
-    category: 'COMFORT BAKING',
-    title: 'Classic Banana Bread',
-    description: 'Moist and flavorful banana bread perfect for breakfast or an afternoon snack.',
-  },
-];
-
 const DEFAULT_AUTO_PLAY_DELAY = 5000;
 
 // ===================================================================
-// HERO (FIGMA-ACCURATE)
+// HERO SLIDER (FIGMA-ACCURATE)
 // ===================================================================
-export function Hero({
-  slides = DEFAULT_SLIDES,
+export function HeroSlider({
+  slides,
   autoPlayDelay = DEFAULT_AUTO_PLAY_DELAY,
   showControls = true,
-}: HeroProps) {
+}: HeroSliderProps) {
+  // Don't render if no slides provided
+  if (!slides || slides.length === 0) {
+    return null;
+  }
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 

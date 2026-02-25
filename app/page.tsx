@@ -1,4 +1,4 @@
-import { Hero } from '@/components/hero';
+import { HeroSlider } from '@/components/hero-slider';
 import { PollResults } from '@/components/poll-results';
 import { BrowseByCategorySection } from '@/components/browse-by-category-section';
 import { ExploreMore } from '@/components/explore-more';
@@ -6,6 +6,7 @@ import { AboutSection } from '@/components/about-section';
 import { TopFive } from '@/components/top-five';
 import { ShopSection } from '@/components/shop-section';
 import { getHomepageData, getPollResults, getShopItems } from '@/lib/api/homepage';
+import { getSliderItems } from '@/lib/api/slider';
 
 /**
  * Homepage - Server Component
@@ -19,15 +20,16 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   // Fetch all homepage data in parallel
-  const [homepageData, pollResults, shopItems] = await Promise.all([
+  const [homepageData, pollResults, shopItems, slides] = await Promise.all([
     getHomepageData(),
     getPollResults(),
     getShopItems(),
+    getSliderItems(),
   ]);
 
   return (
     <main>
-      <Hero />
+      <HeroSlider slides={slides} />
       
       {/* Poll Results - uses defaults if data is null */}
       <PollResults {...(pollResults || {})} />

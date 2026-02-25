@@ -7,8 +7,8 @@ export { default as Header } from './header';
 export { default as Footer } from './footer';
 
 // Hero & Featured
-export { Hero } from './hero';
-export type { HeroSlide } from './hero';
+export { HeroSlider } from './hero-slider';
+export type { HeroSlide } from './hero-slider';
 
 // Cards & Grid
 export { CategoryCard, CategoryGrid } from './category-card';
