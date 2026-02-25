@@ -33,7 +33,7 @@ export default async function HomePage() {
       <PollResults {...(pollResults || {})} />
       
       {/* Browse by Category - passes WordPress categories or uses defaults */}
-      <BrowseByCategorySection categories={homepageData?.categories} />
+      <BrowseByCategorySection categories={homepageData?.categories?.length ? homepageData.categories : undefined} />
       
       <ExploreMore />
       
