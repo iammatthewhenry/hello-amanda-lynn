@@ -42,7 +42,6 @@ export async function fetchGraphQL<T>(
         query,
         variables: variables || {},
       }),
-      // @ts-expect-error - Next.js extends fetch with next property
       next: {
         revalidate,
       },
