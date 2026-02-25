@@ -195,11 +195,11 @@ export function HeroSliderClient({
 }
 
 // ================= SERVER WRAPPER =================
-import { getSliderManagerSlides } from '@/lib/api/slider';
+import { getSliderItems } from '@/lib/api/slider';
 import React from 'react';
 
 const HeroSlider = async (props: Omit<HeroSliderProps, 'slides'>) => {
-  const slides = await getSliderManagerSlides();
+  const slides = await getSliderItems();
   return <HeroSliderClient slides={slides.length > 0 ? slides : undefined} {...props} />;
 };
 
