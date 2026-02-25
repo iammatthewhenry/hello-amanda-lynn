@@ -1,4 +1,4 @@
-import { Hero } from '@/components/Hero';
+import { heroSlider as HeroSlider } from '@/components/hero-slider';
 import { PollResults } from '@/components/poll-results';
 import { BrowseByCategorySection } from '@/components/browse-by-category-section';
 import { ExploreMore } from '@/components/explore-more';
@@ -27,7 +27,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <Hero />
+      <HeroSlider />
       
       {/* Poll Results - uses defaults if data is null */}
       <PollResults {...(pollResults || {})} />

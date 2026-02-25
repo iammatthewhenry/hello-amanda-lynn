@@ -59,10 +59,8 @@ const FALLBACK_SLIDES: HeroSlide[] = [
 
 const DEFAULT_AUTO_PLAY_DELAY = 5000;
 
-// ===================================================================
-// HERO SLIDER
-// ===================================================================
-export function HeroSlider({
+// ================= CLIENT COMPONENT =================
+export function HeroSliderClient({
   slides = FALLBACK_SLIDES,
   autoPlayDelay = DEFAULT_AUTO_PLAY_DELAY,
   showControls = true,
@@ -195,3 +193,14 @@ export function HeroSlider({
     </section>
   );
 }
+
+// ================= SERVER WRAPPER =================
+import { getSliderManagerSlides } from '@/lib/api/slider';
+import React from 'react';
+
+const HeroSlider = async (props: Omit<HeroSliderProps, 'slides'>) => {
+  const slides = await getSliderManagerSlides();
+  return <HeroSliderClient slides={slides.length > 0 ? slides : undefined} {...props} />;
+};
+
+export default HeroSlider;
