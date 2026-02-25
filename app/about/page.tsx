@@ -1,14 +1,63 @@
-
 import type { Metadata } from 'next';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: 'About Amanda Lynn',
-  description: 'Meet Amanda Lynn, the passionate food lover and recipe creator behind this blog. Learn about her culinary journey and philosophy.',
-};
+import { getPageBySlug } from '@/lib/api/pages';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
-export default function AboutPage() {
+/**
+ * About Page - Server Component
+ * 
+ * Fetches about page content from WordPress. Falls back to static content if unavailable.
+ */
+
+// ISR: Revalidate every hour
+export const revalidate = 3600;
+
+/**
+ * Generate metadata for the about page
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const page = await getPageBySlug('about');
+    
+    if (page) {
+      const description = page.excerpt || 'Meet Amanda Lynn, the passionate food lover and recipe creator behind this blog.';
+      return {
+        title: page.title,
+        description,
+        openGraph: {
+          title: page.title,
+          description,
+          type: 'website',
+          images: page.featuredImage?.node.sourceUrl
+            ? [{ url: page.featuredImage.node.sourceUrl }]
+            : [],
+        },
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching about page metadata:', error);
+  }
+
+  // Fallback metadata
+  return {
+    title: 'About Amanda Lynn',
+    description: 'Meet Amanda Lynn, the passionate food lover and recipe creator behind this blog. Learn about her culinary journey and philosophy.',
+  };
+}
+
+export default async function AboutPage() {
+  // Try to fetch about page content from WordPress
+  try {
+    const page = await getPageBySlug('about');
+    
+    if (page) {
+      // TODO: Use WordPress page content when available
+      // For now, falling through to static content below
+    }
+  } catch (error) {
+    console.error('Error fetching about page:', error);
+  }
+
   return (
     <>
       {/* Breadcrumbs - Now matches recipe category page positioning */}

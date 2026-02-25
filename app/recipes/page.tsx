@@ -1,19 +1,34 @@
-
 import type { Metadata } from 'next';
 import { BrowseByCategorySection } from '@/components';
+import { getCategories } from '@/lib/api/homepage';
+
+/**
+ * Recipes Index Page - Server Component
+ * 
+ * Displays all recipe categories. Fetches from WordPress with fallback to defaults.
+ */
+
+// ISR: Revalidate every hour
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Recipes',
   description: 'Browse all recipes by Amanda Lynn — from hearty dinners and fresh breakfasts to decadent desserts and crowd-pleasing appetizers.',
+  openGraph: {
+    title: 'Recipes | hello Amanda Lynn',
+    description: 'Browse all recipes by Amanda Lynn',
+    type: 'website',
+  },
 };
 
-export default function RecipesPage() {
+export default async function RecipesPage() {
+  // Fetch categories from WordPress
+  const categories = await getCategories();
+
   return (
     <>
-       
-
       {/* NO extra top padding here */}
-      <BrowseByCategorySection />
+      <BrowseByCategorySection categories={categories || undefined} />
     </>
   );
 }

@@ -1,10 +1,24 @@
-
 import type { Metadata } from 'next';
 import { Poll } from '@/components';
+import { getPollResults } from '@/lib/api/homepage';
+
+/**
+ * Poll Page - Server Component
+ * 
+ * Fetches active poll from WordPress. Falls back to hardcoded poll if unavailable.
+ */
+
+// ISR: Revalidate every 60 seconds for dynamic poll data
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Food Poll',
   description: 'Vote in Amanda Lynn\'s latest food poll and see what other readers think!',
+  openGraph: {
+    title: 'Food Poll | hello Amanda Lynn',
+    description: 'Vote in Amanda Lynn\'s latest food poll',
+    type: 'website',
+  },
 };
 
 const DESSERT_CHOICES = [
@@ -25,7 +39,13 @@ const DESSERT_CHOICES = [
   { id: '15', text: 'Key Lime Pie' },
 ];
 
-export default function PollPage() {
+export default async function PollPage() {
+  // Try to fetch poll data from WordPress
+  const pollData = await getPollResults();
+
+  // TODO: Once poll CPT is implemented, use WordPress data to populate Poll component
+  // For now, using hardcoded poll data
+
   return (
     <Poll
       cookieName="poll_completed"

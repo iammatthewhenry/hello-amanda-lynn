@@ -1,15 +1,34 @@
-
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs, Container } from '@/components';
+import { Section, Card, Button } from '@/components/ui';
+import { getShopItems } from '@/lib/api/homepage';
+
+/**
+ * Shop Page - Server Component
+ * 
+ * Fetches shop items from WordPress. Falls back to hardcoded items if unavailable.
+ */
+
+// ISR: Revalidate every hour
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Shop',
   description: "Amanda Lynn's favorite kitchen tools, cookbooks, and food essentials — curated picks to elevate your cooking.",
+  openGraph: {
+    title: 'Shop | hello Amanda Lynn',
+    description: "Amanda Lynn's favorite kitchen tools and essentials",
+    type: 'website',
+  },
 };
-import { Section, Card, Button } from '@/components/ui';
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  // Try to fetch shop items from WordPress
+  const wpShopData = await getShopItems();
+
+  // TODO: Use WordPress shop items once shop_item CPT is implemented
+  // For now, using hardcoded items below
   const shopItems = [
     {
       title: 'Kitchen Essentials Set',
