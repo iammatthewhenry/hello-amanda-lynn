@@ -442,7 +442,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                             ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 1 ? { color: '#D4A5A5' } : undefined}
+                        style={scale === 1 ? { color: '#F5EBE8' } : undefined}
                       >
                         1x
                       </button>
@@ -453,7 +453,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                             ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 2 ? { color: '#D4A5A5' } : undefined}
+                        style={scale === 2 ? { color: '#F5EBE8' } : undefined}
                       >
                         2x
                       </button>
@@ -464,7 +464,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                             ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={scale === 3 ? { color: '#D4A5A5' } : undefined}
+                        style={scale === 3 ? { color: '#F5EBE8' } : undefined}
                       >
                         3x
                       </button>
@@ -482,7 +482,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                             ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={!useMetric ? { color: '#D4A5A5' } : undefined}
+                        style={!useMetric ? { color: '#F5EBE8' } : undefined}
                       >
                         Imperial
                       </button>
@@ -493,7 +493,7 @@ export default function RecipePage({ params }: RecipePageProps) {
                             ? 'bg-green border-green'
                             : 'bg-white text-foreground border-green hover:bg-green hover:bg-opacity-10'
                         }`}
-                        style={useMetric ? { color: '#D4A5A5' } : undefined}
+                        style={useMetric ? { color: '#F5EBE8' } : undefined}
                       >
                         Metric
                       </button>
