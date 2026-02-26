@@ -1,22 +1,11 @@
 import { fetchGraphQL } from '@/lib/wordpress';
+import { SLIDER_MANAGER_QUERY } from '@/lib/queries/slider';
 import type { HeroSlide } from '@/components/hero-slider';
-
-const SLIDER_QUERY = `
-query GetSlider {
-  sliderManager {
-    id
-    title
-    image
-    description
-    link
-  }
-}
-`;
 
 export async function getSliderManagerSlides(): Promise<HeroSlide[]> {
   try {
     const data = await fetchGraphQL<{ sliderManager: any[] }>(
-      SLIDER_QUERY,
+      SLIDER_MANAGER_QUERY,
       {},
       300
     );
@@ -25,7 +14,7 @@ export async function getSliderManagerSlides(): Promise<HeroSlide[]> {
       return [];
     }
 
-    return data.sliderManager.map((s: any) => ({
+    return data.sliderManager.map((s:any) => ({
       id: String(s.id),
       image: s.image,
       alt: s.title,

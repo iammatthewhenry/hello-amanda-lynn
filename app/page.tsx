@@ -31,7 +31,7 @@ const pollFallback = {
 
 export default async function HomePage() {
 
-  // 🔥 THIS pulls from your WordPress slider plugin
+  // 🔥 THIS pulls from WordPress plugin
   const slides = await getSliderManagerSlides();
 
   return (
