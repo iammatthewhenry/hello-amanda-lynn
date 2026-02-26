@@ -1,5 +1,5 @@
 import HeroSlider from '@/components/hero-slider';
-import { PollResults } from '@/components/poll-results';
+// import { PollResults } from '@/components/poll-results';
 import { BrowseByCategorySection } from '@/components/browse-by-category-section';
 import { ExploreMore } from '@/components/explore-more';
 import { AboutSection } from '@/components/about-section';
@@ -22,7 +22,7 @@ export const revalidate = 60;
 import { defaultCategories } from '@/components/browse-by-category-section';
 import { defaultData as topFiveDefault } from '@/components/top-five';
 import { defaultItems as shopDefaultItems } from '@/components/shop-section';
-import { PollResults } from '@/components/poll-results';
+// import { PollResults } from '@/components/poll-results';
 
 const pollFallback = {
   title: 'Poll Results',
