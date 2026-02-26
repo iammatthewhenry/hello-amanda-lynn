@@ -197,9 +197,20 @@ export function HeroSliderClient({
 // ================= SERVER WRAPPER =================
 import React from 'react';
 
-const HeroSlider = async (props: Omit<HeroSliderProps, 'slides'>) => {
-  // Always use fallback slides
-  return <HeroSliderClient slides={FALLBACK_SLIDES} {...props} />;
+interface ServerHeroProps {
+  slides?: HeroSlide[];
+  autoPlayDelay?: number;
+  showControls?: boolean;
+}
+
+const HeroSlider = ({ slides = [], autoPlayDelay, showControls }: ServerHeroProps) => {
+  return (
+    <HeroSliderClient
+      slides={slides}
+      autoPlayDelay={autoPlayDelay}
+      showControls={showControls}
+    />
+  );
 };
 
 export default HeroSlider;
