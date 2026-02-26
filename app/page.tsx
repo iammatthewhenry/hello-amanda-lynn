@@ -5,24 +5,15 @@ import { ExploreMore } from '@/components/explore-more';
 import { AboutSection } from '@/components/about-section';
 import { TopFive } from '@/components/top-five';
 import { ShopSection } from '@/components/shop-section';
-// import { getHomepageData, getPollResults, getShopItems } from '@/lib/api/homepage';
 
-/**
- * Homepage - Server Component
- * 
- * Fetches data from WordPress GraphQL and passes to client components as props.
- * Falls back to component defaults if WordPress data is unavailable.
- */
+import { getSliderManagerSlides } from '@/lib/api/slider';
 
-// ISR: Revalidate every 60 seconds for dynamic homepage content
 export const revalidate = 60;
 
-
-// Import fallback/defaults for all sections
+// fallback imports
 import { defaultCategories } from '@/components/browse-by-category-section';
 import { defaultData as topFiveDefault } from '@/components/top-five';
 import { defaultItems as shopDefaultItems } from '@/components/shop-section';
-// import { PollResults } from '@/components/poll-results';
 
 const pollFallback = {
   title: 'Poll Results',
@@ -38,20 +29,24 @@ const pollFallback = {
   pollLink: '/poll',
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+
+  // 🔥 THIS pulls from your WordPress slider plugin
+  const slides = await getSliderManagerSlides();
+
   return (
     <main>
-      <HeroSlider />
-      {/* Poll Results - always fallback */}
+
+      {/* REAL WORDPRESS SLIDER */}
+      <HeroSlider slides={slides} />
+
       <PollResults {...pollFallback} />
-      {/* Browse by Category - always fallback */}
       <BrowseByCategorySection categories={defaultCategories} />
       <ExploreMore />
       <AboutSection />
-      {/* Top Five Recipes - always fallback */}
       <TopFive data={topFiveDefault} />
-      {/* Shop Section - always fallback */}
       <ShopSection items={shopDefaultItems} />
+
     </main>
   );
 }
