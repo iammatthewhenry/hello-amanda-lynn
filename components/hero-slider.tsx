@@ -195,18 +195,11 @@ export function HeroSliderClient({
 }
 
 // ================= SERVER WRAPPER =================
-import { getSliderItems } from '@/lib/api/slider';
 import React from 'react';
 
 const HeroSlider = async (props: Omit<HeroSliderProps, 'slides'>) => {
-  let slides: HeroSlide[] = [];
-  try {
-    slides = await getSliderItems();
-  } catch (e) {
-    slides = [];
-  }
-  // Always pass fallback if no slides
-  return <HeroSliderClient slides={slides.length > 0 ? slides : FALLBACK_SLIDES} {...props} />;
+  // Always use fallback slides
+  return <HeroSliderClient slides={FALLBACK_SLIDES} {...props} />;
 };
 
 export default HeroSlider;
