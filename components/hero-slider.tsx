@@ -105,55 +105,43 @@ export function HeroSliderClient({
   const slide = displaySlides[currentSlide];
 
   return (
-    <section className="w-full py-2 sm:py-4 lg:py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative h-[250px] sm:h-[320px] lg:h-[420px] xl:h-[480px] overflow-hidden">
-
+    <section className="w-full pt-[37px] pb-2 sm:pt-[61px] sm:pb-4 lg:pt-[69px] lg:pb-6">
+      <div className="container-max">
+        <div className="relative h-[250px] sm:h-[320px] lg:h-[420px] xl:h-[480px] overflow-hidden cursor-pointer">
           {/* Background image */}
           <Image
             src={slide.image}
             alt={slide.alt}
             fill
             priority={currentSlide === 0}
-            className="object-cover"
+            className="w-full h-full object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1280px"
           />
-
-          {/* FIX: removed pointer-events-none so the card is clickable.
-              Also wrapped content in a Link when slide.link is present. */}
-          <div className="absolute inset-0 flex items-center justify-center sm:justify-end px-4 sm:px-8 lg:px-16">
-            <div
-              className="bg-white p-3 sm:p-6 lg:p-8 xl:p-10 max-w-[384px] sm:max-w-sm lg:max-w-md w-full sm:w-auto"
-              style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.12)' }}
-            >
-              <p className="text-[10px] sm:text-sm tracking-wider mb-1.5 sm:mb-3 text-green">
+          {/* Text Card Overlay */}
+          <div className="absolute inset-y-[63px] sm:inset-y-20 lg:inset-y-[105px] xl:inset-y-[120px] right-4 sm:right-8 lg:right-16 flex items-center pointer-events-none">
+            <div className="bg-white p-3 sm:p-6 lg:p-8 xl:p-10 max-w-[384px] sm:max-w-sm lg:max-w-md w-full overflow-hidden" style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.12)' }}>
+              <p className="text-[10px] sm:text-sm tracking-wider mb-1.5 sm:mb-3 text-green overflow-hidden text-ellipsis whitespace-nowrap">
                 {slide.category}
               </p>
-              <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4">
+              <h2 className="mb-2 sm:mb-4 overflow-hidden text-ellipsis line-clamp-2 text-lg sm:text-2xl lg:text-3xl font-bold">
                 {slide.title}
               </h2>
-              <p className="text-foreground text-[12px] sm:text-base leading-normal mb-3 sm:mb-5">
+              <p className="text-foreground text-[12px] sm:text-base leading-normal sm:leading-normal overflow-hidden line-clamp-3 sm:line-clamp-4">
                 {slide.description}
               </p>
-
-              {/* FIX: link field was defined on HeroSlide but never rendered */}
               {slide.link && (
                 <Link
                   href={slide.link}
-                  className="inline-block text-[11px] sm:text-sm font-semibold text-green border border-green px-3 py-1.5 hover:bg-green hover:text-white transition-colors"
+                  className="inline-block text-[11px] sm:text-sm font-semibold text-green border border-green px-3 py-1.5 hover:bg-green hover:text-white transition-colors mt-2"
                 >
                   View Recipe →
                 </Link>
               )}
             </div>
           </div>
-
-          {/* FIX: showControls was a prop with logic wired up but controls
-              were never rendered — prev/next buttons and dot indicators
-              were completely missing from the JSX. */}
+          {/* Controls and dots remain unchanged for now */}
           {showControls && displaySlides.length > 1 && (
             <>
-              {/* Prev button */}
               <button
                 onClick={prevSlide}
                 aria-label="Previous slide"
@@ -161,8 +149,6 @@ export function HeroSliderClient({
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
-
-              {/* Next button */}
               <button
                 onClick={nextSlide}
                 aria-label="Next slide"
@@ -170,8 +156,6 @@ export function HeroSliderClient({
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
-
-              {/* Dot indicators */}
               <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-10">
                 {displaySlides.map((_, index) => (
                   <button
