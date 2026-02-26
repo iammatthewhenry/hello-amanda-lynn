@@ -38,6 +38,7 @@ const pollFallback = {
   pollLink: '/poll',
 };
 
+export default function HomePage() {
   return (
     <main>
       <HeroSlider />
