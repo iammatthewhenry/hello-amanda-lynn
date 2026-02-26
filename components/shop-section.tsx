@@ -12,7 +12,7 @@ interface ShopSectionProps {
   shopLink?: string;
 }
 
-const defaultItems: ShopItem[] = [
+export const defaultItems: ShopItem[] = [
   {
     title: 'Kitchen Essentials Set',
     image: 'https://images.unsplash.com/photo-1723361750261-ba1a1c8b8255?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwdXRlbnNpbCUyMHByb2R1Y3R8ZW58MXx8fHwxNzYxNjk4MTUyfDA&ixlib=rb-4.1.0&q=80&w=1080',

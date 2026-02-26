@@ -26,7 +26,7 @@ interface TopFiveProps {
 }
 
 // Mock data that will be replaced by WordPress plugin
-const defaultData: TopFiveData = {
+export const defaultData: TopFiveData = {
   featuredImage: 'https://images.unsplash.com/photo-1620791144170-8a443bf37a33?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   featuredTitle: 'The Best Tomato Soup',
   featuredDescription: "This velvety tomato soup is perfectly balanced with cream and fresh basil. It's comfort in a bowl and pairs beautifully with grilled cheese.",

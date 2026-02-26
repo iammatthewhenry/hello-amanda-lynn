@@ -13,7 +13,7 @@ interface BrowseByCategorySectionProps {
   categories?: CategoryItem[];
 }
 
-const defaultCategories: CategoryItem[] = [
+export const defaultCategories: CategoryItem[] = [
   { title: 'Breakfast', image:'https://images.unsplash.com/photo-1746030057364-64613216f835?q=80&w=1124&auto=format&fit=crop', page: '/recipes/breakfast'},
   { title: 'Appetizers', image:'https://images.unsplash.com/photo-1630230596557-ad07b433f5c0?q=80&w=1170&auto=format&fit=crop', page: '/recipes/appetizers'},
   { title: 'Dinners', image:'https://images.unsplash.com/photo-1644921504851-b8861be402ac?q=80&w=1374&auto=format&fit=crop', page: '/recipes/dinners'},
