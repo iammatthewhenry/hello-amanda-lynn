@@ -5,7 +5,7 @@
  * using WPGraphQL. Supports Next.js ISR with configurable revalidation.
  */
 
-const WORDPRESS_GRAPHQL_ENDPOINT = 'https://recipes.helloamandalyn.com/graphql';
+const WORDPRESS_GRAPHQL_ENDPOINT = 'https://recipes.helloamandalynn.com/graphql';
 
 interface GraphQLError {
   message: string;
