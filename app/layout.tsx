@@ -11,7 +11,8 @@ import './globals.css';
 // ===================================================================
 // ENVIRONMENT VARIABLES
 // ===================================================================
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://amandalynn.com';
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://amandalynn.com';
 
 // ===================================================================
 // TYPES
@@ -69,43 +70,15 @@ export const metadata: Metadata = {
   },
   description:
     'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
-  keywords: ['food blog', 'recipes', 'cooking tips', 'restaurant reviews', 'Amanda Lynn'],
+  keywords: [
+    'food blog',
+    'recipes',
+    'cooking tips',
+    'restaurant reviews',
+    'Amanda Lynn',
+  ],
   authors: [{ name: 'Amanda Lynn', url: SITE_URL }],
   creator: 'Amanda Lynn',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: SITE_URL,
-    siteName: 'Hello Amanda Lynn',
-    title: 'Hello Amanda Lynn - Food Blog & Recipes',
-    description: 'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
-    images: [
-      {
-        url: `${SITE_URL}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Hello Amanda Lynn - Food Blog & Recipes',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hello Amanda Lynn - Food Blog & Recipes',
-    description: 'Discover delicious recipes, cooking tips, restaurant reviews, and food stories from Amanda Lynn.',
-    images: [`${SITE_URL}/og-image.png`],
-    creator: '@helloamandalynn',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
 };
 
 // ===================================================================
@@ -124,18 +97,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Fetch As Seen On logos from WordPress
   let logos: AsSeenOnLogo[] = [];
-  
+
   try {
+    // ✅ CALL FUNCTION FIRST
     const response = await fetchGraphQL<AsSeenOnLogosResponse>(
       GET_AS_SEEN_ON_LOGOS,
       {},
-      86400 // Revalidate once per day (24 hours)
+      86400
     );
-    
-    // Map WordPress response to component props
-    if (response.asSeenOnLogos && response.asSeenOnLogos.length > 0) {
+
+    // ✅ NULL SAFETY (required for Cloudflare)
+    if (response?.asSeenOnLogos?.length) {
       logos = response.asSeenOnLogos.map((logo) => ({
         name: logo.name,
         image: logo.imageUrl,
@@ -144,7 +117,6 @@ export default async function RootLayout({
     }
   } catch (error) {
     console.error('Failed to fetch As Seen On logos:', error);
-    // logos remains empty array, component will not render
   }
 
   return (
@@ -153,8 +125,6 @@ export default async function RootLayout({
       className={`${inter.variable} ${montserrat.variable} ${tinos.variable}`}
     >
       <body className="min-h-screen bg-page text-foreground flex flex-col">
-
-        {/* Skip link */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-green text-[#D4A5A5] px-4 py-2 rounded"
@@ -164,7 +134,6 @@ export default async function RootLayout({
 
         <Header />
 
-        {/* GLOBAL CONTENT WRAP */}
         <main id="main-content" className="flex-1">
           <SiteContainer>
             <GlobalBreadcrumbs />
