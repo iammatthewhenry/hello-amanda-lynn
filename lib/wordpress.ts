@@ -1,11 +1,13 @@
 /**
  * WordPress GraphQL Client
- * 
- * Provides a reusable function for fetching data from the headless WordPress backend
- * using WPGraphQL. Supports Next.js ISR with configurable revalidation.
+ *
+ * Cloudflare Edge–safe version.
+ * Never throws during rendering — prevents 404 crashes on Pages/OpenNext.
+ * Supports Next.js ISR via `revalidate`.
  */
 
-const WORDPRESS_GRAPHQL_ENDPOINT = 'https://recipes.helloamandalynn.com/graphql';
+const WORDPRESS_GRAPHQL_ENDPOINT =
+  "https://recipes.helloamandalynn.com/graphql";
 
 interface GraphQLError {
   message: string;
@@ -20,23 +22,25 @@ interface GraphQLResponse<T> {
 
 /**
  * Fetch data from WordPress GraphQL endpoint
- * 
+ *
  * @param query - GraphQL query string
  * @param variables - Optional query variables
- * @param revalidate - Next.js revalidation time in seconds (default: 3600 = 1 hour)
- * @returns Typed response data
- * @throws Error if the request fails or GraphQL returns errors
+ * @param revalidate - ISR cache time (seconds)
+ *
+ * IMPORTANT:
+ * This function NEVER throws.
+ * Cloudflare Workers must fail softly or the page returns 404.
  */
 export async function fetchGraphQL<T>(
   query: string,
   variables?: Record<string, unknown>,
   revalidate: number = 3600
-): Promise<T> {
+): Promise<T | null> {
   try {
     const response = await fetch(WORDPRESS_GRAPHQL_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         query,
@@ -47,28 +51,32 @@ export async function fetchGraphQL<T>(
       },
     });
 
+    // ✅ Do NOT throw on HTTP failure (Edge runtime safety)
     if (!response.ok) {
-      throw new Error(
+      console.error(
         `WordPress GraphQL request failed: ${response.status} ${response.statusText}`
       );
+      return null;
     }
 
     const json: GraphQLResponse<T> = await response.json();
 
-    if (json.errors) {
-      console.error('GraphQL Errors:', json.errors);
-      throw new Error(
-        `GraphQL query failed: ${json.errors.map((e) => e.message).join(', ')}`
-      );
+    // ✅ Do NOT throw on schema/query errors
+    if (json.errors && json.errors.length > 0) {
+      console.error("GraphQL Errors:", json.errors);
+      return null;
     }
 
+    // ✅ Missing data should not crash rendering
     if (!json.data) {
-      throw new Error('GraphQL response contained no data');
+      console.warn("GraphQL response contained no data");
+      return null;
     }
 
     return json.data;
   } catch (error) {
-    console.error('Error fetching from WordPress GraphQL:', error);
-    throw error;
+    // ✅ Network / runtime failures must NOT throw on Cloudflare
+    console.error("Error fetching from WordPress GraphQL:", error);
+    return null;
   }
 }
