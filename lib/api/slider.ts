@@ -16,8 +16,8 @@ export async function getSliderManagerSlides(): Promise<HeroSlide[]> {
 
     return data.sliderManager.map((s:any) => ({
       id: String(s.id),
-      image: s.image,
-      alt: s.title,
+      image: s.featuredImage?.node?.sourceUrl || '',
+      alt: s.featuredImage?.node?.altText || s.title,
       category: 'FEATURED',
       title: s.title,
       description: s.description,

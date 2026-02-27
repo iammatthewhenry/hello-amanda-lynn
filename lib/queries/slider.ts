@@ -3,7 +3,12 @@ query GetSlider {
   sliderManager {
     id
     title
-    image
+    featuredImage {
+      node {
+        sourceUrl
+        altText
+      }
+    }
     description
     link
   }
