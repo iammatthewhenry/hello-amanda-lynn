@@ -4,10 +4,11 @@
   "description": "Amanda Lynn Food Blog",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    ]"build": "opennextjs-cloudflare build",
-    "start": "next start",
-    "lint": "next lint"
+  "dev": "next dev",
+  "build": "next build",
+  "build:cf": "opennextjs-cloudflare build",
+  "start": "next start",
+  "lint": "next lint"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
