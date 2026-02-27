@@ -189,3 +189,14 @@ export async function getRecentPosts(
     return null;
   }
 }
+// ======================================================
+// TEMP PLACEHOLDERS (prevents build errors)
+// ======================================================
+
+export async function getPollResults(): Promise<null> {
+  return null;
+}
+
+export async function getShopItems(): Promise<null> {
+  return null;
+}
