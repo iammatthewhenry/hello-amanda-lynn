@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    ]"build": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -24,6 +24,7 @@
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
