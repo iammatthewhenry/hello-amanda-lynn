@@ -10,20 +10,20 @@ export async function getSliderManagerSlides(): Promise<HeroSlide[]> {
       300
     );
 
-    if (!data?.sliderManager || data.sliderManager.length === 0) {
+    // ✅ HARD NULL GUARD (Cloudflare-safe)
+    if (!data || !data.sliderManager || data.sliderManager.length === 0) {
       return [];
     }
 
-    return data.sliderManager.map((s:any) => ({
+    return data.sliderManager.map((s: any) => ({
       id: String(s.id),
-      image: s.featuredImage?.node?.sourceUrl || '',
-      alt: s.featuredImage?.node?.altText || s.title,
+      image: s.featuredImage?.node?.sourceUrl ?? '',
+      alt: s.featuredImage?.node?.altText ?? s.title,
       category: 'FEATURED',
       title: s.title,
       description: s.description,
       link: s.link,
     }));
-
   } catch (err) {
     console.error('Slider fetch failed:', err);
     return [];

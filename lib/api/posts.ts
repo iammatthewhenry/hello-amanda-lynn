@@ -1,6 +1,6 @@
 /**
  * Blog Post Data Fetching API
- * 
+ *
  * Server-side functions for fetching blog posts (In The Kitchen, Out of Kitchen, etc.)
  */
 
@@ -22,6 +22,9 @@ export async function getAllPostSlugs(): Promise<string[]> {
       posts: WPGraphQLConnection<Pick<WPPost, 'slug'>>;
     }>(GET_ALL_POST_SLUGS, {}, 3600);
 
+    // ✅ NULL GUARD
+    if (!data) return [];
+
     return data.posts.nodes.map((post) => post.slug);
   } catch (error) {
     console.error('Error fetching post slugs:', error);
@@ -38,7 +41,10 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
       post: WPPost | null;
     }>(GET_POST_BY_SLUG, { slug }, 3600);
 
-    return data.post;
+    // ✅ NULL GUARD
+    if (!data) return null;
+
+    return data.post ?? null;
   } catch (error) {
     console.error(`Error fetching post with slug "${slug}":`, error);
     return null;
@@ -65,15 +71,21 @@ export async function getPostsByCategory(
       3600
     );
 
+    // ✅ NULL GUARD
+    if (!data) return null;
+
     return {
       posts: data.posts.nodes,
       pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage || false,
-        endCursor: data.posts.pageInfo?.endCursor || '',
+        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
+        endCursor: data.posts.pageInfo?.endCursor ?? '',
       },
     };
   } catch (error) {
-    console.error(`Error fetching posts for category "${categorySlug}":`, error);
+    console.error(
+      `Error fetching posts for category "${categorySlug}":`,
+      error
+    );
     return null;
   }
 }
@@ -98,13 +110,16 @@ export async function getAllPosts(
       posts: WPGraphQLConnection<WPPost>;
     }>(GET_ALL_POSTS, { first, after }, 3600);
 
+    // ✅ NULL GUARD
+    if (!data) return null;
+
     return {
       posts: data.posts.nodes,
       pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage || false,
-        hasPreviousPage: data.posts.pageInfo?.hasPreviousPage || false,
-        startCursor: data.posts.pageInfo?.startCursor || '',
-        endCursor: data.posts.pageInfo?.endCursor || '',
+        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
+        hasPreviousPage: data.posts.pageInfo?.hasPreviousPage ?? false,
+        startCursor: data.posts.pageInfo?.startCursor ?? '',
+        endCursor: data.posts.pageInfo?.endCursor ?? '',
       },
     };
   } catch (error) {

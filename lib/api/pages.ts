@@ -1,6 +1,6 @@
 /**
  * Page Data Fetching API
- * 
+ *
  * Server-side functions for fetching WordPress pages (About, Contact, Terms, etc.)
  */
 
@@ -21,6 +21,9 @@ export async function getAllPageSlugs(): Promise<string[]> {
       pages: WPGraphQLConnection<Pick<WPPage, 'slug'>>;
     }>(GET_ALL_PAGE_SLUGS, {}, 3600);
 
+    // ✅ NULL GUARD
+    if (!data) return [];
+
     return data.pages.nodes.map((page) => page.slug);
   } catch (error) {
     console.error('Error fetching page slugs:', error);
@@ -37,7 +40,10 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
       page: WPPage | null;
     }>(GET_PAGE_BY_SLUG, { slug }, 3600);
 
-    return data.page;
+    // ✅ NULL GUARD
+    if (!data) return null;
+
+    return data.page ?? null;
   } catch (error) {
     console.error(`Error fetching page with slug "${slug}":`, error);
     return null;
@@ -53,7 +59,10 @@ export async function getPageById(id: number): Promise<WPPage | null> {
       page: WPPage | null;
     }>(GET_PAGE_BY_ID, { id }, 3600);
 
-    return data.page;
+    // ✅ NULL GUARD
+    if (!data) return null;
+
+    return data.page ?? null;
   } catch (error) {
     console.error(`Error fetching page with ID ${id}:`, error);
     return null;

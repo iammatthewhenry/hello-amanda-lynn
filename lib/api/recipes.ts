@@ -1,6 +1,6 @@
 /**
  * Recipe Data Fetching API
- * 
+ *
  * Server-side functions for fetching recipe data from WordPress.
  * TODO: Update to use Recipe CPT once registered in WordPress.
  */
@@ -13,17 +13,24 @@ import {
   GET_ALL_RECIPES,
   SEARCH_RECIPES,
 } from '@/lib/queries/recipes';
-import type { WPPost, WPRecipe, WPGraphQLConnection } from '@/lib/types/wordpress';
+
+import type {
+  WPPost,
+  WPRecipe,
+  WPGraphQLConnection,
+} from '@/lib/types/wordpress';
 
 /**
  * Get all recipe slugs for generateStaticParams
- * Returns array of slugs for static generation
  */
 export async function getAllRecipeSlugs(): Promise<string[]> {
   try {
     const data = await fetchGraphQL<{
       posts: WPGraphQLConnection<Pick<WPPost, 'slug'>>;
     }>(GET_ALL_RECIPE_SLUGS, {}, 3600);
+
+    // ✅ NULL GUARD
+    if (!data) return [];
 
     return data.posts.nodes.map((post) => post.slug);
   } catch (error) {
@@ -34,16 +41,19 @@ export async function getAllRecipeSlugs(): Promise<string[]> {
 
 /**
  * Get a single recipe by slug
- * 
- * TODO: Update to return WPRecipe with custom fields once CPT is registered
  */
-export async function getRecipeBySlug(slug: string): Promise<WPPost | null> {
+export async function getRecipeBySlug(
+  slug: string
+): Promise<WPPost | null> {
   try {
     const data = await fetchGraphQL<{
       post: WPPost | null;
     }>(GET_RECIPE_BY_SLUG, { slug }, 3600);
 
-    return data.post;
+    // ✅ NULL GUARD
+    if (!data) return null;
+
+    return data.post ?? null;
   } catch (error) {
     console.error(`Error fetching recipe with slug "${slug}":`, error);
     return null;
@@ -70,15 +80,21 @@ export async function getRecipesByCategory(
       3600
     );
 
+    // ✅ NULL GUARD
+    if (!data) return null;
+
     return {
       recipes: data.posts.nodes,
       pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage || false,
-        endCursor: data.posts.pageInfo?.endCursor || '',
+        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
+        endCursor: data.posts.pageInfo?.endCursor ?? '',
       },
     };
   } catch (error) {
-    console.error(`Error fetching recipes for category "${categorySlug}":`, error);
+    console.error(
+      `Error fetching recipes for category "${categorySlug}":`,
+      error
+    );
     return null;
   }
 }
@@ -103,13 +119,16 @@ export async function getAllRecipes(
       posts: WPGraphQLConnection<WPPost>;
     }>(GET_ALL_RECIPES, { first, after }, 3600);
 
+    // ✅ NULL GUARD
+    if (!data) return null;
+
     return {
       recipes: data.posts.nodes,
       pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage || false,
-        hasPreviousPage: data.posts.pageInfo?.hasPreviousPage || false,
-        startCursor: data.posts.pageInfo?.startCursor || '',
-        endCursor: data.posts.pageInfo?.endCursor || '',
+        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
+        hasPreviousPage: data.posts.pageInfo?.hasPreviousPage ?? false,
+        startCursor: data.posts.pageInfo?.startCursor ?? '',
+        endCursor: data.posts.pageInfo?.endCursor ?? '',
       },
     };
   } catch (error) {
@@ -131,12 +150,18 @@ export async function searchRecipes(
     }>(
       SEARCH_RECIPES,
       { search: searchTerm, first },
-      60 // Short cache for search results
+      60
     );
+
+    // ✅ NULL GUARD
+    if (!data) return null;
 
     return data.posts.nodes;
   } catch (error) {
-    console.error(`Error searching recipes for "${searchTerm}":`, error);
+    console.error(
+      `Error searching recipes for "${searchTerm}":`,
+      error
+    );
     return null;
   }
 }
