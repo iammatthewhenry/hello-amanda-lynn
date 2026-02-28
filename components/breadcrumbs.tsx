@@ -59,13 +59,13 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                     className="inline-flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0"
                   >
                     {isLast ? (
-                      <span className="text-green text-xs sm:text-base font-medium truncate max-w-[120px] sm:max-w-none">
+                      <span className="text-green text-xs sm:text-base font-medium truncate max-w-[180px] sm:max-w-none">
                         {item.label}
                       </span>
                     ) : (
                       <Link
                         href={item.href!}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-xs sm:text-base truncate max-w-[80px] sm:max-w-none"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-xs sm:text-base truncate max-w-[150px] sm:max-w-none"
                       >
                         {item.label}
                       </Link>
