@@ -47,9 +47,9 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="relative px-3.5 py-2 breadcrumb-scroll-x max-w-full">
+        <div className="relative px-1.5 py-2 max-w-full w-full">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2.5 whitespace-nowrap min-w-max">
+            <ol className="flex flex-wrap items-center gap-1 whitespace-normal min-w-0 w-full text-xs sm:text-base">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
 
