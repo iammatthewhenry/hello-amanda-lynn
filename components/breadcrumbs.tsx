@@ -47,32 +47,32 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="relative px-1.5 py-2 max-w-full w-full">
+        <div className="relative px-2 sm:px-3.5 py-2 max-w-full overflow-hidden">
           <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-1 whitespace-normal min-w-0 w-full text-xs sm:text-base">
+            <ol className="flex items-center gap-1.5 sm:gap-2.5 whitespace-nowrap">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
 
                 return (
                   <li
                     key={index}
-                    className="inline-flex items-center gap-2.5"
+                    className="inline-flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0"
                   >
                     {isLast ? (
-                      <span className="text-green text-base font-medium">
+                      <span className="text-green text-xs sm:text-base font-medium truncate max-w-[120px] sm:max-w-none">
                         {item.label}
                       </span>
                     ) : (
                       <Link
                         href={item.href!}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-base"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-xs sm:text-base truncate max-w-[80px] sm:max-w-none"
                       >
                         {item.label}
                       </Link>
                     )}
 
                     {!isLast && (
-                      <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                      <ChevronRight className="w-3 h-3 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
                     )}
                   </li>
                 );
