@@ -47,7 +47,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="relative px-3.5 py-2 overflow-x-auto max-w-full scrollbar-hide">
+        <div className="relative px-3.5 py-2 breadcrumb-scroll-x max-w-full">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-2.5 whitespace-nowrap min-w-max">
               {items.map((item, index) => {

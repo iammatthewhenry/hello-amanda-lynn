@@ -1,3 +1,12 @@
+/* Breadcrumb horizontal scroll fix for mobile */
+.breadcrumb-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.breadcrumb-scroll-x::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
