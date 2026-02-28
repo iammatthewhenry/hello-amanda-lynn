@@ -10,8 +10,7 @@ import { getShopItems } from '@/lib/api/homepage';
  * Fetches shop items from WordPress. Falls back to hardcoded items if unavailable.
  */
 
-// ISR: Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: 'Shop',

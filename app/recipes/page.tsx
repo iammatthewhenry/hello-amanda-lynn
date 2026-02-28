@@ -8,8 +8,7 @@ import { getCategories } from '@/lib/api/homepage';
  * Displays all recipe categories. Fetches from WordPress with fallback to defaults.
  */
 
-// ISR: Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: 'Recipes',

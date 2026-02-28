@@ -3,6 +3,24 @@
  *
  * Cloudflare Edge–safe version.
  * Never throws during rendering — prevents 404 crashes on Pages/OpenNext.
+
+// Alternate fetchGraphQL for custom usage (uses env var and tags)
+export async function fetchGraphQL(
+  query: string,
+  variables: Record<string, any> = {}
+) {
+  const res = await fetch(process.env.WP_GRAPHQL_URL!, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, variables }),
+    next: {
+      tags: ["wordpress"],
+    },
+  });
+
+  if (!res.ok) throw new Error(`GraphQL fetch failed: ${res.status}`);
+  return res.json();
+}
  * Supports Next.js ISR via `revalidate`.
  */
 

@@ -8,7 +8,7 @@ import { ShopSection } from '@/components/shop-section';
 
 import { getSliderManagerSlides } from '@/lib/api/slider';
 
-export const revalidate = 60;
+export const revalidate = false;
 
 // fallback imports
 import { defaultCategories } from '@/components/browse-by-category-section';

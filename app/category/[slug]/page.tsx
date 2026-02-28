@@ -14,8 +14,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// ISR: Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = false;
 
 /**
  * Generate static paths for all recipe categories

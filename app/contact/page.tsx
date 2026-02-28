@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { ContactForm } from "@/components/contact-form";
 
-export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Contact',

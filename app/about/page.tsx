@@ -9,8 +9,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
  * Fetches about page content from WordPress. Falls back to static content if unavailable.
  */
 
-// ISR: Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = false;
 
 /**
  * Generate metadata for the about page
