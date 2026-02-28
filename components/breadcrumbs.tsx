@@ -24,7 +24,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <div
       className={cn(
-        "h-[81px] sm:h-[94px] flex items-end mb-6 sm:mb-10 relative z-20 overflow-visible ml-[45px] pl-4 sm:pl-6",
+        "h-[81px] sm:h-[94px] flex items-end mb-6 sm:mb-10 relative z-20 overflow-visible ml-[40px] sm:ml-[45px] pl-3 sm:pl-6",
         className
       )}
     >
@@ -47,7 +47,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         />
 
         {/* Breadcrumb content */}
-        <div className="relative px-2 sm:px-3.5 py-2 max-w-full overflow-hidden">
+        <div className="relative pl-2 pr-0 sm:px-3.5 py-2 max-w-full overflow-hidden">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-1.5 sm:gap-2.5 whitespace-nowrap">
               {items.map((item, index) => {
