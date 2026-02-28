@@ -28,7 +28,7 @@ export default async function RecipesPage() {
   return (
     <>
       {/* NO extra top padding here */}
-      <BrowseByCategorySection categories={categories || undefined} />
+      <BrowseByCategorySection categories={categories?.length ? categories : undefined} />
     </>
   );
 }
