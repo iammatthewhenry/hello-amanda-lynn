@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat, Tinos } from 'next/font/google';
 import { Header, Footer } from '@/components';
