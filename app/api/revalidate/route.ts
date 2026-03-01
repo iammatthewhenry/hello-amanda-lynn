@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 

@@ -65,7 +65,8 @@ export async function fetchGraphQL<T>(
         variables: variables || {},
       }),
       next: {
-        revalidate,
+        revalidate: 3600,
+        tags: ["wordpress"],
       },
     });
 

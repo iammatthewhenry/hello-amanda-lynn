@@ -28,7 +28,7 @@ export { ShareBar } from './share-bar';
 
 // Sections
 export { AboutSection } from './about-section';
-export { BrowseByCategorySection } from './browse-by-category-section';
+export { BrowseByCategory } from './BrowseByCategory';
 export { ShopSection } from './shop-section';
 export type { ShopItem } from './shop-section';
 export { TopFive } from './top-five';

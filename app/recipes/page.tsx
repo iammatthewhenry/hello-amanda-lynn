@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { BrowseByCategorySection } from '@/components';
-import { getCategories } from '@/lib/api/homepage';
+import { BrowseByCategory } from '@/components';
 
 /**
  * Recipes Index Page - Server Component
@@ -21,13 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default async function RecipesPage() {
-  // Fetch categories from WordPress
-  const categories = await getCategories();
-
   return (
     <>
       {/* NO extra top padding here */}
-      <BrowseByCategorySection categories={categories?.length ? categories : undefined} />
+      <BrowseByCategory />
     </>
   );
 }

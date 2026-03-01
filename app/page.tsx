@@ -1,6 +1,6 @@
 import HeroSlider from '@/components/hero-slider';
 import { PollResults } from '@/components/poll-results';
-import { BrowseByCategorySection } from '@/components/browse-by-category-section';
+import { BrowseByCategory } from '@/components/BrowseByCategory';
 import { ExploreMore } from '@/components/explore-more';
 import { AboutSection } from '@/components/about-section';
 import { TopFive } from '@/components/top-five';
@@ -11,7 +11,6 @@ import { getSliderManagerSlides } from '@/lib/api/slider';
 export const revalidate = false;
 
 // fallback imports
-import { defaultCategories } from '@/components/browse-by-category-section';
 import { defaultData as topFiveDefault } from '@/components/top-five';
 import { defaultItems as shopDefaultItems } from '@/components/shop-section';
 
@@ -41,7 +40,7 @@ export default async function HomePage() {
       <HeroSlider slides={slides} />
 
       <PollResults {...pollFallback} />
-      <BrowseByCategorySection categories={defaultCategories} />
+      <BrowseByCategory />
       <ExploreMore />
       <AboutSection />
       <TopFive data={topFiveDefault} />

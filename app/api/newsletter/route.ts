@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 // app/api/newsletter/route.ts - Newsletter Subscription API
 import { NextResponse } from 'next/server';
 
