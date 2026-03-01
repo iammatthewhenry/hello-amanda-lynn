@@ -69,4 +69,3 @@ export const recipeCategories: RecipeCategory[] = [
       'https://images.unsplash.com/photo-1665061580738-87be64cbd049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
   },
 ];
-
