@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { BlogPostTemplate, Container, Breadcrumbs, ShareBar } from '@/components';
+import { BlogPostTemplate, Container, Breadcrumbs } from '@/components';
 import { getKitchenPostBySlug, getAllKitchenSlugs } from '@/lib/api/kitchen';
 import { inTheKitchenPosts } from '@/lib/data/blog-posts';
 
@@ -107,11 +107,6 @@ export default async function InTheKitchenDetailPage({ params }: PageProps) {
           shareImageUrl={imageUrl}
         />
 
-        <ShareBar
-          title={wpPost.title}
-          description={description}
-          imageUrl={imageUrl}
-        />
       </main>
     );
   }
@@ -153,11 +148,6 @@ export default async function InTheKitchenDetailPage({ params }: PageProps) {
         shareImageUrl={post.image}
       />
 
-      <ShareBar
-        title={post.title}
-        description={post.description}
-        imageUrl={post.image}
-      />
     </main>
   );
 }
