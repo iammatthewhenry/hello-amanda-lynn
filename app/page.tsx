@@ -7,8 +7,10 @@ import { TopFive } from '@/components/top-five';
 import { ShopSection } from '@/components/shop-section';
 
 import { getSliderManagerSlides } from '@/lib/api/slider';
+import { getAllDishTerms } from '@/lib/api/recipes';
+import { mapDishTermToCategory } from '@/lib/data/recipeCategories';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 // fallback imports
 import { defaultData as topFiveDefault } from '@/components/top-five';
@@ -30,8 +32,12 @@ const pollFallback = {
 
 export default async function HomePage() {
 
-  // 🔥 THIS pulls from WordPress plugin
+  // 🔥 WordPress slider
   const slides = await getSliderManagerSlides();
+
+  // 🔥 WordPress dish terms → recipe category grid
+  const dishTerms = await getAllDishTerms();
+  const wpCategories = dishTerms.map(mapDishTermToCategory);
 
   return (
     <main>
@@ -40,7 +46,10 @@ export default async function HomePage() {
       <HeroSlider slides={slides} />
 
       <PollResults {...pollFallback} />
-      <BrowseByCategory />
+      <BrowseByCategory
+        onlyFeatured
+        categories={wpCategories.length > 0 ? wpCategories : undefined}
+      />
       <ExploreMore />
       <AboutSection />
       <TopFive data={topFiveDefault} />

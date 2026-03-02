@@ -102,12 +102,76 @@ export interface WPSeoData {
   };
 }
 
-// Placeholder types for Custom Post Types (CPTs)
-// These will be expanded once CPTs are registered in WordPress
+// ===================================================================
+// Custom Post Types
+// ===================================================================
 
 /**
- * Recipe Custom Post Type
- * TODO: Add ACF/WP Recipe Maker fields once CPT is registered
+ * Recipe CPT (`recipes` slug)
+ * WPGraphQL field names: recipe (single) / recipes (plural)
+ * Taxonomy: dish → dishes
+ */
+export interface WPRecipePost extends WPPost {
+  dishes?: {
+    nodes: WPDishTerm[];
+  };
+}
+
+/**
+ * In The Kitchen CPT (`in-the-kitchen` slug)
+ * WPGraphQL field names: inTheKitchen (single) / inTheKitchens (plural)
+ */
+export interface WPKitchenPost extends WPPost {
+  // No custom taxonomies for this CPT
+}
+
+/**
+ * Out of Kitchen CPT (`out-of-kitchen` slug)
+ * WPGraphQL field names: outOfKitchen (single) / outOfKitchens (plural)
+ * Taxonomy: ook-categories → ookCategories
+ */
+export interface WPOokPost extends WPPost {
+  ookCategories?: {
+    nodes: WPOokCategoryTerm[];
+  };
+}
+
+// ===================================================================
+// Taxonomies
+// ===================================================================
+
+/**
+ * Dish taxonomy term (`dish` slug)
+ * WPGraphQL field names: dish (term) / dishes (terms collection)
+ * Attached to: recipes CPT
+ */
+export interface WPDishTerm {
+  id: string;
+  databaseId: number;
+  name: string;
+  slug: string;
+  description?: string;
+  count?: number;
+}
+
+/**
+ * OOK Categories taxonomy term (`ook-categories` slug)
+ * WPGraphQL field names: ookCategory / ookCategories
+ * Attached to: out-of-kitchen CPT
+ * Known term slugs: food-destinations, food-festivals, markets-and-shops, restaurants, wineries
+ */
+export interface WPOokCategoryTerm {
+  id: string;
+  databaseId: number;
+  name: string;
+  slug: string;
+  description?: string;
+  count?: number;
+}
+
+/**
+ * @deprecated Use WPRecipePost instead
+ * Recipe Custom Post Type — legacy placeholder shape
  */
 export interface WPRecipe extends WPPost {
   recipeFields?: {

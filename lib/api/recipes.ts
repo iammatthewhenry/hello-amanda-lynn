@@ -1,167 +1,127 @@
 /**
  * Recipe Data Fetching API
  *
- * Server-side functions for fetching recipe data from WordPress.
- * TODO: Update to use Recipe CPT once registered in WordPress.
+ * Fetches from the `recipes` Custom Post Type in WordPress.
+ * Falls back to local recipe-data.ts when WP is unavailable.
  */
 
 import { fetchGraphQL } from '@/lib/wordpress';
 import {
   GET_ALL_RECIPE_SLUGS,
   GET_RECIPE_BY_SLUG,
-  GET_RECIPES_BY_CATEGORY,
+  GET_RECIPES_BY_DISH,
   GET_ALL_RECIPES,
+  GET_ALL_DISH_TERMS,
   SEARCH_RECIPES,
 } from '@/lib/queries/recipes';
+import type { WPRecipePost, WPDishTerm, WPGraphQLConnection } from '@/lib/types/wordpress';
 
-import type {
-  WPPost,
-  WPRecipe,
-  WPGraphQLConnection,
-} from '@/lib/types/wordpress';
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
 
-/**
- * Get all recipe slugs for generateStaticParams
- */
-export async function getAllRecipeSlugs(): Promise<string[]> {
-  try {
-    const data = await fetchGraphQL<{
-      posts: WPGraphQLConnection<Pick<WPPost, 'slug'>>;
-    }>(GET_ALL_RECIPE_SLUGS, {}, 3600);
-
-    // ✅ NULL GUARD
-    if (!data) return [];
-
-    return data.posts.nodes.map((post) => post.slug);
-  } catch (error) {
-    console.error('Error fetching recipe slugs:', error);
-    return [];
-  }
+export interface RecipesResult {
+  recipes: WPRecipePost[];
+  pageInfo: { hasNextPage: boolean; hasPreviousPage: boolean; startCursor: string; endCursor: string };
 }
 
-/**
- * Get a single recipe by slug
- */
-export async function getRecipeBySlug(
-  slug: string
-): Promise<WPPost | null> {
-  try {
-    const data = await fetchGraphQL<{
-      post: WPPost | null;
-    }>(GET_RECIPE_BY_SLUG, { slug }, 3600);
-
-    // ✅ NULL GUARD
-    if (!data) return null;
-
-    return data.post ?? null;
-  } catch (error) {
-    console.error(`Error fetching recipe with slug "${slug}":`, error);
-    return null;
-  }
-}
-
-/**
- * Get recipes filtered by category slug
- */
-export async function getRecipesByCategory(
-  categorySlug: string,
-  first: number = 12,
-  after?: string
-): Promise<{
-  recipes: WPPost[];
+export interface RecipesByDishResult {
+  recipes: WPRecipePost[];
   pageInfo: { hasNextPage: boolean; endCursor: string };
-} | null> {
-  try {
-    const data = await fetchGraphQL<{
-      posts: WPGraphQLConnection<WPPost>;
-    }>(
-      GET_RECIPES_BY_CATEGORY,
-      { categorySlug, first, after },
-      3600
-    );
-
-    // ✅ NULL GUARD
-    if (!data) return null;
-
-    return {
-      recipes: data.posts.nodes,
-      pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
-        endCursor: data.posts.pageInfo?.endCursor ?? '',
-      },
-    };
-  } catch (error) {
-    console.error(
-      `Error fetching recipes for category "${categorySlug}":`,
-      error
-    );
-    return null;
-  }
 }
 
-/**
- * Get all recipes with pagination
- */
+// ---------------------------------------------------------------------------
+// Functions
+// ---------------------------------------------------------------------------
+
+/** Get all recipe slugs for generateStaticParams */
+export async function getAllRecipeSlugs(): Promise<string[]> {
+  const data = await fetchGraphQL<{ recipes: WPGraphQLConnection<Pick<WPRecipePost, 'slug'>> }>(
+    GET_ALL_RECIPE_SLUGS,
+    {},
+    3600
+  );
+  return data?.recipes?.nodes?.map((r) => r.slug) ?? [];
+}
+
+/** Get a single recipe by slug */
+export async function getRecipeBySlug(slug: string): Promise<WPRecipePost | null> {
+  const data = await fetchGraphQL<{ recipe: WPRecipePost | null }>(
+    GET_RECIPE_BY_SLUG,
+    { slug },
+    3600
+  );
+  return data?.recipe ?? null;
+}
+
+/** Get all recipes with optional pagination */
 export async function getAllRecipes(
-  first: number = 12,
+  first = 24,
   after?: string
-): Promise<{
-  recipes: WPPost[];
-  pageInfo: {
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-    startCursor: string;
-    endCursor: string;
+): Promise<RecipesResult | null> {
+  const data = await fetchGraphQL<{ recipes: WPGraphQLConnection<WPRecipePost> }>(
+    GET_ALL_RECIPES,
+    { first, after },
+    3600
+  );
+  if (!data) return null;
+  return {
+    recipes: data.recipes.nodes,
+    pageInfo: {
+      hasNextPage: data.recipes.pageInfo?.hasNextPage ?? false,
+      hasPreviousPage: data.recipes.pageInfo?.hasPreviousPage ?? false,
+      startCursor: data.recipes.pageInfo?.startCursor ?? '',
+      endCursor: data.recipes.pageInfo?.endCursor ?? '',
+    },
   };
-} | null> {
-  try {
-    const data = await fetchGraphQL<{
-      posts: WPGraphQLConnection<WPPost>;
-    }>(GET_ALL_RECIPES, { first, after }, 3600);
-
-    // ✅ NULL GUARD
-    if (!data) return null;
-
-    return {
-      recipes: data.posts.nodes,
-      pageInfo: {
-        hasNextPage: data.posts.pageInfo?.hasNextPage ?? false,
-        hasPreviousPage: data.posts.pageInfo?.hasPreviousPage ?? false,
-        startCursor: data.posts.pageInfo?.startCursor ?? '',
-        endCursor: data.posts.pageInfo?.endCursor ?? '',
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching all recipes:', error);
-    return null;
-  }
 }
 
-/**
- * Search recipes by keyword
- */
+/** Get recipes filtered by a dish taxonomy term slug */
+export async function getRecipesByDish(
+  dishSlug: string,
+  first = 24,
+  after?: string
+): Promise<RecipesByDishResult | null> {
+  const data = await fetchGraphQL<{ recipes: WPGraphQLConnection<WPRecipePost> }>(
+    GET_RECIPES_BY_DISH,
+    { dishSlug, first, after },
+    3600
+  );
+  if (!data) return null;
+  return {
+    recipes: data.recipes.nodes,
+    pageInfo: {
+      hasNextPage: data.recipes.pageInfo?.hasNextPage ?? false,
+      endCursor: data.recipes.pageInfo?.endCursor ?? '',
+    },
+  };
+}
+
+/** Get all dish taxonomy terms (for Browse By Category) */
+export async function getAllDishTerms(): Promise<WPDishTerm[]> {
+  const data = await fetchGraphQL<{ dishes: WPGraphQLConnection<WPDishTerm> }>(
+    GET_ALL_DISH_TERMS,
+    {},
+    86400        // dish terms rarely change — cache 24h
+  );
+  return data?.dishes?.nodes ?? [];
+}
+
+/** Search recipes by keyword */
 export async function searchRecipes(
-  searchTerm: string,
-  first: number = 12
-): Promise<WPPost[] | null> {
-  try {
-    const data = await fetchGraphQL<{
-      posts: WPGraphQLConnection<WPPost>;
-    }>(
-      SEARCH_RECIPES,
-      { search: searchTerm, first },
-      60
-    );
-
-    // ✅ NULL GUARD
-    if (!data) return null;
-
-    return data.posts.nodes;
-  } catch (error) {
-    console.error(
-      `Error searching recipes for "${searchTerm}":`,
-      error
-    );
-    return null;
-  }
+  search: string,
+  first = 12
+): Promise<WPRecipePost[]> {
+  const data = await fetchGraphQL<{ recipes: WPGraphQLConnection<WPRecipePost> }>(
+    SEARCH_RECIPES,
+    { search, first },
+    0             // search results should not be cached
+  );
+  return data?.recipes?.nodes ?? [];
 }
+
+// ---------------------------------------------------------------------------
+// Legacy aliases — kept so existing call sites don't break
+// ---------------------------------------------------------------------------
+/** @deprecated Use getRecipesByDish */
+export const getRecipesByCategory = getRecipesByDish;

@@ -1,25 +1,31 @@
 import { CategoryGrid } from './category-card';
-import { recipeCategories } from '@/lib/data/recipeCategories';
+import { recipeCategories, type RecipeCategory } from '@/lib/data/recipeCategories';
 import { cn } from '@/lib/utils';
 
 interface BrowseByCategoryProps {
   title?: string;
   className?: string;
   onlyFeatured?: boolean;
+  /** Pass fetched WP dish terms to override the hardcoded fallback */
+  categories?: RecipeCategory[];
 }
 
 export function BrowseByCategory({
   title = 'Browse by Category',
   className,
   onlyFeatured = false,
+  categories,
 }: BrowseByCategoryProps) {
+  // Use provided categories if available, otherwise fall back to hardcoded data
+  const sourceCategories = categories && categories.length > 0 ? categories : recipeCategories;
+
   const filteredCategories = onlyFeatured
-    ? recipeCategories.filter((category) => category.featured)
-    : recipeCategories;
+    ? sourceCategories.filter((category) => category.featured)
+    : sourceCategories;
 
   const categoriesToRender = filteredCategories.length
     ? filteredCategories
-    : recipeCategories;
+    : sourceCategories;
 
   const gridCategories = categoriesToRender.map((category) => ({
     title: category.name,

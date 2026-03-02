@@ -1,21 +1,85 @@
 /**
  * Recipe GraphQL Queries
- * 
- * Queries for fetching recipe data. These will be updated once the Recipe CPT
- * is registered in WordPress with custom fields.
+ *
+ * Uses the `recipes` Custom Post Type registered in WordPress.
+ * WPGraphQL field names: recipe (single) / recipes (plural)
+ * Taxonomy: dish → dishes
+ *
+ * NOTE on WPGraphQL naming:
+ *   CPT graphqlSingleName="recipe", graphqlPluralName="recipes".
+ *   Taxonomy graphqlSingleName="dish", graphqlPluralName="dishes".
  */
 
-import { POST_CARD_FIELDS, POST_FULL_FIELDS } from './fragments';
+// ---------------------------------------------------------------------------
+// Reusable fragments (inline to avoid cross-file fragment duplication issues)
+// ---------------------------------------------------------------------------
 
-/**
- * Get all recipe slugs for static generation
- * 
- * TODO: Update to use recipe CPT once registered
- * Currently using standard posts as placeholder
- */
+const RECIPE_CARD_FRAGMENT = `
+  fragment RecipeCardFields on Recipe {
+    id
+    databaseId
+    title
+    slug
+    date
+    excerpt
+    featuredImage {
+      node {
+        sourceUrl
+        altText
+      }
+    }
+    dishes {
+      nodes {
+        name
+        slug
+      }
+    }
+  }
+`;
+
+const RECIPE_FULL_FRAGMENT = `
+  fragment RecipeFullFields on Recipe {
+    id
+    databaseId
+    title
+    slug
+    date
+    excerpt
+    content
+    featuredImage {
+      node {
+        sourceUrl
+        altText
+        mediaDetails { width height }
+      }
+    }
+    dishes {
+      nodes {
+        id
+        databaseId
+        name
+        slug
+        description
+        count
+      }
+    }
+    author {
+      node {
+        name
+        avatar { url }
+      }
+    }
+  }
+`;
+
+// ---------------------------------------------------------------------------
+// Queries
+// ---------------------------------------------------------------------------
+
+/** Get all recipe slugs for generateStaticParams */
 export const GET_ALL_RECIPE_SLUGS = `
   query GetAllRecipeSlugs {
-    posts(first: 1000, where: { orderby: { field: DATE, order: DESC } }) {
+    recipes(first: 1000, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         slug
       }
@@ -23,68 +87,29 @@ export const GET_ALL_RECIPE_SLUGS = `
   }
 `;
 
-/**
- * Get a single recipe by slug
- * 
- * TODO: Update to use recipe CPT with custom fields once registered
- * Expected custom fields:
- * - prepTime, cookTime, totalTime
- * - servings, difficulty
- * - ingredients[], instructions[]
- * - nutrition info
- */
+/** Get a single recipe by slug */
 export const GET_RECIPE_BY_SLUG = `
-  ${POST_FULL_FIELDS}
-  
+  ${RECIPE_FULL_FRAGMENT}
+
   query GetRecipeBySlug($slug: ID!) {
-    post(id: $slug, idType: SLUG) {
-      ...PostFullFields
+    recipe(id: $slug, idType: SLUG) {
+      ...RecipeFullFields
     }
   }
 `;
 
-/**
- * Get recipes by category
- * 
- * TODO: Update to use recipe CPT once registered
- */
-export const GET_RECIPES_BY_CATEGORY = `
-  ${POST_CARD_FIELDS}
-  
-  query GetRecipesByCategory($categorySlug: String!, $first: Int = 12, $after: String) {
-    posts(
-      first: $first,
-      after: $after,
-      where: {
-        categoryName: $categorySlug,
-        orderby: { field: DATE, order: DESC }
-      }
-    ) {
-      nodes {
-        ...PostCardFields
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
-`;
-
-/**
- * Get all recipes with pagination
- */
+/** Get all recipe cards with pagination */
 export const GET_ALL_RECIPES = `
-  ${POST_CARD_FIELDS}
-  
-  query GetAllRecipes($first: Int = 12, $after: String) {
-    posts(
-      first: $first,
-      after: $after,
+  ${RECIPE_CARD_FRAGMENT}
+
+  query GetAllRecipes($first: Int = 24, $after: String) {
+    recipes(
+      first: $first
+      after: $after
       where: { orderby: { field: DATE, order: DESC } }
     ) {
       nodes {
-        ...PostCardFields
+        ...RecipeCardFields
       }
       pageInfo {
         hasNextPage
@@ -97,45 +122,73 @@ export const GET_ALL_RECIPES = `
 `;
 
 /**
- * Search recipes by keyword
- * 
- * TODO: Enhance with recipe-specific field search once CPT is registered
+ * Get recipes filtered by a dish taxonomy term slug.
+ * DISH is the WPGraphQL taxonomy enum (auto-derived from the "dish" slug).
  */
-export const SEARCH_RECIPES = `
-  ${POST_CARD_FIELDS}
-  
-  query SearchRecipes($search: String!, $first: Int = 12) {
-    posts(
-      first: $first,
+export const GET_RECIPES_BY_DISH = `
+  ${RECIPE_CARD_FRAGMENT}
+
+  query GetRecipesByDish($dishSlug: String!, $first: Int = 24, $after: String) {
+    recipes(
+      first: $first
+      after: $after
       where: {
-        search: $search,
-        orderby: { field: RELEVANCE, order: DESC }
+        orderby: { field: DATE, order: DESC }
+        taxQuery: {
+          taxArray: [
+            { taxonomy: DISH, terms: [$dishSlug], field: SLUG }
+          ]
+        }
       }
     ) {
       nodes {
-        ...PostCardFields
+        ...RecipeCardFields
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }
 `;
 
-/**
- * Get recipes by multiple categories (for filtered views)
- */
-export const GET_RECIPES_BY_CATEGORIES = `
-  ${POST_CARD_FIELDS}
-  
-  query GetRecipesByCategories($categorySlugs: [String]!, $first: Int = 12) {
-    posts(
-      first: $first,
-      where: {
-        categoryIn: $categorySlugs,
-        orderby: { field: DATE, order: DESC }
-      }
-    ) {
+/** Get all dish taxonomy terms (populates the Browse By Category grid) */
+export const GET_ALL_DISH_TERMS = `
+  query GetAllDishTerms {
+    dishes(first: 100, where: { orderby: NAME, order: ASC }) {
       nodes {
-        ...PostCardFields
+        id
+        databaseId
+        name
+        slug
+        description
+        count
       }
     }
   }
 `;
+
+/** Search recipes by keyword */
+export const SEARCH_RECIPES = `
+  ${RECIPE_CARD_FRAGMENT}
+
+  query SearchRecipes($search: String!, $first: Int = 12) {
+    recipes(
+      first: $first
+      where: {
+        search: $search
+        orderby: { field: RELEVANCE, order: DESC }
+      }
+    ) {
+      nodes {
+        ...RecipeCardFields
+      }
+    }
+  }
+`;
+
+// ---------------------------------------------------------------------------
+// Legacy aliases — kept so existing imports don't break during the migration
+// ---------------------------------------------------------------------------
+/** @deprecated Use GET_RECIPES_BY_DISH */
+export const GET_RECIPES_BY_CATEGORY = GET_RECIPES_BY_DISH;

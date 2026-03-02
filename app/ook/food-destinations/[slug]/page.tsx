@@ -1,147 +1,152 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import SiteContainer from '@/components/layout/site-container';
 import { OokHeader, Takeaway } from '@/components';
+import { getOokPostBySlug, getOokPostsByCategory } from '@/lib/api/ook';
+import type { OokContentType } from '@/components/ook-header';
 
-// ===================================================================
-// TYPES
-// ===================================================================
+export const revalidate = 3600;
+
 interface FoodDestination {
-  name: string;
-  city: string;
-  state: string;
-  type: 'winery' | 'brewery' | 'distillery' | 'food-tour' | 'culinary-experience';
-  specialty: string;
-  openDays?: string;
-  slug: string;
-  author: string;
-  publishDate: string;
-  image: string;
-  description: string;
-  content: string[];
-  experienceTips: string[];
+  name: string; city: string; state: string;
+  type: string; specialty: string; openDays?: string;
+  slug: string; author: string; publishDate: string; image: string;
+  description: string; content: string[]; experienceTips: string[];
 }
 
-// ===================================================================
-// MOCK DATA
-// ===================================================================
-const getFoodDestinationBySlug = (slug: string): FoodDestination | undefined => {
-  const destinations: FoodDestination[] = [
+function parseHtmlParagraphs(html: string): string[] {
+  return html
+    .split(/<\/p>|<br\s*\/?>/)
+    .map(s => s.replace(/<[^>]+>/g, '').trim())
+    .filter(Boolean);
+}
+
+function getLocalData(): FoodDestination[] {
+  return [
     {
-      name: "Wine Tasting at Sunset Vineyard",
-      city: "Napa Valley",
-      state: "California",
-      type: "winery",
-      specialty: "Award-winning Cabernet Sauvignon and artisan cheese pairings",
-      openDays: "Daily, 11am–6pm",
-      slug: "sunset-vineyard-tasting",
-      author: "Amanda Lynn",
-      publishDate: "September 2025",
+      name: "Wine Tasting at Sunset Vineyard", city: "Napa Valley", state: "California",
+      type: "winery", specialty: "Award-winning Cabernet Sauvignon and artisan cheese pairings",
+      openDays: "Daily, 11am–6pm", slug: "sunset-vineyard-tasting",
+      author: "Amanda Lynn", publishDate: "September 2025",
       image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       description: "A boutique family winery nestled in the rolling hills of Napa Valley, offering an intimate tasting experience with panoramic vineyard views and expertly crafted wines.",
-      content: [
-        "Driving up the winding gravel road to Sunset Vineyard, you immediately understand why this family-owned winery has captured the hearts of wine enthusiasts from around the world. The 30-acre property sits perched on a hillside with sweeping views of the Napa Valley floor, and the golden hour light that filters through the ancient oak trees creates an almost magical atmosphere.",
-        "The tasting room occupies a converted 1920s farmhouse, complete with wide-plank floors and French doors that open onto a wraparound porch. Owner and winemaker Elena Rossi greets every visitor personally, sharing stories about her family's four-generation commitment to sustainable viticulture and traditional winemaking techniques passed down from their Italian heritage.",
-        "The tasting flight showcases five wines, each paired with artisanal cheeses sourced from local Sonoma County creameries. Their flagship 2019 Cabernet Sauvignon is exceptional—rich and complex with notes of dark cherry, cedar, and a hint of vanilla from 18 months in French oak. The pairing with aged Manchego creates a harmony that elevates both the wine and cheese to new heights.",
-        "What sets Sunset Vineyard apart isn't just the quality of their wines, but the education that comes with each pour. Elena explains the terroir, the specific microclimates of each vineyard block, and how weather patterns affect the growing season. By the end of the tasting, you'll have a deeper appreciation for the craft and artistry that goes into every bottle."
-      ],
-      experienceTips: [
-        "Book the sunset tasting for the most spectacular views and golden light",
-        "Ask Elena about the vineyard tour—she personally leads weekend walks through the property",
-        "Their wine club offers exclusive access to limited-production bottles",
-        "The artisan cheese pairings are sourced from within 50 miles of the vineyard"
-      ]
+      content: ["Driving up the winding gravel road to Sunset Vineyard, you immediately understand why this family-owned winery has captured the hearts of wine enthusiasts from around the world.", "The tasting room occupies a converted 1920s farmhouse, complete with wide-plank floors and French doors that open onto a wraparound porch.", "The tasting flight showcases five wines, each paired with artisanal cheeses sourced from local Sonoma County creameries.", "What sets Sunset Vineyard apart isn't just the quality of their wines, but the education that comes with each pour."],
+      experienceTips: ["Book the sunset tasting for the most spectacular views and golden light", "Ask Elena about the vineyard tour—she personally leads weekend walks through the property", "Their wine club offers exclusive access to limited-production bottles", "The artisan cheese pairings are sourced from within 50 miles of the vineyard"],
     },
     {
-      name: "Coastal Brewery Experience",
-      city: "Half Moon Bay",
-      state: "California",
-      type: "brewery",
-      specialty: "Small-batch craft beer and ocean-view tasting",
-      openDays: "Wednesday–Sunday, 2pm–8pm",
-      slug: "coastal-brewery-experience",
-      author: "Amanda Lynn",
-      publishDate: "October 2025",
-      image: "https://images.unsplash.com/photo-1608270586620-248524c67de9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      description: "A clifftop brewery specializing in hop-forward ales and innovative sour beers, where you can taste exceptional craft beer while watching waves crash against the Pacific coastline.",
-      content: [
-        "Perched on dramatic bluffs overlooking the Pacific Ocean, Coastal Brewery represents everything that makes California craft beer culture special. The taproom occupies a converted 1940s fishing lodge, with floor-to-ceiling windows that frame an unobstructed view of the coastline stretching north toward San Francisco.",
-        "Brewmaster Jake Morrison focuses on small-batch production, typically brewing just three barrels at a time. This allows him to experiment with unique ingredients like locally foraged sea beans, coastal sage, and even fog water collected during marine layer season. His West Coast IPA showcases Citra and Mosaic hops grown in nearby Sonoma County.",
-        "The beer flight includes six tastings, ranging from their crisp Pilsner to a barrel-aged imperial stout that's been conditioning in bourbon barrels for eight months. Each pour comes with tasting notes and the story behind its creation. The sour beer program is particularly impressive—wild fermentation using native coastal yeasts creates complex, funkier flavors you won't find anywhere else."
-      ],
-      experienceTips: [
-        "Arrive before sunset for the best lighting and whale watching opportunities",
-        "Try the seasonal sour beers—they're only available at the brewery",
-        "The food truck on weekends serves locally caught fish tacos",
-        "Bring a jacket—coastal winds can be chilly even on warm days"
-      ]
-    }
+      name: "Napa Valley Culinary Tour", city: "Napa", state: "California",
+      type: "food-tour", specialty: "Farm-to-table dining and artisanal producers",
+      openDays: "Daily", slug: "napa-valley-culinary-tour",
+      author: "Amanda Lynn", publishDate: "August 2025",
+      image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      description: "A guided journey through wine country featuring farm-to-table dining and artisanal producers.",
+      content: ["Napa Valley is synonymous with wine, but its culinary landscape extends far beyond the vineyard.", "Our guide led us through a morning of farmers market stops, artisan cheese tastings, and cooking demonstrations.", "The afternoon brought us to two Michelin-starred restaurants where we observed kitchen operations.", "By evening we understood why Napa has become one of the world's foremost food destinations."],
+      experienceTips: ["Book the full-day tour for the most comprehensive experience", "Wear comfortable shoes—there's considerable walking between stops", "Come with an appetite and pace yourself throughout the day", "The cooking demonstration at the culinary school is not to be missed"],
+    },
   ];
+}
 
-  return destinations.find(d => d.slug === slug);
-};
+export async function generateStaticParams() {
+  try {
+    const result = await getOokPostsByCategory('food-destinations');
+    return (result?.posts ?? []).map(p => ({ slug: p.slug }));
+  } catch {
+    const data = getLocalData();
+    return data.map(item => ({ slug: item.slug }));
+  }
+}
 
-// ===================================================================
-// PAGE COMPONENT
-// ===================================================================
-export default function FoodDestinationPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const wpPost = await getOokPostBySlug(slug);
+  if (wpPost) {
+    return {
+      title: wpPost.title,
+      description: wpPost.excerpt?.replace(/<[^>]+>/g, '').trim() ?? '',
+    };
+  }
+  const local = getLocalData().find(item => item.slug === slug);
+  if (local) return { title: local.name, description: local.description };
+  return { title: 'food-destination' };
+}
 
-  const destination = getFoodDestinationBySlug(slug);
+export default async function FoodDestinationDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const wpPost = await getOokPostBySlug(slug);
 
-  if (!destination) {
+  if (wpPost) {
+    const paragraphs = parseHtmlParagraphs(wpPost.content ?? '');
+    const description = wpPost.excerpt?.replace(/<[^>]+>/g, '').trim() ?? '';
+    const publishDate = wpPost.date
+      ? new Date(wpPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      : '';
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Destination Not Found</h1>
-          <Link href="/ook/food-destinations" className="text-green hover:text-green/70">
-            ← Back to Culinary Destinations
-          </Link>
-        </div>
-      </div>
+      <main>
+        <SiteContainer>
+          <OokHeader
+            title={wpPost.title}
+            image={wpPost.featuredImage?.node?.sourceUrl ?? ''}
+            contentType={'food-destination' as OokContentType}
+            author="Amanda Lynn"
+            publishDate={publishDate}
+            shareProps={{ title: wpPost.title, description, imageUrl: wpPost.featuredImage?.node?.sourceUrl }}
+          />
+        </SiteContainer>
+        <SiteContainer>
+          <section className="mb-8">
+            <p className="text-lg text-muted-foreground italic text-center">{description}</p>
+          </section>
+        </SiteContainer>
+        <SiteContainer>
+          <section className="mb-24">
+            <div className="prose prose-lg max-w-none pt-[37px]">
+              {paragraphs.map((paragraph, index) => (
+                <div key={index}>
+                  <p className="mb-6 text-muted-foreground leading-relaxed">{paragraph}</p>
+                  {index === 2 && (
+                    <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center mb-8">
+                      <p className="text-sm text-gray-500 mb-2">Advertisement</p>
+                      <p className="text-xs text-gray-400">728x90 Banner Ad</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        </SiteContainer>
+      </main>
     );
   }
 
+  const local = getLocalData().find(item => item.slug === slug);
+  if (!local) notFound();
+
   return (
     <main>
-      {/* Header Section */}
       <SiteContainer>
         <OokHeader
-          title={destination.name}
-          image={destination.image}
-          contentType="food-destination"
-          location={{
-            city: destination.city,
-            state: destination.state
-          }}
-          author={destination.author}
-          publishDate={destination.publishDate}
-          {...(destination.type !== 'winery' && {
-            marketType: destination.type,
-            specialty: destination.specialty,
-            openDays: destination.openDays
-          })}
-          shareProps={{
-            title: destination.name,
-            description: destination.description,
-            imageUrl: destination.image
-          }}
+          title={local.name}
+          image={local.image}
+          contentType={'food-destination' as OokContentType}
+          location={{ city: local.city, state: local.state }}
+          author={local.author}
+          publishDate={local.publishDate}
+          specialty={local.specialty}
+          openDays={local.openDays}
+          shareProps={{ title: local.name, description: local.description, imageUrl: local.image }}
         />
       </SiteContainer>
-
-      {/* Article Content */}
+      <SiteContainer>
+        <section className="mb-8">
+          <p className="text-lg text-muted-foreground italic text-center">{local.description}</p>
+        </section>
+      </SiteContainer>
       <SiteContainer>
         <section className="mb-24">
           <div className="prose prose-lg max-w-none pt-[37px]">
-            {destination.content.map((paragraph, index) => (
+            {local.content.map((paragraph, index) => (
               <div key={index}>
-                <p className="mb-6 text-muted-foreground leading-relaxed">
-                  {paragraph}
-                </p>
-                {/* Advertisement after 3rd paragraph */}
+                <p className="mb-6 text-muted-foreground leading-relaxed">{paragraph}</p>
                 {index === 2 && (
                   <div className="bg-gray-100 border border-gray-200 rounded-lg p-12 text-center mb-8">
                     <p className="text-sm text-gray-500 mb-2">Advertisement</p>
@@ -153,13 +158,8 @@ export default function FoodDestinationPage() {
           </div>
         </section>
       </SiteContainer>
-
-      {/* Takeaway Box */}
       <SiteContainer>
-        <Takeaway
-          title="Worth the Trip"
-          items={destination.experienceTips}
-        />
+        <Takeaway title="Travel Notes" items={local.experienceTips} />
       </SiteContainer>
     </main>
   );

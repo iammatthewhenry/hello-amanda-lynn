@@ -1,22 +1,18 @@
-'use client';
-
-import { useParams } from 'next/navigation';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Breadcrumbs, ShareBar, BlogPostTemplate } from '@/components';
-import NotFoundPage from '@/app/not-found';
+import { getOokPostBySlug, getAllOokSlugs } from '@/lib/api/ook';
 
-interface OutOfKitchenPost {
-  title: string;
-  description: string;
-  image: string;
-  location: string;
-  date: string;
-  slug: string;
-  content: string[];
-  specialty: string;
-  tips?: string[];
+export const revalidate = 3600;
+
+function parseHtmlParagraphs(html: string): string[] {
+  return html
+    .split(/<\/p>|<br\s*\/?>/)
+    .map(s => s.replace(/<[^>]+>/g, '').trim())
+    .filter(Boolean);
 }
 
-const mockPosts: Record<string, OutOfKitchenPost> = {
+const mockPosts: Record<string, { title: string; description: string; image: string; location: string; date: string; slug: string; specialty: string; content: string[]; tips?: string[] }> = {
   "local-food-markets": {
     title: "Exploring Local Food Markets",
     description: "Discovering treasures at the weekly farmer's market. The energy, colors, and direct connection to where your food comes from transforms grocery shopping into an adventure.",
@@ -40,7 +36,6 @@ const mockPosts: Record<string, OutOfKitchenPost> = {
       "Don't be afraid to ask for samples or cooking advice"
     ]
   },
-
   "wine-tasting-experience": {
     title: "Wine Tasting at Sunset Vineyard",
     description: "An afternoon of wine tasting in the rolling hills. The sommelier's passion and knowledge made each sip a journey of discovery through local terroir.",
@@ -64,7 +59,6 @@ const mockPosts: Record<string, OutOfKitchenPost> = {
       "Ask about wine club memberships for discounts on purchases"
     ]
   },
-
   "street-food-adventure": {
     title: "Street Food Adventure Downtown",
     description: "Exploring the city's vibrant street food scene. From tacos to banh mi, every bite told a story of culture and tradition brought to life on busy street corners.",
@@ -88,82 +82,87 @@ const mockPosts: Record<string, OutOfKitchenPost> = {
       "Be adventurous but trust your instincts about food safety"
     ]
   },
-
-  "cooking-class-experience": {
-    title: "Hands-On Cooking Class Experience",
-    description: "Learning traditional pasta making from a chef who learned in Italy. Three hours of flour-covered hands and incredible techniques that transformed my home cooking.",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    location: "Culinary Institute",
-    date: "August 28, 2025",
-    slug: "cooking-class-experience",
-    specialty: "$$",
-    content: [
-      "I've always been intimidated by making pasta from scratch. After a three-hour class with Chef Antonio, who trained in Bologna, I feel like I have a new superpower.",
-      "We started with the basics of egg pasta dough - just flour, eggs, and a pinch of salt. But the technique in mixing, kneading, and rolling makes all the difference.",
-      "Learning to use the pasta machine properly was revelatory. The dough transforms from rough and shaggy to silky smooth through patient, methodical rolling and folding.",
-      "We made three shapes: fettuccine, ravioli, and tortellini. Each requires different techniques and a different relationship between dough thickness and final texture.",
-      "The best part was sitting down together to eat what we'd made, paired with simple sauces that let the pasta shine. Sometimes the most rewarding meals are the ones you create with your own hands."
-    ],
-    tips: [
-      "Wear comfortable, closed-toe shoes and bring an apron",
-      "Don't eat a heavy meal beforehand - you'll be tasting throughout",
-      "Ask lots of questions and take notes on techniques",
-      "Many classes provide recipes - bring them home and practice",
-      "Consider taking multiple classes to build on your skills"
-    ]
-  }
 };
 
-export default function OutOfKitchenDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+export async function generateStaticParams() {
+  try {
+    const slugs = await getAllOokSlugs();
+    return slugs.map(slug => ({ slug }));
+  } catch {
+    return Object.keys(mockPosts).map(slug => ({ slug }));
+  }
+}
 
-  if (!slug || !mockPosts[slug]) {
-    return <NotFoundPage />;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const wpPost = await getOokPostBySlug(slug);
+  if (wpPost) {
+    return {
+      title: wpPost.title,
+      description: wpPost.excerpt?.replace(/<[^>]+>/g, '').trim() ?? '',
+    };
+  }
+  const local = mockPosts[slug];
+  if (local) return { title: local.title, description: local.description };
+  return { title: 'Out of Kitchen' };
+}
+
+export default async function OutOfKitchenDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+
+  const wpPost = await getOokPostBySlug(slug);
+  if (wpPost) {
+    const paragraphs = parseHtmlParagraphs(wpPost.content ?? '');
+    const description = wpPost.excerpt?.replace(/<[^>]+>/g, '').trim() ?? '';
+    return (
+      <main>
+        <BlogPostTemplate
+          metaDetails={null}
+          image={wpPost.featuredImage?.node?.sourceUrl ?? ''}
+          title={wpPost.title}
+          author="Amanda Lynn"
+          publishedDate={wpPost.date ? new Date(wpPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''}
+          description={description}
+          content={paragraphs}
+          shareTitle={wpPost.title}
+          shareDescription={description}
+          shareImageUrl={wpPost.featuredImage?.node?.sourceUrl ?? ''}
+        />
+        <ShareBar
+          title={wpPost.title}
+          description={description}
+          imageUrl={wpPost.featuredImage?.node?.sourceUrl}
+        />
+      </main>
+    );
   }
 
   const post = mockPosts[slug];
+  if (!post) notFound();
 
   return (
     <main>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs 
+        <Breadcrumbs
           items={[
-            { label: 'Out of Kitchen', href: '/out-of-kitchen' },
+            { label: 'Out of Kitchen', href: '/ook' },
             { label: post.title }
           ]}
         />
       </div>
-
       <BlogPostTemplate
+        metaDetails={null}
         image={post.image}
         title={post.title}
         author="Amanda Lynn"
         publishedDate={post.date}
-        metaDetails={
-          <div className="mb-4 text-muted-foreground">
-            <p className="text-sm mb-1">{post.location}</p>
-            <div className="flex items-center gap-1">
-              <span className="text-sm">Price: </span>
-              <div className="flex items-center">
-                <span className="text-green">$</span>
-                <span className="text-green">$</span>
-                <span className="text-green">$</span>
-              </div>
-            </div>
-          </div>
-        }
         description={post.description}
         content={post.content}
-        tipSection={post.tips ? {
-          title: "Key Takeaways",
-          tips: post.tips
-        } : undefined}
+        tipSection={post.tips ? { title: "Key Takeaways", tips: post.tips } : undefined}
         shareTitle={post.title}
         shareDescription={post.description}
         shareImageUrl={post.image}
       />
-
       <ShareBar
         title={post.title}
         description={post.description}
