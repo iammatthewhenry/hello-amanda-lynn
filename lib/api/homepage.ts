@@ -3,6 +3,7 @@
  */
 
 import { fetchGraphQL } from '@/lib/wordpress';
+import { getRecipeDishUrl } from '@/lib/routes';
 import {
   GET_HOMEPAGE_DATA,
   GET_CATEGORIES,
@@ -100,7 +101,7 @@ export async function getHomepageData(): Promise<HomepageData | null> {
         cat.image?.sourceUrl ||
         CATEGORY_IMAGE_FALLBACKS[cat.slug.toLowerCase()]?.image ||
         '',
-      page: `/recipes/${cat.slug}`,
+      page: getRecipeDishUrl(cat.slug),
       objectPosition:
         CATEGORY_IMAGE_FALLBACKS[cat.slug.toLowerCase()]?.objectPosition,
       count: cat.count,
@@ -136,7 +137,7 @@ export async function getCategories(): Promise<CategoryItem[] | null> {
         cat.image?.sourceUrl ||
         CATEGORY_IMAGE_FALLBACKS[cat.slug.toLowerCase()]?.image ||
         '',
-      page: `/recipes/${cat.slug}`,
+      page: getRecipeDishUrl(cat.slug),
       objectPosition:
         CATEGORY_IMAGE_FALLBACKS[cat.slug.toLowerCase()]?.objectPosition,
       count: cat.count,
