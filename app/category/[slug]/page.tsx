@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getRecipesByCategory } from '@/lib/api/recipes';
-import { getCategories } from '@/lib/api/homepage';
+import { getRecipesByCategory, getAllDishTerms } from '@/lib/api/recipes';
 import RecipeListingPage from '@/components/recipe-listing-page';
 
 /**
  * Category Recipe Listing Page - Server Component
  * 
- * Displays recipes filtered by category from WordPress.
+ * Displays recipes filtered by dish taxonomy from WordPress.
  */
 
 interface PageProps {
@@ -17,18 +16,18 @@ interface PageProps {
 export const revalidate = false;
 
 /**
- * Generate static paths for all recipe categories
+ * Generate static paths for all recipe dish taxonomy terms
  */
 export async function generateStaticParams() {
   try {
-    const categories = await getCategories();
-    if (categories && categories.length > 0) {
-      return categories.map((cat) => ({
-        slug: cat.page.replace('/recipes/', ''),
+    const dishTerms = await getAllDishTerms();
+    if (dishTerms && dishTerms.length > 0) {
+      return dishTerms.map((dish) => ({
+        slug: dish.slug,
       }));
     }
   } catch (error) {
-    console.error('Error generating category paths:', error);
+    console.error('Error generating dish category paths:', error);
   }
 
   // Fallback to default categories
@@ -68,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 /**
  * Category page component
  * 
- * TODO: Update RecipeListingPage component to accept WordPress post data
- * For now returns placeholder until component is updated
+ * Fetches recipes from WordPress filtered by dish taxonomy
+ * and passes them to the RecipeListingPage component for display.
  */
 export default async function CategoryPage({ params }: PageProps) {
   const { slug } = await params;
@@ -81,9 +80,8 @@ export default async function CategoryPage({ params }: PageProps) {
       notFound();
     }
 
-    // TODO: Pass WordPress recipes to RecipeListingPage once component supports it
-    // For now, the component will use its internal data
-    return <RecipeListingPage />;
+    // Pass WordPress recipes to the component
+    return <RecipeListingPage wpRecipes={data.recipes} categorySlug={slug} />;
   } catch (error) {
     console.error(`Error fetching recipes for category "${slug}":`, error);
     notFound();

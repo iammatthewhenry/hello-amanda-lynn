@@ -5,24 +5,52 @@ import { Search, Filter } from 'lucide-react';
 
 import { getAllRecipes, getRecipesByCategory, RECIPE_CATEGORIES, type Recipe } from '@/data/recipe-data';
 import { Breadcrumbs, ContentCard } from '@/components';
+import type { WPRecipePost } from '@/lib/types/wordpress';
 
 interface RecipeListingPageProps {
   initialCategory?: string;
+  wpRecipes?: WPRecipePost[];
+  categorySlug?: string;
 }
 
-export default function RecipeListingPage({ initialCategory }: RecipeListingPageProps) {
+// Map WordPress recipe to local Recipe format
+function mapWPRecipeToLocal(wpRecipe: WPRecipePost): Recipe {
+  const dishName = wpRecipe.dishes?.nodes?.[0]?.name || 'Uncategorized';
+  return {
+    id: wpRecipe.databaseId.toString(),
+    slug: wpRecipe.slug,
+    title: wpRecipe.title,
+    image: wpRecipe.featuredImage?.node?.sourceUrl || '',
+    publishedDate: new Date(wpRecipe.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+    author: wpRecipe.author?.node?.name || 'Amanda Lynn',
+    category: dishName,
+    description: wpRecipe.excerpt?.replace(/<[^>]+>/g, '').trim() || '',
+    prepTime: '',
+    cookTime: '',
+    totalTime: '',
+    servings: '',
+    content: [],
+    ingredients: [],
+    instructions: [],
+    notes: [],
+  };
+}
+
+export default function RecipeListingPage({ initialCategory, wpRecipes, categorySlug }: RecipeListingPageProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || 'All');
   const [sortBy, setSortBy] = useState<'recent' | 'title' | 'category'>('recent');
 
-  const allRecipes = getAllRecipes();
+  // Use WordPress recipes if provided, otherwise fall back to local data
+  const allRecipes = wpRecipes ? wpRecipes.map(mapWPRecipeToLocal) : getAllRecipes();
 
   // Filter and search recipes
   const filteredRecipes = useMemo(() => {
     let recipes = allRecipes;
 
-    // Filter by category
-    if (selectedCategory !== 'All') {
+    // If WordPress recipes are provided for a specific category, don't filter by category
+    // (data is already filtered server-side)
+    if (!wpRecipes && selectedCategory !== 'All') {
       recipes = getRecipesByCategory(selectedCategory);
     }
 
@@ -50,7 +78,7 @@ export default function RecipeListingPage({ initialCategory }: RecipeListingPage
     });
 
     return recipes;
-  }, [allRecipes, selectedCategory, searchTerm, sortBy]);
+  }, [allRecipes, selectedCategory, searchTerm, sortBy, wpRecipes]);
 
   return (
     <main>
